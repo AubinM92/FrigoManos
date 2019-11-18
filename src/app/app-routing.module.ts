@@ -6,7 +6,7 @@ import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'modif_profil', component: ModifprofilComponent }
+  { path: 'modif_profil', component: ModifprofilComponent } 
 ];
 
 @NgModule({
