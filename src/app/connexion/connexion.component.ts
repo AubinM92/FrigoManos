@@ -38,7 +38,7 @@ export class ConnexionComponent implements OnInit {
             localStorage.setItem('pseudo',this.uConnect.pseudo);
             this.router.navigate(['/home'])
           } else{
-            this.erreur = "mauvais identifiants"
+            this.erreur = "Mail ou mot de passe incorrect"
           }
           
 
@@ -50,6 +50,10 @@ export class ConnexionComponent implements OnInit {
 
       
 
+  }
+
+  toInscription() {
+    this.router.navigate(['/inscription']);
   }
 
 }

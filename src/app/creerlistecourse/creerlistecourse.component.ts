@@ -16,6 +16,8 @@ export class CreerlistecourseComponent implements OnInit {
   erreur;
   liste: Liste = new Liste();
   user: User = new User();
+  retour=null;
+  listeRetour: Liste = new Liste();
 
   constructor(
     public dialogRef: MatDialogRef<CreerlistecourseComponent>, private http: HttpClient) { }
@@ -33,11 +35,17 @@ export class CreerlistecourseComponent implements OnInit {
 
     this.http.post('http://localhost:8087/liste', this.liste).subscribe(
       data => {
-
+        this.retour = data;
+        this.listeRetour = this.retour;
+        if(this.listeRetour.id!=null){
+          this.dialogRef.close();
+        }
       }, err => {
         return 0;
       }
     );
+
+    
 
   }
 
