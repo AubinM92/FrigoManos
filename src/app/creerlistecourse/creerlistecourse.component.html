@@ -1,5 +1,15 @@
 <div class="container">
-    <div>
-        <h1>Test</h1>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form>
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="Liste.titre" class="form-control text-center"
+                        placeholder="Titre de votre liste" name="Titre" required #nomAction="ngModel">
+                </div>
+            </form>
+        </div>
+
     </div>
 </div>
+<h1>Test</h1>
