@@ -10,14 +10,19 @@ import { HttpClient } from '@angular/common/http';
 export class AfficherlistecourseComponent implements OnInit {
   visible =false;
   liste : Liste = new Liste();  
-  data;
+  mesListes;
 
   constructor(private http : HttpClient) { }
   
  
 
   ngOnInit() {
-    
+    this.http.get('http://localhost:8087/liste').subscribe(
+      data=> {
+        this.mesListes = data;
+        console.log(this.mesListes);
+      }
+    )
   }
 
   boutonmodif(l) {

@@ -1,15 +1,73 @@
-<div class="container" style="
-  background: rgb(162, 162, 206); 
+<div class="container " style="
+  background: #EAC5CD; 
   height: 1000px;
   border: solid 5px white;
   margin: 10px;
 
 ">
-<br>
-<h3>Bienvenue {{cUser}} !</h3>
-<br>
-<ul>
-  <li></li>
+  <br>
+  <!-- <h3 class="text-center"><strong>Bienvenue à toi {{cUser}} !</strong></h3> 
+<br>-->
+  <ul class="list-unstyled">
+    <hr>
+    <li>
+      <a>
+        <img src="https://myeleec.fr/wp-content/uploads/2013/03/refrigerateur.png" alt="" width="50px">
+        <strong> Mon Frigo</strong>
+      </a>
+    </li>
+    <hr>
+    <li>
+      <a>
+        <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
+        <strong> Ma liste d'achat</strong>
+      </a>
+    </li>
+    <hr>
+    <li>
+      <a>
+        <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
+        <strong> Mes listes de courses</strong>
+      </a>
+      <ul>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>test</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--<tr *ngFor="let p of data">
+              <td>{{ p.titre }}</td>
+              <td>suppr(p)</td>
+            </tr>-->
+          </tbody>
+        </table>
+      </ul>
+    </li>
+    <hr>
+    <li>
+      <a>
+        <img src="https://image.flaticon.com/icons/png/512/18/18560.png" alt="" width="50px">
+        <strong> Mes suggestions</strong>
+      </a>
+    </li>
+    <br><br><br><br><br><br>
+    <li>
+        <hr>
+        <button (click)="deconnexion()" style="width: 100%; background: none; border: none; text-align: left;">
+            <img src="https://svgsilh.com/svg/160872.svg" alt="" width="25px">
+            <strong> Mon compte</strong>
+        </button>
+      </li>
+    <li>
+      <hr>
+      <button (click)="deconnexion()" style="width: 100%; background: none; border: none; text-align: left;">
+          <img src="https://image.flaticon.com/icons/png/512/17/17367.png" alt="" width="25px">
+          <strong> Déconnexion</strong>
+      </button>
+    </li>
 
-</ul>
+  </ul>
 </div>

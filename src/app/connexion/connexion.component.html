@@ -16,7 +16,7 @@
                                     <input type="password" [(ngModel)]="user.mdp" class="form-control text-center"
                                         placeholder="Mot de passe" name="mdp" required>
                                     <br>
-                                    <button
+                                    <button [disabled]="!forme.form.valid"
                                         class="btn btn-lg btn-primary btn-block btn-login active text-uppercase font-weight-bold mb-2"
                                         (click)="connexionUser()">Se connecter</button>
                                 </div>
