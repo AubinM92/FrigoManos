@@ -11,7 +11,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { NavbaruserComponent } from './navbaruser/navbaruser.component'
+import { NavbaruserComponent } from './navbaruser/navbaruser.component';
+import { VoirlisteComponent } from './voirliste/voirliste.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavbaruserComponent } from './navbaruser/navbaruser.component'
     ConnexionComponent,
     CreerlistecourseComponent,
     HomeComponent,
-    NavbaruserComponent
+    NavbaruserComponent,
+    VoirlisteComponent
   ],
   imports: [
     BrowserModule,
