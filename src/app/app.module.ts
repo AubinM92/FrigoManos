@@ -15,6 +15,7 @@ import { NavbaruserComponent } from './navbaruser/navbaruser.component';
 import { VoirlisteComponent } from './voirliste/voirliste.component';
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeComponent,
     NavbaruserComponent,
     VoirlisteComponent,
-    AfficherfrigoComponent
+    AfficherfrigoComponent,
+    AfficherlistecourseComponent
   ],
   imports: [
     BrowserModule,
