@@ -11,9 +11,11 @@ import { HttpClientModule} from '@angular/common/http';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { NavbaruserComponent } from './navbaruser/navbaruser.component'
+import { NavbaruserComponent } from './navbaruser/navbaruser.component';
+import { VoirlisteComponent } from './voirliste/voirliste.component';
+import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { VoirlisteComponent } from './voirliste/voirliste.component'
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { VoirlisteComponent } from './voirliste/voirliste.component'
     CreerlistecourseComponent,
     HomeComponent,
     NavbaruserComponent,
-    VoirlisteComponent
+    VoirlisteComponent,
+    AfficherfrigoComponent
   ],
   imports: [
     BrowserModule,
