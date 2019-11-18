@@ -39,11 +39,11 @@ export class ConnexionComponent implements OnInit {
       if (this.uConnect.mdp!=null) {
         console.log("super")
         console.log(this.uConnect);
-        //this.idString = String.valueOf(this.uConnect.id);
+
         localStorage.setItem('mail',this.uConnect.mail);
         localStorage.setItem('mdp',this.uConnect.mdp);
         localStorage.setItem('pseudo',this.uConnect.pseudo);
-        
+
         this.router.navigate(['/home']);
       } 
       else {
