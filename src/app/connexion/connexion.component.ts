@@ -32,13 +32,12 @@ export class ConnexionComponent implements OnInit {
       );
 
     this.uConnect =this.uTest;
-
+    
       if (this.uConnect.mdp!=null) {
         console.log("super")
         console.log(this.uConnect);
-
       } else{
-        this.erreur = "mauvais identifiants"
+        this.erreur = "mauvais identifiants"$
       }
       
 
