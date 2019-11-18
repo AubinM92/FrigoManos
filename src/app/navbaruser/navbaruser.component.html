@@ -1,8 +1,9 @@
-<div class="container " style="
+<div class="container" style="
   background: #EAC5CD; 
   height: 1000px;
   border: solid 5px white;
   margin: 10px;
+  width: 100%;
 
 ">
   <br>
@@ -11,24 +12,27 @@
   <ul class="list-unstyled">
     <hr>
     <li>
-      <a>
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: left;">
         <img src="https://myeleec.fr/wp-content/uploads/2013/03/refrigerateur.png" alt="" width="50px">
         <strong> Mon Frigo</strong>
-      </a>
+      </button>
     </li>
     <hr>
     <li>
-      <a>
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: left;">
         <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
         <strong> Ma liste d'achat</strong>
-      </a>
+      </button>
     </li>
     <hr>
     <li>
-      <a>
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: left;">
         <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
         <strong> Mes listes de courses</strong>
-      </a>
+      </button>
       <ul>
         <table class="table">
           <thead>
@@ -48,24 +52,27 @@
     </li>
     <hr>
     <li>
-      <a>
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: left;">
         <img src="https://image.flaticon.com/icons/png/512/18/18560.png" alt="" width="50px">
         <strong> Mes suggestions</strong>
-      </a>
+      </button>
     </li>
     <br><br><br><br><br><br>
     <li>
-        <hr>
-        <button (click)="deconnexion()" style="width: 100%; background: none; border: none; text-align: left;">
-            <img src="https://svgsilh.com/svg/160872.svg" alt="" width="25px">
-            <strong> Mon compte</strong>
-        </button>
-      </li>
+      <hr>
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: left;">
+        <img src="https://svgsilh.com/svg/160872.svg" alt="" width="25px">
+        <strong> Mon compte</strong>
+      </button>
+    </li>
     <li>
       <hr>
-      <button (click)="deconnexion()" style="width: 100%; background: none; border: none; text-align: left;">
-          <img src="https://image.flaticon.com/icons/png/512/17/17367.png" alt="" width="25px">
-          <strong> Déconnexion</strong>
+      <button class="btn btn-lg btn-primary btn-block btn-login" (click)="deconnexion()"
+        style="width: 100%; background: none; border: none; text-align: left;">
+        <img src="https://image.flaticon.com/icons/png/512/17/17367.png" alt="" width="25px">
+        <strong> Déconnexion</strong>
       </button>
     </li>
 

@@ -22,7 +22,6 @@ export class NavbaruserComponent implements OnInit {
       response => {
         this.data = response;
         this.liste = this.data;
-        console.log(this.liste.titre);
       }
     )
     console.log("test");
