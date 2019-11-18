@@ -13,27 +13,25 @@
                 <div class="form-group">
                     <!-- création d'une zone de saisie avec un texte qui s'effece lorsqu'on commence la saisie-->
                     <br>
-                    <input type="text" [(ngModel)]= "user.mail" class="form-control text-center" placeholder="Votre mail"
-                        name="mail"
-                        required>
+                    <input type="text" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Votre mail"
+                        name="mail" required>
 
                     <br><br>
 
-                    <input type="password"  [(ngModel)]= "user.mdp"  class="form-control text-center"
-                        placeholder="Votre mot de passe" name="mdp"
-                        required>
+                    <input type="password" [(ngModel)]="user.mdp" class="form-control text-center"
+                        placeholder="Votre mot de passe" name="mdp" required>
 
 
-                    <button [disabled]="!forme.form.valid"  class="btn btn-primary btn-block"
-                       (click)="connexionUser()">Se connecter</button>
+                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
+                        (click)="connexionUser()">Se connecter</button>
 
-                
+
                 </div>
                 <br>
 
             </form>
 
-        <div> {{ erreur }} </div>
+            <div> {{ erreur }} </div>
         </div>
 
     </div>
