@@ -12,7 +12,8 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
-import { VoirlisteComponent } from './voirliste/voirliste.component'
+import { VoirlisteComponent } from './voirliste/voirliste.component';
+import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { VoirlisteComponent } from './voirliste/voirliste.component'
     CreerlistecourseComponent,
     HomeComponent,
     NavbaruserComponent,
-    VoirlisteComponent
+    VoirlisteComponent,
+    AfficherfrigoComponent
   ],
   imports: [
     BrowserModule,
