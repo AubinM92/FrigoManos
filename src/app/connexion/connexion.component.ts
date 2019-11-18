@@ -12,7 +12,7 @@ export class ConnexionComponent implements OnInit {
 
 
   user : User =new User();
-
+  idString;
   erreur;
   
   uConnect;
@@ -30,8 +30,10 @@ export class ConnexionComponent implements OnInit {
           this.uConnect =  data;
 
           if (this.uConnect.mail!=null) {
-            console.log("super")
+            console.log("super");
             console.log(this.uConnect);
+            this.idString = this.uConnect.id.toString();
+            localStorage.setItem('id',this.idString);
             localStorage.setItem('mail',this.uConnect.mail);
             localStorage.setItem('mdp',this.uConnect.mdp);
             localStorage.setItem('pseudo',this.uConnect.pseudo);
