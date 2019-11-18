@@ -1,30 +1,39 @@
-<div class="container inscription">
+<div class="container card-body">
     <form action="" class="form-control text-center" #forme="ngForm">
         <h4>Formulaire d'inscription</h4>
         <div>
-            <input type="email" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Email" name="mail">
+            <input type="email" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Email" name="mail"
+                required id="inputEmail">
         </div>
         <div>
             <br>
-            <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center" placeholder="Pseudo" name="pseudo">
+            <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center" placeholder="Pseudo"
+                name="pseudo" required>
         </div>
         <div>
             <br>
-            <input type="password" [(ngModel)]="user.mdp" class="form-control text-center" required name="motDePasse" placeholder="Mot de passe" name="mdp">
+            <input type="password" [(ngModel)]="user.mdp" class="form-control text-center" required name="motDePasse"
+                placeholder="Mot de passe" name="mdp">
         </div>
+
         <div>
             <br>
-            <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center" required placeholder="Vérification mot de passe"
-                name="motDePasse2" >
+            <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center" required
+                placeholder="Vérification mot de passe" name="motDePasse2">
         </div>
-        <div>
-            <button type="submit" class="btn btn-primary btn-block" (click)="inscription();">Valider</button>
-        </div>
-        <div>
-                <span>{{ erreur }}</span>
+        <br>
+        <div class="container row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <a class="nav-link" routerLink="/home">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="inscription();"
+                        [disabled]="!forme.form.valid">Valider</button>
+                </a>
             </div>
+        </div>
+        <div>
+            <span class="text-danger">{{ erreur }}</span>
+        </div>
+        <span class="text-success">{{ valider }}</span>
     </form>
-    <div>
-        <button type="submit" class="btn btn-primary btn-block">Retour</button>
-    </div>
 </div>
