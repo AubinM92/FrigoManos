@@ -5,6 +5,7 @@ import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component'
 import { HomeComponent } from './home/home.component';
+import { VoirlisteComponent } from './voirliste/voirliste.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'modif_profil', component: ModifprofilComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'creer-liste-course', component: CreerlistecourseComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'liste', component: VoirlisteComponent }
 ];
 
 @NgModule({

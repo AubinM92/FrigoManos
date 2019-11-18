@@ -11,12 +11,11 @@ import { Router } from '@angular/router';
 export class ConnexionComponent implements OnInit {
 
 
-  user : User = new User();
-  uConnect : User = new User();
-  idString : string;
+  user : User =new User();
+  idString;
   erreur;
-  uTest = null;
-
+  
+  uConnect;
   constructor(private http: HttpClient, private router: Router ) { }
 
   ngOnInit() {
@@ -28,32 +27,29 @@ export class ConnexionComponent implements OnInit {
       del.then(
         data => {
           console.log(data);
-          this.uTest =  data;
-          this.uConnect = this.uTest;
-        }, err => {
-          console.log(1);
-        }
-      );    
-      console.log("test 1");
-      if (this.uTest!=null) {
-        console.log("super")
-        console.log(this.uConnect);
-        this.idString = this.uConnect.id.toString();
-        localStorage.setItem('id', this.idString);
-        localStorage.setItem('mail',this.uConnect.mail);
-        localStorage.setItem('mdp',this.uConnect.mdp);
-        localStorage.setItem('pseudo',this.uConnect.pseudo);
+          this.uConnect =  data;
 
-        this.router.navigate(['/home']);
-        alert('ok');
-      } 
-      else {
-        this.erreur = "mauvais identifiants"
-      }
+          if (this.uConnect.mail!=null) {
+            console.log(this.uConnect);
+            this.idString = this.uConnect.id.toString();
+            localStorage.setItem('id',this.idString);
+            localStorage.setItem('mail',this.uConnect.mail);
+            localStorage.setItem('mdp',this.uConnect.mdp);
+            localStorage.setItem('pseudo',this.uConnect.pseudo);
+            this.router.navigate(['/home'])
+          } else{
+            this.erreur = "mauvais identifiants"
+          }
+          
+
+        }, err => {
+          console.log(err);
+          
+        }
+      );
+
       
 
   }
 
 }
-
-
