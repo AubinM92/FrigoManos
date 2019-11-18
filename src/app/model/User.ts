@@ -5,7 +5,15 @@ export class User{
     mdp: string;
     pseudo : string;
 
+
+
     constructor(
 
     ){}
+
+   public User(mail,mdp){
+        this.mail = mail;
+        this.mdp=mdp;
+    }
+
 }
