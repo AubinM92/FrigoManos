@@ -19,6 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
