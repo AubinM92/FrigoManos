@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Bienvenue sur FrigoManos </h2>
+    <br>
+    <h3>Veuillez entrer vos identifiants de connexion ou vous inscrire</h3>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div class="pmsg text-center"> Identifiant</div>
+            <br><br> <br>
+            <div class="pmsg text-center"> Mot De Passe</div>
+            <br><br>
+
+        </div>
+
+        <div class="col-sm-6">
+
+            <form>
+
+                <div class="form-group">
+                    <!-- création d'une zone de saisie avec un texte qui s'effece lorsqu'on commence la saisie-->
+                    <br><input type="text" class="form-control text-center" placeholder="Votre mail"
+                        name="mail">
+                    <br>
+
+                    <br><input type="password" class="form-control text-center"
+                        placeholder="Votre mot de passe" name="mdp">
+
+
+                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
+                       >S'insrire</button>
+
+                </div>
+                <br>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
