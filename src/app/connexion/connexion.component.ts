@@ -28,13 +28,11 @@ export class ConnexionComponent implements OnInit {
       del.then(
         data => {
           this.uTest =  data;
+          this.uConnect = this.uTest;
         }, err => {
-          console.log(err);
-          
+          console.log(1);
         }
-      );
-
-    this.uConnect = this.uTest;
+      );    
 
       if (this.uTest!=null) {
         console.log("super")
@@ -48,9 +46,9 @@ export class ConnexionComponent implements OnInit {
         localStorage.setItem('pseudo',this.uConnect.pseudo);
         
         this.router.navigate(['/home']);
+        alert('ok');
       } 
       else {
-
         this.erreur = "mauvais identifiants"
       }
       
