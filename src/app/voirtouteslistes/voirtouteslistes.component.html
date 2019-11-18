@@ -1,0 +1,25 @@
+<div id="affListe" class="container">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-6">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Mes listes de courses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let l of ensembleListe">
+                        <td>Listes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-3 text-center" *ngIf="visible">
+            <th>Liste {{ l.titre }} </th>
+        </div>
+
+    </div>
+</div>
