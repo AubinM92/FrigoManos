@@ -21,7 +21,7 @@ export class ConnexionComponent implements OnInit {
 
  connexionUser() {
 
-    const del = this.http.post('http://localhost:8087/user', this.user).toPromise;
+    const del = this.http.post('http://localhost:8087/user', this.user).toPromise();
       del.then(
         data => {
           this.ngOnInit
