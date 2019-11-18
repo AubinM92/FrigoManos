@@ -19,14 +19,12 @@
 
                 <div class="form-group">
                     <!-- création d'une zone de saisie avec un texte qui s'effece lorsqu'on commence la saisie-->
-                    <br><input type="text" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Votre mail"
-                        name="mail"
-                        required #mailAction="ngModel">
+                    <br><input type="text" class="form-control text-center" placeholder="Votre mail"
+                        name="mail">
                     <br>
 
-                    <br><input type="password" [(ngModel)]="user.mdp" class="form-control text-center"
-                        placeholder="Votre mot de passe" name="mdp"
-                        required #mdpAction="ngModel">
+                    <br><input type="password" class="form-control text-center"
+                        placeholder="Votre mot de passe" name="mdp">
 
 
                     <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
