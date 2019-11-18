@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
 import { VoirlisteComponent } from './voirliste/voirliste.component';
-import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
+import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
