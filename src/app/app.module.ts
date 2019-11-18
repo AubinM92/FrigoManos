@@ -8,6 +8,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HttpClientModule} from '@angular/common/http';
+import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     InscriptionComponent,
     ModifprofilComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    CreerlistecourseComponent
   ],
   imports: [
     BrowserModule,
