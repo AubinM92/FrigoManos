@@ -1,15 +1,30 @@
-<div class="container" style="border: solid black 1px">
-    <form action="" class="form-control text-center">
-        <h5>Ecrit ton mail</h5>
-        <input type="email" class="form-control text-center">
-        <br>
-        <h5>Choisis ton pseudo</h5>
-        <input type="text" class="form-control text-center">
-        <br>
-        <h5>Choisis ton mot de passe</h5>
-        <input type="password" class="form-control text-center">
-        <br>
-        <h5>Vérifis ton mot de passe</h5>
-        <input type="password" class="form-control text-center">
+<div class="container inscription">
+    <form action="" class="form-control text-center" #forme="ngForm">
+        <h4>Formulaire d'inscription</h4>
+        <div>
+            <input type="email" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Email" name="mail">
+        </div>
+        <div>
+            <br>
+            <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center" placeholder="Pseudo" name="pseudo">
+        </div>
+        <div>
+            <br>
+            <input type="password" [(ngModel)]="user.mdp" class="form-control text-center" required name="motDePasse" placeholder="Mot de passe" name="mdp">
+        </div>
+        <div>
+            <br>
+            <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center" required placeholder="Vérification mot de passe"
+                name="motDePasse2" >
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary btn-block" (click)="inscription();">Valider</button>
+        </div>
+        <div>
+                <span>{{ erreur }}</span>
+            </div>
     </form>
+    <div>
+        <button type="submit" class="btn btn-primary btn-block">Retour</button>
+    </div>
 </div>
