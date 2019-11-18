@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
 export class ConnexionComponent implements OnInit {
 
 
-  user : User = new User();
-  uConnect : User = new User();
-  idString : string;
+  user : User =new User();
+  uConnect : User =new User();
   erreur;
-  uTest = null;
-
+  uTest;
   constructor(private http: HttpClient, private router: Router ) { }
 
   ngOnInit() {
@@ -27,26 +25,24 @@ export class ConnexionComponent implements OnInit {
     const del = this.http.post('http://localhost:8087/user', this.user).toPromise();
       del.then(
         data => {
+          this.ngOnInit
           this.uTest =  data;
-          this.uConnect = this.uTest;
         }, err => {
-          console.log(1);
+          console.log(err);
+          
         }
-      );    
+      );
 
-      if (this.uTest!=null) {
+    this.uConnect =this.uTest;
+
+      if (this.uConnect.mdp!=null) {
         console.log("super")
         console.log(this.uConnect);
-        this.idString = this.uConnect.id.toString();
-        localStorage.setItem('id', this.idString);
         localStorage.setItem('mail',this.uConnect.mail);
         localStorage.setItem('mdp',this.uConnect.mdp);
         localStorage.setItem('pseudo',this.uConnect.pseudo);
-
-        this.router.navigate(['/home']);
-        alert('ok');
-      } 
-      else {
+        this.router.navigate(['/home'])
+      } else{
         this.erreur = "mauvais identifiants"
       }
       
@@ -54,5 +50,3 @@ export class ConnexionComponent implements OnInit {
   }
 
 }
-
-
