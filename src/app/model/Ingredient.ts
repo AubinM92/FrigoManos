@@ -1,34 +1,21 @@
-export class Ingredient{
+export class Ingredient {
 
-<<<<<<< HEAD
-id : number;
-nom : string;
-unite: string;
-saison: string;
+    id: number;
+    nom: string;
+    unite: string;
+    saison: string;
+    categorie: string;
 
     constructor(
 
-    ){}
+    ) { }
 
-    public Ingredient(nom, unite, saison){
+    public Ingredient(nom, unite, saison, categorie) {
         this.nom = nom;
         this.unite = unite;
-        this.saison= saison;
+        this.saison = saison;
+        this.categorie = categorie;
     }
 
 
 }
-=======
-    id : number;
-    nom : string;
-    unite: string;
-    saison : string;
-    categorie : string;
-    
-        constructor(
-    
-        ){}
-    
-    
-    }
->>>>>>> f32802732328d04c27f673d0b7d2f05831816f69
