@@ -11,6 +11,8 @@ export class AfficherlistecourseComponent implements OnInit {
   visible =false;
   liste : Liste = new Liste();  
   mesListes;
+  mesElementsListe;
+  
 
   constructor(private http : HttpClient) { }
   
@@ -28,6 +30,12 @@ export class AfficherlistecourseComponent implements OnInit {
   boutonmodif(l) {
     this.liste = l;
     this.visible=true;
+    this.http.get('http://localhost:8087/liste').subscribe(
+      data=> {
+        this.mesElementsListe = data;
+        console.log(this.mesElementsListe);
+      }
+    )
   }
 
 }
