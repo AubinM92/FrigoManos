@@ -9,10 +9,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConnexionComponent implements OnInit {
 
+  mail : string;
+  mdp : string;
   user : User =new User();
+  
+  uConnect : User = new  User();
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+  }
+
+ connexionUser() {
+  
+    this.http.get('http://localhost:8087/user')
+      .subscribe(
+        data => {
+        }, err => {
+          console.log(err);
+        }
+      );
   }
 
 }
