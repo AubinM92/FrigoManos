@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbaruser.component.css']
 })
 export class NavbaruserComponent implements OnInit {
-
+  cUser;
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.cUser = localStorage.getItem("pseudo");
   }
   deconnexion(){
     localStorage.clear();
