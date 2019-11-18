@@ -10,26 +10,31 @@ import { HttpClient } from '@angular/common/http';
 export class ModifprofilComponent implements OnInit {
 
   data;
-  user: User =new User();
-  
-
+  userActuel : User = new User();
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.user.mail = localStorage.getItem('mail');
-    this.user.pseudo = localStorage.getItem('pseudo');
-    this.user.mdp = localStorage.getItem('mdp');
-    // this.http.get('http://localhost:8087/user/', this.user.id).subscribe(
-      /* reponse => {
+    
+    this.userActuel.id = +localStorage.getItem("id");
+    this.userActuel.mail = localStorage.getItem("mail");
+    this.userActuel.pseudo = localStorage.getItem("pseudo");
+    this.userActuel.mdp = localStorage.getItem("mdp");
+    this.http.get('http://localhost:8087/user/' + this.userActuel.id).subscribe(
+    reponse => {
         this.data = reponse;
         console.log(reponse) 
       }
-    ) */
+    )
   }
 
   modifPerson(persn){
-    this.user = persn;
+    this.http.put('http://localhost:8087/user/' + this.userActuel.id, this.userActuel).subscribe(data => {
+ 
+    }, err => {
+      console.log(err);
+    });
+
   }
 
 }
