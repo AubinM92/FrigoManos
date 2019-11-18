@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component'
 import { MatDialogModule } from '@angular/material/dialog';
+import { VoirlisteComponent } from './voirliste/voirliste.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ConnexionComponent,
     CreerlistecourseComponent,
     HomeComponent,
-    NavbaruserComponent
+    NavbaruserComponent,
+    VoirlisteComponent
   ],
   imports: [
     BrowserModule,
