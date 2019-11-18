@@ -1,38 +1,38 @@
-<div class="container">
-    <h2>Bienvenue sur FrigoManos </h2>
-    <br>
-    <h3>Veuillez entrer vos identifiants de connexion ou vous inscrire</h3>
-    <br>
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3"></div>
-
-        <div class="col-sm-6">
-
-            <form #forme="ngForm">
-
-                <div class="form-group">
-                    <!-- création d'une zone de saisie avec un texte qui s'effece lorsqu'on commence la saisie-->
-                    <br>
-                    <input type="text" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Votre mail"
-                        name="mail" required>
-
-                    <br><br>
-
-                    <input type="password" [(ngModel)]="user.mdp" class="form-control text-center"
-                        placeholder="Votre mot de passe" name="mdp" required>
-
-
-                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
-                        (click)="connexionUser()">Se connecter</button>
-
-
+        <div class="col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="login-heading mb-4 text-center">Bienvenue sur FrigoManos !</h3>
+                            <br>
+                            <form #forme="ngForm">
+                                <div class="form-group">
+                                    <input type="email" [(ngModel)]="user.mail" class="form-control text-center"
+                                        placeholder="Mail" name="mail" required>
+                                    <br>
+                                    <input type="password" [(ngModel)]="user.mdp" class="form-control text-center"
+                                        placeholder="Mot de passe" name="mdp" required>
+                                    <br>
+                                    <button
+                                        class="btn btn-lg btn-primary btn-block btn-login active text-uppercase font-weight-bold mb-2"
+                                        (click)="connexionUser()">Se connecter</button>
+                                </div>
+                            </form>
+                            <div class="text-center">
+                                <button
+                                    class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                    (click)="toInscription()">S'inscrire</button>
+                            </div>
+                            <br>
+                            <div class="text-center text-danger">
+                                    <a class="small">{{ erreur }}</a></div>
+                        </div>
+                    </div>
                 </div>
-                <br>
-
-            </form>
-
-            <div> {{ erreur }} </div>
+            </div>
         </div>
-
     </div>
 </div>
