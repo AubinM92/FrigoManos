@@ -1,15 +1,19 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <form>
-                <div class="form-group">
-                    <input type="text" [(ngModel)]="Liste.titre" class="form-control text-center"
-                        placeholder="Titre de votre liste" name="Titre" required #nomAction="ngModel">
+<div style="width: 250px;">
+    <h6 class="text-center">Choisir le nom de la liste</h6>
+    <div style="margin: 10px">
+        <form action="">
+            <div>
+                <input type="text" required style="width: 230px" [(ngModel)]="nom" name="nom">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
                 </div>
-            </form>
-        </div>
-
+                <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block" (click)="valider();">Valider</button>
+                </div>
+                <div class="col-sm-6">{{ erreur }}</div>
+            </div>
+        </form>
     </div>
 </div>
-<h1>Test</h1>

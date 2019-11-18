@@ -12,7 +12,11 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
-import { VoirlisteComponent } from './voirliste/voirliste.component'
+import { VoirlisteComponent } from './voirliste/voirliste.component';
+import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.component'
+import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -23,14 +27,17 @@ import { VoirlisteComponent } from './voirliste/voirliste.component'
     CreerlistecourseComponent,
     HomeComponent,
     NavbaruserComponent,
-    VoirlisteComponent
+    VoirlisteComponent,
+    VoirtouteslistesComponent,
+    AfficherfrigoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
