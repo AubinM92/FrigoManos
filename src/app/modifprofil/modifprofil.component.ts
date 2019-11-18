@@ -17,15 +17,14 @@ export class ModifprofilComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.user.mail = localStorage.getItem('mail');
-    this.user.pseudo = localStorage.getItem('pseudo');
+    /* this.user.mail = localStorage.getItem('mail');
     this.user.mdp = localStorage.getItem('mdp');
-    // this.http.get('http://localhost:8087/user/', this.user.id).subscribe(
-      /* reponse => {
+    this.http.get('http://localhost:8087/user/', this.user.id).subscribe(
+    reponse => {
         this.data = reponse;
         console.log(reponse) 
       }
-    ) */
+    )*/
   }
 
   modifPerson(persn){
