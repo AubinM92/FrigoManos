@@ -32,7 +32,8 @@ erreur;
       data => { 
 
       }, err => {
-        this.erreur = "Compte déjà existant"
+        this.erreur = "Compte déjà existant";
+        return 0;
       }
     );
 
