@@ -30,7 +30,6 @@ export class ConnexionComponent implements OnInit {
           this.uConnect =  data;
 
           if (this.uConnect.mail!=null) {
-            console.log("super");
             console.log(this.uConnect);
             this.idString = this.uConnect.id.toString();
             localStorage.setItem('id',this.idString);

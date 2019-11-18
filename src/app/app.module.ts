@@ -14,6 +14,9 @@ import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
 import { VoirlisteComponent } from './voirliste/voirliste.component';
 import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.component'
+import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +28,16 @@ import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.c
     HomeComponent,
     NavbaruserComponent,
     VoirlisteComponent,
-    VoirtouteslistesComponent
+    VoirtouteslistesComponent,
+    AfficherfrigoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
