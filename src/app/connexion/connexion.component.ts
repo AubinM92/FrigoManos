@@ -37,14 +37,12 @@ export class ConnexionComponent implements OnInit {
       if (this.uTest!=null) {
         console.log("super")
         console.log(this.uConnect);
-
         this.idString = this.uConnect.id.toString();
-
         localStorage.setItem('id', this.idString);
         localStorage.setItem('mail',this.uConnect.mail);
         localStorage.setItem('mdp',this.uConnect.mdp);
         localStorage.setItem('pseudo',this.uConnect.pseudo);
-        
+
         this.router.navigate(['/home']);
         alert('ok');
       } 
@@ -56,3 +54,5 @@ export class ConnexionComponent implements OnInit {
   }
 
 }
+
+
