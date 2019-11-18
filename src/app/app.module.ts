@@ -9,6 +9,7 @@ import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HttpClientModule} from '@angular/common/http';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
