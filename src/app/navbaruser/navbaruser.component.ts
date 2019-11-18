@@ -11,5 +11,10 @@ export class NavbaruserComponent implements OnInit {
 
   ngOnInit() {
   }
+  deconnexion(){
+    localStorage.clear();
+    
+  }
+
 
 }
