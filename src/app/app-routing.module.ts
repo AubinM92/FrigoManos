@@ -4,13 +4,15 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component'
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'modif_profil', component: ModifprofilComponent },
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'creer-liste-course', component: CreerlistecourseComponent }
+  { path: 'creer-liste-course', component: CreerlistecourseComponent },
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({

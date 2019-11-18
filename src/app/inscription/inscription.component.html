@@ -1,9 +1,9 @@
-<div class="container inscription">
+<div class="container card-body">
     <form action="" class="form-control text-center" #forme="ngForm">
         <h4>Formulaire d'inscription</h4>
         <div>
             <input type="email" [(ngModel)]="user.mail" class="form-control text-center" placeholder="Email" name="mail"
-                required>
+                required id="inputEmail">
         </div>
         <div>
             <br>
@@ -24,8 +24,10 @@
         <br>
         <div class="container row">
             <div class="col-sm-9">
-                <button type="submit" class="btn btn-primary btn-block" (click)="inscription();"
-                    [disabled]="!forme.form.valid">Valider</button>
+                <a class="nav-link" routerLink="/home">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="inscription();"
+                        [disabled]="!forme.form.valid">Valider</button>
+                </a>
             </div>
             <div class="col-sm-3">
                 <button type="submit" class="btn btn-primary btn-block">Retour</button>
@@ -34,6 +36,6 @@
         <div>
             <span class="text-danger">{{ erreur }}</span>
         </div>
-
+        <span class="text-success">{{ valider }}</span>
     </form>
 </div>

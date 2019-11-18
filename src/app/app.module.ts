@@ -10,6 +10,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { HttpClientModule} from '@angular/common/http';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     InscriptionComponent,
     ModifprofilComponent,
     ConnexionComponent,
-    CreerlistecourseComponent
+    CreerlistecourseComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
