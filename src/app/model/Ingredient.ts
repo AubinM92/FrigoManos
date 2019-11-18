@@ -17,5 +17,4 @@ export class Ingredient {
         this.categorie = categorie;
     }
 
-
 }

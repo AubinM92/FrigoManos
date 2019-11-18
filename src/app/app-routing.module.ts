@@ -7,7 +7,8 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
 import { HomeComponent } from './home/home.component';
 import { VoirlisteComponent } from './voirliste/voirliste.component';
 import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.component';
-
+import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
+import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'creer-liste-course', component: CreerlistecourseComponent },
   { path: 'home', component: HomeComponent },
   { path: 'liste', component: VoirlisteComponent },
-  {path: 'mes-listes', component: VoirtouteslistesComponent}
+  {path: 'mes-listes', component: VoirtouteslistesComponent},
+  {path: 'mon-frigo', component: AfficherfrigoComponent},
+  {path: 'mes-liste', component: AfficherlistecourseComponent}
 ];
 
 @NgModule({
