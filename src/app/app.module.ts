@@ -16,6 +16,9 @@ import { VoirlisteComponent } from './voirliste/voirliste.component';
 import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.component'
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
+
+
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeComponent,
     NavbaruserComponent,
     VoirlisteComponent,
+    AfficherfrigoComponent,
+    AfficherlistecourseComponent,
     VoirtouteslistesComponent,
     AfficherfrigoComponent
   ],
