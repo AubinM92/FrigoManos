@@ -21,9 +21,10 @@ export class ConnexionComponent implements OnInit {
 
  connexionUser() {
 
-    this.http.post('http://localhost:8087/user', this.user)
-      .subscribe(
+    const del = this.http.post('http://localhost:8087/user', this.user).toPromise;
+      del.then(
         data => {
+          this.ngOnInit
           this.uTest =  data;
         }, err => {
           console.log(err);
@@ -32,12 +33,13 @@ export class ConnexionComponent implements OnInit {
       );
 
     this.uConnect =this.uTest;
-    
+
       if (this.uConnect.mdp!=null) {
         console.log("super")
         console.log(this.uConnect);
+
       } else{
-        this.erreur = "mauvais identifiants"$
+        this.erreur = "mauvais identifiants"
       }
       
 
