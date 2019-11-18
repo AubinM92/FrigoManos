@@ -34,6 +34,7 @@ export class ConnexionComponent implements OnInit {
         }
       );
 
+ 
     this.uConnect =this.uTest;
 
       if (this.uConnect.mdp!=null) {
