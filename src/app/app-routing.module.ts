@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'connexion', component: InscriptionComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
