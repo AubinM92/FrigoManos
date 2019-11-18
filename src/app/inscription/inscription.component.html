@@ -4,36 +4,33 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Créer votre FrigoManos</h5>
-                        <div>
-                            <input type="email" [(ngModel)]="user.mail" class="form-control text-center"
-                                placeholder="Email" name="mail" required id="inputEmail">
-                        </div>
-                        <div>
-                            <br>
-                            <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center"
-                                placeholder="Pseudo" name="pseudo" required>
-                        </div>
-                        <div>
-                            <br>
-                            <input type="password" [(ngModel)]="user.mdp" class="form-control text-center" required
-                                name="motDePasse" placeholder="Mot de passe" name="mdp">
-                        </div>
-
-                        <div>
-                            <br>
-                            <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center" required
-                                placeholder="Vérification mot de passe" name="motDePasse2">
-                        </div>
+                        <h3 class="login-heading mb-4 text-center">Bienvenue !</h3>
                         <br>
-                        <a class="nav-link" routerLink="/home">
-                            <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase"
-                                (click)="inscription();" [disabled]="!forme.form.valid">Valider</button>
-                        </a>
+                        <form #forme="ngForm">
+                            <div class="form-group">
+                                <input type="email" [(ngModel)]="user.mail" class="form-control text-center"
+                                    placeholder="Mail" name="mail" required id="inputEmail">
+                                <br>
+                                <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center"
+                                    placeholder="Pseudo" name="pseudo" required>
+                                <br>
+                                <input type="password" [(ngModel)]="user.mdp" class="form-control text-center" required
+                                    name="motDePasse" placeholder="Mot de passe" name="mdp">
+                                <br>
+                                <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center"
+                                    required placeholder="Vérification du mot de passe" name="motDePasse2">
+                                <br>
+                                <button type="submit"
+                                    class="btn btn-lg btn-primary btn-block btn-login active text-uppercase font-weight-bold mb-2"
+                                    (click)="inscription();" [disabled]="!forme.form.valid">Créer mon frigo</button>
+                            </div>
+                        </form>
+                        <button type="submit"
+                            class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                            (click)="toConnexion();">Vous avez déjà un frigo ?</button>
                         <div>
-                            <span class="text-danger">{{ erreur }}</span>
+                            <span class="text-center text-danger">{{ erreur }}</span>
                         </div>
-                        <span class="text-success">{{ valider }}</span>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -14,8 +15,7 @@ motDePasse2;
 erreur;
 valider;
 
-  constructor(private http:HttpClient
-  ) {  }
+  constructor(private http:HttpClient, private router: Router) {  }
 
   ngOnInit() {
   }
@@ -30,19 +30,17 @@ valider;
     }
 
     this.http.post('http://localhost:8087/user', this.user).subscribe(
-      data => { 
-
+      data => {
+        this.router.navigate(['/home']);
       }, err => {
         this.erreur = "Compte déjà existant";
         return 0;
       }
     );
-      this.valider = "Félicitation, tu peux maintenant te connecter"
-      this.user.mail = "";
-      this.user.mdp = "";
-      this.user.pseudo = "";
-      this.motDePasse2 = "";
-            
+  }
+
+  toConnexion() {
+    this.router.navigate(['/connexion']);
   }
 
 }
