@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Bienvenue sur FrigoManos </h2>
+    <br>
+    <h3>Veuilleze rentre vos identifiants de connexion ou vous inscrire</h3>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+        
+            <div class= "pmsg text-center"> Identifiant</div>
+            <br><br> <br>
+            <div class= "pmsgr text-center" > Mot De Passe</div>
+            <br><br>
+            
+        </div>
+
+        <div class="col-sm-6">
+    
+            <form #forme="ngForm">
+
+                <div class="form-group">
+                    <!-- création d'une zone de saisie avec un texte qui s'effece lorsqu'on commence la saisie-->
+                    <br><input type="text" [(ngModel)]="personne.nom"
+                    class="form-control text-center" placeholder="Nom" name="nom"
+                    >
+                    <br>
+
+                    <br><input type="text" [(ngModel)]="personne.prenom"
+                    class="form-control text-center" placeholder="Prénom" name="prenom"
+                   >
+
+
+                    <button [disabled]="!forme.form.valid"
+                    class="btn btn-primary btn-block" 
+                    (click)='addPersonne()'>S'insrire</button>
+
+                </div>
+                <br>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
