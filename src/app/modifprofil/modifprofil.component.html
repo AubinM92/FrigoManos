@@ -2,24 +2,24 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                
+
             </div>
 
             <div class="col-sm-4 text-center">
                 <form>
                     <div class="form-group text-center">
                         <h5>Mail :</h5>
-                        <input type="email" required class="form-control" name="mail">
+                        <input type="email" [(ngModel)]="userActuel.mail" required placeholder="Mail" class="form-control" name="mail">
                     </div>
                     <div class="form-group text-center">
                         <h5>Pseudo :</h5>
-                        <input type="text" required class="form-control" name="pseudo">
+                        <input type="text" [(ngModel)]="userActuel.pseudo" required placeholder="Pseudo" class="form-control" name="pseudo">
                     </div>
                     <div class="form-group text-center">
                         <h5>Mot de passe :</h5>
-                        <input type="password"  required class="form-control" name="mdp">
+                        <input type="password" [(ngModel)]="userActuel.mdp" required placeholder="Mot de passe" class="form-control" name="mdp">
                     </div>
-                    <button (click)="modifP" class="btn btn-primary">Enregistrer les modifications</button>
+                    <button class="btn btn-primary">Enregistrer les modifications</button>
                     <button class="btn btn-primary">Retour</button>
                 </form>
             </div>
