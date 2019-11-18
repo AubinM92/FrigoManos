@@ -1,15 +1,27 @@
-<div class="container" style="border: solid black 1px">
+<div class="container inscription">
     <form action="" class="form-control text-center">
-        <h5>Ecrit ton mail</h5>
-        <input type="email" class="form-control text-center">
-        <br>
-        <h5>Choisis ton pseudo</h5>
-        <input type="text" class="form-control text-center">
-        <br>
-        <h5>Choisis ton mot de passe</h5>
-        <input type="password" class="form-control text-center">
-        <br>
-        <h5>Vérifis ton mot de passe</h5>
-        <input type="password" class="form-control text-center">
+        <h4>Formulaire d'inscription</h4>
+        <div>
+            <input type="email" class="form-control text-center" placeholder="Email">
+        </div>
+        <div>
+            <br>
+            <input type="text" class="form-control text-center" placeholder="Pseudo">
+        </div>
+        <div>
+            <br>
+            <input type="password" class="form-control text-center" required name="motDePasse" placeholder="Mot de passe">
+        </div>
+        <div>
+            <br>
+            <input type="password" class="form-control text-center" required placeholder="Vérification mot de passe"
+                name="motDePasse2" >
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary btn-block">Valider</button>
+        </div>
     </form>
+    <div>
+        <button type="submit" class="btn btn-primary btn-block">Retour</button>
+    </div>
 </div>
