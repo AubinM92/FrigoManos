@@ -24,16 +24,17 @@ export class ConnexionComponent implements OnInit {
 
  connexionUser() {
 
-    const del = this.http.post('http://localhost:8087/user', this.user).toPromise();
+    const del = this.http.post('http://localhost:8087/connexion', this.user).toPromise();
       del.then(
         data => {
+          console.log(data);
           this.uTest =  data;
           this.uConnect = this.uTest;
         }, err => {
           console.log(1);
         }
       );    
-
+      console.log("test 1");
       if (this.uTest!=null) {
         console.log("super")
         console.log(this.uConnect);
