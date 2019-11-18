@@ -23,6 +23,8 @@ erreur;
 
     if(this.user.mdp != this.motDePasse2){
       this.erreur = "Mots de passes non identiques !"
+      this.user.mdp = "";
+      this.motDePasse2 = "";
       return 0;
     }
 
@@ -30,7 +32,7 @@ erreur;
       data => { 
 
       }, err => {
-        console.log(err);
+        this.erreur = "Compte déjà existant"
       }
     );
 
