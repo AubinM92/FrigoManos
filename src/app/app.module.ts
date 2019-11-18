@@ -8,19 +8,25 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HttpClientModule} from '@angular/common/http';
+import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
     ModifprofilComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    CreerlistecourseComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
