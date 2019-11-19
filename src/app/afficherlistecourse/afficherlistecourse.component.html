@@ -24,13 +24,12 @@
                             <td width="80%">{{l.titre | uppercase }}</td>
                             <td width="10%">
                                 <button (click)='boutonVoir(l)' style="background: none; border: none">
-                                    <img src="https://p5.storage.canalblog.com/55/79/1295541/98510291_o.png"
-                                        width="30px" alt="">
+                                        <mat-icon style="font-size: 25px;">remove_red_eye</mat-icon>
                                 </button>
                             </td>
                             <td width="10%">
                                 <button (click)='supprimerListe(l)' style="background: none; border: none">
-                                    <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png" alt="">
+                                        <mat-icon style="font-size: 25px;">delete</mat-icon>
                                 </button></td>
                         </tr>
                     </tbody>
@@ -45,8 +44,9 @@
                                 <H3 class="text-center"><strong>{{ liste.titre }}</strong></H3>
                             </div>
                             <div class="col-sm-3" style="justify-content: center;">
-                                <button (click)="ajoutElementListe()"
-                                    style="background: rgb(124, 165, 165); color: white; vertical-align: middle; height: 100%; width: 100%;">Ajouter</button>
+                                <button (click)="ajoutElementListe()" style="background: none; border: none">
+                                    <mat-icon style="font-size: 50px;">add</mat-icon>
+                                </button>
                             </div>
 
                         </div>
@@ -57,8 +57,9 @@
                                         {{e.ingredient.nom }}
                                     </td>
                                     <td width="40%">
-                                        {{e.quantite }}
+                                        {{e.quantite }} {{e.ingredient.unite }}
                                     </td>
+
                                     <td width="10%">
                                         <button (click)="supprimerElement(e)" style="background: none; border: none;">
                                             <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png"

@@ -37,6 +37,7 @@ valider;
         return 0;
       }
     );
+    this.router.navigate(['/connexion']);
   }
 
   toConnexion() {
