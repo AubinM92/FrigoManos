@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModiflisteService } from '../modifliste.service';
 
 @Component({
   selector: 'app-modifelementliste',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModifelementlisteComponent implements OnInit {
 
-  constructor() { }
+  element;
+  constructor(private servmodif : ModiflisteService) { }
 
   ngOnInit() {
+    this.element = this.servmodif.elementmodif;
   }
 
+modifElement(){
+  
+}
 }

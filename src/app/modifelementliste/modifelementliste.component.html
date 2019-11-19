@@ -1,1 +1,19 @@
-<p>modifelementliste works!</p>
+<div style="width: 250px;">
+        <h6 class="text-center">Choisir la nouvelle quantité</h6>
+        <div style="margin: 10px">
+            <form action="" #forme="ngForm">
+                <div>
+                    <input type="text" required style="width: 230px" [(ngModel)]="nom" name="nom" required>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block" (click)="valider();">Valider</button>
+                    </div>
+                    <div class="col-sm-6">{{ erreur }}</div>
+                </div>
+            </form>
+        </div>
+    </div>
