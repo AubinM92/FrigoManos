@@ -17,21 +17,18 @@ export class NavbaruserComponent implements OnInit {
 
   ngOnInit() {
     this.cUser = localStorage.getItem("pseudo");
-
-    this.http.get('http://localhost:8087/liste/'+ localStorage.getItem("id")).subscribe(
-      response => {
-        this.data = response;
-        this.liste = this.data;
-      }
-    )
-    console.log("test");
   }
 
   deconnexion(){
-    console.log("test");
     localStorage.clear();
-    this.router.navigate(['/connexion'])
+    this.router.navigate(['/connexion']);
+  }
+  monCompte(){
+    localStorage.clear();
+    this.router.navigate(['/modif-profil']);
   }
 
-
+  toListeAchat() {
+    this.router.navigate(['/liste-achat']);
+  }
 }

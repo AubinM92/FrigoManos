@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  open() {
+ open() {
     const mydial = this.dialog.open(CreerlistecourseComponent);
- }
+ } 
 
 }
