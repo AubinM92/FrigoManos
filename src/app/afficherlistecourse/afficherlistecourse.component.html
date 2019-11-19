@@ -4,8 +4,12 @@
     </div>
     <div class="col-sm-9">
         <div style="margin:10px; padding:10px; background: #EAC5CD;">
-            <button style="background: rgb(124, 165, 165); color: white" (click)="nouvelleListe()"><strong>Nouvelle
-                    liste</strong></button>
+            <button style="background: rgb(124, 165, 165); color: white" (click)="nouvelleListe()">
+                <strong>
+                    Nouvelle
+                    liste
+                </strong>
+            </button>
         </div>
         <div class="row" style="margin:10px; padding:10px;">
             <div class="col-sm-5">
@@ -36,30 +40,37 @@
                 <div *ngIf="visible"
                     style="background: rgba(235, 210, 215, 0.952); padding: 10px; border-radius: 10px;">
                     <div class="table text-center" style="margin: auto;">
-                        <H3 class="text-center"><strong>{{liste.titre}}</strong></H3>
+                        <div class="row">
+                            <div class="col-sm-9" style="vertical-align: middle;">
+                                <H3 class="text-center"><strong>{{ liste.titre }}</strong></H3>
+                            </div>
+                            <div class="col-sm-3" style="justify-content: center;">
+                                <button (click)="ajoutElementListe()"
+                                    style="background: rgb(124, 165, 165); color: white; vertical-align: middle; height: 100%; width: 100%;">Ajouter</button>
+                            </div>
+
+                        </div>
                         <table>
                             <tbody>
                                 <tr *ngFor="let e of mesElementsListe" class="text-center">
-                                        <td width="40%">
-                                            {{e.ingredient.nom }}
-                                        </td>
-                                        <td width="40%">
-                                            {{e.quantite }}
-                                        </td>
-                                        <td width="10%">
-                                            <button (click)="supprimerElement(e)"
-                                                style="background: none; border: none;">
-                                                <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png"
-                                                    alt="">
-                                            </button>
-                                        </td>
-                                        <td width="10%">
-                                                <button (click)="modifier(e)"
-                                                    style="background: none; border: none;">
-                                                    <img width="30px" src="https://image.flaticon.com/icons/png/512/45/45584.png"
-                                                        alt="">
-                                                </button>
-                                            </td>
+                                    <td width="40%">
+                                        {{e.ingredient.nom }}
+                                    </td>
+                                    <td width="40%">
+                                        {{e.quantite }}
+                                    </td>
+                                    <td width="10%">
+                                        <button (click)="supprimerElement(e)" style="background: none; border: none;">
+                                            <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png"
+                                                alt="">
+                                        </button>
+                                    </td>
+                                    <td width="10%">
+                                        <button (click)="modifier(e)" style="background: none; border: none;">
+                                            <img width="30px"
+                                                src="https://image.flaticon.com/icons/png/512/45/45584.png" alt="">
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

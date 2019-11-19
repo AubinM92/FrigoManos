@@ -21,7 +21,6 @@ import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-el
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +35,9 @@ import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-el
     AfficherfrigoComponent,
     ListeachatComponent,
     AfficherfrigoComponent,
-    AjouterElementListeComponent
+    AjouterElementListeComponent,
   ],
+  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
