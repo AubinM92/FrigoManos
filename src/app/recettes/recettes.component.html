@@ -65,9 +65,37 @@
                     </tbody>
                 </div>
             </div>
-            <div class="col-sm-7">
-                <!-- Liste -->
+
+        </div>
+        <div class="card-deck"></div>
+
+        <div class="col-sm-4">
+            <div *ngFor="let re of allRecettes">
+                <div class="card">
+
+
+
+                    <img class="card-img-top"
+                        src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
+                        alt="Card image cap">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{re.titre}}</h5>
+
+                        <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min |
+                                Cuisson : {{re.tempsCuis}} min</small></p>
+                    </div>
+
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-outline-success"><small><strong> Afficher</strong></small></button>
+                            <button type="button" class="btn btn-warning"><small><strong>Ajout Envie</strong></small></button>
+                            <button type="button" class="btn btn-outline-dark"><small><strong> Ajout Course</strong></small></button>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</div>

@@ -20,6 +20,7 @@ import { RecettesComponent } from './recettes/recettes.component';
 
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
 import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
+import { MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatMenuModule } from '@angular/material';
 
 
 
@@ -51,7 +52,11 @@ import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecet
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule, 
+    MatButtonModule, MatIconModule, 
+    MatCardModule, 
+    MatToolbarModule, 
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
