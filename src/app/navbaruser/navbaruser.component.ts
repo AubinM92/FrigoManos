@@ -21,12 +21,14 @@ export class NavbaruserComponent implements OnInit {
 
   deconnexion(){
     localStorage.clear();
-    this.router.navigate(['/connexion'])
+    this.router.navigate(['/connexion']);
   }
   monCompte(){
     localStorage.clear();
-    this.router.navigate(['/modif-profil'])
+    this.router.navigate(['/modif-profil']);
   }
 
-
+  toListeAchat() {
+    this.router.navigate(['/liste-achat']);
+  }
 }

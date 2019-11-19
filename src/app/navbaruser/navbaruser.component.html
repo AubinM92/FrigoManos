@@ -1,18 +1,17 @@
 <div class="container" style="
   background: #EAC5CD; 
-
+  padding: 10px;
   border: solid 5px white;
-  margin: 10px;
+  margin: 10px;">
 
-">
-  <br>
-  <!-- <h3 class="text-center"><strong>Bienvenue à toi {{cUser}} !</strong></h3> 
-<br>-->
+  <h3 class="text-center" style="background: rgb(124, 165, 165); padding: 5px; color: white; border: solid 3px white;">
+    <strong>Bienvenue {{ cUser }}</strong></h3>
   <ul class="list-unstyled">
     <hr>
+
     <li>
       <button class="btn btn-lg btn-primary btn-block btn-login"
-        style="width: 100%; background: none; border: none; text-align: left;">
+        style="background: none; border: none; text-align: left;">
         <img src="https://myeleec.fr/wp-content/uploads/2013/03/refrigerateur.png" alt="" width="50px">
         <strong> Mon Frigo</strong>
       </button>
@@ -20,7 +19,7 @@
     <hr>
     <li>
       <button class="btn btn-lg btn-primary btn-block btn-login"
-        style="width: 100%; background: none; border: none; text-align: left;">
+        style="width: 100%; background: none; border: none; text-align: left;" (click)="toListeAchat()">
         <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
         <strong> Ma liste d'achat</strong>
       </button>
@@ -41,7 +40,8 @@
         <strong> Mes suggestions</strong>
       </button>
     </li>
-    <br><br><br><br><br><br>
+    <hr>
+    <br><br>
     <li>
       <hr>
       <button class="btn btn-lg btn-primary btn-block btn-login" routerLink="/modif-profil"
