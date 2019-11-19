@@ -1,7 +1,7 @@
-<div class="row" style="padding-right: 10px;">
-    <app-navbaruser></app-navbaruser>
-    <div class="col-sm-4">
+<app-navbaruser></app-navbaruser>
 
+<div class="row" style="padding-right: 10px;">
+    <div class="col-sm-4">
         <div class="col-sm-12">
             <div style="margin:10px; padding:10px; background: #EAC5CD;">
                 <p class="text-center"><strong>Mon frigo</strong></p>
@@ -23,18 +23,15 @@
                                 </td>
                                 <td><button mat-icon-button aria-label="" (click)='supprimerElementFrigo(e)'>
                                         Suppression
-                                       
+
                                     </button></td>
-
-
                             </tr>
                         </tbody>
                     </div>
                 </div>
             </div>
-
         </div>
-        
+
 
         <div class="col-sm-4" *ngIf="visible">
             <h3>{{element.ingredient.nom}}</h3>
@@ -54,28 +51,17 @@
 
                             <tr>
                                 <td>{{element.ingredient.nom }}</td>
-                                <input type="text" [(ngModel)]="element.quantite"
-                                    class="form-control text-center" placeholder="Quantité" name="quantite"
-                                    required>
+                                <input type="text" [(ngModel)]="element.quantite" class="form-control text-center"
+                                    placeholder="Quantité" name="quantite" required>
                                 <td>{{element.ingredient.unite}}</td>
-                                <td><button mat-icon-button aria-label="" color="warn"
-                                        (click)="modifElementFrigo()">
+                                <td><button mat-icon-button aria-label="" color="warn" (click)="modifElementFrigo()">
                                         modifier
-                                       
                                     </button></td>
-
                             </tr>
                         </tbody>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
-
-            </div>
-
-
-
+    </div>
 </div>
