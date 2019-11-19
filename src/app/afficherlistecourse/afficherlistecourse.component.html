@@ -1,69 +1,75 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="table">
-                <!--création d'un tableau-->
-
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Nom de la liste</th>
-                        <th>Afficher</th>
-                        <th>Supprimer</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <!-- ngFor equivaut à un ForEach-->
-                    <tr *ngFor="let l of mesListes">
-                        <td>{{l.titre | uppercase }}</td>
-                        <td><button mat-icon-button aria-label="" (click)='boutonmodif(l)'>
-                                voir
-                                <!-- <mat-icon>create</mat-icon>-->
-                            </button></td>
-
-                        <td><button mat-icon-button aria-label="" color="warn" (click)='  supprimerListe(l)'>
-                                supprimer
-                                <!--<mat-icon>delete</mat-icon>-->
-                            </button></td>
-
-                    </tr>
-                </tbody>
-            </div>
+<div class="row">
+    <div class="col-sm-3">
+        <app-navbaruser></app-navbaruser>
+    </div>
+    <div class="col-sm-9" >
+        <div style="background: #EAC5CD;" class="content">
+            <button style="background: rgb(124, 165, 165); color: white" (click)="nouvelleListe()"><strong>Nouvelle
+                    liste</strong></button>
         </div>
-        <div class="col-sm-4" *ngIf="visible">
-            <h3>Liste {{liste.titre}}</h3>
-            <br>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Ingrédients</th>
-                                <th>quantité</th>
-                                <th>Supprimer</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- ngFor equivaut à un ForEach-->
-                            <tr *ngFor="let e of mesElementsListe">
-                                <td>{{e.ingredient.nom }}</td>
-                                <td>{{e.ingredient.quantite }}</td>
-                                <td><button mat-icon-button aria-label="">
-                                        voir
-                                        <!-- <mat-icon>create</mat-icon>-->
-                                    </button></td>
+        <div class="row" class="content">
+            <div class="col-sm-6">
+                <div class="table">
+                    <!--création d'un tableau-->
 
-                                <td><button mat-icon-button aria-label="" color="warn">
-                                        supprimer
-                                        <!--<mat-icon>delete</mat-icon>-->
-                                    </button></td>
+                    <thead class="thead-dark">
+                        <div class="text-center" style="width: 100%;"> 
+                            <H2><strong>Mes listes de courses</strong></H2>
+                        </div>
+                    </thead>
 
-                            </tr>
-                        </tbody>
+
+                    <tbody class="text-center">
+                        <!-- ngFor equivaut à un ForEach-->
+                        <tr *ngFor="let l of mesListes">
+                            <td>{{l.titre | uppercase }}</td>
+                            <td>
+                                <button (click)='boutonVoir(l)' style="background: none; border: none">
+                                    <img src="https://p5.storage.canalblog.com/55/79/1295541/98510291_o.png"
+                                        width="30px" alt="">
+                                </button>
+                            </td>
+
+                            <td>
+                                <button (click)='supprimerListe(l)' style="background: none; border: none">
+                                    <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png" alt="">
+                                </button></td>
+
+                        </tr>
+                    </tbody>
+                </div>
+            </div>
+            <div class="col-sm-6" *ngIf="visible">
+                <H3><strong>{{liste.titre}}</strong></H3>
+                <br>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Ingrédients</th>
+                                    <th>quantité</th>
+                                    <th>Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- ngFor equivaut à un ForEach-->
+                                <tr *ngFor="let e of mesElementsListe">
+                                    <td>{{e.ingredient.nom }}</td>
+                                    <td>{{e.quantite }}</td>
+                                    <td><button mat-icon-button aria-label="" color="warn"
+                                            (click)="supprimerElement(e)">
+                                            supprimer
+                                            <!--<mat-icon>delete</mat-icon>-->
+                                        </button></td>
+
+                                </tr>
+                            </tbody>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
-
         </div>
     </div>

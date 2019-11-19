@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-3" style="padding: 10px;">
 
-            <app-navbaruser></app-navbaruser>
+        <app-navbaruser></app-navbaruser>
 
     </div>
     <div class="col-sm-9" style="margin: auto;">
@@ -33,9 +33,12 @@
                                 <input type="password" [(ngModel)]="userActuel.mdp" required placeholder="Mot de passe"
                                     class="form-control" name="mdp">
                             </div>
-                            <button class="btn btn-primary">Enregistrer les modifications</button>
-                            <button class="btn btn-primary">Retour</button>
+                            <button (click)="modifPerson(userActuel)" class="btn btn-primary">Enregistrer les modifications</button>
+                            <button (click)="retour()" class="btn btn-primary">Retour</button>
                         </form>
+                        <span *ngIf="visibleVal" class="valid">Modifications enregistrées !</span>
+                        <span *ngIf="visibleErr" class="invalid">Erreur : les modifications n'ont pas été enregistrées...</span>
+                        <span *ngIf="visibleRien">Aucune modification</span>
                     </div>
                 </div>
             </div>
