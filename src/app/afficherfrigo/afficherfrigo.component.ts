@@ -37,6 +37,14 @@ export class AfficherfrigoComponent implements OnInit {
       });
 }  */
 
+<<<<<<< HEAD
 }
+=======
+    this.http.get('http://localhost:8087/elemFrigo/' + this.ingredient.nom, this.ingredient.nom).subscribe(
+      reponse=> {
+        this.data = reponse;
+        console.log(this.data);}
+    )
+>>>>>>> 45a695c10e88d3ef51c41b5fa58705ff58c55430
 
 

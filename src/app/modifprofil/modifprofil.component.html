@@ -1,30 +1,47 @@
-<div>
-    <div class="container">
-            <h3 class="text-center">Modifier mon profil</h3>
-        <br><br>
-        <div class="row">
-            <div class="col-sm-4">
-            </div>
+<div class="row">
+    <div class="col-sm-3" style="padding: 10px;">
 
-            <div class="col-sm-4 text-center">
-                <form>
-                    <div class="form-group text-center">
-                        <h5>Mail :</h5>
-                        <input type="email" [(ngModel)]="userActuel.mail" required placeholder="Mail" class="form-control" name="mail">
+        <app-navbaruser></app-navbaruser>
+
+    </div>
+    <div class="col-sm-9" style="margin: auto;">
+
+
+
+        <div>
+            <div class="container">
+                <h3 class="text-center">Modifier mon profil</h3>
+                <br><br>
+                <div class="row">
+                    <div class="col-sm-4">
                     </div>
-                    <div class="form-group text-center">
-                        <h5>Pseudo :</h5>
-                        <input type="text" [(ngModel)]="userActuel.pseudo" required placeholder="Pseudo" class="form-control" name="pseudo">
+
+                    <div class="col-sm-4 text-center">
+                        <form>
+                            <div class="form-group text-center">
+                                <h5>Mail :</h5>
+                                <input type="email" [(ngModel)]="userActuel.mail" required placeholder="Mail"
+                                    class="form-control" name="mail">
+                            </div>
+                            <div class="form-group text-center">
+                                <h5>Pseudo :</h5>
+                                <input type="text" [(ngModel)]="userActuel.pseudo" required placeholder="Pseudo"
+                                    class="form-control" name="pseudo">
+                            </div>
+                            <div class="form-group text-center">
+                                <h5>Mot de passe :</h5>
+                                <input type="password" [(ngModel)]="userActuel.mdp" required placeholder="Mot de passe"
+                                    class="form-control" name="mdp">
+                            </div>
+                            <button (click)="modifPerson(userActuel)" class="btn btn-primary">Enregistrer les modifications</button>
+                            <button class="btn btn-primary">Retour</button>
+                        </form>
+                        <span></span>
                     </div>
-                    <div class="form-group text-center">
-                        <h5>Mot de passe :</h5>
-                        <input type="password" [(ngModel)]="userActuel.mdp" required placeholder="Mot de passe" class="form-control" name="mdp">
-                    </div>
-                    <button class="btn btn-primary">Enregistrer les modifications</button>
-                    <button class="btn btn-primary">Retour</button>
-                </form>
+                </div>
             </div>
         </div>
+        <br><br><br><br><br>
     </div>
-    <br><br><br><br><br>
+
 </div>
