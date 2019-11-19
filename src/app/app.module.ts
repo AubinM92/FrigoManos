@@ -17,6 +17,7 @@ import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component';
+import { AfficherUneRecetteComponent } from './afficher-une-recette/afficher-une-recette.component';
 
 
 
@@ -34,7 +35,8 @@ import { ListeachatComponent } from './listeachat/listeachat.component';
     AfficherlistecourseComponent,
     AfficherfrigoComponent,
     ListeachatComponent,
-    AfficherfrigoComponent
+    AfficherfrigoComponent,
+    AfficherUneRecetteComponent
   ],
   imports: [
     BrowserModule,
