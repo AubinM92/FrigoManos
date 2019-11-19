@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { Ingredient} from '../model/Ingredient';
-import { Liste } from '../model/Liste';
+import { ElementFrigo } from '../model/ElementFrigo';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-afficherfrigo',
@@ -11,31 +11,32 @@ import { Liste } from '../model/Liste';
 
 export class AfficherfrigoComponent implements OnInit {
 
-  user: User= new User();
-  ingredient: Ingredient= new Ingredient();
-  nom;
-  data;
-  http;
-  retour;
+  mesElementsFrigo;
+  ef: ElementFrigo= new ElementFrigo();
+  element;
 
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-  }
-
-  afficherFrigo() {
-
-    this.user.id = parseInt(localStorage.getItem("id"));
-
-    this.ingredient.nom = this.nom;
-
-    this.http.get('http://localhost:8087/elemFrigo' + this.ingredient.nom, this.ingredient.nom).subscribe(
-      reponse=> {
-        this.data = reponse;
-        console.log(this.data);}
+    this.http.get('http://localhost:8087/elemFrigo/' + localStorage.getItem("id") ).subscribe(
+      data=> {
+        this.element = data;
+        this.mesElementsFrigo = this.element;
+        console.log(this.mesElementsFrigo);
+      }
     )
-
   }
+
+  /*supprimerElementFrigo(ef){
+    const del = this.http.delete('http://localhost:8087/elemFrigo/'+ef.id).toPromise();
+    
+      del.then(x => {
+        this.ngOnInit();
+      }, err => {
+        console.log(err);
+      });
+}  */
 
 }
+
+

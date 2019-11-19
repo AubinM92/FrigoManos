@@ -1,17 +1,39 @@
-<app-navbar></app-navbar>
-
 <div class="container">
+
     <div class="row">
-        <div class="col-sm-4">
+
+        <div class="col-sm-8">
+
+            <div class="table">
+
+                <table>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom de l'element</th>
+                            <th>Quantite</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <tbody>
+
+                    <tr *ngFor="let e of mesElementsFrigo">
+
+                        <td>{{e.ingredient.nom}}</td>
+                        <td>{{e.quantite}}</td>
+                        <td><button aria-label="" color="warn" (clic)='supprimerElementFrigo()'>
+                                delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </div>
 
         </div>
-        <div class="col-sm-4">
-            <h5>Mon frigo</h5>
-            <br>
-            <button class="btn btn-primary btn-block" (onclick)="afficherFrigo()"> Afficher éléments frigo </button>
 
-        </div>
     </div>
-
-
 </div>
