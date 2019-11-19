@@ -31,4 +31,8 @@ export class NavbaruserComponent implements OnInit {
   toListeAchat() {
     this.router.navigate(['/liste-achat']);
   }
+
+  mesListes() {
+    this.router.navigate(['/mes-listes']);
+  }
 }

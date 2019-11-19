@@ -34,9 +34,10 @@
                                     class="form-control" name="mdp">
                             </div>
                             <button (click)="modifPerson(userActuel)" class="btn btn-primary">Enregistrer les modifications</button>
-                            <button class="btn btn-primary">Retour</button>
+                            <button (click)="retour()" class="btn btn-primary">Retour</button>
                         </form>
-                        <span></span>
+                        <span *ngIf="visibleVal" class="valid">Modifications enregistrées !</span>
+                        <span *ngIf="visibleErr" class="invalid">Erreur : les modifications n'ont pas été enregistrées...</span>
                     </div>
                 </div>
             </div>
