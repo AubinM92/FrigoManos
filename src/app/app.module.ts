@@ -12,8 +12,7 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
-import { VoirlisteComponent } from './voirliste/voirliste.component';
-import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.component'
+
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
@@ -30,10 +29,8 @@ import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlist
     CreerlistecourseComponent,
     HomeComponent,
     NavbaruserComponent,
-    VoirlisteComponent,
     AfficherfrigoComponent,
     AfficherlistecourseComponent,
-    VoirtouteslistesComponent,
     AfficherfrigoComponent
   ],
   imports: [
