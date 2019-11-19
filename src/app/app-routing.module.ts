@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'liste-achat', component: ListeachatComponent },
   { path: 'mon-frigo', component: AfficherfrigoComponent },
   { path: 'mes-listes', component: AfficherlistecourseComponent },
-  { path: 'aff-une-recette', component: AfficherunerecetteComponent}
+  { path: 'aff-une-recette', component: AfficherunerecetteComponent},
   { path: 'recettes', component:RecettesComponent}
 ];
 
