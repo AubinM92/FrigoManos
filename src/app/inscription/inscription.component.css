@@ -1,7 +1,7 @@
 body {
-    background: #eac5cd;
-    background: linear-gradient(to right, #d5a5a3, #f4deeb);
-  }
+  background: #eac5cd;
+  background: linear-gradient(to right, #d5a5a3, #f4deeb);
+}
   
 .card-signin {
   border: 0;
