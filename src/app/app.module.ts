@@ -17,7 +17,9 @@ import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component';
+import { AfficherUneRecetteComponent } from './afficher-une-recette/afficher-une-recette.component';
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
+
 
 
 
@@ -35,7 +37,9 @@ import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-el
     AfficherfrigoComponent,
     ListeachatComponent,
     AfficherfrigoComponent,
-    AjouterElementListeComponent,
+    AfficherUneRecetteComponent,
+    AjouterElementListeComponent
+
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],
   imports: [
