@@ -26,6 +26,7 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
+import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ModifelementlisteComponent } from './modifelementliste/modifelementlist
     AfficherunerecetteComponent,
     RecettesComponent,
     AjouterElementListeComponent,
-    ModifelementlisteComponent
+    ModifelementlisteComponent,
+    ModifFrigoComponent
 
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],

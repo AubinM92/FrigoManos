@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementFrigo } from '../model/ElementFrigo';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { ModifFrigoComponent } from '../modif-frigo/modif-frigo.component';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 
 @Component({
@@ -15,9 +19,10 @@ export class AfficherfrigoComponent implements OnInit {
   mesElementsFrigo;
   ef: ElementFrigo = new ElementFrigo();
   element;
+
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog, private router: Router, private s: ServicefrigoService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8087/elemFrigo/' + localStorage.getItem("id")).subscribe(
@@ -29,6 +34,12 @@ export class AfficherfrigoComponent implements OnInit {
     )
   }
 
+  modifQuantite(e){
+    this.s.elemservice=e;
+    console.log("entree service", e);
+    console.log("entree service s", this.s.elemservice);
+    const mydial = this.dialog.open(ModifFrigoComponent);
+  }
 
   supprimerElementFrigo(e) {
     this.element = e;
@@ -43,20 +54,6 @@ export class AfficherfrigoComponent implements OnInit {
     );
   }
 
-  boutonVoir(e) {
-    this.element = e;
-    console.log(e);
-    this.visible = true;
-  }
 
-  modifElementFrigo(){
-    console.log(this.element);
-    this.http.put('http://localhost:8087/elemFrigo/'+ this.element.id, this.element).subscribe(
-      data => {
-      }, err => {
-        console.log(err);
-      }
-    );
-  }
 
 }
