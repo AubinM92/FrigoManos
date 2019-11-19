@@ -1,5 +1,6 @@
 .nav-1 {
     background: #EAC5CD;
+    background: linear-gradient(to bottom, #d5a5a3, #f4deeb);
     padding: 10px;
     position: absolute;
     width: 375px;

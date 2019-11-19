@@ -12,8 +12,6 @@ export class ListeachatComponent implements OnInit {
 
   user: User = new User();
   mesElements;
-  listFinale;
-  listInter;
 
   constructor(private http : HttpClient) { }
 
