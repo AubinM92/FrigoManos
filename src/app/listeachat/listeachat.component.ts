@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListeachatComponent implements OnInit {
 
-  mesListes;
+  mesElements;
   liste;
 
   constructor(private http : HttpClient) { }
@@ -17,11 +17,11 @@ export class ListeachatComponent implements OnInit {
   ngOnInit() {
     this.http.get('http://localhost:8087/liste-globale/' + "2").subscribe(
       data => {
-        this.mesListes = data;
-        this.mesListes.forEach(liste => {
+        this.mesElements = data;
+        this.mesElements.forEach(liste => {
           console.log(liste);
         });
-        console.log(this.mesListes);
+        console.log(this.mesElements);
       }
     )
   }
