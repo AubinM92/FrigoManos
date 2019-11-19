@@ -51,6 +51,7 @@ export class CreerlistecourseComponent implements OnInit {
 
   fermer() {
     this.dialogRef.close();
+    
   }
 
 
