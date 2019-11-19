@@ -20,8 +20,13 @@ import { ListeachatComponent } from './listeachat/listeachat.component';
 import { AfficherUneRecetteComponent } from './afficher-une-recette/afficher-une-recette.component';
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
 
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,13 @@ import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-el
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
