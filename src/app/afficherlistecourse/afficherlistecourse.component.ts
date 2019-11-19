@@ -30,7 +30,7 @@ export class AfficherlistecourseComponent implements OnInit {
   boutonmodif(l) {
     this.liste = l;
     this.visible=true;
-    this.http.get('http://localhost:8087/liste').subscribe(
+    this.http.get('http://localhost:8087/liste/'+this.liste.id).subscribe(
       data=> {
         this.mesElementsListe = data;
         console.log(this.mesElementsListe);

@@ -5,8 +5,6 @@ import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component'
 import { HomeComponent } from './home/home.component';
-import { VoirlisteComponent } from './voirliste/voirliste.component';
-import { VoirtouteslistesComponent } from './voirtouteslistes/voirtouteslistes.component';
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component'
@@ -17,11 +15,11 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'creer-liste-course', component: CreerlistecourseComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'liste', component: VoirlisteComponent },
-  { path: 'mes-listes', component: VoirtouteslistesComponent },
   { path: 'mon-frigo', component: AfficherfrigoComponent },
   { path: 'mes-liste', component: AfficherlistecourseComponent },
-  { path: 'liste-achat', component: ListeachatComponent }
+  { path: 'liste-achat', component: ListeachatComponent },
+  { path: 'mon-frigo', component: AfficherfrigoComponent },
+  { path: 'mes-listes', component: AfficherlistecourseComponent }
 ];
 
 @NgModule({
