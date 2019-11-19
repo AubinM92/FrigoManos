@@ -9,15 +9,19 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListeachatComponent implements OnInit {
 
-  mesListes;
+  mesElements;
+  liste;
 
   constructor(private http : HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8087/liste-globale/' + "").subscribe(
+    this.http.get('http://localhost:8087/liste-globale/' + "2").subscribe(
       data => {
-        this.mesListes = data;
-        console.log(this.mesListes);
+        this.mesElements = data;
+        this.mesElements.forEach(liste => {
+          console.log(liste);
+        });
+        console.log(this.mesElements);
       }
     )
   }
