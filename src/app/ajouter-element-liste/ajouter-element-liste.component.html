@@ -1,16 +1,19 @@
-<div style="width: 250px; height: 250px;">
-    <h6 class="text-center">Choisir le nom de la liste</h6>
+<div>
+    <h5 class="text-center">Choisir l'ingrédient à ajouter</h5>
     <div style="margin: 10px">
         <form action="" #forme="ngForm">
             <div>
-                <input type="text" required style="width: 230px" [(ngModel)]="ingredient" name="ingredient" required
-                    placeholder="Ingrédient">
-            </div>
-
-            <div>
-                
-                <input type="text">
-
+                    <form class="example-form">
+                            <mat-form-field class="example-full-width">
+                                <input required type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+                                    [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </form>
             </div>
             <div class="row">
                 <div class="col-sm-6">
@@ -20,7 +23,6 @@
                     <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
                         (click)="valider();">Valider</button>
                 </div>
-                <div class="col-sm-6">{{ erreur }}</div>
             </div>
         </form>
     </div>

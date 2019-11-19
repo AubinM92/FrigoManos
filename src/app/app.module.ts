@@ -21,8 +21,13 @@ import { RecettesComponent } from './recettes/recettes.component';
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
 import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
 
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,13 @@ import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecet
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
