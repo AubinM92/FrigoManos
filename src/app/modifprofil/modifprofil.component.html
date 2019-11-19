@@ -20,7 +20,7 @@
                         <h5>Mot de passe :</h5>
                         <input type="password" [(ngModel)]="userActuel.mdp" required placeholder="Mot de passe" class="form-control" name="mdp">
                     </div>
-                    <button class="btn btn-primary">Enregistrer les modifications</button>
+                    <button (click)="modifPerson(userActuel)" class="btn btn-primary">Enregistrer les modifications</button>
                     <button class="btn btn-primary">Retour</button>
                 </form>
             </div>
