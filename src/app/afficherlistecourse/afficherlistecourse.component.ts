@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Liste } from '../model/Liste';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { CreerlistecourseComponent } from '../creerlistecourse/creerlistecourse.component';
+import { User } from '../model/User';
 import { del } from 'selenium-webdriver/http';
 import { ElementListe } from '../model/ElementListe';
 
@@ -15,13 +18,15 @@ export class AfficherlistecourseComponent implements OnInit {
   mesListes;
   mesElementsListe;
   element;
+  user: User = new User();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dialog: MatDialog) { }
 
 
 
   ngOnInit() {
-    this.http.get('http://localhost:8087/liste').subscribe(
+    this.user.id = parseInt(localStorage.getItem("id"));
+    this.http.get('http://localhost:8087/liste-globale/'+ this.user.id).subscribe(
       data => {
         this.mesListes = data;
         console.log(this.mesListes);
@@ -93,5 +98,9 @@ export class AfficherlistecourseComponent implements OnInit {
       });
       this.visible = false;
 }
+
+    nouvelleListe(){
+      const mydial = this.dialog.open(CreerlistecourseComponent);
+    }
 
 }

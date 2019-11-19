@@ -1,16 +1,16 @@
 <div style="width: 250px;">
     <h6 class="text-center">Choisir le nom de la liste</h6>
     <div style="margin: 10px">
-        <form action="">
+        <form action="" #forme="ngForm">
             <div>
-                <input type="text" required style="width: 230px" [(ngModel)]="nom" name="nom">
+                <input type="text" required style="width: 230px" [(ngModel)]="nom" name="nom" required>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
                 </div>
                 <div class="col-sm-6">
-                    <button class="btn btn-primary btn-block" (click)="valider();">Valider</button>
+                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block" (click)="valider();">Valider</button>
                 </div>
                 <div class="col-sm-6">{{ erreur }}</div>
             </div>

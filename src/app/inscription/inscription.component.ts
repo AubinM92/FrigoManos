@@ -23,7 +23,7 @@ valider;
   inscription(){
 
     if(this.user.mdp != this.motDePasse2){
-      this.erreur = "Mots de passes non identiques !"
+      this.erreur = "Mots de passe non identiques !"
       this.user.mdp = "";
       this.motDePasse2 = "";
       return 0;
