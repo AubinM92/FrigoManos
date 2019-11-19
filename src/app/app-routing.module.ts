@@ -9,6 +9,7 @@ import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component'
 import { RecettesComponent } from './recettes/recettes.component';
+import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'liste-achat', component: ListeachatComponent },
   { path: 'mon-frigo', component: AfficherfrigoComponent },
   { path: 'mes-listes', component: AfficherlistecourseComponent },
-  { path: 'recettes', component:RecettesComponent}
+  { path: 'recettes', component:RecettesComponent},
+  {path: 'modif-frigo', component:ModifFrigoComponent}
 ];
 
 @NgModule({

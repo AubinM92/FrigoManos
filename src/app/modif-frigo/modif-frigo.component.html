@@ -1,0 +1,26 @@
+<div style="width: 250px; height: 100px;">
+        <h6 class="text-center">Entrer la quantité à modifier</h6>
+        <div style="margin: 10px">
+            <form action="" #forme="ngForm">
+
+                <div>
+                    <input type="number" required style="width: 230px" [(ngModel)]="element.quantite" name="quantite" required
+                        placeholder="Quantite" required>
+                </div>
+
+                <div  class="row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
+                            (click)="modifElementFrigo();">Modifier</button>
+                    </div>
+
+                    <div class="col-sm-6">{{ erreur }}</div>
+
+                </div>
+            </form>
+        </div>
+    </div>
