@@ -30,7 +30,7 @@ export class AfficherfrigoComponent implements OnInit {
 
     this.ingredient.nom = this.nom;
 
-    this.http.get('http://localhost:8087/elemFrigo' + this.ingredient.nom, this.ingredient.nom).subscribe(
+    this.http.get('http://localhost:8087/elemFrigo/' + this.ingredient.nom, this.ingredient.nom).subscribe(
       reponse=> {
         this.data = reponse;
         console.log(this.data);}
