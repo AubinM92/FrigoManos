@@ -7,7 +7,8 @@
             <div class="row input-group-prepend">
                 <div class="col-sm-2">
                     <button class="btn btn-lg btn-primary btn-block btn-login"
-                        style="background: none; border: none; text-align: left; pointer-events: none;">Filtres :</button>
+                        style="background: none; border: none; text-align: left; pointer-events: none;">Filtres
+                        :</button>
                 </div>
 
                 <div class="col-sm-2 input-group" id="select1">
@@ -41,21 +42,60 @@
                 <div class="col-sm-2">
                     <div class="input-group-prepend">
                         <br><br>
-                        <button style="background: rgb(124, 165, 165); color: white"
-                            (click)="nouvelleListe()"><strong>Appliquer les
+                        <button style="background: rgb(124, 165, 165); color: white"><strong>Appliquer les
                                 filtres</strong></button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row" style="margin:10px; padding:10px;">
-            <div class="col-sm-5">
+            <div class="col-sm-8">
                 <div class="table">
-                    <!--Tableau des listes-->
+                    <!--création d'un tableau-->
+                    <div class="text-center" style="width: 100%;">
+                        <H2>Recettes disponibles</H2>
+                    </div>
+                    <tbody class="text-center">
+                        <!-- ngFor equivaut à un ForEach-->
+                        <tr *ngFor="let r of allRecettes">
+                            <td width="30%">{{r.titre | uppercase }}</td>
+                            <td width="20%">Prép. : {{r.tempsPrepa}} min</td>
+                            <td width="20%">Cuisson : {{r.tempsCuis}} min</td>
+                        </tr>
+                    </tbody>
                 </div>
             </div>
-            <div class="col-sm-7">
-                <!-- Liste -->
+
+        </div>
+        <div class="card-deck"></div>
+
+        <div class="col-sm-4">
+            <div *ngFor="let re of allRecettes">
+                <div class="card">
+
+
+
+                    <img class="card-img-top"
+                        src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
+                        alt="Card image cap">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{re.titre}}</h5>
+
+                        <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min |
+                                Cuisson : {{re.tempsCuis}} min</small></p>
+                    </div>
+
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-outline-success"><small><strong> Afficher</strong></small></button>
+                            <button type="button" class="btn btn-warning"><small><strong>Ajout Envie</strong></small></button>
+                            <button type="button" class="btn btn-outline-dark"><small><strong> Ajout Course</strong></small></button>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

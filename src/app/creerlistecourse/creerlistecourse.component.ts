@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Liste } from '../model/Liste'
 import { User } from '../model/User';
 import { AfficherlistecourseComponent } from '../afficherlistecourse/afficherlistecourse.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creerlistecourse',
@@ -21,7 +22,7 @@ export class CreerlistecourseComponent implements OnInit {
   listeRetour: Liste = new Liste();
 
   constructor(
-    public dialogRef: MatDialogRef<CreerlistecourseComponent>, private http: HttpClient) { }
+    public dialogRef: MatDialogRef<CreerlistecourseComponent>, private http: HttpClient, private router: Router) { }
 
 
   ngOnInit() {
@@ -38,15 +39,17 @@ export class CreerlistecourseComponent implements OnInit {
       data => {
         this.retour = data;
         this.listeRetour = this.retour;
+        this.router.navigate(['/mes-listes']);
         if(this.listeRetour.id!=null){
           this.dialogRef.close();
         }
       }, err => {
         return 0;
       }
+
     );
 
-    
+
 
   }
 

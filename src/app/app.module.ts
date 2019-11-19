@@ -12,18 +12,21 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
-
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component';
 import { RecettesComponent } from './recettes/recettes.component';
-import { AfficherUneRecetteComponent } from './afficher-une-recette/afficher-une-recette.component';
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
-import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
-
-
-
+import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
+import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +42,11 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
     AfficherfrigoComponent,
     ListeachatComponent,
     AfficherfrigoComponent,
-    RecettesComponent,
-    AfficherUneRecetteComponent,
     AjouterElementListeComponent,
+    AfficherunerecetteComponent,
+    RecettesComponent,
+    AjouterElementListeComponent,
+    ModifelementlisteComponent,
     ModifFrigoComponent
 
   ],
@@ -52,7 +57,13 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
