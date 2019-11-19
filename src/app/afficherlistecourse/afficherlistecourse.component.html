@@ -16,7 +16,7 @@
                     <!-- ngFor equivaut à un ForEach-->
                     <tr *ngFor="let l of mesListes">
                         <td>{{l.titre | uppercase }}</td>
-                        <td><button mat-icon-button aria-label="" (click)='boutonmodif(l)'>
+                        <td><button mat-icon-button aria-label="" (click)='boutonVoir(l)'>
                                 voir
                                 <!-- <mat-icon>create</mat-icon>-->
                             </button></td>
@@ -47,13 +47,8 @@
                             <!-- ngFor equivaut à un ForEach-->
                             <tr *ngFor="let e of mesElementsListe">
                                 <td>{{e.ingredient.nom }}</td>
-                                <td>{{e.ingredient.quantite }}</td>
-                                <td><button mat-icon-button aria-label="">
-                                        voir
-                                        <!-- <mat-icon>create</mat-icon>-->
-                                    </button></td>
-
-                                <td><button mat-icon-button aria-label="" color="warn">
+                                <td>{{e.quantite }}</td>
+                                <td><button mat-icon-button aria-label="" color="warn" (click)="supprimerElement(e)">
                                         supprimer
                                         <!--<mat-icon>delete</mat-icon>-->
                                     </button></td>
