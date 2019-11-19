@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Liste } from '../model/Liste'
 import { User } from '../model/User';
+import { AfficherlistecourseComponent } from '../afficherlistecourse/afficherlistecourse.component';
 
 @Component({
   selector: 'app-creerlistecourse',
@@ -51,6 +52,7 @@ export class CreerlistecourseComponent implements OnInit {
 
   fermer() {
     this.dialogRef.close();
+    
   }
 
 
