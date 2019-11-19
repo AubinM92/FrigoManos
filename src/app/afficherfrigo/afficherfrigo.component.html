@@ -1,39 +1,73 @@
 <div class="container">
-
     <div class="row">
-
-        <div class="col-sm-8">
-
+        <div class="col-sm-6">
             <div class="table">
 
-                <table>
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Nom de l'element</th>
-                            <th>Quantite</th>
-                            <th>Supprimer</th>
-                        </tr>
-                    </thead>
-                </table>
-
-                <tbody>
-
-                    <tr *ngFor="let e of mesElementsFrigo">
-
-                        <td>{{e.ingredient.nom}}</td>
-                        <td>{{e.quantite}}</td>
-                        <td><button aria-label="" color="warn" (clic)='supprimerElementFrigo()'>
-                                delete
-                            </button>
-                        </td>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Votre ingrédient</th>
+                        <th>Quantité</th>
+                        <th>Unité</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
 
                     </tr>
+                </thead>
 
+                <tbody>
+                    <tr *ngFor="let e of mesElementsFrigo">
+                        <td>{{e.ingredient.nom | uppercase }}</td>
+                        <td>{{e.quantite}}</td>
+                        <td>{{e.ingredient.unite}}</td>
+                        <td><button mat-icon-button aria-label="" (click)='boutonVoir(e)'>à modifier</button></td>
+                        <td><button mat-icon-button aria-label="" (click)='supprimerElementFrigo(e)'>
+                                delete
+                                <!-- <mat-icon>create</mat-icon>-->
+                            </button></td>
+
+
+                    </tr>
                 </tbody>
+            </div>
+        </div>
+
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-4" *ngIf="visible">
+            <h3>{{element.ingredient.nom}}</h3>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Ingrédient</th>
+                                <th>Quantité</th>
+                                <th>Unité</th>
+                                <th>Modifier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>{{element.ingredient.nom }}</td>
+                                <input type="text" [(ngModel)]="element.quantite" class="form-control text-center"
+                                    placeholder="Quantité" name="quantite" required>
+                                <td>{{element.ingredient.unite}}</td>
+                                <td><button mat-icon-button aria-label="" color="warn" (click)="modifElementFrigo()">
+                                        modifier
+                                        <!--<mat-icon>delete</mat-icon>-->
+                                    </button></td>
+
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
 
             </div>
 
         </div>
+
 
     </div>
 </div>

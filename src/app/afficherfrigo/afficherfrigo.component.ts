@@ -11,9 +11,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class AfficherfrigoComponent implements OnInit {
 
+  visible=false;
   mesElementsFrigo;
   ef: ElementFrigo = new ElementFrigo();
   element;
+  
 
   constructor(private http: HttpClient) { }
 
@@ -27,20 +29,41 @@ export class AfficherfrigoComponent implements OnInit {
     )
   }
 
-  /*supprimerElementFrigo(ef){
-    const del = this.http.delete('http://localhost:8087/elemFrigo/'+ef.id).toPromise();
-    
-      del.then(x => {
+
+  supprimerElementFrigo(e) {
+    this.element = e;
+    const del = this.http.delete('http://localhost:8087/elemFrigo/' + this.element.id).toPromise();
+
+    del.then(
+      data => {
         this.ngOnInit();
       }, err => {
         console.log(err);
-      });
-}  */
+      }
+    );
+  }
 
-  /*this.http.get('http://localhost:8087/elemFrigo/' + this.ingredient.nom, this.ingredient.nom).subscribe(
-    reponse=> {
-      this.data = reponse;
-      console.log(this.data);}
-  )*/
+  boutonVoir(e) {
+    this.element = e;
+    console.log(e);
+    this.visible = true;
+    /*
+    this.http.get('http://localhost:8087/elemFrigox/' + this.element.id).subscribe(
+      data => {
+        this.monElement = data;
+        console.log(this.monElement);
+      }
+    )*/
+  }
+
+  modifElementFrigo(){
+    console.log(this.element);
+    this.http.put('http://localhost:8087/elemFrigo/'+ this.element.id, this.element).subscribe(
+      data => {
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
 
 }
