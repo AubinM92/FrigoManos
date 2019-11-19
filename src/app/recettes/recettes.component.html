@@ -42,17 +42,27 @@
                 <div class="col-sm-2">
                     <div class="input-group-prepend">
                         <br><br>
-                        <button style="background: rgb(124, 165, 165); color: white"
-                            (click)="nouvelleListe()"><strong>Appliquer les
+                        <button style="background: rgb(124, 165, 165); color: white"><strong>Appliquer les
                                 filtres</strong></button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row" style="margin:10px; padding:10px;">
-            <div class="col-sm-5">
+            <div class="col-sm-8">
                 <div class="table">
-                    <!--Tableau des listes-->
+                    <!--création d'un tableau-->
+                    <div class="text-center" style="width: 100%;">
+                        <H2>Recettes disponibles</H2>
+                    </div>
+                    <tbody class="text-center">
+                        <!-- ngFor equivaut à un ForEach-->
+                        <tr *ngFor="let r of allRecettes">
+                            <td width="30%">{{r.titre | uppercase }}</td>
+                            <td width="20%">Prép. : {{r.tempsPrepa}} min</td>
+                            <td width="20%">Cuisson : {{r.tempsCuis}} min</td>
+                        </tr>
+                    </tbody>
                 </div>
             </div>
             <div class="col-sm-7">
