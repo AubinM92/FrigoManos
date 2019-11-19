@@ -4,6 +4,7 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { CreerlistecourseComponent } from '../creerlistecourse/creerlistecourse.component';
 import { User } from '../model/User';
+import { Router } from '@angular/router';
 import { del } from 'selenium-webdriver/http';
 import { ElementListe } from '../model/ElementListe';
 
@@ -20,7 +21,7 @@ export class AfficherlistecourseComponent implements OnInit {
   element;
   user: User = new User();
 
-  constructor(private http: HttpClient,private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private router: Router) { }
 
 
 
@@ -99,8 +100,14 @@ export class AfficherlistecourseComponent implements OnInit {
       this.visible = false;
 }
 
-  nouvelleListe(){
-    const mydial = this.dialog.open(CreerlistecourseComponent);
-  }
+
+    nouvelleListe(){
+      const mydial = this.dialog.open(CreerlistecourseComponent);
+      this.router.navigate(['/mes-listes'])
+    }
+
+    ajoutElementListe(nomElement){
+      const mydial = this.dialog.open(CreerlistecourseComponent);
+    }
 
 }
