@@ -47,13 +47,6 @@ export class AfficherfrigoComponent implements OnInit {
     this.element = e;
     console.log(e);
     this.visible = true;
-    /*
-    this.http.get('http://localhost:8087/elemFrigox/' + this.element.id).subscribe(
-      data => {
-        this.monElement = data;
-        console.log(this.monElement);
-      }
-    )*/
   }
 
   modifElementFrigo(){
