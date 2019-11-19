@@ -31,7 +31,7 @@ valider;
 
     this.http.post('http://localhost:8087/user', this.user).subscribe(
       data => {
-        this.router.navigate(['/home']);
+
       }, err => {
         this.erreur = "Compte déjà existant";
         return 0;

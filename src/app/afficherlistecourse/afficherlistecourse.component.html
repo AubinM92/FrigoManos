@@ -1,75 +1,73 @@
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3" style="padding-right: 10px;">
         <app-navbaruser></app-navbaruser>
     </div>
-    <div class="col-sm-9" >
-        <div style="background: #EAC5CD;" class="content">
+    <div class="col-sm-9">
+        <div style="margin:10px; padding:10px; background: #EAC5CD;">
             <button style="background: rgb(124, 165, 165); color: white" (click)="nouvelleListe()"><strong>Nouvelle
                     liste</strong></button>
         </div>
-        <div class="row" class="content">
-            <div class="col-sm-6">
+        <div class="row" style="margin:10px; padding:10px;">
+            <div class="col-sm-5">
                 <div class="table">
                     <!--création d'un tableau-->
-
-                    <thead class="thead-dark">
-                        <div class="text-center" style="width: 100%;"> 
-                            <H2><strong>Mes listes de courses</strong></H2>
-                        </div>
-                    </thead>
-
-
+                    <div class="text-center" style="width: 100%;">
+                        <H2>Mes listes de courses</H2>
+                    </div>
                     <tbody class="text-center">
                         <!-- ngFor equivaut à un ForEach-->
                         <tr *ngFor="let l of mesListes">
-                            <td>{{l.titre | uppercase }}</td>
-                            <td>
+                            <td width="80%">{{l.titre | uppercase }}</td>
+                            <td width="10%">
                                 <button (click)='boutonVoir(l)' style="background: none; border: none">
                                     <img src="https://p5.storage.canalblog.com/55/79/1295541/98510291_o.png"
                                         width="30px" alt="">
                                 </button>
                             </td>
-
-                            <td>
+                            <td width="10%">
                                 <button (click)='supprimerListe(l)' style="background: none; border: none">
                                     <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png" alt="">
                                 </button></td>
-
                         </tr>
                     </tbody>
                 </div>
             </div>
-            <div class="col-sm-6" *ngIf="visible">
-                <H3><strong>{{liste.titre}}</strong></H3>
-                <br>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Ingrédients</th>
-                                    <th>quantité</th>
-                                    <th>Supprimer</th>
-                                </tr>
-                            </thead>
+            <div class="col-sm-7">
+                <div *ngIf="visible"
+                    style="background: rgba(235, 210, 215, 0.952); padding: 10px; border-radius: 10px;">
+                    <div class="table text-center" style="margin: auto;">
+                        <H3 class="text-center"><strong>{{liste.titre}}</strong></H3>
+                        <table>
                             <tbody>
-                                <!-- ngFor equivaut à un ForEach-->
-                                <tr *ngFor="let e of mesElementsListe">
-                                    <td>{{e.ingredient.nom }}</td>
-                                    <td>{{e.quantite }}</td>
-                                    <td><button mat-icon-button aria-label="" color="warn"
-                                            (click)="supprimerElement(e)">
-                                            supprimer
-                                            <!--<mat-icon>delete</mat-icon>-->
-                                        </button></td>
-
+                                <tr *ngFor="let e of mesElementsListe" class="text-center">
+                                        <td width="40%">
+                                            {{e.ingredient.nom }}
+                                        </td>
+                                        <td width="40%">
+                                            {{e.quantite }}
+                                        </td>
+                                        <td width="10%">
+                                            <button (click)="supprimerElement(e)"
+                                                style="background: none; border: none;">
+                                                <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png"
+                                                    alt="">
+                                            </button>
+                                        </td>
+                                        <td width="10%">
+                                                <button (click)="modifier(e)"
+                                                    style="background: none; border: none;">
+                                                    <img width="30px" src="https://image.flaticon.com/icons/png/512/45/45584.png"
+                                                        alt="">
+                                                </button>
+                                            </td>
                                 </tr>
                             </tbody>
-                        </div>
+                        </table>
+
                     </div>
 
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
