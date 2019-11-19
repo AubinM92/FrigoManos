@@ -12,13 +12,14 @@ import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.c
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavbaruserComponent } from './navbaruser/navbaruser.component';
-
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component';
-import { AfficherUneRecetteComponent } from './afficher-une-recette/afficher-une-recette.component';
+import { RecettesComponent } from './recettes/recettes.component';
+
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
+import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -42,7 +43,9 @@ import {MatIconModule} from '@angular/material/icon';
     AfficherfrigoComponent,
     ListeachatComponent,
     AfficherfrigoComponent,
-    AfficherUneRecetteComponent,
+    AjouterElementListeComponent,
+    AfficherunerecetteComponent,
+    RecettesComponent,
     AjouterElementListeComponent
 
   ],

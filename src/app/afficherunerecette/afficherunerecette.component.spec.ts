@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AfficherUneRecetteComponent } from './afficher-une-recette.component';
+import { AfficherunerecetteComponent } from './afficherunerecette.component';
 
-describe('AfficherUneRecetteComponent', () => {
-  let component: AfficherUneRecetteComponent;
-  let fixture: ComponentFixture<AfficherUneRecetteComponent>;
+describe('AfficherunerecetteComponent', () => {
+  let component: AfficherunerecetteComponent;
+  let fixture: ComponentFixture<AfficherunerecetteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AfficherUneRecetteComponent ]
+      declarations: [ AfficherunerecetteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AfficherUneRecetteComponent);
+    fixture = TestBed.createComponent(AfficherunerecetteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
