@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component'
+import { RecettesComponent } from './recettes/recettes.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'mes-liste', component: AfficherlistecourseComponent },
   { path: 'liste-achat', component: ListeachatComponent },
   { path: 'mon-frigo', component: AfficherfrigoComponent },
-  { path: 'mes-listes', component: AfficherlistecourseComponent }
+  { path: 'mes-listes', component: AfficherlistecourseComponent },
+  { path: 'recettes', component:RecettesComponent}
 ];
 
 @NgModule({
