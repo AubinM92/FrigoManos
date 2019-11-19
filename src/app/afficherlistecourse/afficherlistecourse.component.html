@@ -59,20 +59,20 @@
                                         </tbody>
 
 
-                                <br><input type="text" [(ngModel)]="" class="form-control text-center"
-                                placeholder="Nom" name="nom" required #nomAction="ngModel">
+                                <br><input type="text" class="form-control text-center"
+                                placeholder="Nom" name="nom" required >
                             <br>
 
                             <br><input type="text" [(ngModel)]="personne.prenom" class="form-control text-center"
-                                placeholder="Prénom" name="prenom" required #prenomAction="ngModel">
+                                placeholder="Prénom" name="prenom" required >
                             <br>
 
                             <br><input type="text" [(ngModel)]="personne.mail" class="form-control text-center"
-                                placeholder="Mail" name="mail" required #mailAction="ngModel">
+                                placeholder="Mail" name="mail" required>
                             <br>
 
                             <br><input type="number" [(ngModel)]="personne.age" class="form-control text-center"
-                                placeholder="Âge" name="age" required #ageAction="ngModel">
+                                placeholder="Âge" name="age" required >
                             <br>
 
                             <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
