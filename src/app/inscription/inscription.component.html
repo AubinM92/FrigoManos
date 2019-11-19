@@ -1,39 +1,43 @@
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
-                    <div class="card-body">
-                        <h3 class="login-heading mb-4 text-center">Bienvenue !</h3>
-                        <br>
-                        <form #forme="ngForm">
-                            <div class="form-group">
-                                <input type="email" [(ngModel)]="user.mail" class="form-control text-center"
-                                    placeholder="Mail" name="mail" required id="inputEmail">
-                                <br>
-                                <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center"
-                                    placeholder="Pseudo" name="pseudo" required>
-                                <br>
-                                <input type="password" [(ngModel)]="user.mdp" class="form-control text-center" required
-                                    name="motDePasse" placeholder="Mot de passe" name="mdp">
-                                <br>
-                                <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center"
-                                    required placeholder="Vérification du mot de passe" name="motDePasse2">
-                                <br>
-                                <button type="submit"
-                                    class="btn btn-lg btn-primary btn-block btn-login active text-uppercase font-weight-bold mb-2"
-                                    (click)="inscription();" [disabled]="!forme.form.valid">Créer mon frigo</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-7 bg-image"></div>
+        <div class="col-sm-5">
+            <div class="login d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto card-signin card-body">
+                            <h3 class="login-heading mb-4 text-center">Inscrivez-vous sur FrigoManos !</h3>
+                            <br>
+                            <form #forme="ngForm">
+                                <div class="form-group">
+                                    <input type="email" [(ngModel)]="user.mail" class="form-control text-center"
+                                        placeholder="Mail" name="mail" required id="inputEmail">
+                                    <br>
+                                    <input type="text" [(ngModel)]="user.pseudo" class="form-control text-center"
+                                        placeholder="Pseudo" name="pseudo" required>
+                                    <br>
+                                    <input type="password" [(ngModel)]="user.mdp" class="form-control text-center"
+                                        required name="motDePasse" placeholder="Mot de passe" name="mdp">
+                                    <br>
+                                    <input type="password" [(ngModel)]="motDePasse2" class="form-control text-center"
+                                        required placeholder="Vérification du mot de passe" name="motDePasse2">
+                                    <br>
+                                    <button type="submit"
+                                        class="btn btn-lg btn-primary btn-block btn-login active text-uppercase font-weight-bold mb-2"
+                                        (click)="inscription();" [disabled]="!forme.form.valid">Créer mon frigo</button>
+                                </div>
+                            </form>
+                            <button type="submit"
+                                class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                (click)="toConnexion();">Vous avez déjà un frigo ?</button>
+                            <div>
+                                <span class="text-center text-danger">{{ erreur }}</span>
                             </div>
-                        </form>
-                        <button type="submit"
-                            class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                            (click)="toConnexion();">Vous avez déjà un frigo ?</button>
-                        <div>
-                            <span class="text-center text-danger">{{ erreur }}</span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-</body>
+</div>
