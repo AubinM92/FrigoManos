@@ -10,61 +10,58 @@ import { ElementListe } from '../model/ElementListe';
   styleUrls: ['./afficherlistecourse.component.css']
 })
 export class AfficherlistecourseComponent implements OnInit {
-  visible =false;
-  liste : Liste = new Liste();  
+  visible = false;
+  liste: Liste = new Liste();
   mesListes;
   mesElementsListe;
   element;
-  
 
-  constructor(private http : HttpClient) { }
-  
- 
+  constructor(private http: HttpClient) { }
+
+
 
   ngOnInit() {
     this.http.get('http://localhost:8087/liste').subscribe(
-      data=> {
+      data => {
         this.mesListes = data;
         console.log(this.mesListes);
       }
-      
     );
 
-    if(this.liste.titre!=null){
-        this.visible=true;
-        this.http.get('http://localhost:8087/elemListe/'+this.liste.id).subscribe(
-          data=> {
-            this.mesElementsListe = data;
-            console.log(this.mesElementsListe);
-          }
-        )
+    if (this.liste.titre != null) {
       
+      this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+        data => {
+          this.mesElementsListe = data;
+          console.log(this.mesElementsListe);
+        }
+      )
     }
   }
 
   boutonVoir(l) {
     this.liste = l;
-    this.visible=true;
-    this.http.get('http://localhost:8087/elemListe/'+this.liste.id).subscribe(
-      data=> {
+    this.visible = true;
+    this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+      data => {
         this.mesElementsListe = data;
         console.log(this.mesElementsListe);
       }
     )
   }
 
-  getElementListe(l){
+  getElementListe(l) {
     this.liste = l;
-    this.http.get('http://localhost:8087/elemListe/'+this.liste.id).subscribe(
-      data=> {
+    this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+      data => {
         this.mesElementsListe = data;
-        
-  }
-    )
-}
 
-  supprimerElement(e){
-    this.element=e;
+      }
+    )
+  }
+
+  supprimerElement(e) {
+    this.element = e;
     const del = this.http.delete('http://localhost:8087/elemListe/' + this.element.id).toPromise();
 
     del.then(
@@ -76,25 +73,25 @@ export class AfficherlistecourseComponent implements OnInit {
     );
   }
 
-  supprimerListe(l){
+  supprimerListe(l) {
     this.liste = l;
 
-    this.getElementListe(l);
+    const del1 = this.http.get('http://localhost:8087/elemListe/' + this.liste.id).toPromise();
+      del1.then(data => {
+        this.mesElementsListe = data;
+        for (let e of this.mesElementsListe) {
+          this.supprimerElement(e);
+        }
+      })
 
-    
-    for(let e of this.mesElementsListe){
-      console.log(e);
-    }
-      
-  
-   /*
-    const del = this.http.delete('http://localhost:8087/liste/'+this.liste.id).toPromise();
+    const del2 = this.http.delete('http://localhost:8087/liste/'+this.liste.id).toPromise();
 
-      del.then(x => {
+      del2.then(x => {
         this.ngOnInit();
       }, err => {
         console.log(err);
-      });*/
-} 
+      });
+      this.visible = false;
+}
 
 }

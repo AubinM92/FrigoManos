@@ -1,19 +1,19 @@
-export class User{
+export class User {
 
-    id : number;
+    id: number;
     mail: string;
     mdp: string;
-    pseudo : string;
+    pseudo: string;
 
 
 
     constructor(
 
-    ){}
+    ) { }
 
-   public User(mail,mdp){
+    public User(mail, mdp) {
         this.mail = mail;
-        this.mdp=mdp;
+        this.mdp = mdp;
     }
 
 }
