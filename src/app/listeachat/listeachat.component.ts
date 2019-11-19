@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-listeachat',
@@ -9,21 +10,19 @@ import { HttpClient } from '@angular/common/http';
 
 export class ListeachatComponent implements OnInit {
 
+  user: User = new User();
   mesElements;
-  liste;
+  listFinale;
+  listInter;
 
   constructor(private http : HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8087/liste-globale/' + "2").subscribe(
+    this.user.id = parseInt(localStorage.getItem("id"));
+    this.http.get('http://localhost:8087/liste-achat/' + this.user.id).subscribe(
       data => {
         this.mesElements = data;
-        this.mesElements.forEach(liste => {
-          console.log(liste);
-        });
-        console.log(this.mesElements);
       }
     )
   }
-
 }
