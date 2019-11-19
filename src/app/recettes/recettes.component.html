@@ -49,9 +49,20 @@
             </div>
         </div>
         <div class="row" style="margin:10px; padding:10px;">
-            <div class="col-sm-5">
+            <div class="col-sm-8">
                 <div class="table">
-                    <h1>Toutes les recettes</h1>
+                    <!--création d'un tableau-->
+                    <div class="text-center" style="width: 100%;">
+                        <H2>Recettes disponibles</H2>
+                    </div>
+                    <tbody class="text-center">
+                        <!-- ngFor equivaut à un ForEach-->
+                        <tr *ngFor="let r of allRecettes">
+                            <td width="30%">{{r.titre | uppercase }}</td>
+                            <td width="20%">Prép. : {{r.tempsPrepa}} min</td>
+                            <td width="20%">Cuisson : {{r.tempsCuis}} min</td>
+                        </tr>
+                    </tbody>
                 </div>
             </div>
             <div class="col-sm-7">
