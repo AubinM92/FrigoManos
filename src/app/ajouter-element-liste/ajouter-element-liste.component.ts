@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Liste } from '../model/Liste'
 import { User } from '../model/User';
 import { ElementListe } from '../model/ElementListe';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-ajouter-element-liste',
@@ -11,15 +14,17 @@ import { ElementListe } from '../model/ElementListe';
   styleUrls: ['./ajouter-element-liste.component.css']
 })
 export class AjouterElementListeComponent implements OnInit {
-  ingredients;
-  retour;
-  ingredient: ElementListe = new ElementListe();
-  selectedItem;
-  constructor(public dialogRef: MatDialogRef<AjouterElementListeComponent>, private http: HttpClient) { }
+
+
+  constructor(public dialogRef: MatDialogRef<AjouterElementListeComponent>, private http: HttpClient) {}
+
+
+
 
   ngOnInit() {
 
   }
+
 
   fermer() {
     this.dialogRef.close();
