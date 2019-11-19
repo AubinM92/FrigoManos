@@ -1,3 +1,13 @@
-.navPosition {
-    
+.nav-1 {
+    background: #EAC5CD;
+    background: linear-gradient(to bottom, #d5a5a3, #f4deeb);
+    padding: 10px;
+    position: absolute;
+    width: 375px;
+}
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }

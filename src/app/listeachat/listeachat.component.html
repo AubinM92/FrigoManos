@@ -5,18 +5,22 @@
     <div class="col-sm-9" style="padding: 20px;">
         <div class="">
             <div style="width: 100%;">
-                <h5>Liste d'achat</h5>
+                <h5>Récapitulatif</h5>
             </div>
 
             <table>
                 <thead class="thead-dark">
-                    <th>Ingrédient</th>
-                    <th>Quantité globale</th>
+                    <th width="60%">Ingrédient</th>
+                    <th width="30%">Quantité globale</th>
+                    <th width="10%">Valider</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let el of mesElements">
-                        <td>{{ el.ingredient }}</td>
-                        <td>{{ el.quantite }}</td>
+                        <td>{{ el.nomIngredient }}</td>
+                        <td>{{ el.quantite }} {{ el.unite }}</td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
                     </tr>
                 </tbody>
             </table>
