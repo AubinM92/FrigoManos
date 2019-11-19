@@ -1,69 +1,66 @@
-<div class="row">
-    <div class="col-sm-3" style="padding-right: 10px;">
-        <app-navbaruser></app-navbaruser>
-    </div>
-    <div class="col-sm-9">
-        <div style="margin:10px; padding:10px; background: #EAC5CD;">
-            <div class="row input-group-prepend">
-                <div class="col-sm-2">
-                    <button class="btn btn-lg btn-primary btn-block btn-login"
-                        style="background: none; border: none; text-align: left; pointer-events: none;">Filtres
-                        :</button>
+<app-navbaruser></app-navbaruser>
+
+<div class="container">
+    <div style="margin:10px; padding:10px; background: #EAC5CD;">
+        <div class="row input-group-prepend">
+            <div class="col-sm-2">
+                <button class="btn btn-lg btn-primary btn-block btn-login"
+                    style="background: none; border: none; text-align: left; pointer-events: none;">Filtres
+                    :</button>
+            </div>
+
+            <div class="col-sm-2 input-group" id="select1">
+                <div>
+                    <select class="custom-select" id="selectSais">
+                        <option selected>Saison...</option>
+                        <option value="s1">Printemps</option>
+                        <option value="s2">Eté</option>
+                        <option value="s3">Automne</option>
+                        <option value="s4">Hiver</option>
+                    </select>
                 </div>
+            </div>
 
-                <div class="col-sm-2 input-group" id="select1">
-                    <div>
-                        <select class="custom-select" id="selectSais">
-                            <option selected>Saison...</option>
-                            <option value="s1">Printemps</option>
-                            <option value="s2">Eté</option>
-                            <option value="s3">Automne</option>
-                            <option value="s4">Hiver</option>
-                        </select>
-                    </div>
+            <div class="col-sm-2 input-group" id="select2">
+                <div>
+                    <select class="custom-select" id="selectCat">
+                        <option selected>Type d'ingrédient...</option>
+                        <option value="c1">Légume</option>
+                        <option value="c2">Fruit</option>
+                        <option value="c3">Epicerie</option>
+                        <option value="c4">Viande</option>
+                        <option value="c5">Poisson</option>
+                        <option value="c6">Produit laitier</option>
+                        <option value="c7">Autre</option>
+
+                    </select>
                 </div>
+            </div>
 
-                <div class="col-sm-2 input-group" id="select2">
-                    <div>
-                        <select class="custom-select" id="selectCat">
-                            <option selected>Type d'ingrédient...</option>
-                            <option value="c1">Légume</option>
-                            <option value="c2">Fruit</option>
-                            <option value="c3">Epicerie</option>
-                            <option value="c4">Viande</option>
-                            <option value="c5">Poisson</option>
-                            <option value="c6">Produit laitier</option>
-                            <option value="c7">Autre</option>
-
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="input-group-prepend">
-                        <br><br>
-                        <button style="background: rgb(124, 165, 165); color: white"><strong>Appliquer les
-                                filtres</strong></button>
-                    </div>
+            <div class="col-sm-2">
+                <div class="input-group-prepend">
+                    <br><br>
+                    <button style="background: rgb(124, 165, 165); color: white"><strong>Appliquer les
+                            filtres</strong></button>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin:10px; padding:10px;">
-            <div class="col-sm-8">
-                <div class="table">
-                    <!--création d'un tableau-->
-                    <div class="text-center" style="width: 100%;">
-                        <H2>Recettes disponibles</H2>
-                    </div>
-                    <tbody class="text-center">
-                        <!-- ngFor equivaut à un ForEach-->
-                        <tr *ngFor="let r of allRecettes">
-                            <td width="30%">{{r.titre | uppercase }}</td>
-                            <td width="20%">Prép. : {{r.tempsPrepa}} min</td>
-                            <td width="20%">Cuisson : {{r.tempsCuis}} min</td>
-                        </tr>
-                    </tbody>
+    </div>
+    <div class="row" style="margin:10px; padding:10px;">
+        <div class="col-sm-8">
+            <div class="table">
+                <!--création d'un tableau-->
+                <div class="text-center" style="width: 100%;">
+                    <H2>Recettes disponibles</H2>
                 </div>
+                <tbody class="text-center">
+                    <!-- ngFor equivaut à un ForEach-->
+                    <tr *ngFor="let r of allRecettes">
+                        <td width="30%">{{r.titre | uppercase }}</td>
+                        <td width="20%">Prép. : {{r.tempsPrepa}} min</td>
+                        <td width="20%">Cuisson : {{r.tempsCuis}} min</td>
+                    </tr>
+                </tbody>
             </div>
 
         </div>

@@ -1,29 +1,25 @@
-<div class="row">
-    <div class="col-sm-3" style="padding: 10px;">
-        <app-navbaruser></app-navbaruser>
-    </div>
-    <div class="col-sm-9" style="padding: 20px;">
-        <div class="">
-            <div style="width: 100%;">
-                <h5>Récapitulatif</h5>
-            </div>
+<app-navbaruser></app-navbaruser>
 
-            <table>
-                <thead class="thead-dark">
-                    <th width="60%">Ingrédient</th>
-                    <th width="30%">Quantité globale</th>
-                    <th width="10%">Valider</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let el of mesElements">
-                        <td>{{ el.nomIngredient }}</td>
-                        <td>{{ el.quantite }} {{ el.unite }}</td>
-                        <td>
-                            <input type="checkbox">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="container">
+
+    <div style="width: 100%;">
+        <h5>Récapitulatif</h5>
     </div>
+
+    <table>
+        <thead class="thead-dark">
+            <th width="60%">Ingrédient</th>
+            <th width="30%">Quantité globale</th>
+            <th width="10%">Valider</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let el of mesElements">
+                <td>{{ el.nomIngredient }}</td>
+                <td>{{ el.quantite }} {{ el.unite }}</td>
+                <td>
+                    <input type="checkbox">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

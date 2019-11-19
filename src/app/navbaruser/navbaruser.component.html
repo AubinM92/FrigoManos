@@ -1,57 +1,65 @@
-<div class="card-signin nav-1">
-  <h3 class="text-center" style="background: rgb(124, 165, 165); padding: 5px; color: white; border: solid 3px white;">
-    <strong>Bienvenue {{ cUser }}</strong></h3>
-  <ul class="list-unstyled">
-    <hr>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  
+  <div style="vertical-align: middle;">
+    <div>
+      <br>
+      <h3>Bienvenue</h3>
+      <h3>{{ cUser }}</h3>
+      <hr>
+      <br>
+    </div>
 
-    <li>
-      <button class="btn btn-lg btn-primary btn-block btn-login"
-        style="background: none; border: none; text-align: left;">
-        <img src="https://myeleec.fr/wp-content/uploads/2013/03/refrigerateur.png" alt="" width="50px">
-        <strong> Mon Frigo</strong>
-      </button>
-    </li>
-    <hr>
-    <li>
-      <button class="btn btn-lg btn-primary btn-block btn-login"
-        style="width: 100%; background: none; border: none; text-align: left;" (click)="toListeAchat()">
-        <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
-        <strong> Ma liste d'achat</strong>
-      </button>
-    </li>
-    <hr>
-    <li>
-      <button class="btn btn-lg btn-primary btn-block btn-login"
-        style="width: 100%; background: none; border: none; text-align: left;" (click)="mesListes()">
-        <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
-        <strong> Mes listes de courses</strong>
-      </button>
-    </li>
-    <hr>
-    <li>
-      <button class="btn btn-lg btn-primary btn-block btn-login"
-        style="width: 100%; background: none; border: none; text-align: left;">
-        <img src="https://image.flaticon.com/icons/png/512/18/18560.png" alt="" width="50px">
-        <strong> Mes suggestions</strong>
-      </button>
-    </li>
-    <hr>
-    <br><br>
-    <li>
-      <hr>
-      <button class="btn btn-lg btn-primary btn-block btn-login" routerLink="/modif-profil"
-        style="width: 100%; background: none; border: none; text-align: left;">
-        <img src="https://svgsilh.com/svg/160872.svg" alt="" width="25px">
-        <strong> Mon compte</strong>
-      </button>
-    </li>
-    <li>
-      <hr>
-      <button class="btn btn-lg btn-primary btn-block btn-login" (click)="deconnexion()"
-        style="width: 100%; background: none; border: none; text-align: left;">
-        <img src="https://image.flaticon.com/icons/png/512/17/17367.png" alt="" width="25px">
-        <strong> Déconnexion</strong>
-      </button>
-    </li>
-  </ul>
-</div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button class="btn btn-lg btn-primary btn-block btn-login"
+            style="background: none; border: none; text-align: center;">
+            <img src="https://myeleec.fr/wp-content/uploads/2013/03/refrigerateur.png" alt="" width="50px">
+            <br><strong>Mon Frigo</strong>
+          </button>
+        </li>
+        <hr>
+        <li class="nav-item">
+          <button class="btn btn-lg btn-primary btn-block btn-login"
+            style="width: 100%; background: none; border: none; text-align: center;" (click)="toListeAchat()">
+            <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
+            <br><strong>Ma liste d'achat</strong>
+          </button>
+        </li>
+        <hr>
+        <li class="nav-item">
+          <button class="btn btn-lg btn-primary btn-block btn-login"
+            style="width: 100%; background: none; border: none; text-align: center;" (click)="mesListes()">
+            <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="50px">
+            <br><strong>Mes listes de courses</strong>
+          </button>
+        </li>
+        <hr>
+        <li class="nav-item">
+          <button class="btn btn-lg btn-primary btn-block btn-login"
+            style="width: 100%; background: none; border: none; text-align: center;">
+            <img src="https://image.flaticon.com/icons/png/512/18/18560.png" alt="" width="50px">
+            <br><strong>Mes suggestions</strong>
+          </button>
+        </li>
+        <hr>
+        <br><br>
+        <hr>
+        <li class="nav-item">
+          <button class="btn btn-lg btn-primary btn-block btn-login" routerLink="/modif-profil"
+            style="width: 100%; background: none; border: none; text-align: center;">
+            <img src="https://svgsilh.com/svg/160872.svg" alt="" width="25px">
+            <br><strong>Mon compte</strong>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-lg btn-primary btn-block btn-login" (click)="deconnexion()"
+            style="width: 100%; background: none; border: none; text-align: center;">
+            <img src="https://image.flaticon.com/icons/png/512/17/17367.png" alt="" width="25px">
+            <br><strong>Déconnexion</strong>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
