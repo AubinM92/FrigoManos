@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModiflisteService } from '../modifliste.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-modifelementliste',
@@ -9,13 +11,28 @@ import { ModiflisteService } from '../modifliste.service';
 export class ModifelementlisteComponent implements OnInit {
 
   element;
-  constructor(private servmodif : ModiflisteService) { }
+  erreur;
+  constructor(private servmodif: ModiflisteService, private http: HttpClient, public dialog3Ref: MatDialogRef<ModifelementlisteComponent>) { }
 
   ngOnInit() {
     this.element = this.servmodif.elementmodif;
   }
 
-modifElement(){
-  
-}
+  modifElement() {
+    if (this.element.quantite = 0) {
+      this.erreur = "Veuillez saisir une valeur supérieur à 0"
+    } else {
+      this.http.put('http://localhost:8087/elemListe/' + this.element.id, this.element).subscribe(
+        data => {
+          this.dialog3Ref.close();
+        }, err => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  fermer() {
+    this.dialog3Ref.close();
+  }
 }
