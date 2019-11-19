@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { del } from 'selenium-webdriver/http';
 import { ElementListe } from '../model/ElementListe';
 import { AjouterElementListeComponent } from '../ajouter-element-liste/ajouter-element-liste.component';
+import { ModifelementlisteComponent } from '../modifelementliste/modifelementliste.component'; 
+import { ModiflisteService } from '../modifliste.service';
 
 @Component({
   selector: 'app-afficherlistecourse',
@@ -22,7 +24,7 @@ export class AfficherlistecourseComponent implements OnInit {
   element;
   user: User = new User();
 
-  constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog, private router: Router) { }
+  constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog,private dialog3: MatDialog, private router: Router, private servmodif : ModiflisteService) { }
 
 
 
@@ -108,6 +110,11 @@ export class AfficherlistecourseComponent implements OnInit {
 
     ajoutElementListe(){
       const mydial2 = this.dialog2.open(AjouterElementListeComponent);
+    }
+
+    modifElementListe(e){
+      this.servmodif.elementmodif = e;
+      const mydial3 = this.dialog3.open(ModifelementlisteComponent);
     }
 
 }

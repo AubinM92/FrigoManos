@@ -11,6 +11,7 @@ import { ListeachatComponent } from './listeachat/listeachat.component'
 import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
 
 import { RecettesComponent } from './recettes/recettes.component';
+import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'mon-frigo', component: AfficherfrigoComponent },
   { path: 'mes-listes', component: AfficherlistecourseComponent },
   { path: 'aff-une-recette', component: AfficherunerecetteComponent},
-  { path: 'recettes', component:RecettesComponent}
+  { path: 'recettes', component:RecettesComponent},
+  { path: 'modifelementliste', component:ModifelementlisteComponent}
 ];
 
 @NgModule({

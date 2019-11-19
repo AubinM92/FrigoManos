@@ -17,18 +17,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component';
 import { RecettesComponent } from './recettes/recettes.component';
-
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
 import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
-import { MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatMenuModule } from '@angular/material';
-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
-
 import {MatIconModule} from '@angular/material/icon';
+import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +44,8 @@ import {MatIconModule} from '@angular/material/icon';
     AjouterElementListeComponent,
     AfficherunerecetteComponent,
     RecettesComponent,
-    AjouterElementListeComponent
+    AjouterElementListeComponent,
+    ModifelementlisteComponent
 
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],
