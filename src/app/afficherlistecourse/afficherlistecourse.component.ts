@@ -7,6 +7,7 @@ import { User } from '../model/User';
 import { Router } from '@angular/router';
 import { del } from 'selenium-webdriver/http';
 import { ElementListe } from '../model/ElementListe';
+import { AjouterElementListeComponent } from '../ajouter-element-liste/ajouter-element-liste.component';
 
 @Component({
   selector: 'app-afficherlistecourse',
@@ -21,7 +22,7 @@ export class AfficherlistecourseComponent implements OnInit {
   element;
   user: User = new User();
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private router: Router) { }
+  constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog, private router: Router) { }
 
 
 
@@ -39,7 +40,6 @@ export class AfficherlistecourseComponent implements OnInit {
       this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
         data => {
           this.mesElementsListe = data;
-          console.log(this.mesElementsListe);
         }
       )
     }
@@ -47,11 +47,11 @@ export class AfficherlistecourseComponent implements OnInit {
 
   boutonVoir(l) {
     this.liste = l;
+    localStorage.setItem("vueListe", (""+this.liste.id));
     this.visible = true;
     this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
       data => {
         this.mesElementsListe = data;
-        console.log(this.mesElementsListe);
       }
     )
   }
@@ -106,8 +106,8 @@ export class AfficherlistecourseComponent implements OnInit {
       this.router.navigate(['/mes-listes'])
     }
 
-    ajoutElementListe(nomElement){
-      const mydial = this.dialog.open(CreerlistecourseComponent);
+    ajoutElementListe(){
+      const mydial2 = this.dialog2.open(AjouterElementListeComponent);
     }
 
 }
