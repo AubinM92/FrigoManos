@@ -6,7 +6,6 @@ export class User {
     pseudo: string;
 
 
-
     constructor(
 
     ) { }

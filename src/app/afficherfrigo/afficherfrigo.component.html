@@ -1,15 +1,81 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
+<div class="row" style="padding-right: 10px;">
+    <app-navbaruser></app-navbaruser>
+    <div class="col-sm-4">
+
+        <div class="col-sm-12">
+            <div style="margin:10px; padding:10px; background: #EAC5CD;">
+                <p class="text-center"><strong>Mon frigo</strong></p>
+            </div>
+            <div class="row" style="margin:10px; padding:10px;">
+                <div class="col-sm-5">
+                    <div class="table">
+
+                        <thead class="thead-dark">
+
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let e of mesElementsFrigo">
+                                <td>{{e.ingredient.nom | uppercase }}</td>
+                                <td>{{e.quantite}}</td>
+                                <td>{{e.ingredient.unite}}</td>
+                                <td><button mat-icon-button aria-label="" (click)='boutonVoir(e)'> Modification</button>
+                                </td>
+                                <td><button mat-icon-button aria-label="" (click)='supprimerElementFrigo(e)'>
+                                        Suppression
+                                       
+                                    </button></td>
+
+
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <div class="col-sm-4">
-            <h5>Mon frigo</h5>
+        
+
+        <div class="col-sm-4" *ngIf="visible">
+            <h3>{{element.ingredient.nom}}</h3>
             <br>
-            <button class="btn btn-primary btn-block" (onclick)="afficherFrigo()"> Afficher éléments frigo </button>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Ingrédient</th>
+                                <th>Quantité</th>
+                                <th>Unité</th>
+                                <th>Modifier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>{{element.ingredient.nom }}</td>
+                                <input type="text" [(ngModel)]="element.quantite"
+                                    class="form-control text-center" placeholder="Quantité" name="quantite"
+                                    required>
+                                <td>{{element.ingredient.unite}}</td>
+                                <td><button mat-icon-button aria-label="" color="warn"
+                                        (click)="modifElementFrigo()">
+                                        modifier
+                                       
+                                    </button></td>
+
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
-    </div>
+
+
+            </div>
+
 
 
 </div>
