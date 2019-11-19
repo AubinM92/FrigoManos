@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ModifprofilComponent implements OnInit {
   visibleVal = false;
   visibleErr = false;
+  visibleRien = false;
 
   data;
   userActuel: User = new User();
@@ -32,12 +33,23 @@ export class ModifprofilComponent implements OnInit {
   }
 
   modifPerson(persn) {
-    this.http.put('http://localhost:8087/user/' + this.userActuel.id, this.userActuel).subscribe(data => {
-      this.visibleVal = true;
-    }, err => {
-      this.visibleErr = true;
-      console.log(err);
-    });
+    this.visibleVal = false;
+    this.visibleErr = false;
+    this.visibleRien = false;
+    if (this.userActuel.mail != localStorage.getItem("mail") || this.userActuel.pseudo != localStorage.getItem("pseudo") || this.userActuel.mdp != localStorage.getItem("mdp")) {
+      this.http.put('http://localhost:8087/user/' + this.userActuel.id, this.userActuel).subscribe(data => {
+        this.visibleVal = true;
+        localStorage.setItem('mail', this.userActuel.mail);
+        localStorage.setItem('mdp', this.userActuel.mdp);
+        localStorage.setItem('pseudo', this.userActuel.pseudo);
+      }, err => {
+        this.visibleErr = true;
+        console.log(err);
+      });
+    } else {
+      this.visibleRien = true;
+    }
+
   }
 
   retour() {
