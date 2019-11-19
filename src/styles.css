@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Couleur pour afficher un élément validé (ex : Modifications de profil enregistrées !) */
+.valid{
+    color: limegreen;
+}
+
+/* Couleur pour afficher un message d'erreur (ex dans un err d'une méthode ts) */
+.invalid{
+    color: tomato;
+}

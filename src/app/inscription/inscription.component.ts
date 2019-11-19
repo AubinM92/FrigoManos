@@ -23,7 +23,7 @@ valider;
   inscription(){
 
     if(this.user.mdp != this.motDePasse2){
-      this.erreur = "Mots de passes non identiques !"
+      this.erreur = "Mots de passe non identiques !"
       this.user.mdp = "";
       this.motDePasse2 = "";
       return 0;
@@ -31,7 +31,7 @@ valider;
 
     this.http.post('http://localhost:8087/user', this.user).subscribe(
       data => {
-        this.router.navigate(['/home']);
+
       }, err => {
         this.erreur = "Compte déjà existant";
         return 0;

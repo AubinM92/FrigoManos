@@ -4,18 +4,19 @@
     </div>
     <div class="col-sm-9" style="padding: 20px;">
         <div class="">
-            <div class="toolbar">
-                <button class="btn btn-default">Bouton</button>
+            <div style="width: 100%;">
+                <h5>Liste d'achat</h5>
             </div>
 
             <table>
-                <thead>
+                <thead class="thead-dark">
                     <th>Ingrédient</th>
                     <th>Quantité globale</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let l of mesListes">
-
+                    <tr *ngFor="let el of mesElements">
+                        <td>{{ el.ingredient }}</td>
+                        <td>{{ el.quantite }}</td>
                     </tr>
                 </tbody>
             </table>
