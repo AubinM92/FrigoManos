@@ -57,8 +57,9 @@
                                         {{e.ingredient.nom }}
                                     </td>
                                     <td width="40%">
-                                        {{e.quantite }}
+                                        {{e.quantite }} {{e.ingredient.unite }}
                                     </td>
+
                                     <td width="10%">
                                         <button (click)="supprimerElement(e)" style="background: none; border: none;">
                                             <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png"
