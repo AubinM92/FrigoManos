@@ -6,8 +6,6 @@ import { CreerlistecourseComponent } from '../creerlistecourse/creerlistecourse.
 import { User } from '../model/User';
 import { del } from 'selenium-webdriver/http';
 import { ElementListe } from '../model/ElementListe';
-import { CreerlistecourseComponent } from '../creerlistecourse/creerlistecourse.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-afficherlistecourse',
@@ -22,11 +20,7 @@ export class AfficherlistecourseComponent implements OnInit {
   element;
   user: User = new User();
 
-<<<<<<< HEAD
   constructor(private http: HttpClient,private dialog: MatDialog) { }
-=======
-  constructor(private http: HttpClient, private dialog: MatDialog) { }
->>>>>>> 8f63a75a61434f9f522c66f381829563bf47374c
 
 
 
@@ -105,14 +99,8 @@ export class AfficherlistecourseComponent implements OnInit {
       this.visible = false;
 }
 
-<<<<<<< HEAD
   nouvelleListe(){
     const mydial = this.dialog.open(CreerlistecourseComponent);
   }
-=======
-    nouvelleListe(){
-      const mydial = this.dialog.open(CreerlistecourseComponent);
-    }
->>>>>>> 8f63a75a61434f9f522c66f381829563bf47374c
 
 }
