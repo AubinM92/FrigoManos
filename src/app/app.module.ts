@@ -16,6 +16,7 @@ import { NavbaruserComponent } from './navbaruser/navbaruser.component';
 import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
+import { ListeachatComponent } from './listeachat/listeachat.component';
 
 
 
@@ -31,6 +32,8 @@ import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlist
     NavbaruserComponent,
     AfficherfrigoComponent,
     AfficherlistecourseComponent,
+    AfficherfrigoComponent,
+    ListeachatComponent,
     AfficherfrigoComponent
   ],
   imports: [
