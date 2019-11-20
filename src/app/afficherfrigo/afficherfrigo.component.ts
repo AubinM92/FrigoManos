@@ -7,7 +7,10 @@ import { ModifFrigoComponent } from '../modif-frigo/modif-frigo.component';
 import { ServicefrigoService } from '../servicefrigo.service';
 import { AjouterElementFrigoComponent } from '../ajouter-element-frigo/ajouter-element-frigo.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatTableDataSource} from '@angular/material/table';
+import { DataSource } from '@angular/cdk/table';
 
+const ELEMENT_DATA: ElementFrigo[] = [];
 
 @Component({
   selector: 'app-afficherfrigo',
@@ -20,9 +23,11 @@ export class AfficherfrigoComponent implements OnInit {
   visible=false;
   mesElementsFrigo;
   ef: ElementFrigo = new ElementFrigo();
+  e;
+  aj;
   element;
+  dataSource = new MatTableDataSource<ElementFrigo>(ELEMENT_DATA);
 
-  
 
   constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog, private router: Router, private s: ServicefrigoService) { }
 
@@ -56,9 +61,10 @@ export class AfficherfrigoComponent implements OnInit {
     );
   }
 
-  ajouterElementFrigo(){
+  ajouterElementFrigo(aj){
+    this.s.elemservice=aj;
     const mydiale= this.dialog.open(AjouterElementFrigoComponent);
     this.ngOnInit;
-  }
+}
 
 }
