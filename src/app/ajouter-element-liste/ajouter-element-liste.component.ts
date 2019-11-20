@@ -88,6 +88,7 @@ enregistrer(){
   this.element.quantite = this.quantite;
   this.element.ingredient.id = this.idIngredient;
   this.element.liste.id = parseInt(localStorage.getItem("vueListe"));
+  
   const del = this.http.post('http://localhost:8087/elemListe', this.element).toPromise();
   
   del.then(
