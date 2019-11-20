@@ -10,6 +10,16 @@
     float: left;
 }
 
+.cadre{
+  border-radius: 5px;
+}
+
+.cadretop{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
 .collapse-content .fa.fa-heart:hover {
     color: #f44336 !important;
   }

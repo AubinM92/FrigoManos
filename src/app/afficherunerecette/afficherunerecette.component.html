@@ -1,1 +1,71 @@
-<div>super génial</div>
+<div style="width: 750px; height: 850px;">
+    <img class="card-img-top"
+        src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
+        alt="Div image cap" style="height: 400px;">
+    <h2 class="text-center">{{ laRecette.titre }}</h2>
+    <div style="margin: 10px">
+        <div class="row" style="vertical-align: middle;">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-">
+                <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
+                    style="width: 30px; height: 30px; vertical-align: middle;">
+                <span style="vertical-align: middle;"> Préparation : {{ laRecette.tempsPrepa }} min </span>
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm">
+                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
+                    style="width: 35px; height: 35px; vertical-align: middle;">
+                <span style="vertical-align: middle;"> Cuisson : {{ laRecette.tempsCuis }} min </span>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <span>Ingrédients :</span>
+                    <br>
+                    <span *ngFor="let ing of ingLaRecette"><i style="vertical-align: middle;" class="material-icons"
+                            [ngClass]="(frigo(ing)=='true')?'okJai' : 'jaiPas'">
+                            panorama_fish_eye</i>{{ ing.ingredient.nom }} : {{ ing.quantite }}
+                        {{ ing.ingredient.unite}} <br></span>
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-4">
+                    <br>
+                    <i style="vertical-align: middle;" class="material-icons okJai">panorama_fish_eye</i>
+                    <span>J'ai ça dans mon frigo !</span><br>
+                    <i style="vertical-align: middle;" class="material-icons pasAssez">panorama_fish_eye</i>
+                    <span>J'en ai pas assez...</span><br>
+                    <i style="vertical-align: middle;" class="material-icons jaiPas">panorama_fish_eye</i>
+                    <span>Je n'en ai pas du tout !</span>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div>
+            {{laRecette.description}}
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-warning pull-right">
+                    <mat-icon>star</mat-icon>
+                </button>
+                <span>Ajouter la recette aux favoris</span>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-outline-danger" (click)='ajouterRecetteCourse(re)'>
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </button>
+                <span> Ajouter à ma liste de courses</span>
+            </div>
+        </div>
+    </div>
+</div>
