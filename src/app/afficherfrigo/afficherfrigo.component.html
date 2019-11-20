@@ -1,16 +1,18 @@
 <app-navbaruser></app-navbaruser>
 
-<div class="row">
-    <div class="col-sm-6">
-        <div style="margin:10px; padding:10px; background: #EAC5CD;">
-            <div class="col-sm-12">
-                <p class="text-center"><strong>Mon frigo</strong></p>
-            </div>
+<div class="container">
+    <div style="margin:10px; padding:10px; background: #EAC5CD;">
+        <div class="col-sm-4">
+            <h2><strong>Mon frigo</strong></h2>
+            <button mat-icon-button aria-label="" (click)='ajouterElementFrigo()'>Ajouter un item au frigo</button>
         </div>
-        <div class="row" style="margin:10px; padding:10px;">
-            <div class="col-sm-6">
-                <div class="table">
+    </div>
 
+
+    <div class="row" style="margin:10px; padding:10px;">
+        <div class="col-sm-5">
+            <div class="table">
+                <div class="text-center" style="width: 100%">
                     <tbody>
                         <tr *ngFor="let e of mesElementsFrigo">
                             <td>{{e.ingredient.nom | uppercase }}</td>
@@ -26,6 +28,7 @@
                                 </button></td>
                         </tr>
                     </tbody>
+
                 </div>
             </div>
         </div>

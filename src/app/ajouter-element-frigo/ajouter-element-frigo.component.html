@@ -1,0 +1,33 @@
+<div>
+    <h5 class="text-center">Choisir l'item pour votre frigo</h5>
+    <div style="margin: 10px">
+        <form action="" #forme="ngForm">
+            <div>
+
+                <mat-form-field class="">
+                    <input required type="text" placeholder="Pick one" aria-label="Number" matInput
+                        [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing"
+                        placeholder="Nom de l'ingrédient">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+            </div>
+            <div>
+                <input type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required name="quantite">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+                </div>
+                <div class="col-sm-6">
+                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
+                        (click)="valider();">Valider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
