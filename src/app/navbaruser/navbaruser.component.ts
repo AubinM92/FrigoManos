@@ -35,4 +35,8 @@ export class NavbaruserComponent implements OnInit {
   mesListes() {
     this.router.navigate(['/mes-listes']);
   }
+
+  monFrigo(){
+    this.router.navigate(['/mon-frigo'])
+  }
 }
