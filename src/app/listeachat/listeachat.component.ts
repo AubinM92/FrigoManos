@@ -3,11 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../model/User';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
-import { ElementListe } from '../model/ElementListe';
 import { ElementFrigo } from '../model/ElementFrigo';
-import { Ingredient } from '../model/Ingredient';
 import { DataSource } from '@angular/cdk/table';
-import { element } from 'protractor';
 
 const ELEMENT_DATA: ElementFrigo[] = [];
 
@@ -18,11 +15,11 @@ const ELEMENT_DATA: ElementFrigo[] = [];
 })
 
 export class ListeachatComponent implements OnInit {
-  ELEMENT_DATA: ElementFrigo[];
-  displayedColumns: string[] = ['id', 'nom', 'quantite'];
-  dataSource = new MatTableDataSource<ElementFrigo>(this.ELEMENT_DATA);
+  displayedColumns: string[] = ['select','id', 'nom', 'quantite'];
+  dataSource = new MatTableDataSource<ElementFrigo>(ELEMENT_DATA);
   selection = new SelectionModel<ElementFrigo>(true, []);
   elementFrigo: ElementFrigo = new ElementFrigo();
+  elementsFrigo: ElementFrigo[] = [];
   user: User = new User();
   mesElements;
 
@@ -40,8 +37,12 @@ export class ListeachatComponent implements OnInit {
     del.then(
       data => {
         this.mesElements = data;
-            
-        //this.ELEMENT_DATA = this.mesElements;
+        this.elementsFrigo = this.mesElements;
+        this.elementsFrigo.forEach(element => {
+          ELEMENT_DATA.push(element);
+        });
+        console.log(ELEMENT_DATA)
+        this.dataSource.data = ELEMENT_DATA;
       }
     )
   
@@ -59,12 +60,12 @@ export class ListeachatComponent implements OnInit {
         this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-    /** The label for the checkbox on the passed row 
+    /** The label for the checkbox on the passed row */
     checkboxLabel(row?: ElementFrigo): string {
       if (!row) {
         return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
       }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-    }*/
+
+    }
 
 }
