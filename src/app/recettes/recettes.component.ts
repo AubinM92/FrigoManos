@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { UnerecetteService } from '../unerecette.service';
 import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunerecette.component';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { Liste } from '../model/Liste';
+import { Recette } from '../model/Recette';
 
 @Component({
   selector: 'app-recettes',
@@ -10,9 +12,12 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./recettes.component.css']
 })
 export class RecettesComponent implements OnInit {
-  elementRecetteChoix;
-  recetteChoix
+  lesElementRecette;
+  recetteChoix : Recette = new Recette();
   allRecettes;
+  listeRecette : Liste = new Liste();
+  listeRecetteReturn;
+  dateAuj;
 
   constructor(private http: HttpClient, private recetteService : UnerecetteService, private dialog: MatDialog) { }
 
@@ -30,15 +35,28 @@ export class RecettesComponent implements OnInit {
   }
 
   ajouterRecetteCourse(re){
-    this.recetteChoix= re;
-    this.http.get('http://localhost:8087/elemListe/' + this.recetteChoix.id).subscribe(
-      data => {
-        this.elementRecetteChoix = data;
-      }
-    )
-  }
+    this.recetteChoix.id= re.id;
+    this.recetteChoix.description= re.description;
+    this.recetteChoix.temps_cuis= re.temps_cuis;
+    this.recetteChoix.temps_prepa= re.temps_prepa;
+    this.recetteChoix.titre= re.titre;
 
-  ajouterListeEnvie(){
+
+
+    this.listeRecette.titre = re.titre;
+    this.listeRecette.user.id= localStorage.id;
+
+    this.http.post('http://localhost:8087/listeRecette', this.listeRecette).subscribe(data => {
+        this.listeRecetteReturn = data;
+        console.log(this.listeRecetteReturn);
+      }
+    );
+
+  }
+  
+  ajouterListeEnvie(recette){
+    this.dateAuj = new Date();
+
 
   }
 
