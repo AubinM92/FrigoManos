@@ -30,27 +30,21 @@ export class AfficherlistecourseComponent implements OnInit {
 
   ngOnInit() {
     this.user.id = parseInt(localStorage.getItem("id"));
-
-    const del = this.http.get('http://localhost:8087/liste-globale/'+ this.user.id).toPromise();
-    del.then(
+    this.http.get('http://localhost:8087/liste-globale/'+ this.user.id).subscribe(
       data => {
         this.mesListes = data;
         console.log(this.mesListes);
-
-        if (this.liste.titre != null) {
-      
-          const del2 = this.http.get('http://localhost:8087/elemListe/' + this.liste.id).toPromise()
-          del2.then(
-            data => {
-              this.mesElementsListe = data;
-            }
-          )
-        }
-
       }
     );
 
-
+    if (this.liste.titre != null) {
+      
+      this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+        data => {
+          this.mesElementsListe = data;
+        }
+      )
+    }
   }
 
   boutonVoir(l) {
@@ -89,14 +83,12 @@ export class AfficherlistecourseComponent implements OnInit {
 
   supprimerListe(l) {
     this.liste = l;
-
     const del1 = this.http.get('http://localhost:8087/elemListe/' + this.liste.id).toPromise();
       del1.then(data => {
         this.mesElementsListe = data;
         for (let e of this.mesElementsListe) {
           this.supprimerElement(e);
         }
-        this.ngOnInit();
       })
 
     const del2 = this.http.delete('http://localhost:8087/liste/'+this.liste.id).toPromise();
@@ -112,17 +104,11 @@ export class AfficherlistecourseComponent implements OnInit {
 
     nouvelleListe(){
       const mydial = this.dialog.open(CreerlistecourseComponent);
-      mydial.afterClosed().subscribe(result => {
-        this.ngOnInit();
-      });
+      this.router.navigate(['/mes-listes'])
     }
 
     ajoutElementListe(){
       const mydial2 = this.dialog2.open(AjouterElementListeComponent);
-      mydial2.afterClosed().subscribe(result => {
-        this.ngOnInit();
-      });
-
     }
 
     modifElementListe(e){
