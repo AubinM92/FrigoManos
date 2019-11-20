@@ -1,1 +1,37 @@
-<div>super génial</div>
+<div style="width: 750px; height: 850px;">
+    <img class="card-img-top img-fluid"
+        src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
+        alt="Div image cap" style="height: 400px;">
+    <h2 class="text-center">{{ laRecette.titre }}</h2>
+    <div style="margin: 10px">
+        <form action="" #forme="ngForm">
+            <div class="row">
+                <div class="col-sm-1">
+
+                </div>
+                <div class="col-sm-" style="vertical-align: middle;">
+                    <img src="">
+                    <mat-icon style="vertical-align: middle;">query_builder</mat-icon>
+                    <span style="vertical-align: middle;"> Préparation : {{ laRecette.tempsPrepa }} min </span>
+                </div>
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm">
+                    <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap" style="width: 35px; height: 35px; vertical-align: middle;">
+                </div>
+                <div>
+                    {{laRecette.description}}
+                </div>
+                <div class="col-sm-6">
+                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
+                        (click)="modifElement();">Valider</button>
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+                </div>
+                <div class="col-sm-6">{{ erreur }}</div>
+            </div>
+        </form>
+    </div>
+</div>
