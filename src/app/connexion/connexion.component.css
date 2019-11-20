@@ -17,7 +17,7 @@
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
   padding: 0.75rem 1rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
 }
 
 .card-signin {
@@ -28,4 +28,12 @@
 
 .card-body {
   padding: 2rem;
+}
+
+.font-app {
+  font-family: Georgia, serif !important;
+}
+
+.font-btn {
+  color: #8cbcbe;
 }
