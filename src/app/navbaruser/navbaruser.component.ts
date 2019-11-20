@@ -37,6 +37,10 @@ export class NavbaruserComponent implements OnInit {
   }
 
   monFrigo(){
-    this.router.navigate(['/mon-frigo'])
+    this.router.navigate(['/mon-frigo']);
+  }
+
+  toRecettes() {
+    this.router.navigate(['/recettes']);
   }
 }
