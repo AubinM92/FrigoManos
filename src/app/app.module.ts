@@ -29,6 +29,7 @@ import { ModifelementlisteComponent } from './modifelementliste/modifelementlist
 import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
+
 @NgModule({
   declarations: [
     AppComponent,
