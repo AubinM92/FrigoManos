@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ModifprofilComponent } from './modifprofil/modifprofil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CreerlistecourseComponent } from './creerlistecourse/creerlistecourse.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
@@ -18,16 +18,20 @@ import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlist
 import { ListeachatComponent } from './listeachat/listeachat.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { AjouterElementListeComponent } from './ajouter-element-liste/ajouter-element-liste.component';
-import {AfficherunerecetteComponent} from './afficherunerecette/afficherunerecette.component'
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { AfficherunerecetteComponent } from './afficherunerecette/afficherunerecette.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
-import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Directive } from '@angular/core';
+import { Input } from '@angular/core';
+import {MatTableModule} from '@angular/material/table';
+import { DataSource } from '@angular/cdk/table';
 
 @NgModule({
   declarations: [
@@ -48,10 +52,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     RecettesComponent,
     AjouterElementListeComponent,
     ModifelementlisteComponent,
-    ModifFrigoComponent,
+    ModifFrigoComponent
 
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],
+  entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, ModifFrigoComponent, ModifelementlisteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -65,7 +69,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
