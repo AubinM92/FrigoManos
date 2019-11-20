@@ -65,7 +65,7 @@
                                     <p class="card-text"><small class="text-muted">Préparation : {{tempsPrepa }} Cuisson : {{re.tempsCuis }} min</small></p>
                                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <button type="button" class="btn btn-outline-success"><mat-icon>remove_red_eye</mat-icon></button>
+                                            <button type="button" class="btn btn-outline-success" (click)='afficherRecette(re)'><mat-icon>remove_red_eye</mat-icon></button>
                                             <button type="button"
                                                 class="btn btn-warning"><small><strong>Envie</strong></small></button>
                                             <button type="button" class="btn btn-outline-dark">
