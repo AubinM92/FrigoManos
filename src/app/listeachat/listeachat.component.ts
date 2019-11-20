@@ -6,7 +6,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import { ElementFrigo } from '../model/ElementFrigo';
 import { DataSource } from '@angular/cdk/table';
 
-const ELEMENT_DATA: ElementFrigo[] = [];
 
 @Component({
   selector: 'app-listeachat',
@@ -15,8 +14,9 @@ const ELEMENT_DATA: ElementFrigo[] = [];
 })
 
 export class ListeachatComponent implements OnInit {
-  displayedColumns: string[] = ['select','id', 'nom', 'quantite'];
-  dataSource = new MatTableDataSource<ElementFrigo>(ELEMENT_DATA);
+  ELEMENT_DATA: ElementFrigo[] = [];
+  displayedColumns: string[] = ['select','id', 'nom', 'quantite', 'unite'];
+  dataSource = new MatTableDataSource<ElementFrigo>(this.ELEMENT_DATA);
   selection = new SelectionModel<ElementFrigo>(true, []);
   elementFrigo: ElementFrigo = new ElementFrigo();
   elementsFrigo: ElementFrigo[] = [];
@@ -30,19 +30,19 @@ export class ListeachatComponent implements OnInit {
   }
 
   recupDonnees(){
-
+    this.dataSource.data.reduce;    
     this.user.id = parseInt(localStorage.getItem("id"));
     const del = this.http.get('http://localhost:8087/liste-achat/' + this.user.id).toPromise();
-
+    this.dataSource = new MatTableDataSource<ElementFrigo>();
     del.then(
       data => {
         this.mesElements = data;
         this.elementsFrigo = this.mesElements;
         this.elementsFrigo.forEach(element => {
-          ELEMENT_DATA.push(element);
+          this.ELEMENT_DATA.push(element);
         });
-        console.log(ELEMENT_DATA)
-        this.dataSource.data = ELEMENT_DATA;
+        console.log(this.ELEMENT_DATA)
+        this.dataSource.data = this.ELEMENT_DATA;
       }
     )
   
@@ -66,6 +66,11 @@ export class ListeachatComponent implements OnInit {
         return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
       }
 
+    }
+
+    getTotalCost() {
+      //return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+      return 1;
     }
 
 }

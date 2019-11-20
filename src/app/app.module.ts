@@ -55,7 +55,8 @@ import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-el
     RecettesComponent,
     AjouterElementListeComponent,
     ModifelementlisteComponent,
-    ModifFrigoComponent
+    ModifFrigoComponent,
+    AjouterElementFrigoComponent
   ],
   entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, ModifFrigoComponent, ModifelementlisteComponent],
   imports: [
