@@ -20,4 +20,7 @@ export class RecettesComponent implements OnInit {
       })
   }
 
+  afficherRecette(recette){
+    
+  }
 }
