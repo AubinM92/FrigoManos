@@ -32,6 +32,9 @@ import { Directive } from '@angular/core';
 import { Input } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
+import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
+
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,6 @@ import { DataSource } from '@angular/cdk/table';
     AjouterElementListeComponent,
     ModifelementlisteComponent,
     ModifFrigoComponent
-
   ],
   entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, ModifFrigoComponent, ModifelementlisteComponent],
   imports: [

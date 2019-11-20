@@ -19,7 +19,7 @@ export class ModifelementlisteComponent implements OnInit {
   }
 
   modifElement() {
-
+  
       this.http.put('http://localhost:8087/elemListe/' + this.element.id, this.element).subscribe(
         data => {
           this.dialog3Ref.close();

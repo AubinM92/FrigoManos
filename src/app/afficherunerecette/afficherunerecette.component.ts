@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UnerecetteService } from '../unerecette.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-afficherunerecette',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./afficherunerecette.component.css']
 })
 export class AfficherunerecetteComponent implements OnInit {
-
-  constructor() { }
+laRecette;
+  constructor(private recetteService : UnerecetteService, private http: HttpClient) { }
 
   ngOnInit() {
+this.laRecette = this.recetteService.recette;
   }
 
 }
