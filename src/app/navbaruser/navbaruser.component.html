@@ -3,64 +3,65 @@
   <div style="vertical-align: middle;">
     <div>
       <br>
-      <h2 class="bienvenue">Bienvenue {{ cUser }}</h2>
-      <hr>
-      <br>
+      <h2 class="bienvenue">Bienvenue</h2>
+      <h2 class="bienvenue">{{ cUser }}</h2>
+      <hr class="demarcation">
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item bordure">
           <button class="btn btn-lg btn-primary btn-block btn-login"
-            style="background: none; border: none; text-align: center;" (click)="monFrigo()">
-            <img src="https://myeleec.fr/wp-content/uploads/2013/03/refrigerateur.png" alt="" width="50px">
-            <br><strong>Mon Frigo</strong>
+            style="background: none; border: none; text-align: center; margin-top: 10px;" (click)="monFrigo()">
+            <img src="https://image.flaticon.com/icons/svg/2235/2235754.svg" width="50px">
+            <br>
+            <h6 class="text-navbar">Mon Frigo</h6>
           </button>
         </li>
         <hr>
         <li class="nav-item">
           <button class="btn btn-lg btn-primary btn-block btn-login"
             style="width: 100%; background: none; border: none; text-align: center;" (click)="toListeAchat()">
-            <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="45px">
+            <img src="https://image.flaticon.com/icons/svg/687/687264.svg" alt="" width="50px">
             <br>
-            <h5 class="text-navbar">Ma liste d'achat</h5>
+            <h6 class="text-navbar">Ma liste d'achat</h6>
           </button>
         </li>
         <hr>
         <li class="nav-item">
           <button class="btn btn-lg btn-primary btn-block btn-login"
             style="width: 100%; background: none; border: none; text-align: center;" (click)="mesListes()">
-            <img src="https://image.flaticon.com/icons/png/512/39/39862.png" alt="" width="45px">
+            <img src="https://image.flaticon.com/icons/svg/685/685745.svg" alt="" width="50px">
             <br>
-            <h5 class="text-navbar">Mes listes de courses</h5>
+            <h6 class="text-navbar">Mes listes de courses</h6>
           </button>
         </li>
         <hr>
         <li class="nav-item">
           <button class="btn btn-lg btn-primary btn-block btn-login"
             style="width: 100%; background: none; border: none; text-align: center;">
-            <img src="https://image.flaticon.com/icons/png/512/18/18560.png" alt="" width="55px">
+            <img src="https://image.flaticon.com/icons/svg/766/766316.svg" alt="" width="50px">
             <br>
-            <h5 class="text-navbar">Mes suggestions</h5>
+            <h6 class="text-navbar">Recettes</h6>
           </button>
         </li>
         <hr>
-        <hr style="width: 100%; color: #888888; height: 0.5px; background-color:#888888;">
+        <hr class="demarcation">
         <hr>
         <li class="nav-item">
           <button class="btn btn-lg btn-primary btn-block btn-login" routerLink="/modif-profil"
             style="width: 100%; background: none; border: none; text-align: center;">
-            <img src="https://svgsilh.com/svg/160872.svg" alt="" width="25px">
+            <img src="https://image.flaticon.com/icons/svg/768/768051.svg" alt="" width="50px">
             <br>
-            <h5 class="text-navbar">Mon compte</h5>
+            <h6 class="text-navbar">Modifier mes informations</h6>
           </button>
         </li>
         <li class="nav-item">
           <button class="btn btn-lg btn-primary btn-block btn-login" (click)="deconnexion()"
             style="width: 100%; background: none; border: none; text-align: center;">
-            <img src="https://image.flaticon.com/icons/png/512/17/17367.png" alt="" width="25px">
+            <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" alt="" width="50px">
             <br>
-            <h5 class="text-navbar">Déconnexion</h5>
+            <h6 class="text-navbar">Déconnexion</h6>
           </button>
         </li>
       </ul>
