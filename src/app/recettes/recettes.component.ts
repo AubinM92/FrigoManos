@@ -10,7 +10,8 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./recettes.component.css']
 })
 export class RecettesComponent implements OnInit {
-
+  elementRecetteChoix;
+  recetteChoix
   allRecettes;
 
   constructor(private http: HttpClient, private recetteService : UnerecetteService, private dialog: MatDialog) { }
@@ -27,4 +28,21 @@ export class RecettesComponent implements OnInit {
     this.recetteService.recette = recette;
     const mydial3 = this.dialog.open(AfficherunerecetteComponent);
   }
+
+  ajouterRecetteCourse(re){
+    this.recetteChoix= re;
+    this.http.get('http://localhost:8087/elemListe/' + this.recetteChoix.id).subscribe(
+      data => {
+        this.elementRecetteChoix = data;
+      }
+    )
+  }
+
+  ajouterListeEnvie(){
+
+  }
+
+
 }
+
+
