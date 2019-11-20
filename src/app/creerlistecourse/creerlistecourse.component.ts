@@ -35,28 +35,30 @@ export class CreerlistecourseComponent implements OnInit {
     this.liste.user = this.user;
     this.liste.titre = this.nom;
 
-    this.http.post('http://localhost:8087/liste', this.liste).subscribe(
+
+
+    const del = this.http.post('http://localhost:8087/liste', this.liste).toPromise();
+
+    del.then(
       data => {
         this.retour = data;
         this.listeRetour = this.retour;
-        this.router.navigate(['/mes-listes']);
+        
         if(this.listeRetour.id!=null){
           this.dialogRef.close();
         }
+        
       }, err => {
         return 0;
       }
 
     );
-
-
-
+    
   }
 
   fermer() {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
-
 
 
 }
