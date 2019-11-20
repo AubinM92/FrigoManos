@@ -19,9 +19,7 @@ export class ModifelementlisteComponent implements OnInit {
   }
 
   modifElement() {
-    if (this.element.quantite = 0) {
-      this.erreur = "Veuillez saisir une valeur supérieur à 0"
-    } else {
+
       this.http.put('http://localhost:8087/elemListe/' + this.element.id, this.element).subscribe(
         data => {
           this.dialog3Ref.close();
@@ -30,7 +28,7 @@ export class ModifelementlisteComponent implements OnInit {
         }
       );
     }
-  }
+  
 
   fermer() {
     this.dialog3Ref.close();
