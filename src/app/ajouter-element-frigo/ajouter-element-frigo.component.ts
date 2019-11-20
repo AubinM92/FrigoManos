@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { Ingredient } from '../model/Ingredient';
 import { ElementFrigo } from '../model/ElementFrigo';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-ajouter-element-frigo',
@@ -14,7 +15,7 @@ import { ElementFrigo } from '../model/ElementFrigo';
 })
 export class AjouterElementFrigoComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AjouterElementFrigoComponent>, private http: HttpClient) { }
+  constructor(public dialogRef: MatDialogRef<AjouterElementFrigoComponent>, private http: HttpClient, private s: ServicefrigoService) { }
 
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
@@ -78,7 +79,7 @@ export class AjouterElementFrigoComponent implements OnInit {
 
   }
 
-  enregistrer(){
+enregistrer(){
     this.element.quantite = this.quantite;
     this.element.ingredient.id = this.idIngredient;
     this.element.user.id = parseInt(localStorage.getItem("id"));
@@ -90,5 +91,4 @@ export class AjouterElementFrigoComponent implements OnInit {
   
       
   }
-
 }
