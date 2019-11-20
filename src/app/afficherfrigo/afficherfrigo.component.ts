@@ -6,6 +6,7 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { ModifFrigoComponent } from '../modif-frigo/modif-frigo.component';
 import { ServicefrigoService } from '../servicefrigo.service';
 import { AjouterElementFrigoComponent } from '../ajouter-element-frigo/ajouter-element-frigo.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @Component({
