@@ -54,7 +54,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AjouterElementFrigoComponent
 
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],
+  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
