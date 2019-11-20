@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { ModifFrigoComponent } from '../modif-frigo/modif-frigo.component';
 import { ServicefrigoService } from '../servicefrigo.service';
+import { AjouterElementFrigoComponent } from '../ajouter-element-frigo/ajouter-element-frigo.component';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class AfficherfrigoComponent implements OnInit {
   constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog, private router: Router, private s: ServicefrigoService) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8087/elemFrigo/' + localStorage.getItem("id")).subscribe(
+    this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
       data => {
         this.element = data;
         this.mesElementsFrigo = this.element;
@@ -54,6 +55,9 @@ export class AfficherfrigoComponent implements OnInit {
     );
   }
 
-
+  ajouterElementFrigo(){
+    const mydiale= this.dialog.open(AjouterElementFrigoComponent);
+    this.ngOnInit;
+  }
 
 }
