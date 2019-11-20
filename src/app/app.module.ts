@@ -27,6 +27,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
 import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
     RecettesComponent,
     AjouterElementListeComponent,
     ModifelementlisteComponent,
-    ModifFrigoComponent
+    ModifFrigoComponent,
 
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent],
@@ -63,7 +64,8 @@ import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
