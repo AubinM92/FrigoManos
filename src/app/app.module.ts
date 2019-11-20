@@ -28,6 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
 import {ModifFrigoComponent} from './modif-frigo/modif-frigo.component';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-el
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

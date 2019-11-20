@@ -45,31 +45,6 @@
                                 <mat-icon style="font-size: 50px;">add</mat-icon>
                             </button>
                         </div>
-                        <table>
-                            <tbody>
-                                <tr *ngFor="let e of mesElementsListe" class="text-center">
-                                    <td width="40%">
-                                        {{e.ingredient.nom }}
-                                    </td>
-                                    <td width="40%">
-                                        {{e.quantite }} {{e.ingredient.unite }}
-                                    </td>
-
-                                    <td width="10%">
-                                        <button (click)="supprimerElement(e)" style="background: none; border: none;">
-                                            <img width="30px" src="http://miratech.fr/images/2014/06/poubelle.png"
-                                                alt="">
-                                        </button>
-                                    </td>
-                                    <td width="10%">
-                                        <button (click)="modifElementListe(e)" style="background: none; border: none;">
-                                            <img width="30px"
-                                                src="https://image.flaticon.com/icons/png/512/45/45584.png" alt="">
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
 
                     </div>
                     <table>
@@ -79,7 +54,7 @@
                                     {{e.ingredient.nom }}
                                 </td>
                                 <td width="40%">
-                                    {{e.quantite }}
+                                    {{e.quantite }} {{e.ingredient.unite }}
                                 </td>
                                 <td width="10%">
                                     <button (click)="supprimerElement(e)" style="background: none; border: none;">
@@ -87,7 +62,7 @@
                                     </button>
                                 </td>
                                 <td width="10%">
-                                    <button (click)="modifier(e)" style="background: none; border: none;">
+                                    <button (click)="modifElementListe(e)" style="background: none; border: none;">
                                         <img width="30px" src="https://image.flaticon.com/icons/png/512/45/45584.png"
                                             alt="">
                                     </button>

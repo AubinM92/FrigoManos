@@ -83,7 +83,6 @@ export class AfficherlistecourseComponent implements OnInit {
 
   supprimerListe(l) {
     this.liste = l;
-
     const del1 = this.http.get('http://localhost:8087/elemListe/' + this.liste.id).toPromise();
       del1.then(data => {
         this.mesElementsListe = data;
