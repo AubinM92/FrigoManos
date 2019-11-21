@@ -33,9 +33,13 @@ import { Input } from '@angular/core';
 import { MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
+<<<<<<< HEAD
 import { NavjoComponent } from './navjo/navjo.component';
 import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 
+=======
+import { MatSidenavModule, MatToolbarModule } from '@angular/material';
+>>>>>>> 1e95b552e580bcc3a510cf2cb26058bfd300d2b4
 
 
 @NgModule({
@@ -60,8 +64,9 @@ import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixa
     ModifFrigoComponent,
     AjouterElementFrigoComponent,
     NavjoComponent,
-    ChoixajoutrecettelisteComponent
+    ChoixajoutrecettelisteComponent,
 
+    AjouterElementFrigoComponent
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent],
 
@@ -80,6 +85,7 @@ import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixa
     MatIconModule,
     MatCheckboxModule,
     MatTableModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
