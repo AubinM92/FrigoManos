@@ -9,6 +9,7 @@ import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component'
 import { AfficherunerecetteComponent } from './afficherunerecette/afficherunerecette.component'
+import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 
 import { RecettesComponent } from './recettes/recettes.component';
 import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'modif-frigo', component: ModifFrigoComponent },
   { path: 'ajout-frigo', component: AjouterElementFrigoComponent },
   { path: 'test-nav', component: NavjoComponent },
-  { path: "", redirectTo: '/connexion', pathMatch: 'full' },
+  { path : 'choixajoutliste', component : ChoixajoutrecettelisteComponent},
+  { path: "", redirectTo: '/connexion', pathMatch: 'full' }
 
 ];
 

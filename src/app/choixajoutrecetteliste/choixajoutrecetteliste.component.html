@@ -1,0 +1,25 @@
+<div style="width: 300px;">
+    <h6 class="text-center">Voulez ajouter une liste de courses avec </h6>
+    <div style="margin: 10px">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-primary btn-block" (click)='ajoutTousIngredient();'
+                >Tous les ingrédients</button>
+            </div>
+
+            <div class="col-sm-6">
+                <button  class="btn btn-primary btn-block" (click)='ajoutIngredientManquant();'
+                >Les ingrédient manquants</button>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                        <button class="btn btn-primary btn-block" (click)='fermer();'>Annuler</button>
+                </div>
+                <div class="col-sm-4"></div>
+        </div>
+
+    </div>
+</div>

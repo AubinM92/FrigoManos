@@ -34,6 +34,7 @@ import { MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
 import { NavjoComponent } from './navjo/navjo.component';
+import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 
 
 
@@ -58,10 +59,11 @@ import { NavjoComponent } from './navjo/navjo.component';
     ModifelementlisteComponent,
     ModifFrigoComponent,
     AjouterElementFrigoComponent,
-    NavjoComponent
+    NavjoComponent,
+    ChoixajoutrecettelisteComponent
 
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent],
+  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent],
 
   imports: [
     BrowserModule,
