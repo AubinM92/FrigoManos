@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 
 export class ListeachatComponent implements OnInit {
   ELEMENT_DATA: ListeAchat[] = [];
-  displayedColumns: string[] = ['select','id', 'nom', 'quantite', 'unite'];
+  displayedColumns: string[] = ['select', 'nom','quantiteAchetee','unite'];
   dataSource = new MatTableDataSource<ListeAchat>(this.ELEMENT_DATA);
   selection = new SelectionModel<ListeAchat>(true, []);
   elementListe: ListeAchat = new ListeAchat();
@@ -25,7 +25,7 @@ export class ListeachatComponent implements OnInit {
   user: User = new User();
   mesElements;
   test;
-
+  public mesInput : any = {};
   constructor(private http: HttpClient, private router :Router) { }
 
   ngOnInit() {
@@ -41,7 +41,11 @@ export class ListeachatComponent implements OnInit {
       data => {
         this.mesElements = data;
         this.elementsListe = this.mesElements;
+        let i = 0;
         this.elementsListe.forEach(element => {
+          element.index = i;
+          this.mesInput[i] = element.quantite;
+          i++;
           this.ELEMENT_DATA.push(element);
         });
         this.dataSource.data = this.ELEMENT_DATA;
@@ -74,15 +78,15 @@ export class ListeachatComponent implements OnInit {
 
   majFrigo() {
 
-    this.selection.selected.forEach(element => {
-      console.log(element.quantite)
-    }
-    );
+    
+    this.selection.selected.forEach(datas =>{
+      console.log(this.mesInput[datas.index])
+    })
+
 
   }
+
   donnees: ListeAchat[] = [];
-  modifQuantite(idElement){
-    console.log(1);    
-  }
+
 
 }
