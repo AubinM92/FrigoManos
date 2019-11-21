@@ -172,10 +172,7 @@ export class ListeachatComponent implements OnInit {
     if (!rowListe) {
       return `${this.isAllSelectedListe() ? 'select' : 'deselect'} all`;
     }
-
   }
-
-  //---------------------------------------------------------------------------- Delete
 
 
 
