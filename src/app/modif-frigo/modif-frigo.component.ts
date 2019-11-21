@@ -28,8 +28,13 @@ export class ModifFrigoComponent implements OnInit {
  
     console.log("entree service s modif", this.s.elemservice);
     console.log("entree service modif", this.element);
-    this.http.put('http://localhost:8087/elemFrigo/'+ this.element.id, this.element).subscribe(
+
+
+    const del= this.http.put('http://localhost:8087/elemFrigo/'+ this.element.id, this.element).toPromise();
+
+    del.then(
       data => {
+        this.dialogRef.close();
       }, err => {
         console.log(err);
       }
