@@ -36,6 +36,7 @@ import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-el
 import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/material';
 import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
+import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component'
     AjouterElementFrigoComponent,
     ChoixajoutrecettelisteComponent,
     AjouterElementFrigoComponent,
-    AfficherenvieComponent
+    AfficherenvieComponent,
+    AfficheruneenvieComponent
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent],
 
