@@ -6,9 +6,12 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { ModifFrigoComponent } from '../modif-frigo/modif-frigo.component';
 import { ServicefrigoService } from '../servicefrigo.service';
 import { AjouterElementFrigoComponent } from '../ajouter-element-frigo/ajouter-element-frigo.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
+import { Liste } from '../model/Liste';
+import { Recette } from '../model/Recette';
+
 
 const ELEMENT_DATA: ElementFrigo[] = [];
 
@@ -20,16 +23,17 @@ const ELEMENT_DATA: ElementFrigo[] = [];
 
 export class AfficherfrigoComponent implements OnInit {
 
-  visible=false;
+  visible = false;
   mesElementsFrigo;
   ef: ElementFrigo = new ElementFrigo();
   e;
   aj;
   element;
   dataSource = new MatTableDataSource<ElementFrigo>(ELEMENT_DATA);
+  allRecettes;
 
 
-  constructor(private http: HttpClient, private dialog: MatDialog,private dialog2: MatDialog, private router: Router, private s: ServicefrigoService) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router, private s: ServicefrigoService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
@@ -39,10 +43,15 @@ export class AfficherfrigoComponent implements OnInit {
         console.log(this.mesElementsFrigo);
       }
     )
+    this.http.get('http://localhost:8087/recette').subscribe(
+      data => {
+        this.allRecettes = data;
+        console.log(this.allRecettes);
+      })
   }
 
-  modifQuantite(e){
-    this.s.elemservice=e;
+  modifQuantite(e) {
+    this.s.elemservice = e;
     console.log("entree service", e);
     console.log("entree service s", this.s.elemservice);
     const mydial = this.dialog.open(ModifFrigoComponent);
@@ -61,10 +70,13 @@ export class AfficherfrigoComponent implements OnInit {
     );
   }
 
-  ajouterElementFrigo(aj){
-    this.s.elemservice=aj;
-    const mydiale= this.dialog.open(AjouterElementFrigoComponent);
-    this.ngOnInit;
-}
+  ajouterElementFrigo(aj) {
+    this.s.elemservice = aj;
+    const mydiale = this.dialog.open(AjouterElementFrigoComponent);
+    mydiale.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+
+  }
 
 }
