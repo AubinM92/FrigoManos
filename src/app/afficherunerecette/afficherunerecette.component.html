@@ -29,9 +29,9 @@
                     <span>Ingrédients :</span>
                     <br>
                     <span *ngFor="let elem of elemLaRecette" style="vertical-align: middle;"><i style="vertical-align: middle;" class="material-icons"
-                        [ngClass]="(elem.style === 'Rouge')?'jaiPas' : (elem.style === 'Orange')?'pasAssez' :'okJai'">
-                            panorama_fish_eye</i>{{ elem.ingredient.nom }} : {{ elem.quantite }}
-                        {{ elem.ingredient.unite}} <br></span>
+                        [ngClass]="(elem.style === 'Rouge')?'okJai' : (elem.style === 'Orange')?'pasAssez' :'jaiPas'">
+                            panorama_fish_eye</i>{{ elem.nom }} : {{ elem.quantite }}
+                        {{ elem.unite}} <br></span>
                 </div>
                 <div class="col-sm-3">
 
