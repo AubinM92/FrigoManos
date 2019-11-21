@@ -30,7 +30,7 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Directive } from '@angular/core';
 import { Input } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
 import { NavjoComponent } from './navjo/navjo.component';
