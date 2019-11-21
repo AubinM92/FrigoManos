@@ -30,11 +30,10 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Directive } from '@angular/core';
 import { Input } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
-import { NavjoComponent } from './navjo/navjo.component';
-
+import { MatSidenavModule, MatToolbarModule } from '@angular/material';
 
 
 @NgModule({
@@ -57,9 +56,7 @@ import { NavjoComponent } from './navjo/navjo.component';
     AjouterElementListeComponent,
     ModifelementlisteComponent,
     ModifFrigoComponent,
-    AjouterElementFrigoComponent,
-    NavjoComponent
-
+    AjouterElementFrigoComponent
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent],
 
@@ -78,6 +75,7 @@ import { NavjoComponent } from './navjo/navjo.component';
     MatIconModule,
     MatCheckboxModule,
     MatTableModule,
+    MatSidenavModule, MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

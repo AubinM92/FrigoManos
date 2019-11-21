@@ -1,26 +1,49 @@
 .couleur-nav {
-  background: #a6d6ea;
+  background: #f2cbaa;
 }
 
 .bienvenue {
   font-family: Georgia, serif;
   color: black;
+  margin-left: 15px;
 }
 
 .text-navbar {
   font-family: Georgia, serif !important;
   margin-top: 13px;
-  margin-bottom: 2px;
   color: black;
 }
 
 .demarcation {
-  width: 100%;
-  color: #888888;
-  background-color:#888888;
-  height: 0.2px;
+  background-color: black;
 }
 
 .material-menu {
   background-image: url("https://image.flaticon.com/icons/svg/2235/2235754.svg");
+}
+
+.btn-nav {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+mat-sidenav {
+  width: 280px;
+  padding:15px;
+}
+
+.mat-drawer { 
+  background-color: #f2cbaa;
+  color: black;
+}
+
+.main-content {
+  padding:20px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
 }
