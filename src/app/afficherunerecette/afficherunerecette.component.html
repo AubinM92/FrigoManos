@@ -28,10 +28,10 @@
                 <div class="col-sm-5">
                     <span>Ingrédients :</span>
                     <br>
-                    <span *ngFor="let ing of ingLaRecette"><i style="vertical-align: middle;" class="material-icons"
-                            [ngClass]="(frigo(ing)=='true')?'okJai' : 'jaiPas'">
-                            panorama_fish_eye</i>{{ ing.ingredient.nom }} : {{ ing.quantite }}
-                        {{ ing.ingredient.unite}} <br></span>
+                    <span *ngFor="let elem of elemLaRecette" style="vertical-align: middle;"><i style="vertical-align: middle;" class="material-icons"
+                            [ngClass]="(dansFrigo(elem) === 1)?'okJai' : 'jaiPas'">
+                            panorama_fish_eye</i>{{ elem.ingredient.nom }} : {{ elem.quantite }}
+                        {{ elem.ingredient.unite}} <br></span>
                 </div>
                 <div class="col-sm-3">
 
@@ -58,7 +58,7 @@
                 <button type="button" class="btn btn-warning pull-right">
                     <mat-icon>star</mat-icon>
                 </button>
-                <span>Ajouter la recette aux favoris</span>
+                <span>Ajouter la recette aux envies</span>
             </div>
             <div class="col-sm-6">
                 <button type="button" class="btn btn-outline-danger" (click)='ajouterRecetteCourse(re)'>
