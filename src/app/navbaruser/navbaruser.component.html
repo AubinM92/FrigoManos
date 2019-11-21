@@ -1,70 +1,69 @@
-<nav class="navbar navbar-expand-lg bg-primary fixed-top" id="sideNav">
-
-  <div style="vertical-align: middle;">
-    <div>
-      <br>
-      <h2 class="bienvenue">Bienvenue</h2>
-      <h2 class="bienvenue">{{ cUser }}</h2>
-      <hr class="demarcation">
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header couleur-nav">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <h1 class="bienvenue mdl-layout-title">Bienvenue {{ cUser }}</h1>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <button class="btn btn-lg btn-primary btn-block btn-login" (click)="deconnexion()"
+          style="width: 100%; background: none; border: none; text-align: center;">
+          <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" alt="" width="25px">
+        </button>
+      </nav>
     </div>
+  </header>
 
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav">
-        <li class="nav-item bordure">
-          <button class="btn btn-lg btn-primary btn-block btn-login"
-            style="background: none; border: none; text-align: center; margin-top: 10px;" (click)="monFrigo()">
-            <img src="https://image.flaticon.com/icons/svg/2235/2235754.svg" width="50px">
-            <br>
-            <h6 class="text-navbar">Mon Frigo</h6>
-          </button>
-        </li>
-        <hr>
-        <li class="nav-item">
-          <button class="btn btn-lg btn-primary btn-block btn-login"
-            style="width: 100%; background: none; border: none; text-align: center;" (click)="toListeAchat()">
-            <img src="https://image.flaticon.com/icons/svg/687/687264.svg" alt="" width="50px">
-            <br>
-            <h6 class="text-navbar">Ma liste d'achat</h6>
-          </button>
-        </li>
-        <hr>
-        <li class="nav-item">
-          <button class="btn btn-lg btn-primary btn-block btn-login"
-            style="width: 100%; background: none; border: none; text-align: center;" (click)="mesListes()">
-            <img src="https://image.flaticon.com/icons/svg/685/685745.svg" alt="" width="50px">
-            <br>
-            <h6 class="text-navbar">Mes listes de courses</h6>
-          </button>
-        </li>
-        <hr>
-        <li class="nav-item">
-          <button class="btn btn-lg btn-primary btn-block btn-login"
-            style="width: 100%; background: none; border: none; text-align: center;">
-            <img src="https://image.flaticon.com/icons/svg/766/766316.svg" alt="" width="50px">
-            <br>
-            <h6 class="text-navbar">Recettes</h6>
-          </button>
-        </li>
-        <hr>
-        <hr class="demarcation">
-        <hr>
-        <li class="nav-item">
-          <button class="btn btn-lg btn-primary btn-block btn-login" routerLink="/modif-profil"
-            style="width: 100%; background: none; border: none; text-align: center;">
-            <img src="https://image.flaticon.com/icons/svg/768/768051.svg" alt="" width="50px">
-            <br>
-            <h6 class="text-navbar">Modifier mes informations</h6>
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-lg btn-primary btn-block btn-login" (click)="deconnexion()"
-            style="width: 100%; background: none; border: none; text-align: center;">
-            <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" alt="" width="50px">
-            <br>
-            <h6 class="text-navbar">Déconnexion</h6>
-          </button>
-        </li>
-      </ul>
-    </div>
+  <div class="bienvenue mdl-layout__drawer">
+    <nav class="mdl-navigation">
+      <h1 class="bienvenue mdl-layout-title" style="text-align: center;">Menus</h1>
+    </nav>
+
+    <nav class="mdl-navigation">
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="background: none; border: none; text-align: center; margin-top: 10px;" (click)="monFrigo()">
+        <img src="https://image.flaticon.com/icons/svg/2235/2235754.svg" width="50px">
+        <br>
+        <h6 class="text-navbar">Mon Frigo</h6>
+      </button>
+    </nav>
+
+    <nav class="mdl-navigation">
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: center;" (click)="toListeAchat()">
+        <img src="https://image.flaticon.com/icons/svg/687/687264.svg" alt="" width="50px">
+        <br>
+        <h6 class="text-navbar">Ma liste d'achat</h6>
+      </button>
+    </nav>
+
+    <nav class="mdl-navigation">
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: center;" (click)="mesListes()">
+        <img src="https://image.flaticon.com/icons/svg/685/685745.svg" alt="" width="50px">
+        <br>
+        <h6 class="text-navbar">Mes listes de courses</h6>
+      </button>
+    </nav>
+
+    <nav class="mdl-navigation">
+      <button class="btn btn-lg btn-primary btn-block btn-login"
+        style="width: 100%; background: none; border: none; text-align: center;" (click)="toRecettes()">
+        <img src="https://image.flaticon.com/icons/svg/766/766316.svg" alt="" width="50px">
+        <br>
+        <h6 class="text-navbar">Recettes</h6>
+      </button>
+    </nav>
+
+    <nav class="mdl-navigation">
+      <button class="btn btn-lg btn-primary btn-block btn-login" routerLink="/modif-profil"
+        style="width: 100%; background: none; border: none; text-align: center;">
+        <img src="https://image.flaticon.com/icons/svg/768/768051.svg" alt="" width="50px">
+        <br>
+        <h6 class="text-navbar">Modifier mes informations</h6>
+      </button>
+    </nav>
   </div>
-</nav>
+</div>

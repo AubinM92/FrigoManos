@@ -1,47 +1,10 @@
-#sideNav .navbar-nav .nav-item {
-  font-weight: 800;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-}
-
-@media (min-width: 992px) {
-  #sideNav {
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    width: 16.6%;
-    height: 100%;
-  }
-  #sideNav .navbar-brand {
-    display: flex;
-    padding: 0.5rem;
-  }
-  #sideNav .navbar-brand {
-    max-width: 10rem;
-    max-height: 10rem;
-    border: 0.5rem solid rgba(255, 255, 255, 0.2);
-  }
-  #sideNav .navbar-collapse {
-    display: flex;
-    align-items: flex-start;
-    flex-grow: 0;
-    width: 100%;
-    margin-bottom: auto;
-  }
-  #sideNav .navbar-collapse .navbar-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-.bg-primary {
-  background: linear-gradient(to bottom, #a6d6ea, #a6d6ea);
+.couleur-nav {
+  background: #a6d6ea;
 }
 
 .bienvenue {
-  font-family: Georgia, serif !important;
+  font-family: Georgia, serif;
+  color: black;
 }
 
 .text-navbar {
@@ -51,14 +14,13 @@
   color: black;
 }
 
-.bordure {
-  border-top: black !important;
-  border-bottom: black !important;
-}
-
 .demarcation {
   width: 100%;
   color: #888888;
   background-color:#888888;
   height: 0.2px;
+}
+
+.material-menu {
+  background-image: url("https://image.flaticon.com/icons/svg/2235/2235754.svg");
 }
