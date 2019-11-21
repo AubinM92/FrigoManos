@@ -80,15 +80,18 @@ export class AjouterElementFrigoComponent implements OnInit {
   }
 
 enregistrer(){
+
     this.element.quantite = this.quantite;
+    this.element.ingredient.nom = this.ing;
     this.element.ingredient.id = this.idIngredient;
     this.element.user.id = parseInt(localStorage.getItem("id"));
   
-      this.http.post('http://localhost:8087/elemFrigo', this.element).subscribe(
+    const del = this.http.put('http://localhost:8087/elemFrigo', this.element).toPromise();
+
+    del.then(
         datas=>{
           this.dialogRef.close();
       })
-  
-      
+
   }
 }

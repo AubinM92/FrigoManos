@@ -1,16 +1,21 @@
 <app-navbaruser></app-navbaruser>
 
 <div class="container">
-    <div style="margin:10px; padding:10px; background: #EAC5CD;">
-        <div class="col-sm-4">
+    <div style="margin:10px; margin-bottom:10px; padding:10px; background: #EAC5CD;">
+        <div class="col-sm-12">
             <h2><strong>Mon frigo</strong></h2>
-            <button mat-icon-button aria-label="" (click)='ajouterElementFrigo()'>Ajouter un item au frigo</button>
+            <button style="background: rgb(124, 165, 165); color: white" (click)="ajouterElementFrigo()">
+                <strong>
+                    Ajouter un item au frigo
+                </strong>
+            </button>
         </div>
     </div>
+</div>
 
-
+<div class="container">
     <div class="row" style="margin:10px; padding:10px;">
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <div class="table">
                 <div class="text-center" style="width: 100%">
                     <tbody>
@@ -33,10 +38,46 @@
             </div>
         </div>
 
-        <div class="col-sm-6 text-center">
-            <img src='https://images-na.ssl-images-amazon.com/images/I/51kSSqSsLOL._SY445_.jpg'>
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-5 text-center">
+            <div class="row">
+                
+                <div class="col-sm-12" *ngFor="let re of allRecettes">
+                    
+                    <div class="card cadre">
+                        <img class="card-img-top img-fluid cadretop"
+                            src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
+                            alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">{{re.titre}}</h4>
+        
+                            <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min | Cuisson :
+                                    {{re.tempsCuis }} min</small></p>
+        
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-outline-success" (click)='afficherRecette(re)'>
+                                        <mat-icon>remove_red_eye</mat-icon>
+                                    </button>
+        
+                                    <button type="button" class="btn btn-outline-danger" (click)='ajouterRecetteCourse(re)'>
+                                        <mat-icon>add_shopping_cart</mat-icon>
+                                    </button>
+                                    <button type="button" class="btn btn-warning pull-right">
+                                        <mat-icon>star</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
 
-
-</div>
+</div>    
