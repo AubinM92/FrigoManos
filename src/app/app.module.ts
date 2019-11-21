@@ -30,12 +30,12 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Directive } from '@angular/core';
 import { Input } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
-import { NavjoComponent } from './navjo/navjo.component';
-
-
+import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
+import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/material';
+import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 
 @NgModule({
   declarations: [
@@ -58,10 +58,11 @@ import { NavjoComponent } from './navjo/navjo.component';
     ModifelementlisteComponent,
     ModifFrigoComponent,
     AjouterElementFrigoComponent,
-    NavjoComponent
-
+    ChoixajoutrecettelisteComponent,
+    AjouterElementFrigoComponent,
+    AfficherenvieComponent
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent],
+  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent],
 
   imports: [
     BrowserModule,
@@ -78,6 +79,10 @@ import { NavjoComponent } from './navjo/navjo.component';
     MatIconModule,
     MatCheckboxModule,
     MatTableModule,
+    
+    MatSidenavModule, MatToolbarModule
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

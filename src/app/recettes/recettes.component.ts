@@ -5,6 +5,11 @@ import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunere
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { Liste } from '../model/Liste';
 import { Recette } from '../model/Recette';
+import { Envie } from '../model/Envie';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
+import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
+
 
 @Component({
   selector: 'app-recettes',
@@ -16,17 +21,21 @@ export class RecettesComponent implements OnInit {
   recetteChoix : Recette = new Recette();
   allRecettes;
   listeRecette : Liste = new Liste();
-  listeRecetteReturn;
+  
   dateAuj;
+  nouvelleEnvie : Envie = new Envie();
+  recetteEnvie;
+  message;
+  VerifAjoutEnvie;
 
-  constructor(private http: HttpClient, private recetteService : UnerecetteService, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private recetteService : UnerecetteService,private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog,private dialog2: MatDialog) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8087/recette').subscribe(
       data => {
         this.allRecettes = data;
-        console.log(this.allRecettes);
       })
+      
   }
 
   afficherRecette(recette){
@@ -35,31 +44,32 @@ export class RecettesComponent implements OnInit {
   }
 
   ajouterRecetteCourse(re){
-    this.recetteChoix.id= re.id;
-    this.recetteChoix.description= re.description;
-    this.recetteChoix.temps_cuis= re.temps_cuis;
-    this.recetteChoix.temps_prepa= re.temps_prepa;
-    this.recetteChoix.titre= re.titre;
-
-
-
     this.listeRecette.titre = re.titre;
     this.listeRecette.user.id= localStorage.id;
-
-    this.http.post('http://localhost:8087/listeRecette', this.listeRecette).subscribe(data => {
-        this.listeRecetteReturn = data;
-        console.log(this.listeRecetteReturn);
-      }
-    );
-
+    this.ajoutService.recette=re;
+    this.ajoutService.liste = this.listeRecette;
+    const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
   
-  ajouterListeEnvie(recette){
-    this.dateAuj = new Date();
-
-
+  ajouterEnvie(re){
+    this.dateAuj = this.maDate();
+    this.nouvelleEnvie.date = this.dateAuj;
+    this.nouvelleEnvie.recette = re;
+    this.nouvelleEnvie.user.id = localStorage.id;
+    const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
+    del.then(data =>{
+    this.VerifAjoutEnvie = data;
+    });
+    if(this.VerifAjoutEnvie !=null){
+      this.message = "Recette ajoutée aux envies"
+    } else {
+      this.message = "Encore une fois ?!"
+    }
   }
 
+  maDate(){
+    return new Date();
+  }
 
 }
 

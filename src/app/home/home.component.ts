@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { CreerlistecourseComponent } from '../creerlistecourse/creerlistecourse.component';
-
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-  }
 
- open() {
-    const mydial = this.dialog.open(CreerlistecourseComponent);
- } 
+  }
 
  
 
