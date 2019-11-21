@@ -6,5 +6,7 @@ import { Injectable } from '@angular/core';
 export class ServicefrigoService {
 
   elemservice;
+
+  uco = localStorage.getItem("pseudo");
   constructor() { }
 }

@@ -37,7 +37,6 @@ import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixa
 import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/material';
 import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

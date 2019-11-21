@@ -1,5 +1,5 @@
 <div style="width: 750px; height: 850px;">
-    <img class="card-img-top"
+    <img class="card-img-top cadre"
         src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
         alt="Div image cap" style="height: 400px;">
     <h2 class="text-center">{{ laRecette.titre }}</h2>
@@ -29,9 +29,12 @@
                     <span>Ingrédients :</span>
                     <br>
                     <span *ngFor="let elem of elemLaRecette" style="vertical-align: middle;"><i style="vertical-align: middle;" class="material-icons"
-                            [ngClass]="(dansFrigo(elem) === 1)?'okJai' : 'jaiPas'">
+                        [ngClass]="dansFrigo(elem)">
                             panorama_fish_eye</i>{{ elem.ingredient.nom }} : {{ elem.quantite }}
                         {{ elem.ingredient.unite}} <br></span>
+                        <span [ngClass]="(5 > 1)?'jaiPas' : (5 > 3)?'pasAssez' :'okJai'">Doit être rouge</span>
+                        <span [ngClass]="(5 > 8)?'jaiPas' : (5 > 3)?'pasAssez' :'okJai'">Doit être orange</span>
+                        <span [ngClass]="(5 > 8)?'jaiPas' : (5 > 10)?'pasAssez' :'okJai'">Doit être vert</span>
                 </div>
                 <div class="col-sm-3">
 
@@ -54,17 +57,21 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-sm-6">
-                <button type="button" class="btn btn-warning pull-right">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-5">
+                <button type="button" class="btn btn-outline-warning pull-right cadre" (click)='ajouterEnvie(re)'>
                     <mat-icon>star</mat-icon>
                 </button>
-                <span>Ajouter la recette aux envies</span>
+                <span>   Ajouter la recette aux envies</span>
             </div>
-            <div class="col-sm-6">
-                <button type="button" class="btn btn-outline-danger" (click)='ajouterRecetteCourse(re)'>
+         
+            <div class="col-sm-5">
+                <button type="button" class="btn btn-outline-danger cadre" (click)='ajouterRecetteCourse(laRecette)'>
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>
-                <span> Ajouter à ma liste de courses</span>
+                <span>   Ajouter à mes listes de courses</span>
             </div>
         </div>
     </div>
