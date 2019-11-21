@@ -51,16 +51,15 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar class="couleur-nav">
-
+    <mat-toolbar class="couleur-nav" style="justify-content: space-between;">
       <button mat-icon-button (click)="sidenav.toggle()"
-        style="width: 100%; background: none; border: none; text-align: left; vertical-align: middle;">
+        style="width: auto; background: none; border: none; text-align: left; vertical-align: middle;">
         <mat-icon>menu</mat-icon>
       </button>
 
-      <h1 class="bienvenue">Bonjour {{ cUser }}</h1>
+      <h1 class="bienvenue" style="width: auto; text-align: center;">Bonjour {{ cUser }}</h1>
 
-      <button class="btn-block btn-nav" (click)="deconnexion()" style="text-align: right;">
+      <button class="btn-block btn-nav" (click)="deconnexion()" style="width: auto;">
         <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" width="30px">
       </button>
 

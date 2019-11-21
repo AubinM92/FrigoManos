@@ -28,10 +28,14 @@
                 <div class="col-sm-5">
                     <span>Ingrédients :</span>
                     <br>
-                    <span *ngFor="let elem of elemLaRecette" style="vertical-align: middle;"><i style="vertical-align: middle;" class="material-icons"
-                        [ngClass]="(elem.style === 'Rouge')?'okJai' : (elem.style === 'Orange')?'pasAssez' :'jaiPas'">
-                            panorama_fish_eye</i>{{ elem.nom }} : {{ elem.quantite }}
-                        {{ elem.unite}} <br></span>
+                    <span *ngFor="let elem of elemLaRecette;" style="vertical-align: middle;">
+                        <i style="vertical-align: middle;" class="material-icons"
+                            [ngClass]="(elem.style === 'Rouge')?'jaiPas' : ((elem.style === 'Orange')?'pasAssez' :'okJai')">
+                            panorama_fish_eye
+                        </i>
+                        {{ elem.nom }} : {{ elem.quantite }} {{ elem.unite}}
+                        <br>
+                    </span>
                 </div>
                 <div class="col-sm-3">
 
@@ -61,14 +65,14 @@
                 <button type="button" class="btn btn-outline-warning pull-right cadre" (click)='ajouterEnvie(re)'>
                     <mat-icon>star</mat-icon>
                 </button>
-                <span>   Ajouter la recette aux envies</span>
+                <span> Ajouter la recette aux envies</span>
             </div>
-         
+
             <div class="col-sm-5">
                 <button type="button" class="btn btn-outline-danger cadre" (click)='ajouterRecetteCourse(laRecette)'>
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>
-                <span>   Ajouter à mes listes de courses</span>
+                <span> Ajouter à mes listes de courses</span>
             </div>
         </div>
     </div>
