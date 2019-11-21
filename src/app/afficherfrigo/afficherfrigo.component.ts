@@ -11,6 +11,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { Liste } from '../model/Liste';
 import { Recette } from '../model/Recette';
+import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunerecette.component';
+import { UnerecetteService } from '../unerecette.service';
 
 
 const ELEMENT_DATA: ElementFrigo[] = [];
@@ -33,7 +35,7 @@ export class AfficherfrigoComponent implements OnInit {
   allRecettes;
 
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router, private s: ServicefrigoService) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router, private s: ServicefrigoService, private recetteService : UnerecetteService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
@@ -43,7 +45,7 @@ export class AfficherfrigoComponent implements OnInit {
         console.log(this.mesElementsFrigo);
       }
     )
-    this.http.get('http://localhost:8087/recette').subscribe(
+    this.http.get('http://localhost:8087//elemFrigo_suggestions/'+ localStorage.getItem("id")).subscribe(
       data => {
         this.allRecettes = data;
         console.log(this.allRecettes);
@@ -77,6 +79,11 @@ export class AfficherfrigoComponent implements OnInit {
       this.ngOnInit();
     });
 
+  }
+
+  afficherRecette(recette){
+    this.recetteService.recette = recette;
+    const mydial3 = this.dialog.open(AfficherunerecetteComponent);
   }
 
 }
