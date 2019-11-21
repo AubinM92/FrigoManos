@@ -46,7 +46,7 @@ export class RecettesComponent implements OnInit {
     this.listeRecette.titre = re.titre;
     this.listeRecette.user.id= localStorage.id;
 
-    this.http.post('http://localhost:8087/listeRecette', this.listeRecette).subscribe(data => {
+    this.http.post('http://localhost:8087/listeRecette/'+this.recetteChoix.id, this.listeRecette).subscribe(data => {
         this.listeRecetteReturn = data;
         console.log(this.listeRecetteReturn);
       }
