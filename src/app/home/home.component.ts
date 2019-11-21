@@ -3,7 +3,6 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { CreerlistecourseComponent } from '../creerlistecourse/creerlistecourse.component';
 import { ServicefrigoService } from '../servicefrigo.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,8 +15,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
   }
-
- 
 
  
 

@@ -73,32 +73,6 @@ export class AfficherunerecetteComponent implements OnInit {
     )
   }
 
-  dansFrigo(elemR) {
-
-    let info;
-    this.mesElementsF.forEach(elementF => {
-      if (elementF.ingredient.id === elemR.ingredient.id) {
-        this.trouve = 1;
-        this.elemTrouve = elementF;
-        info = 'okJai';
-
-      }
-      else {
-        info = 'jaiPas';
-      }
-    });
-
-    console.log(info);
-    return info;
-  }
-
-  dansFrigoPasAssez(elemRe) {
-    this.dansFrigo(elemRe);
-    if (this.elemTrouve.quantite < elemRe.quantite) {
-      this.pasAssez = 1;
-    }
-  }
-
   ajouterEnvie(re){
     this.dateAuj = this.maDate();
     this.nouvelleEnvie.date = this.dateAuj;

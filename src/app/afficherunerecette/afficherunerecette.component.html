@@ -29,12 +29,9 @@
                     <span>Ingrédients :</span>
                     <br>
                     <span *ngFor="let elem of elemLaRecette" style="vertical-align: middle;"><i style="vertical-align: middle;" class="material-icons"
-                        [ngClass]="dansFrigo(elem)">
+                        [ngClass]="(elem.style === 'Rouge')?'jaiPas' : (elem.style === 'Orange')?'pasAssez' :'okJai'">
                             panorama_fish_eye</i>{{ elem.ingredient.nom }} : {{ elem.quantite }}
                         {{ elem.ingredient.unite}} <br></span>
-                        <span [ngClass]="(5 > 1)?'jaiPas' : (5 > 3)?'pasAssez' :'okJai'">Doit être rouge</span>
-                        <span [ngClass]="(5 > 8)?'jaiPas' : (5 > 3)?'pasAssez' :'okJai'">Doit être orange</span>
-                        <span [ngClass]="(5 > 8)?'jaiPas' : (5 > 10)?'pasAssez' :'okJai'">Doit être vert</span>
                 </div>
                 <div class="col-sm-3">
 
