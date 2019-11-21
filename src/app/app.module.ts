@@ -35,7 +35,6 @@ import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
 import { MatSidenavModule, MatToolbarModule } from '@angular/material';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +55,7 @@ import { MatSidenavModule, MatToolbarModule } from '@angular/material';
     AjouterElementListeComponent,
     ModifelementlisteComponent,
     ModifFrigoComponent,
-    AjouterElementFrigoComponent
+    AjouterElementFrigoComponent,
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent],
 
