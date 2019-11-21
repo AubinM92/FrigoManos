@@ -44,43 +44,27 @@ export class RecettesComponent implements OnInit {
   }
 
   ajouterRecetteCourse(re){
-
-
-    
-
     this.listeRecette.titre = re.titre;
     this.listeRecette.user.id= localStorage.id;
     this.ajoutService.recette=re;
     this.ajoutService.liste = this.listeRecette;
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
-  
-    /*this.http.post('http://localhost:8087/listeRecette/'+re.id, this.listeRecette).subscribe(data => { 
-      }
-    );*/
-
   }
   
   ajouterEnvie(re){
-
     this.dateAuj = this.maDate();
-
-    
     this.nouvelleEnvie.date = this.dateAuj;
     this.nouvelleEnvie.recette = re;
     this.nouvelleEnvie.user.id = localStorage.id;
-    console.log(this.nouvelleEnvie);
     const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
     del.then(data =>{
     this.VerifAjoutEnvie = data;
-
     });
-    
     if(this.VerifAjoutEnvie !=null){
       this.message = "Recette ajoutée aux envies"
     } else {
       this.message = "Encore une fois ?!"
     }
-
   }
 
   maDate(){

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let re of allRecettes">
+            <div class="card cadre">
+                <img class="card-img-top img-fluid cadretop" src="" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">{{re.titre}}</h4>
+
+                    <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min | Cuisson :
+                            {{re.tempsCuis }} min</small></p>
+
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-success " (click)='afficherRecette(re)'>
+                                <mat-icon>remove_red_eye</mat-icon>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button type="button" class="btn btn-outline-danger" (click)='ajouterRecetteCourse(re)'>
+                                <mat-icon>add_shopping_cart</mat-icon>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button type="button" class="btn btn-warning pull-right" (click)='ajouterEnvie(re)'>
+                                <mat-icon>star</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

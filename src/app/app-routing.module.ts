@@ -15,6 +15,7 @@ import { RecettesComponent } from './recettes/recettes.component';
 import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
+import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
@@ -33,8 +34,8 @@ const routes: Routes = [
   { path: 'recettes', component: RecettesComponent },
   { path: 'modif-frigo', component: ModifFrigoComponent },
   { path: 'ajout-frigo', component: AjouterElementFrigoComponent },
-  
   { path : 'choixajoutliste', component : ChoixajoutrecettelisteComponent},
+  { path: 'aff-envie', component: AfficherenvieComponent },
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },
 

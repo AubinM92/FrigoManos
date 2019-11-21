@@ -56,25 +56,32 @@
 
                     <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min | Cuisson :
                             {{re.tempsCuis }} min</small></p>
-
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-success" (click)='afficherRecette(re)'>
+                    <div class="row">
+                        <div></div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-success cadre margin-left:20px"
+                                (click)='afficherRecette(re)'>
                                 <mat-icon>remove_red_eye</mat-icon>
                             </button>
-
-                            <button type="button" class="btn btn-outline-danger" (click)='ajouterRecetteCourse(re)'>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-danger cadre"
+                                (click)='ajouterRecetteCourse(re)'>
                                 <mat-icon>add_shopping_cart</mat-icon>
                             </button>
-                            <button type="button" class="btn btn-warning pull-right" (click)='ajouterEnvie(re)'>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-warning pull-right cadre" (click)='ajouterEnvie(re)'>
                                 <mat-icon>star</mat-icon>
                             </button>
                         </div>
-                         
                     </div>
                 </div>
             </div>
-            <br>
+
         </div>
     </div>
+    <br>
 </div>
