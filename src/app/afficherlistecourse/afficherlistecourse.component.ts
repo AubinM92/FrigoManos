@@ -26,14 +26,13 @@ export class AfficherlistecourseComponent implements OnInit {
 
   constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private dialog3: MatDialog, private router: Router, private servmodif: ModiflisteService) { }
 
-
+  
 
   ngOnInit() {
     this.user.id = parseInt(localStorage.getItem("id"));
     this.http.get('http://localhost:8087/liste-globale/' + this.user.id).subscribe(
       data => {
         this.mesListes = data;
-        console.log(this.mesListes);
       }
     );
 
@@ -49,11 +48,12 @@ export class AfficherlistecourseComponent implements OnInit {
 
   boutonVoir(l) {
     this.liste = l;
-    localStorage.setItem("vueListe", ("" + this.liste.id));
+    
     this.visible = true;
     this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
       data => {
         this.mesElementsListe = data;
+        return this.mesElementsListe;
       }
     )
   }

@@ -1,25 +1,24 @@
-<div style="margin:10px; padding:10px; background: #EAC5CD;">
-    <button style="background: rgb(124, 165, 165); color: white" (click)="nouvelleListe()">
-        <strong>
-            Nouvelle
-            liste
-        </strong>
-    </button>
-</div>
-<div class="row" style="margin:10px; padding:10px;">
-    <div class="col-sm-5">
-        <div class="table">
-            <!--création d'un tableau-->
-            <div class="text-center" style="width: 100%;">
-                <H2>Mes listes de courses</H2>
+<!--
+<div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+    <div style="width: 40%;">
+        <div class="table" style="background: #f2cbaa; border-radius: 20px;">
+            
+            <div
+                style="width: 90%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+                <div>
+                    <H2>Mes listes de courses</H2>
+                </div>
+                <div>
+                    <mat-icon style="font-size: 50px;" (click)="nouvelleListe()">add</mat-icon>
+                </div>
             </div>
+
             <tbody class="text-center">
-                <!-- ngFor equivaut à un ForEach-->
                 <tr *ngFor="let l of mesListes">
-                    <td width="80%">{{l.titre | uppercase }}</td>
+                    <td width="80%" style="font-size: 20px;">{{l.titre | uppercase }}</td>
                     <td width="10%">
                         <button (click)='boutonVoir(l)' style="background: none; border: none">
-                            <mat-icon style="font-size: 25px;">remove_red_eye</mat-icon>
+                            <mat-icon style="font-size: 25px; color: white;">remove_red_eye</mat-icon>
                         </button>
                     </td>
                     <td width="10%">
@@ -28,16 +27,19 @@
                         </button></td>
                 </tr>
             </tbody>
+            <br>
         </div>
+
     </div>
-    <div class="col-sm-7">
-        <div *ngIf="visible" style="background: rgba(235, 210, 215, 0.952); padding: 10px; border-radius: 10px;">
+    <div style="width: 40%;">
+        <div *ngIf="visible" style="background: #f2cbaa; border-radius: 20px;">
             <div class="table text-center" style="margin: auto;">
-                <div class="row">
-                    <div class="col-sm-9" style="vertical-align: middle;">
+                <div
+                    style="width: 90%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+                    <div>
                         <H3 class="text-center"><strong>{{ liste.titre }}</strong></H3>
                     </div>
-                    <div class="col-sm-3" style="justify-content: center;">
+                    <div>
                         <button (click)="ajoutElementListe()" style="background: none; border: none">
                             <mat-icon style="font-size: 50px;">add</mat-icon>
                         </button>
@@ -72,5 +74,17 @@
 
 
         </div>
+        <br>
     </div>
-</div>
+</div>-->
+
+<!--<div style="display: flex; flex-wrap: wrap;">
+    <div *ngFor="let l of mesListes; let i = index" style="padding: 10px">
+        <div class="card cadre">
+            <div class="card-block">
+                <h4 class="card-title">{{ i }} - {{ l.titre }}</h4>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>-->
