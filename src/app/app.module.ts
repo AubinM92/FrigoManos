@@ -33,13 +33,10 @@ import { Input } from '@angular/core';
 import { MatTableModule} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
-<<<<<<< HEAD
-import { NavjoComponent } from './navjo/navjo.component';
+
 import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 
-=======
-import { MatSidenavModule, MatToolbarModule } from '@angular/material';
->>>>>>> 1e95b552e580bcc3a510cf2cb26058bfd300d2b4
+import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/material';
 
 
 @NgModule({
@@ -63,7 +60,7 @@ import { MatSidenavModule, MatToolbarModule } from '@angular/material';
     ModifelementlisteComponent,
     ModifFrigoComponent,
     AjouterElementFrigoComponent,
-    NavjoComponent,
+    
     ChoixajoutrecettelisteComponent,
 
     AjouterElementFrigoComponent
@@ -85,6 +82,9 @@ import { MatSidenavModule, MatToolbarModule } from '@angular/material';
     MatIconModule,
     MatCheckboxModule,
     MatTableModule,
+    
+    MatSidenavModule, MatToolbarModule
+
     
   ],
   providers: [],

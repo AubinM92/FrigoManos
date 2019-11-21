@@ -22,12 +22,14 @@ LaListeRecette : Liste = new Liste();
   ajoutTousIngredient(){
     this.http.post('http://localhost:8087/listeRecette/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
+    this.dialogRef.close();
   }
 
   ajoutIngredientManquant(){
 
     this.http.post('http://localhost:8087/listeRecetteManquant/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
+    this.dialogRef.close();
 
   }
 

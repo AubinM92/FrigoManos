@@ -9,11 +9,8 @@ import { AfficherfrigoComponent } from './afficherfrigo/afficherfrigo.component'
 import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlistecourse.component';
 import { ListeachatComponent } from './listeachat/listeachat.component'
 import { AfficherunerecetteComponent } from './afficherunerecette/afficherunerecette.component'
-<<<<<<< HEAD
-import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 
-=======
->>>>>>> 1e95b552e580bcc3a510cf2cb26058bfd300d2b4
+import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
