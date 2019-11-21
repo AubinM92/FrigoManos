@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UnerecetteService } from '../unerecette.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { ElementFinder } from 'protractor';
+import { Envie } from '../model/Envie';
+import { Liste } from '../model/Liste';
+import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
+import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 
 @Component({
   selector: 'app-afficherunerecette',
@@ -12,12 +17,22 @@ export class AfficherunerecetteComponent implements OnInit {
   laRecette;
   elemLaRecette;
   mesElementsFrigo = [];
-  mesElements = [];
+  mesElementsF = [];
 
   element;
   trouve = 0;
+  pasAssez = 0;
+  elemTrouve;
 
-  constructor(private recetteService: UnerecetteService, private http: HttpClient) { }
+  dateAuj;
+  nouvelleEnvie : Envie = new Envie();
+  recetteEnvie;
+  message;
+  VerifAjoutEnvie;
+  listeRecette : Liste = new Liste();
+
+
+  constructor(private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
 
   ngOnInit() {
 
@@ -52,20 +67,63 @@ export class AfficherunerecetteComponent implements OnInit {
       data => {
         this.element = data;
         this.mesElementsFrigo = this.element;
-        this.mesElements = this.mesElementsFrigo;
+        this.mesElementsF = this.mesElementsFrigo;
         console.log(this.mesElementsFrigo);
       }
     )
   }
 
   dansFrigo(elemR) {
-    this.mesElements.forEach(elementF => {
+
+    let info;
+    this.mesElementsF.forEach(elementF => {
       if (elementF.ingredient.id === elemR.ingredient.id) {
         this.trouve = 1;
+        this.elemTrouve = elementF;
+        info = 'okJai';
+
+      }
+      else {
+        info = 'jaiPas';
       }
     });
-    return this.trouve;
 
+    console.log(info);
+    return info;
   }
 
+  dansFrigoPasAssez(elemRe) {
+    this.dansFrigo(elemRe);
+    if (this.elemTrouve.quantite < elemRe.quantite) {
+      this.pasAssez = 1;
+    }
+  }
+
+  ajouterEnvie(re){
+    this.dateAuj = this.maDate();
+    this.nouvelleEnvie.date = this.dateAuj;
+    this.nouvelleEnvie.recette = re;
+    this.nouvelleEnvie.user.id = localStorage.id;
+    const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
+    del.then(data =>{
+    this.VerifAjoutEnvie = data;
+    });
+    if(this.VerifAjoutEnvie !=null){
+      this.message = "Recette ajoutée aux envies"
+    } else {
+      this.message = "Encore une fois ?!"
+    }
+  }
+
+  ajouterRecetteCourse(re){
+    this.listeRecette.titre = re.titre;
+    this.listeRecette.user.id= localStorage.id;
+    this.ajoutService.recette=re;
+    this.ajoutService.liste = this.listeRecette;
+    const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
+  }
+
+  maDate(){
+    return new Date();
+  }
 }

@@ -11,12 +11,19 @@
 }
 
 .cadre{
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .cadretop{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.remplir{
+  background-color: rgb(23, 180, 23);
 }
 
 

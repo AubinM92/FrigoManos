@@ -1,0 +1,28 @@
+<div style="width: 400px;">
+    <h6 class="text-center">Voulez-vous ajouter une liste de courses avec </h6>
+    <div style="margin: 10px">
+
+        <div class="row">
+            <div class="col-sm-6">
+                    <p class="text-center">Tous les ingrédients <br>     de la recette</p>
+                <button class="btn btn-primary btn-block" (click)='ajoutTousIngredient();'
+                ><mat-icon>add_shopping_cart</mat-icon></button>
+            </div>
+
+            <div class="col-sm-6">
+                <p class="text-center">Les ingrédients manquants <br>    à votre frigo</p>
+                <button  class="btn btn-primary btn-block" (click)='ajoutIngredientManquant();'
+                ><mat-icon>playlist_add</mat-icon></button>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                        <button class="btn btn-primary btn-block" (click)='fermer();'>Annuler</button>
+                </div>
+                <div class="col-sm-4"></div>
+        </div>
+
+    </div>
+</div>
