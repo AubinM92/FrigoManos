@@ -7,6 +7,7 @@ import { Envie } from '../model/Envie';
 import { Liste } from '../model/Liste';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-afficherunerecette',
@@ -14,6 +15,9 @@ import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choix
   styleUrls: ['./afficherunerecette.component.css']
 })
 export class AfficherunerecetteComponent implements OnInit {
+  
+  user: User = new User();
+
   laRecette;
   elemLaRecette;
   mesElementsFrigo = [];
@@ -36,6 +40,7 @@ export class AfficherunerecetteComponent implements OnInit {
 
   ngOnInit() {
 
+    this.user.id = parseInt(localStorage.getItem("id"));
     this.premiere();
 
   }
@@ -46,31 +51,16 @@ export class AfficherunerecetteComponent implements OnInit {
     del.then(
       data => {
         this.laRecette = data;
-        console.log(this.laRecette);
       })
     this.deuxieme();
   }
 
   deuxieme() {
-    const del = this.http.get('http://localhost:8087/elemRecette/' + this.laRecette.id).toPromise();
+    const del = this.http.post('http://localhost:8087/elem-recette-plus/' + this.laRecette.id, this.user).toPromise();
     del.then(
       data => {
         this.elemLaRecette = data;
-        console.log(this.elemLaRecette);
       })
-    this.troisieme();
-  }
-
-  troisieme() {
-    const del = this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).toPromise();
-    del.then(
-      data => {
-        this.element = data;
-        this.mesElementsFrigo = this.element;
-        this.mesElementsF = this.mesElementsFrigo;
-        console.log(this.mesElementsFrigo);
-      }
-    )
   }
 
   ajouterEnvie(re){
