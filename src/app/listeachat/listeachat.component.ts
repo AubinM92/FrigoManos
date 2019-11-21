@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 
 export class ListeachatComponent implements OnInit {
   ELEMENT_DATA: ListeAchat[] = [];
-  displayedColumns: string[] = ['select', 'nom','quantiteAchetee','unite'];
+  displayedColumns: string[] = ['select', 'nom','quantite','unite'];
   dataSource = new MatTableDataSource<ListeAchat>(this.ELEMENT_DATA);
   selection = new SelectionModel<ListeAchat>(true, []);
   elementListe: ListeAchat = new ListeAchat();

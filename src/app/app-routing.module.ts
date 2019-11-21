@@ -10,12 +10,11 @@ import { AfficherlistecourseComponent } from './afficherlistecourse/afficherlist
 import { ListeachatComponent } from './listeachat/listeachat.component'
 import { AfficherunerecetteComponent } from './afficherunerecette/afficherunerecette.component'
 
+import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { ModifelementlisteComponent } from './modifelementliste/modifelementliste.component';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
-import { NavbaruserComponent } from './navbaruser/navbaruser.component';
-import { NavjoComponent } from './navjo/navjo.component';
 
 const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
@@ -34,7 +33,9 @@ const routes: Routes = [
   { path: 'recettes', component: RecettesComponent },
   { path: 'modif-frigo', component: ModifFrigoComponent },
   { path: 'ajout-frigo', component: AjouterElementFrigoComponent },
-  { path: 'test-nav', component: NavjoComponent },
+  
+  { path : 'choixajoutliste', component : ChoixajoutrecettelisteComponent},
+  { path: "", redirectTo: '/connexion', pathMatch: 'full' },
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },
 
 ];
