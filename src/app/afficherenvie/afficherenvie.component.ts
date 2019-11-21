@@ -18,10 +18,10 @@ export class AfficherenvieComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.user.id=localStorage.id;
     console.log(this.user.id);
-    const del = this.http.get('http://localhost:8087/recetteByEnvieByUser/' +this.user.id).toPromise();
-    del.then(
+     this.http.get('http://localhost:8087/recetteByEnvieByUser/' +this.user.id).subscribe(
       data => {
         this.lesRecettes= data;
         console.log(this.lesRecettes);
