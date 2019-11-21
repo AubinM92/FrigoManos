@@ -1,5 +1,5 @@
 <mat-sidenav-container fullscreen>
-  <mat-sidenav mode="side" #sidenav opened position="start">
+  <mat-sidenav mode="side" #sidenav opened position="start" *ngIf=noSession>
 
     <div style="vertical-align: middle;">
 
@@ -11,7 +11,8 @@
         <h6 class="text-navbar">Mon Frigo</h6>
       </button>
 
-      <br><br><br><br>
+      <br>
+      <hr class="demarcation"><br>
 
       <button class="btn-block btn-nav" (click)="toListeAchat()">
         <img src="https://image.flaticon.com/icons/svg/687/687264.svg" alt="" width="50px">
@@ -19,7 +20,8 @@
         <h6 class="text-navbar">Ma liste d'achat</h6>
       </button>
 
-      <br><br><br><br>
+      <br>
+      <hr class="demarcation"><br>
 
       <button class="btn-block btn-nav" (click)="mesListes()">
         <img src="https://image.flaticon.com/icons/svg/685/685745.svg" alt="" width="50px">
@@ -27,7 +29,8 @@
         <h6 class="text-navbar">Mes listes de courses</h6>
       </button>
 
-      <br><br><br><br>
+      <br>
+      <hr class="demarcation"><br>
 
       <button class="btn-block btn-nav" (click)="toRecettes()">
         <img src="https://image.flaticon.com/icons/svg/766/766316.svg" alt="" width="50px">
@@ -35,7 +38,8 @@
         <h6 class="text-navbar">Recettes</h6>
       </button>
 
-      <br><br><br><br>
+      <br>
+      <hr class="demarcation"><br>
 
       <button class="btn-block btn-nav" routerLink="/modif-profil">
         <img src="https://image.flaticon.com/icons/svg/768/768051.svg" alt="" width="50px">
@@ -47,7 +51,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar class="couleur-nav">
+    <mat-toolbar class="couleur-nav" *ngIf=noSession>
 
       <button mat-icon-button (click)="sidenav.toggle()"
         style="width: 100%; background: none; border: none; text-align: left; vertical-align: middle;">
@@ -61,6 +65,10 @@
       </button>
 
     </mat-toolbar>
-  </mat-sidenav-content>
 
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
 </mat-sidenav-container>

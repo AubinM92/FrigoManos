@@ -10,6 +10,8 @@ import { Liste } from '../model/Liste';
 })
 
 export class NavbaruserComponent implements OnInit {
+  
+  noSession = false;
   cUser;
   data;
   response;
@@ -17,6 +19,9 @@ export class NavbaruserComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
+    if (localStorage.length !== 0) {
+      this.noSession = true;
+    }
     this.cUser = localStorage.getItem("pseudo");
   }
 

@@ -1,5 +1,5 @@
 .couleur-nav {
-  background: #a6d6ea;
+  background: #f2cbaa;
 }
 
 .bienvenue {
@@ -15,10 +15,7 @@
 }
 
 .demarcation {
-  width: 100%;
-  color: black;
-  background-color:black;
-  height: 0.2px;
+  background-color: black;
 }
 
 .material-menu {
