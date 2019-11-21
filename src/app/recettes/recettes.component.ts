@@ -44,10 +44,6 @@ export class RecettesComponent implements OnInit {
   }
 
   ajouterRecetteCourse(re){
-
-
-    
-
     this.listeRecette.titre = re.titre;
     this.listeRecette.user.id= localStorage.id;
     this.ajoutService.recette=re;
