@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UnerecetteService } from '../unerecette.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { ElementFinder } from 'protractor';
 
 @Component({
   selector: 'app-afficherunerecette',
@@ -12,10 +13,12 @@ export class AfficherunerecetteComponent implements OnInit {
   laRecette;
   elemLaRecette;
   mesElementsFrigo = [];
-  mesElements = [];
+  mesElementsF = [];
 
   element;
   trouve = 0;
+  pasAssez = 0;
+  elemTrouve;
 
   constructor(private recetteService: UnerecetteService, private http: HttpClient) { }
 
@@ -52,20 +55,35 @@ export class AfficherunerecetteComponent implements OnInit {
       data => {
         this.element = data;
         this.mesElementsFrigo = this.element;
-        this.mesElements = this.mesElementsFrigo;
+        this.mesElementsF = this.mesElementsFrigo;
         console.log(this.mesElementsFrigo);
       }
     )
   }
 
   dansFrigo(elemR) {
-    this.mesElements.forEach(elementF => {
+
+    let info;
+    this.mesElementsF.forEach(elementF => {
       if (elementF.ingredient.id === elemR.ingredient.id) {
         this.trouve = 1;
+        this.elemTrouve = elementF;
+        info = 'okJai';
+
+      }
+      else {
+        info = 'jaiPas';
       }
     });
-    return this.trouve;
 
+    console.log(info);
+    return info;
   }
 
+  dansFrigoPasAssez(elemRe) {
+    this.dansFrigo(elemRe);
+    if (this.elemTrouve.quantite < elemRe.quantite) {
+      this.pasAssez = 1;
+    }
+  }
 }
