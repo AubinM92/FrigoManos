@@ -5,4 +5,5 @@ export class ListeAchat {
     nomIngredient: string;
     quantite: number;
     unite: string;
+    index: number;
 }
