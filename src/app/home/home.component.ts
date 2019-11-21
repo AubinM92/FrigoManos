@@ -16,8 +16,6 @@ export class HomeComponent implements OnInit {
 
   }
 
- open() {
-    const mydial = this.dialog.open(CreerlistecourseComponent);
- } 
+ 
 
 }
