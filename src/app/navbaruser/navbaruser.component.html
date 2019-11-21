@@ -1,5 +1,5 @@
 <mat-sidenav-container fullscreen>
-  <mat-sidenav mode="side" #sidenav opened position="start" *ngIf=noSession>
+  <mat-sidenav mode="side" #sidenav opened position="start">
 
     <div style="vertical-align: middle;">
 
@@ -51,7 +51,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar class="couleur-nav" *ngIf=noSession>
+    <mat-toolbar class="couleur-nav">
 
       <button mat-icon-button (click)="sidenav.toggle()"
         style="width: 100%; background: none; border: none; text-align: left; vertical-align: middle;">
