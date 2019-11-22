@@ -15,9 +15,9 @@
     <div class="encart">
         <div class="row input-group-prepend" style="display: flex; align-items: center;">
 
-            <div class="col-sm-3 input-group" id="select1">
+            <div class="col-sm-2 input-group" id="select1">
                 <div>
-                    <select class="custom-select select" id="selectSais">
+                    <select class="custom-select" id="selectSais">
                         <option selected>Saison...</option>
                         <option value="s1">Printemps</option>
                         <option value="s2">Eté</option>
@@ -27,9 +27,9 @@
                 </div>
             </div>
 
-            <div class="col-sm-3 input-group" id="select2">
+            <div class="col-sm-2 input-group" id="select2">
                 <div>
-                    <select class="custom-select select" id="selectCat">
+                    <select class="custom-select" id="selectCat">
                         <option selected>Type d'ingrédient...</option>
                         <option value="c1">Légume</option>
                         <option value="c2">Fruit</option>
@@ -54,23 +54,23 @@
                 <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
                     (click)='afficherRecette(re)' />
                 <div class="card-block">
-                    <h4 class="card-title texte">{{re.titre}}</h4>
+                    <h4 class="card-title">{{re.titre}}</h4>
 
-                    <p class="card-text"><small class="text-muted texte">Préparation : {{re.tempsPrepa}} min | Cuisson :
+                    <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min | Cuisson :
                             {{re.tempsCuis }} min</small></p>
                     <div class="row">
                         <div></div>
 
                         <div class="col-sm-1"></div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;"
+                            <button type="button" class="btn btn-outline-danger cadre"
                                 (click)='ajouterRecetteCourse(re)'>
-                                <mat-icon>note_add</mat-icon>
+                                <mat-icon>add_shopping_cart</mat-icon>
                             </button>
                         </div>
                         <div class="col-sm-2"></div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline pull-right cadre" style="color: #c2dcb9;"
+                            <button type="button" class="btn btn-outline-warning pull-right cadre"
                                 (click)='ajouterEnvie(re)'>
                                 <mat-icon>star</mat-icon>
                             </button>

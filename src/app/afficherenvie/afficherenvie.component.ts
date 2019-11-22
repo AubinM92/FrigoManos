@@ -8,6 +8,7 @@ import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { Liste } from '../model/Liste';
 import { AfficheruneenvieComponent } from '../afficheruneenvie/afficheruneenvie.component';
+import { Envie } from '../model/Envie';
 
 @Component({
   selector: 'app-afficherenvie',
@@ -30,22 +31,21 @@ export class AfficherenvieComponent implements OnInit {
      this.http.get('http://localhost:8087/recetteByEnvieByUser/' +this.user.id).subscribe(
       data => {
         this.lesRecettes= data;
-        console.log(this.lesRecettes);
+        
       })
   }
 
   afficherEnvie(recette){
     this.uneEnvieService.recette = recette;
-    this.http.get('http://localhost:8087/envieByRecette/' +recette.id).subscribe(
-      data => {
+    const del =this.http.get('http://localhost:8087/envieByRecette/' +recette.id).toPromise();
+      del.then(data => {
         this.lenvie= data;
-        console.log(this.lesRecettes);
+        this.uneEnvieService.envie = this.lenvie;
+        const mydial = this.dialog.open(AfficheruneenvieComponent);
+        mydial.afterClosed().subscribe(result => {
+          this.ngOnInit();
+        });
       })
-      this.uneEnvieService.envie = this.lenvie;
-    const mydial = this.dialog.open(AfficheruneenvieComponent);
-    mydial.afterClosed().subscribe(result => {
-      this.ngOnInit();
-    });
   }
 
   ajouterRecetteCourse(re){
