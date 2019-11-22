@@ -3,17 +3,16 @@
     <div class="col-sm-6">
         <div style="display: flex; justify-content: center;">
             <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                (click)="nouvelleListe()" style="width: 50%; background:#c2dcb9; color: white;">Nouvelle liste</button>
+                (click)="nouvelleListe()" style="width: 50%; background:#b6c5b1; color: white;">Nouvelle liste</button>
         </div>
-        <div style="display: flex; flex-wrap: wrap;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
             <div *ngFor="let l of mesListes; let i = index" style="padding: 10px">
-                <div class="card cadre" (click)="boutonVoir(l)">
+                <div style="min-width: 150px;" class="card cadre text-center" (click)="boutonVoir(l, i)" [style.background]="couleur(i)">
                     <div class="card-block">
-                        <h1 class="card-title" style="font-size: 40px;">{{ l.titre }}</h1>
+                        <h1 class="card-title" style="font-size: 20px;">{{ l.titre }}</h1>
                     </div>
                     <div style="display: flex; justify-content: center; padding: 10px;">
                         <div style="width: 5%;"></div>
-
                     </div>
                 </div>
             </div>
@@ -23,7 +22,7 @@
     <!-- Tableau qui contient le détails d'une liste-->
     <div class="col-sm-6">
         <div class="card cadre" *ngIf="visible">
-            <div class="card-block" style="background: #a6d6ea ;">
+            <div class="card-block" [style.background]="couleurDetail()">
                 <div style="display: flex;flex-direction: row ;justify-content: space-between; align-items: center;">
                     <div style="width: 100%;" class="text-center">
                         <h1 class="card-title" style="font-size: 50px;">

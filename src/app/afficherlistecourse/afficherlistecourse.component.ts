@@ -10,6 +10,7 @@ import { ElementListe } from '../model/ElementListe';
 import { AjouterElementListeComponent } from '../ajouter-element-liste/ajouter-element-liste.component';
 import { ModifelementlisteComponent } from '../modifelementliste/modifelementliste.component';
 import { ModiflisteService } from '../modifliste.service';
+import { R3TargetBinder } from '@angular/compiler';
 
 @Component({
   selector: 'app-afficherlistecourse',
@@ -23,7 +24,6 @@ export class AfficherlistecourseComponent implements OnInit {
   mesElementsListe;
   element;
   user: User = new User();
-
   constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private dialog3: MatDialog, private router: Router, private servmodif: ModiflisteService) { }
 
   
@@ -46,10 +46,20 @@ export class AfficherlistecourseComponent implements OnInit {
     }
   }
 
-  boutonVoir(l) {
-    this.liste = l;
-    localStorage.setItem("vueListe", this.liste.id+"");
+  c: string[] = ["#a6d6ea","#c2dcb9","#f2cbaa","#e5b7d1","#f4eab9","#f76b6b","#7984e2"];
+  couleur(i){
+    return this.c[i%this.c.length];
+  };
+  
+  index: number;
+  couleurDetail(){
+    return this.couleur(this.index);
+  }
 
+  boutonVoir(l, i) {
+    this.liste = l;
+    this.index = i;
+    localStorage.setItem("vueListe", this.liste.id+""); 
     this.visible = true;
     this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
       data => {
@@ -111,7 +121,7 @@ export class AfficherlistecourseComponent implements OnInit {
   ajoutElementListe(id) {
     const mydial2 = this.dialog2.open(AjouterElementListeComponent);
     mydial2.afterClosed().subscribe(result => {
-      this.boutonVoir(this.liste);
+      this.boutonVoir(this.liste, 1);
     });
   }
 
