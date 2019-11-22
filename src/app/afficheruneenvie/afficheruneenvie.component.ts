@@ -6,6 +6,7 @@ import { Liste } from '../model/Liste';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { UneenvieService } from '../uneenvie.service';
 import { User } from '../model/User';
+import { Envie } from '../model/Envie';
 
 @Component({
   selector: 'app-afficheruneenvie',
@@ -22,8 +23,9 @@ export class AfficheruneenvieComponent implements OnInit {
   visibleFait = false;
 
   iddelEnvie;
-  lEnvie;
+  laRecetteEnvie;
   envieDel;
+  lEnvie : Envie = new Envie();
 
 
   listeRecette: Liste = new Liste();
@@ -33,42 +35,41 @@ export class AfficheruneenvieComponent implements OnInit {
   ngOnInit() {
 
     this.user.id = parseInt(localStorage.getItem("id"));
+    this.lEnvie = this.recetteEnvie.envie;
     this.premiere();
+  
 
   }
 
   premiere() {
-    this.lEnvie = this.recetteEnvie.recette;
-    const del = this.http.get('http://localhost:8087/recette/' + this.lEnvie.id).toPromise();
-    del.then(
-      data => {
-        this.lEnvie = data;
-        console.log(this.lEnvie);
-      })
+    this.laRecetteEnvie = this.recetteEnvie.recette;
     this.deuxieme();
   }
 
   deuxieme() {
-    const del = this.http.get('http://localhost:8087/elemRecette/' + this.lEnvie.id).toPromise();
+    const del = this.http.post('http://localhost:8087/elem-recette-plus/' + this.laRecetteEnvie.id, this.user).toPromise();
     del.then(
       data => {
         this.elemLaRecette = data;
-        console.log(this.elemLaRecette);
+       
+       
       })
   }
 
 
-  ajouterRecetteCourse(re) {
-    this.listeRecette.titre = re.titre;
+  ajouterRecetteCourse() {
+    this.listeRecette.titre = this.laRecetteEnvie.titre;
     this.listeRecette.user.id = localStorage.id;
-    this.ajoutService.recette = re;
+    this.ajoutService.recette = this.laRecetteEnvie;
     this.ajoutService.liste = this.listeRecette;
+    console.log(this.laRecetteEnvie);
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
-  deleteEnvie(env) {
-    this.envieDel = env;
-    const del = this.http.delete('http://localhost:8087/envie/' + this.envieDel.id).toPromise();
+  deleteEnvie() {
+  
+    
+    const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
     }, err => {
       console.log(err);

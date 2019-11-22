@@ -35,7 +35,7 @@ export class AfficherfrigoComponent implements OnInit {
   allRecettes;
 
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router, private s: ServicefrigoService, private recetteService : UnerecetteService) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router, private s: ServicefrigoService, private recetteService: UnerecetteService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
@@ -43,19 +43,21 @@ export class AfficherfrigoComponent implements OnInit {
         this.element = data;
         this.mesElementsFrigo = this.element;
         console.log(this.mesElementsFrigo);
+        this.mesElementsFrigo.forEach(element => {
+          if (element.ingredient.url === null) {
+            element.ingredient.url = "https://image.flaticon.com/icons/svg/2169/2169159.svg";
+          }
+        });
       }
     )
-    this.http.get('http://localhost:8087//elemFrigo_suggestions/'+ localStorage.getItem("id")).subscribe(
+    this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id")).subscribe(
       data => {
         this.allRecettes = data;
-        console.log(this.allRecettes);
       })
   }
 
   modifQuantite(e) {
     this.s.elemservice = e;
-    console.log("entree service", e);
-    console.log("entree service s", this.s.elemservice);
     const mydial = this.dialog.open(ModifFrigoComponent);
   }
 
@@ -67,7 +69,6 @@ export class AfficherfrigoComponent implements OnInit {
       data => {
         this.ngOnInit();
       }, err => {
-        console.log(err);
       }
     );
   }
@@ -81,7 +82,7 @@ export class AfficherfrigoComponent implements OnInit {
 
   }
 
-  afficherRecette(recette){
+  afficherRecette(recette) {
     this.recetteService.recette = recette;
     const mydial3 = this.dialog.open(AfficherunerecetteComponent);
   }

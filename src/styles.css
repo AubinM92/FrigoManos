@@ -12,3 +12,40 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .invalid{
     color: tomato;
 }
+
+.favori {
+    border-color:  rgb(245, 223, 30);
+    color: rgb(245, 223, 30);
+  }
+
+.favori:hover {
+    background:  rgb(245, 223, 30);
+    border-color:  white;
+    color: white;
+  }
+
+
+/* Couleur et background pour les boutons d'ajout d'éléments d'une recette à une liste */
+  .ajoutListe {
+    border-color:  rgb(231, 55, 23);
+    color:  rgb(231, 55, 23);
+  }
+
+.ajoutListe:hover {
+    background:   rgb(231, 55, 23);
+    border-color:   white;
+    color:  white;
+  }
+
+  /* Couleur et background pour les boutons recette réalisée d'une recette à une liste */
+  .recetteReal {
+    border-color:  rgb(43, 184, 0);
+    color:  rgb(43, 184, 0);
+  }
+
+.recetteReal:hover {
+    background:   rgb(43, 184, 0);
+    border-color:   white;
+    color:  white;
+  }
+
