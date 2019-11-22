@@ -49,9 +49,6 @@ export class ConnexionComponent implements OnInit {
 
       }
     );
-
-
-
   }
 
   toInscription() {
