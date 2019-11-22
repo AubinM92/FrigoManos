@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Liste } from '../model/Liste';
 import { ServicefrigoService } from '../servicefrigo.service';
 
@@ -17,7 +16,8 @@ export class NavbaruserComponent implements OnInit {
   data;
   response;
   liste : Liste = new Liste();
-  constructor(private router: Router, private http: HttpClient, private s: ServicefrigoService) { }
+
+  constructor(private router: Router, private s: ServicefrigoService) { }
 
   ngOnInit() {
     if (localStorage.length !== 0) {
@@ -51,5 +51,9 @@ export class NavbaruserComponent implements OnInit {
 
   toRecettes() {
     this.router.navigate(['/recettes']);
+  }
+
+  toEnvies() {
+    this.router.navigate(['/aff-envie']);
   }
 }

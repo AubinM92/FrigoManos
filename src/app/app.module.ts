@@ -37,6 +37,7 @@ import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixa
 import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/material';
 import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.c
     AfficherenvieComponent,
     AfficheruneenvieComponent
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent],
+  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent,AfficheruneenvieComponent],
 
   imports: [
     BrowserModule,
@@ -81,7 +82,7 @@ import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.c
     MatIconModule,
     MatCheckboxModule,
     MatTableModule,
-    
+    NgMultiSelectDropDownModule,
     MatSidenavModule, MatToolbarModule
 
     

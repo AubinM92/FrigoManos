@@ -1,0 +1,16 @@
+.select {
+    float: left;
+    border-radius: 0.5rem;
+    font-family: Georgia, serif !important;
+    width: auto;
+  }
+
+.cadre{
+    border-radius: 0.5rem;
+  }
+  
+  .cadretop{
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  

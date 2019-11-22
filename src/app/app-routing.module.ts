@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'recettes', component: RecettesComponent },
   { path: 'modif-frigo', component: ModifFrigoComponent },
   { path: 'ajout-frigo', component: AjouterElementFrigoComponent },
-  { path : 'choixajoutliste', component : ChoixajoutrecettelisteComponent},
+  { path: 'choixajoutliste', component : ChoixajoutrecettelisteComponent},
   { path: 'aff-envie', component: AfficherenvieComponent },
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },

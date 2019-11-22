@@ -1,23 +1,15 @@
-<div class="container">
-    <div style="margin:10px; margin-bottom:10px; padding:10px; background: #f2cbaa;">
-        <div class="row-input-group-prepend">
-            <div class="col-sm-12">
-                <h2><strong>Mon frigo</strong></h2>
-                <button style="background: rgb(124, 165, 165); color: white" (click)="ajouterElementFrigo()">
-                    <strong>
-                        Ajouter un item au frigo
-                    </strong>
-                </button>
+<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
+    <div class="row">
+        <div class="col-sm-7">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                <h2 class="text-center">Mon frigo</h2>
             </div>
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="row" style="margin:10px; padding:10px;">
-            <div class="col-sm-4">
+            <hr>
+            <!--
+            <div class="col-sm-12">
+                <h2 class="texte">Mon frigo</h2>
                 <div class="table">
-                    <div class="text-center" style="width: 100%">
+                    <div style="width: 100%">
                         <tbody>
                             <tr *ngFor="let e of mesElementsFrigo">
                                 <td>{{e.ingredient.nom | uppercase }}</td>
@@ -25,7 +17,7 @@
                                 <td>{{e.ingredient.unite}}</td>
                                 <td width="10%">
                                     <button (click)='modifQuantite(e)' style="background: none; border: none">
-                                        <mat-icon style="font-size: 25px;">remove_red_eye</mat-icon>
+                                        <mat-icon style="font-size: 25px;">edit</mat-icon>
                                     </button>
                                 </td>
                                 <td width="10%">
@@ -37,40 +29,80 @@
 
                     </div>
                 </div>
+            </div>-->
+
+            <div
+                style="margin: 5%;border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
+                <div *ngFor="let e of mesElementsFrigo" style="padding: 10px; height: 150; width: 200px;">
+                    <div class="card cadre" style="display: flex; flex-direction: column;; align-items:center;">
+                        <br>
+
+                        <div style="padding-left: 5px; padding-right: 5px;">
+                            <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="100px"
+                                height="100px" alt="Nope" (click)="modifQuantite(e)" />
+                        </div>
+
+                        <div
+                            style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
+                            <div style="height: 50px; display: flex; align-items: center; flex-direction: column;">
+                                <div style="font-size: 20px;"><strong>{{e.ingredient.nom}}</strong></div>
+                                <div class="text-center" style="font-size: 18px;">{{e.quantite}} {{e.ingredient.unite}}
+                                </div>
+                            </div>
+
+                            <mat-icon (click)="supprimerElementFrigo(e)">delete</mat-icon>
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
 
-            <div class="col-sm-2"></div>
+            <div style="display: flex; justify-content: center;">
+                <button (click)="ajouterElementFrigo()" onclick=""
+                    style="background: #c2dcb9; width: auto; color: white;"
+                    class="btn btn-lg btn-primary btn-block mb-2">
+                    Nouvel élément
+                </button>
+            </div>
 
-            <div class="col-sm-5 text-center">
+        </div>
+
+
+
+        <div class="col-sm-4">
+            <h1>Mes suggestions</h1>
+            <hr>
+            <div>
                 <div class="row">
-
-                    <div class="col-sm-12" *ngFor="let re of allRecettes">
-
+                    <div class="col-sm-6" *ngFor="let re of allRecettes">
                         <div class="card cadre">
-                            <img class="card-img-top img-fluid cadretop"
-                                src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
-                                alt="Card image cap">
+                            <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
+                                (click)='afficherRecette(re)'>
+
                             <div class="card-block">
                                 <h4 class="card-title">{{re.titre}}</h4>
 
-                                <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}}
-                                        min |
-                                        Cuisson
-                                        :
-                                        {{re.tempsCuis }} min</small></p>
+                                <p class="card-text"><small class="text-muted">Préparation : {{re.temps_cuis }} min | Cuisson :
+                                        {{re.temps_prepa }} min</small></p>
+                                <div class="row">
 
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <button type="button" class="btn btn-outline-success"
-                                            (click)='afficherRecette(re)'>
-                                            <mat-icon>remove_red_eye</mat-icon>
-                                        </button>
 
-                                        <button type="button" class="btn btn-outline-danger"
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-3">
+
+                                        <button type="button" class="btn btn-outline ajoutListe cadre"
                                             (click)='ajouterRecetteCourse(re)'>
-                                            <mat-icon>add_shopping_cart</mat-icon>
+                                            <mat-icon>note_add</mat-icon>
                                         </button>
-                                        <button type="button" class="btn btn-warning pull-right">
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-outline favori cadre"
+                                            (click)=ajoutEnvie(re)>
                                             <mat-icon>star</mat-icon>
                                         </button>
                                     </div>
@@ -79,12 +111,14 @@
                         </div>
                         <br>
                     </div>
+                    <br>
                 </div>
+                <br>
             </div>
 
-
-
         </div>
+
+
 
     </div>
 </div>

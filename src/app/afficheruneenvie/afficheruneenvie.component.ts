@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UnerecetteService } from '../unerecette.service';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 import { MatDialog } from '@angular/material';
 import { Liste } from '../model/Liste';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
+import { UneenvieService } from '../uneenvie.service';
+import { User } from '../model/User';
+import { Envie } from '../model/Envie';
 
 @Component({
   selector: 'app-afficheruneenvie',
@@ -13,66 +15,82 @@ import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choix
 })
 export class AfficheruneenvieComponent implements OnInit {
 
-  laRecette;
+  user: User = new User();
+
   elemLaRecette;
   mesElementsFrigo = [];
   mesElementsF = [];
   visibleFait = false;
 
-  element;
-  trouve = 0;
-  pasAssez = 0;
-  elemTrouve;
+  iddelEnvie;
+  laRecetteEnvie;
+  recetteCuisinee;
+  envieDel;
+  lEnvie: Envie = new Envie();
+  efr;
 
-  listeRecette : Liste = new Liste();
 
-  constructor(private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
+  listeRecette: Liste = new Liste();
+
+  constructor(private recetteEnvieService: UneenvieService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService, private dialog2: MatDialog) { }
 
   ngOnInit() {
 
+    this.user.id = parseInt(localStorage.getItem("id"));
+    this.lEnvie = this.recetteEnvieService.envie;
     this.premiere();
+
 
   }
 
   premiere() {
-    this.laRecette = this.recetteService.recette;
-    const del = this.http.get('http://localhost:8087/recette/' + this.laRecette.id).toPromise();
-    del.then(
-      data => {
-        this.laRecette = data;
-        console.log(this.laRecette);
-      })
+    this.laRecetteEnvie = this.recetteEnvieService.recette;
     this.deuxieme();
   }
 
   deuxieme() {
-    const del = this.http.get('http://localhost:8087/elemRecette/' + this.laRecette.id).toPromise();
+    const del = this.http.post('http://localhost:8087/elem-recette-plus/' + this.laRecetteEnvie.id, this.user).toPromise();
     del.then(
       data => {
         this.elemLaRecette = data;
-        console.log(this.elemLaRecette);
+
+
       })
-    this.troisieme();
   }
 
-  troisieme() {
-    const del = this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).toPromise();
-    del.then(
-      data => {
-        this.element = data;
-        this.mesElementsFrigo = this.element;
-        this.mesElementsF = this.mesElementsFrigo;
-        console.log(this.mesElementsFrigo);
-      }
-    )
-  }
 
-  ajouterRecetteCourse(re){
-    this.listeRecette.titre = re.titre;
-    this.listeRecette.user.id= localStorage.id;
-    this.ajoutService.recette=re;
+  ajouterRecetteCourse() {
+    this.listeRecette.titre = this.laRecetteEnvie.titre;
+    this.listeRecette.user.id = localStorage.id;
+    this.ajoutService.recette = this.laRecetteEnvie;
     this.ajoutService.liste = this.listeRecette;
+    console.log(this.laRecetteEnvie);
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
+  d
+  deleteEnvie() {
+    const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
+    del.then(x => {
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  /*recetteRealisee() {
+
+    const del = this.http.get('http/elemFrigo/{id}' + this.laRecetteEnvie.user.id).toPromise();
+    del.then(data => {
+      this.efr=data;
+      console.log(this.efr);
+      const del2 = this.http.post('http/elemFrigoCompare_Avec_Recette/{id}' + this.efr.id, this.laRecetteEnvie.recette).toPromise();
+      del2.then(data => {
+        this.recetteCuisinee = data;
+      }
+       ) } 
+    }*/
+
+
+
+
 
 }
