@@ -2,7 +2,7 @@
     <img class="card-img-top cadre"
         src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
         alt="Div image cap" style="height: 400px;">
-    <h2 class="text-center">{{ laRecette.titre }}</h2>
+    <h2 class="text-center">{{ lEnvie.titre }}</h2>
     <div style="margin: 10px">
         <div class="row" style="vertical-align: middle;">
             <div class="col-sm-1">
@@ -11,7 +11,7 @@
             <div class="col-sm-">
                 <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
                     style="width: 30px; height: 30px; vertical-align: middle;">
-                <span style="vertical-align: middle;"> Préparation : {{ laRecette.tempsPrepa }} min </span>
+                <span style="vertical-align: middle;"> Préparation : {{ lEnvie.tempsPrepa }} min </span>
             </div>
             <div class="col-sm-4">
 
@@ -19,7 +19,7 @@
             <div class="col-sm">
                 <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
                     style="width: 35px; height: 35px; vertical-align: middle;">
-                <span style="vertical-align: middle;"> Cuisson : {{ laRecette.tempsCuis }} min </span>
+                <span style="vertical-align: middle;"> Cuisson : {{ lEnvie.tempsCuis }} min </span>
             </div>
         </div>
         <br>
@@ -38,20 +38,14 @@
 
                 </div>
                 <div class="col-sm-4">
-                    <br>
-                    <i style="vertical-align: middle;" class="material-icons okJai">panorama_fish_eye</i>
-                    <span>J'ai ça dans mon frigo !</span><br>
-                    <i style="vertical-align: middle;" class="material-icons pasAssez">panorama_fish_eye</i>
-                    <span>J'en ai pas assez...</span><br>
-                    <i style="vertical-align: middle;" class="material-icons jaiPas">panorama_fish_eye</i>
-                    <span>Je n'en ai pas du tout !</span>
+   
                 </div>
             </div>
 
         </div>
         <br>
         <div>
-            {{laRecette.description}}
+            {{lEnvie.description}}
         </div>
         <br>
         <div class="row">
@@ -59,7 +53,7 @@
 
             </div>
             <div class="col-sm-5">
-                <button type="button" class="btn btn-outline-warning pull-right cadre">
+                <button type="button" class="btn btn-outline-warning pull-right cadre" (click)='deleteEnvie(lEnvie)'>
                     <mat-icon>star_half</mat-icon>
                 </button>
                 <span> Retirer la recette des envies</span>

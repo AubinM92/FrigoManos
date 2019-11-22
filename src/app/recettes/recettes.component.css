@@ -1,25 +1,18 @@
-#select1 select{
-    height: 90%;
-    width: 100%;
-    float: left;
-}
-
-#select2 select{
-    height: 90%;
-    width: 100%;
-    float: left;
+.select {
+  float: left;
+  border-radius: 0.5rem;
+  font-family: Georgia, serif !important;
+  font-size: 13px;
+  width: auto;
 }
 
 .cadre{
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 .cadretop{
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .remplir{
@@ -33,3 +26,23 @@
   .collapse-content .fa.fa-share-alt:hover {
     color: #0d47a1 !important;
   }
+
+.texte {
+  font-family: Georgia, serif !important;
+  color: black;
+}
+
+.encart {
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+}
+
+.btn-login {
+  font-family: Georgia, serif !important;
+  font-size: 11px;
+  letter-spacing: 0.05rem;
+  padding: 10px;
+  border-radius: 0.5rem;
+  background-color: #f5d7bd;
+}

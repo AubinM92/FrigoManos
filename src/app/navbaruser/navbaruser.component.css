@@ -1,5 +1,5 @@
 .couleur-nav {
-  background: #f2cbaa;
+  background: #c2dcb9;
 }
 
 .bienvenue {
@@ -10,8 +10,9 @@
 
 .text-navbar {
   font-family: Georgia, serif !important;
+  font-size: 14px;
   margin-top: 13px;
-  color: black;
+  color: black
 }
 
 .demarcation {
@@ -36,7 +37,7 @@ mat-sidenav {
 }
 
 .mat-drawer { 
-  background-color: #f2cbaa;
+  background-color: #c2dcb9;
   color: black;
 }
 
