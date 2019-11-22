@@ -1,10 +1,24 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-3" *ngFor="let re of lesRecettes">
-            <div class="card cadre">
+    <div class="cadre" style="margin-bottom:10px; padding:10px; background: #f2cbaa;">
+        <div class="row-input-group-prepend">
+            <div class="col-sm-12">
+                <h2 class="text-center"><strong>Mes </strong></h2>
+                <button style="background: rgb(124, 165, 165); color: white" (click)="ajouterElementFrigo()">
+                    <strong>
+                        
+                    </strong>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row ">
+        <div class="col-sm-3 " *ngFor="let re of lesRecettes">
+            <div class="card cadre ">
                 <input class="cadretop contain" type="image"
                     src="https://storenotrefamilleprod.blob.core.windows.net/images/cms/cuisine/recettes-fiche/26281.jpg"
-                    width="100%" height="200px" (click)='afficherRecette(re)' />
+                    width="100%" height="200px" (click)='afficherEnvie(re)' />
                 <div class="card-block">
                     <h4 class="card-title">{{re.titre}}</h4>
 
