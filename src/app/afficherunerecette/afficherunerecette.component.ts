@@ -55,6 +55,7 @@ export class AfficherunerecetteComponent implements OnInit {
     del.then(
       data => {
         this.elemLaRecette = data;
+       
       })
   }
 
