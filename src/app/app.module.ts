@@ -64,7 +64,7 @@ import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.c
     AfficherenvieComponent,
     AfficheruneenvieComponent
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent],
+  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent,AfficheruneenvieComponent],
 
   imports: [
     BrowserModule,
