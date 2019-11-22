@@ -24,6 +24,7 @@ export class AfficheruneenvieComponent implements OnInit {
 
   iddelEnvie;
   laRecetteEnvie;
+  recetteCuisinee;
   envieDel;
   lEnvie : Envie = new Envie();
 
@@ -66,14 +67,19 @@ export class AfficheruneenvieComponent implements OnInit {
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
-  deleteEnvie() {
-  
-    
+  deleteEnvie() { 
     const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
     }, err => {
       console.log(err);
     });
   }
+   
+  recetteRealisee(re){
+    const del= this.http.post('http/elemFrigo_ByEnvie/{id}' + this.recetteEnvie.recette.id, this.user).toPromise();
+    del.then(data=>{
+      this.recetteCuisinee=data;
+    })
+    }
 
 }
