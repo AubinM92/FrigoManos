@@ -44,7 +44,7 @@ export class AfficherfrigoComponent implements OnInit {
         this.mesElementsFrigo = this.element;
         console.log(this.mesElementsFrigo);
         this.mesElementsFrigo.forEach(element => {
-          if (element.ingredient.url === "") {
+          if (element.ingredient.url === null) {
             element.ingredient.url = "https://image.flaticon.com/icons/svg/2169/2169159.svg";
           }
         });
