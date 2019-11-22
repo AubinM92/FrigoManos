@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
   <!--Barre de navigation sur le côté-->
-  <mat-sidenav mode="side" #sidenav opened position="start" *ngIf="noSession">
+  <mat-sidenav mode="side" #sidenav opened position="start">
 
     <div style="vertical-align: middle;">
 
@@ -63,7 +63,7 @@
 
   <mat-sidenav-content>
     <!--Barre orizontale haute-->
-    <mat-toolbar class="couleur-nav" style="justify-content: space-between;"  *ngIf="noSession">
+    <mat-toolbar class="couleur-nav" style="justify-content: space-between;">
       <button mat-icon-button (click)="sidenav.toggle()"
         style="width: auto; background: none; border: none; text-align: left; vertical-align: middle;">
         <mat-icon>menu</mat-icon>

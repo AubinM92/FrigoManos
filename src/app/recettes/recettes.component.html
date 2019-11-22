@@ -37,10 +37,10 @@
 
     <!--Cartes recette-->
     <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap;">
-        <div class="col-sm-3" *ngFor="let re of allRecettes" id="carteRecette">
-            <div *ngIf="affichageCarte(re)">
+    <div *ngFor="let re of allRecettes">
+            <div class="col-sm-12" *ngIf="affichageCarte(re)">
                 <div class="card cadre">
-                    <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
+                    <input class="cadretop contain" type="image" [src]="re.url" width="295px" height="200px"
                         (click)='afficherRecette(re)' />
                     <div class="card-block">
                         <h4 class="card-title texte">{{re.titre}}</h4>
@@ -69,9 +69,21 @@
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
-            <br>
         </div>
     </div>
     <!--Fin des cartes recettes-->
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let re of allRecettes">
+            <div >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate iure suscipit laboriosam aliquam quod
+                    cupiditate, culpa dolorum, ullam facilis veniam velit? Ratione in iure blanditiis nulla autem perferendis
+                    illo accusantium.
+            </div>
+        </div>
+    </div>
 </div>
