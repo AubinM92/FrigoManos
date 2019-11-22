@@ -29,6 +29,7 @@ export class AjouterElementFrigoComponent implements OnInit {
 
   element: ElementFrigo = new ElementFrigo();
 
+  erreur;
   ngOnInit() {
     this.recupIngredients();
   }
@@ -71,6 +72,8 @@ export class AjouterElementFrigoComponent implements OnInit {
       this.idIngredient = this.response;
       if(this.idIngredient!=null){
         this.enregistrer();
+      }else{
+        this.erreur = "Elément non reconnu"
       }
     }, err => {
       console.log(err);
