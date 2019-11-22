@@ -71,6 +71,10 @@ export class RecettesComponent implements OnInit {
     return new Date();
   }
 
+  appliquerFiltre() {
+    
+  }
+
 }
 
 

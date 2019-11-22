@@ -48,7 +48,8 @@ export class AfficherlistecourseComponent implements OnInit {
 
   boutonVoir(l) {
     this.liste = l;
-    
+    localStorage.setItem("vueListe", this.liste.id+"");
+
     this.visible = true;
     this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
       data => {
@@ -94,12 +95,20 @@ export class AfficherlistecourseComponent implements OnInit {
   
   nouvelleListe() {
     const mydial = this.dialog.open(CreerlistecourseComponent);
-    this.router.navigate(['/mes-listes'])
+    mydial.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+      
+
+    
   }
 
 
-  ajoutElementListe() {
+  ajoutElementListe(id) {
     const mydial2 = this.dialog2.open(AjouterElementListeComponent);
+    mydial2.afterClosed().subscribe(result => {
+      this.boutonVoir(this.liste);
+    });
   }
 
 
