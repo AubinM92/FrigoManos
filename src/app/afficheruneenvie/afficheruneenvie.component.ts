@@ -22,8 +22,9 @@ export class AfficheruneenvieComponent implements OnInit {
   visibleFait = false;
 
   iddelEnvie;
-  lEnvie;
+  laRecetteEnvie;
   envieDel;
+  lEnvie;
 
 
   listeRecette: Liste = new Liste();
@@ -33,23 +34,19 @@ export class AfficheruneenvieComponent implements OnInit {
   ngOnInit() {
 
     this.user.id = parseInt(localStorage.getItem("id"));
+    this.lEnvie = this.recetteEnvie.envie;
     this.premiere();
+    console.log("Coucou" + this.lEnvie);
 
   }
 
   premiere() {
-    this.lEnvie = this.recetteEnvie.recette;
-    const del = this.http.get('http://localhost:8087/recette/' + this.lEnvie.id).toPromise();
-    del.then(
-      data => {
-        this.lEnvie = data;
-        console.log(this.lEnvie);
-      })
+    this.laRecetteEnvie = this.recetteEnvie.recette;
     this.deuxieme();
   }
 
   deuxieme() {
-    const del = this.http.get('http://localhost:8087/elemRecette/' + this.lEnvie.id).toPromise();
+    const del = this.http.get('http://localhost:8087/elemRecette/' + this.laRecetteEnvie.id).toPromise();
     del.then(
       data => {
         this.elemLaRecette = data;
@@ -66,9 +63,8 @@ export class AfficheruneenvieComponent implements OnInit {
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
-  deleteEnvie(env) {
-    this.envieDel = env;
-    const del = this.http.delete('http://localhost:8087/envie/' + this.envieDel.id).toPromise();
+  deleteEnvie() {
+    const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
     }, err => {
       console.log(err);
