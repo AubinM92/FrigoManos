@@ -1,26 +1,29 @@
-<div style="width: 250px; height: 100px;">
-    <h6 class="text-center">Entrer la quantité à modifier</h6>
-    <div style="margin: 10px">
-        <form action="" #forme="ngForm">
-
+<div>
+    <h4 class="text-center"><strong>Entrez la quantité</strong></h4>
+    <form action="" #forme="ngForm">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
             <div>
-                <input type="number" required style="width: 230px" [(ngModel)]="element.quantite" name="quantite"
-                    required placeholder="Quantite" required>
+                <input type="number" required style="width: 230px; font-size: 20px;" class="form-control ng-pristine ng-invalid ng-touched text-center" [(ngModel)]="element.quantite" name="quantite"
+                    required placeholder="Quantité" required>
             </div>
-
-            <div class="row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+            <br>
+            <div style="display: flex; flex-direction: row;">
+                <div style="padding : 5px;">
+                    <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
+                        class="btn btn-lg btn-primary btn-block mb-2">
+                        Annuler
+                    </button>
                 </div>
-
-                <div class="col-sm-6">
-                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
-                        (click)="modifElementFrigo();">Modifier</button>
+                
+                <div style="padding: 5px;">
+                    <button [disabled]="!forme.form.valid" (click)="modifElementFrigo()" onclick=""
+                        style="background: #c2dcb9; width: auto; color: white;"
+                        class="btn btn-lg btn-primary btn-block mb-2">
+                        Modifier
+                    </button>
                 </div>
-
-                <div class="col-sm-6">{{ erreur }}</div>
-
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+
 </div>
