@@ -66,7 +66,7 @@ export class AfficheruneenvieComponent implements OnInit {
     console.log(this.laRecetteEnvie);
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
-
+d
   deleteEnvie() { 
     const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
