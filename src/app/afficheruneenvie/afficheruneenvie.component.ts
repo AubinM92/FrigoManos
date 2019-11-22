@@ -6,6 +6,7 @@ import { Liste } from '../model/Liste';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { UneenvieService } from '../uneenvie.service';
 import { User } from '../model/User';
+import { Envie } from '../model/Envie';
 
 @Component({
   selector: 'app-afficheruneenvie',
@@ -24,7 +25,7 @@ export class AfficheruneenvieComponent implements OnInit {
   iddelEnvie;
   laRecetteEnvie;
   envieDel;
-  lEnvie;
+  lEnvie : Envie = new Envie();
 
 
   listeRecette: Liste = new Liste();
@@ -36,7 +37,7 @@ export class AfficheruneenvieComponent implements OnInit {
     this.user.id = parseInt(localStorage.getItem("id"));
     this.lEnvie = this.recetteEnvie.envie;
     this.premiere();
-    console.log("Coucou" + this.lEnvie);
+  
 
   }
 
@@ -50,7 +51,7 @@ export class AfficheruneenvieComponent implements OnInit {
     del.then(
       data => {
         this.elemLaRecette = data;
-        console.log(this.elemLaRecette);
+    
       })
   }
 
@@ -64,6 +65,8 @@ export class AfficheruneenvieComponent implements OnInit {
   }
 
   deleteEnvie() {
+  
+    
     const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
     }, err => {
