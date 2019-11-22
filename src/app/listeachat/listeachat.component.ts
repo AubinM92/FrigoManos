@@ -36,7 +36,6 @@ export class ListeachatComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
     this.recupListes();
   }
 
@@ -47,7 +46,6 @@ export class ListeachatComponent implements OnInit {
     this.ELEMENT_DATA = [];
     let i = 0;
     let r= 0;
-    let mesRequetes = {};
 
     this.user.id = parseInt(localStorage.getItem("id"));
     this.selectionListe.selected.forEach(d => {
@@ -64,9 +62,7 @@ export class ListeachatComponent implements OnInit {
             this.ELEMENT_DATA.push(element);
           });
           this.dataSource.data = this.ELEMENT_DATA;
-        }
-      )
-      r++;
+        })
         
     })
 
@@ -99,7 +95,7 @@ export class ListeachatComponent implements OnInit {
   u: User = new User();
 
   majFrigo() {
-
+    let c=0;
     this.selection.selected.forEach(datas => {
       this.e.quantite = this.mesInput[datas.index];
       this.e.quantite = this.mesInput[datas.index];
@@ -118,8 +114,18 @@ export class ListeachatComponent implements OnInit {
         del.then(response => {
           const del = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
           del.then( datas =>{
-            this.recupDonnees();})
+
+            if(c >= this.selection.selected.length){
+              this.recupDonnees();
+            }else{
+              c++;
+            }
+
+          })
         })
+
+
+
       } else {
         this.erreur = "La quantité d'un des élément est nulle "
       }
