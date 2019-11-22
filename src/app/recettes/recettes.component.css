@@ -2,6 +2,7 @@
   float: left;
   border-radius: 0.5rem;
   font-family: Georgia, serif !important;
+  font-size: 13px;
   width: auto;
 }
 
@@ -35,4 +36,13 @@
   margin-top:10px;
   margin-bottom: 10px;
   padding:10px;
+}
+
+.btn-login {
+  font-family: Georgia, serif !important;
+  font-size: 11px;
+  letter-spacing: 0.05rem;
+  padding: 10px;
+  border-radius: 0.5rem;
+  background-color: #f5d7bd;
 }
