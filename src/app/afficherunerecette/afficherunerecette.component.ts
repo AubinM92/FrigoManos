@@ -47,11 +47,6 @@ export class AfficherunerecetteComponent implements OnInit {
 
   premiere() {
     this.laRecette = this.recetteService.recette;
-    const del = this.http.get('http://localhost:8087/recette/' + this.laRecette.id).toPromise();
-    del.then(
-      data => {
-        this.laRecette = data;
-      })
     this.deuxieme();
   }
 
