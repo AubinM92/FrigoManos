@@ -53,12 +53,16 @@ export class AfficherfrigoComponent implements OnInit {
     this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id")).subscribe(
       data => {
         this.allRecettes = data;
+        console.log(this.allRecettes);
       })
   }
 
   modifQuantite(e) {
     this.s.elemservice = e;
     const mydial = this.dialog.open(ModifFrigoComponent);
+    mydial.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
   supprimerElementFrigo(e) {
