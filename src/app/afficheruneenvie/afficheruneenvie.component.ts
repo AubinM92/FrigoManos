@@ -5,6 +5,7 @@ import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service
 import { MatDialog } from '@angular/material';
 import { Liste } from '../model/Liste';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
+import { UneenvieService } from '../uneenvie.service';
 
 @Component({
   selector: 'app-afficheruneenvie',
@@ -19,6 +20,9 @@ export class AfficheruneenvieComponent implements OnInit {
   mesElementsF = [];
   visibleFait = false;
 
+  iddelEnvie;
+  lEnvie;
+
   element;
   trouve = 0;
   pasAssez = 0;
@@ -26,7 +30,7 @@ export class AfficheruneenvieComponent implements OnInit {
 
   listeRecette : Liste = new Liste();
 
-  constructor(private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
+  constructor(private recetteEnvie: UneenvieService,private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
 
   ngOnInit() {
 
@@ -35,7 +39,7 @@ export class AfficheruneenvieComponent implements OnInit {
   }
 
   premiere() {
-    this.laRecette = this.recetteService.recette;
+    this.lEnvie = this.recetteService.recette;
     const del = this.http.get('http://localhost:8087/recette/' + this.laRecette.id).toPromise();
     del.then(
       data => {
