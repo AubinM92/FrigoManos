@@ -48,20 +48,22 @@ export class AfficheruneenvieComponent implements OnInit {
   }
 
   deuxieme() {
-    const del = this.http.get('http://localhost:8087/elemRecette/' + this.laRecetteEnvie.id).toPromise();
+    const del = this.http.post('http://localhost:8087/elem-recette-plus/' + this.laRecetteEnvie.id, this.user).toPromise();
     del.then(
       data => {
         this.elemLaRecette = data;
-    
+       
+       
       })
   }
 
 
-  ajouterRecetteCourse(re) {
-    this.listeRecette.titre = re.titre;
+  ajouterRecetteCourse() {
+    this.listeRecette.titre = this.laRecetteEnvie.titre;
     this.listeRecette.user.id = localStorage.id;
-    this.ajoutService.recette = re;
+    this.ajoutService.recette = this.laRecetteEnvie;
     this.ajoutService.liste = this.listeRecette;
+    console.log(this.laRecetteEnvie);
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 

@@ -18,6 +18,7 @@ import { Envie } from '../model/Envie';
 export class AfficherenvieComponent implements OnInit {
   lenvie;
   lesRecettes;
+  lesEnvies;
   user:User=new User();
   listeRecette: Liste = new Liste();
   constructor(private http: HttpClient, private uneEnvieService : UneenvieService,private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog,private dialog2: MatDialog ) { }
@@ -31,8 +32,12 @@ export class AfficherenvieComponent implements OnInit {
      this.http.get('http://localhost:8087/recetteByEnvieByUser/' +this.user.id).subscribe(
       data => {
         this.lesRecettes= data;
-        
       })
+
+      this.http.get('http://localhost:8087/recetteByEnvieByUser/' +this.user.id).subscribe(
+        data => {
+          this.lesRecettes= data;      
+        })
   }
 
   afficherEnvie(re){

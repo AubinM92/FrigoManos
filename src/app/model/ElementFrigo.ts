@@ -7,6 +7,7 @@ id : number;
 ingredient : Ingredient= new Ingredient;
 user : User = new User();
 quantite: number;
+url: string;
 
     constructor(
 
