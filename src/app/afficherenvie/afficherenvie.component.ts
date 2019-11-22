@@ -41,6 +41,7 @@ export class AfficherenvieComponent implements OnInit {
       del.then(data => {
         this.lenvie= data;
         this.uneEnvieService.envie = this.lenvie;
+        console.log(this.lenvie);
         const mydial = this.dialog.open(AfficheruneenvieComponent);
         mydial.afterClosed().subscribe(result => {
           this.ngOnInit();
