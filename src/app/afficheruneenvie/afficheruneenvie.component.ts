@@ -80,6 +80,6 @@ export class AfficheruneenvieComponent implements OnInit {
     del.then(data=>{
       this.recetteCuisinee=data;
     })
-    }
+  }
 
 }
