@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { Liste } from '../model/Liste';
+import { AfficheruneenvieComponent } from '../afficheruneenvie/afficheruneenvie.component';
 
 @Component({
   selector: 'app-afficherenvie',
@@ -41,7 +42,7 @@ export class AfficherenvieComponent implements OnInit {
         console.log(this.lesRecettes);
       })
       this.uneEnvieService.envie = this.lenvie;
-    const mydial = this.dialog.open(AfficherenvieComponent);
+    const mydial = this.dialog.open(AfficheruneenvieComponent);
     mydial.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
