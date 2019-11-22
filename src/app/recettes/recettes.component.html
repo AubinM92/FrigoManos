@@ -1,18 +1,11 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-                <h2 class="texte">Recettes</h2>
-        </div>
-        <div class="col-sm-6 input-group-prepend" style="display: flex; justify-content: flex-end;">
-            <button class="btn btn-outline btn-login active" (click)="appliquerFiltre()" style="height: auto;">
-                <strong>Appliquer les filtres</strong>
-            </button>
-        </div>
-    </div>
+
+    <h2 class="texte">Recettes</h2>
 
     <hr>
     <!--Filtres-->
     <div class="encart">
+        <!--
         <div class="row input-group-prepend" style="display: flex; align-items: center;">
 
             <div class="col-sm-2 input-group" id="select1">
@@ -43,44 +36,78 @@
                 </div>
             </div>
         </div>
+        -->
+        <!--Filtres-->
+        <div class="row">
+            <!--Saisons-->
+            <div class="col-sm-4">
+                <ng-multiselect-dropdown [placeholder]="'Choix des saisons'" [data]="dropdownSaisons"
+                    [(ngModel)]="selectedSaisons" [settings]="dropdownSettings" (onSelect)="onSaisonSelect($event)"
+                    (onDeSelect)="onSaisonDeSelect($event)" (onSelectAll)="onSelectAllSaison($event)"
+                    (onDeSelectAll)="onDeSelectAllSaison($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <!--Temps de cuisine (préparation + cuisson)-->
+            <div class="col-sm-4">
+                <ng-multiselect-dropdown [placeholder]="'Temps passé à cuisiner'" [data]="dropdownTemps"
+                    [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)"
+                    (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps($event)"
+                    (onDeSelectAll)="onDeSelectAllTemps($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <!--Types d'ingrédients-->
+            <div class="col-sm-4">
+                <ng-multiselect-dropdown [placeholder]="'Choix des types d ingrédients'" [data]="dropdownTypes"
+                    [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)"
+                    (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType($event)"
+                    (onDeSelectAll)="onDeSelectAllType($event)">
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
     </div>
-    <br>
     <!--Fin des filtres-->
 
     <!--Cartes recette-->
     <div class="row">
-        <div class="col-sm-3" *ngFor="let re of allRecettes">
-            <div class="card cadre">
-                <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
-                    (click)='afficherRecette(re)' />
-                <div class="card-block">
-                    <h4 class="card-title">{{re.titre}}</h4>
+        <div class="col-sm-3" *ngFor="let re of allRecettes" id="carteRecette">
+            <div *ngIf="affichageCarte(re)">
+                <div>
+                    <div>
+                        <div class="card cadre">
+                            <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
+                                (click)='afficherRecette(re)' />
+                            <div class="card-block">
+                                <h4 class="card-title texte">{{re.titre}}</h4>
 
-                    <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}} min | Cuisson :
-                            {{re.tempsCuis }} min</small></p>
-                    <div class="row">
-                        <div></div>
+                                <p class="card-text"><small class="text-muted texte">Préparation : {{re.tempsPrepa}} min
+                                        |
+                                        Cuisson :
+                                        {{re.tempsCuis }} min</small></p>
+                                <div class="row">
+                                    <div></div>
 
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline-danger cadre"
-                                (click)='ajouterRecetteCourse(re)'>
-                                <mat-icon>add_shopping_cart</mat-icon>
-                            </button>
-                        </div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline-warning pull-right cadre"
-                                (click)='ajouterEnvie(re)'>
-                                <mat-icon>star</mat-icon>
-                            </button>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;"
+                                            (click)='ajouterRecetteCourse(re)'>
+                                            <mat-icon>note_add</mat-icon>
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-outline pull-right cadre"
+                                            style="color: #c2dcb9;" (click)='ajouterEnvie(re)'>
+                                            <mat-icon>star</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
         </div>
-
     </div>
     <!--Fin des cartes recettes-->
 </div>
