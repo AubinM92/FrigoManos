@@ -1,11 +1,19 @@
 <div class="container">
-    <div style="margin-top:10px; margin-bottom: 10px; padding:10px; background: #EAC5CD;">
-        <div class="row input-group-prepend">
-            <div class="col-sm-2">
-                <button class="btn btn-lg btn-primary btn-block btn-login"
-                    style="background: none; border: none; text-align: left; pointer-events: none;">Filtres
-                    :</button>
-            </div>
+    <div class="row">
+        <div class="col-sm-6">
+                <h2 class="texte">Recettes</h2>
+        </div>
+        <div class="col-sm-6 input-group-prepend" style="display: flex; justify-content: flex-end;">
+            <button class="btn btn-outline btn-login active" (click)="appliquerFiltre()" style="height: auto;">
+                <strong>Appliquer les filtres</strong>
+            </button>
+        </div>
+    </div>
+
+    <hr>
+    <!--Filtres-->
+    <div class="encart">
+        <div class="row input-group-prepend" style="display: flex; align-items: center;">
 
             <div class="col-sm-2 input-group" id="select1">
                 <div>
@@ -34,23 +42,17 @@
                     </select>
                 </div>
             </div>
-
-            <div class="col-sm-2">
-                <div class="input-group-prepend">
-                    <br><br>
-                    <button style="background: rgb(124, 165, 165); color: white"><strong>Appliquer les
-                            filtres</strong></button>
-                </div>
-            </div>
         </div>
     </div>
+    <br>
+    <!--Fin des filtres-->
 
+    <!--Cartes recette-->
     <div class="row">
         <div class="col-sm-3" *ngFor="let re of allRecettes">
             <div class="card cadre">
-                <input class="cadretop contain" type="image"
-                    src="https://storenotrefamilleprod.blob.core.windows.net/images/cms/cuisine/recettes-fiche/26281.jpg"
-                    width="100%" height="200px" (click)='afficherRecette(re)' />
+                <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
+                    (click)='afficherRecette(re)' />
                 <div class="card-block">
                     <h4 class="card-title">{{re.titre}}</h4>
 
@@ -78,6 +80,7 @@
             </div>
             <br>
         </div>
+
     </div>
-    <br>
+    <!--Fin des cartes recettes-->
 </div>

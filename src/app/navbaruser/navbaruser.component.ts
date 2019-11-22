@@ -52,4 +52,8 @@ export class NavbaruserComponent implements OnInit {
   toRecettes() {
     this.router.navigate(['/recettes']);
   }
+
+  toEnvies() {
+    this.router.navigate(['/aff-envie']);
+  }
 }
