@@ -54,7 +54,11 @@ export class AfficherlistecourseComponent implements OnInit {
     this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
       data => {
         this.mesElementsListe = data;
-        return this.mesElementsListe;
+        this.mesElementsListe.forEach(element => {
+          if (element.ingredient.url === null) {
+            element.ingredient.url = "https://image.flaticon.com/icons/svg/2169/2169159.svg";
+          }
+        });
       }
     )
   }

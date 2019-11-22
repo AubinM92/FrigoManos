@@ -1,33 +1,68 @@
 <div>
-    <h5 class="text-center">Choisir l'item pour votre frigo</h5>
-    <div style="margin: 10px">
+    <h4 class="text-center"><strong>Choisir l'item pour votre frigo</strong></h4>
+    <form action="" #forme="ngForm">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
+            <mat-form-field style="width: 100%; font-size: 20px;">
+                <input required type="text" aria-label="Number" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Nom de l'ingrédient"
+                    class="form-control ng-pristine ng-invalid ng-touched text-center">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div>
+            <input style="font-size: 20px;" type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required
+                name="quantite" class="form-control ng-pristine ng-invalid ng-touched text-center">
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: center;">
+            <div style="padding : 5px;">
+                <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
+                    class="btn btn-lg btn-primary btn-block mb-2">
+                    Annuler
+                </button>
+            </div>
+            <div style="padding : 5px;">
+                <button [disabled]="!forme.form.valid" (click)="valider()" onclick=""
+                    style="background: #c2dcb9; width: auto; color: white;"
+                    class="btn btn-lg btn-primary btn-block mb-2">
+                    Ajouter
+                </button>
+                <br>
+            </div>
+        </div>
+    </form>
+</div>
+<!--
+<div>
+        <h4 class="text-center"><strong>Entrez la quantité</strong></h4>
         <form action="" #forme="ngForm">
-            <div>
-
-                <mat-form-field class="">
-                    <input required type="text" placeholder="Pick one" aria-label="Number" matInput
-                        [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing"
-                        placeholder="Nom de l'ingrédient">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-
-            </div>
-            <div>
-                <input type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required name="quantite">
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
+                <div>
+                    <input type="number" required style="width: 230px; font-size: 20px;" class="form-control ng-pristine ng-invalid ng-touched text-center" [(ngModel)]="element.quantite" name="quantite"
+                        required placeholder="Quantité" required>
                 </div>
-                <div class="col-sm-6">
-                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
-                        (click)="valider();">Valider</button>
+                <br>
+                <div style="display: flex; flex-direction: row;">
+                    <div style="padding : 5px;">
+                        <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
+                            class="btn btn-lg btn-primary btn-block mb-2">
+                            Annuler
+                        </button>
+                    </div>
+                    
+                    <div style="padding: 5px;">
+                        <button [disabled]="!forme.form.valid" (click)="modifElementFrigo()" onclick=""
+                            style="background: #c2dcb9; width: auto; color: white;"
+                            class="btn btn-lg btn-primary btn-block mb-2">
+                            Modifier
+                        </button>
+                    </div>
+                    <div>{{ erreur }}</div>
                 </div>
             </div>
         </form>
-    </div>
-</div>
+    
+    </div>-->

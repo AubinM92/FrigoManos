@@ -32,6 +32,7 @@ export class ListeachatComponent implements OnInit {
  
 
   public mesInput: any = {};
+
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -45,6 +46,8 @@ export class ListeachatComponent implements OnInit {
     this.dataSource = new MatTableDataSource<ListeAchat>();
     this.ELEMENT_DATA = [];
     let i = 0;
+    let r= 0;
+    let mesRequetes = {};
 
     this.user.id = parseInt(localStorage.getItem("id"));
     this.selectionListe.selected.forEach(d => {
@@ -63,6 +66,7 @@ export class ListeachatComponent implements OnInit {
           this.dataSource.data = this.ELEMENT_DATA;
         }
       )
+      r++;
         
     })
 
@@ -90,10 +94,10 @@ export class ListeachatComponent implements OnInit {
 
   }
 
-
   e: ElementFrigo = new ElementFrigo();
   i: Ingredient = new Ingredient();
   u: User = new User();
+
   majFrigo() {
 
     this.selection.selected.forEach(datas => {
@@ -112,7 +116,6 @@ export class ListeachatComponent implements OnInit {
         const del = this.http.post("http://localhost:8087/elemFrigo-achat", this.e).toPromise();
 
         del.then(response => {
-          console.log("http://localhost:8087/elemListe/" + datas.idElement);
           const del = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
           del.then( datas =>{
             this.recupDonnees();})
@@ -121,17 +124,13 @@ export class ListeachatComponent implements OnInit {
         this.erreur = "La quantité d'un des élément est nulle "
       }
     })
-
-
   }
-
 
   //----------------------------------------------------------------------------
   ELEMENT_DATA_LISTE: Liste[] = [];
   displayedColumnsListe: String[] = ['selectListe', 'listes'];
   dataSourceListe = new MatTableDataSource<Liste>(this.ELEMENT_DATA_LISTE);
   selectionListe = new SelectionModel<Liste>(true, []);
-
 
   liste;
   meslistes: Liste[] = [];
