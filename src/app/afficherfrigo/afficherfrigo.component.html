@@ -31,7 +31,8 @@
                 </div>
             </div>-->
 
-            <div style="margin: 5%;border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
+            <div
+                style="margin: 5%;border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
                 <div *ngFor="let e of mesElementsFrigo" style="padding: 10px; height: 150; width: 200px;">
                     <div class="card cadre" style="display: flex; flex-direction: column;; align-items:center;">
                         <br>
@@ -41,7 +42,8 @@
                                 height="100px" alt="Nope" (click)="modifQuantite(e)" />
                         </div>
 
-                        <div style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
+                        <div
+                            style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
                             <div style="height: 50px; display: flex; align-items: center; flex-direction: column;">
                                 <div style="font-size: 20px;"><strong>{{e.ingredient.nom}}</strong></div>
                                 <div class="text-center" style="font-size: 18px;">{{e.quantite}} {{e.ingredient.unite}}
@@ -50,8 +52,8 @@
 
                             <mat-icon (click)="supprimerElementFrigo(e)">delete</mat-icon>
 
-                                
-                            
+
+
                         </div>
                     </div>
 
@@ -72,45 +74,46 @@
 
 
         <div class="col-sm-4">
-            <h2>Mes suggestions</h2>
+            <h1>Mes suggestions</h1>
             <hr>
             <div>
                 <div class="row">
                     <div class="col-sm-6" *ngFor="let re of allRecettes">
                         <div class="card cadre">
-                            <img class="card-img-top img-fluid cadretop"
-                                src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
-                                alt="https://image.flaticon.com/icons/svg/2169/2169159.svg">
+                            <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
+                                (click)='afficherRecette(re)'>
+
                             <div class="card-block">
                                 <h4 class="card-title">{{re.titre}}</h4>
 
-                                <p class="card-text"><small class="text-muted">Préparation : {{re.tempsPrepa}}
-                                        min |
-                                        Cuisson
-                                        :
-                                        {{re.tempsCuis }} min</small></p>
+                                <p class="card-text"><small class="text-muted">Préparation : {{re.temps_cuis }} min | Cuisson :
+                                        {{re.temps_prepa }} min</small></p>
+                                <div class="row">
 
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <button type="button" class="btn btn-outline-success"
-                                            (click)='afficherRecette(re)'>
-                                            <mat-icon>remove_red_eye</mat-icon>
-                                        </button>
 
-                                        <button type="button" class="btn btn-outline-danger"
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-3">
+
+                                        <button type="button" class="btn btn-outline ajoutListe cadre"
                                             (click)='ajouterRecetteCourse(re)'>
-                                            <mat-icon>add_shopping_cart</mat-icon>
+                                            <mat-icon>note_add</mat-icon>
                                         </button>
-                                        <button type="button" class="btn btn-warning pull-right">
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-3">
+                                        <button type="button" class="btn btn-outline favori cadre"
+                                            (click)=ajoutEnvie(re)>
                                             <mat-icon>star</mat-icon>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
                     <br>
                 </div>
+                <br>
             </div>
 
         </div>

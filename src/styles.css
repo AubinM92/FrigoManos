@@ -49,3 +49,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color:  white;
   }
 
+
+  .cadre{
+    border-radius: 0.5rem;
+  }
+  
+  .cadretop{
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
