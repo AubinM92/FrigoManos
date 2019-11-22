@@ -35,9 +35,9 @@ export class AfficherenvieComponent implements OnInit {
       })
   }
 
-  afficherEnvie(recette){
-    this.uneEnvieService.recette = recette;
-    const del =this.http.get('http://localhost:8087/envieByRecette/' +recette.id).toPromise();
+  afficherEnvie(re){
+    this.uneEnvieService.recette = re;
+    const del =this.http.get('http://localhost:8087/uneEnvieByRecette/' +re.id).toPromise();
       del.then(data => {
         this.lenvie= data;
         this.uneEnvieService.envie = this.lenvie;
@@ -56,6 +56,24 @@ export class AfficherenvieComponent implements OnInit {
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
+  deleteEnvie(re){
+    const del =this.http.get('http://localhost:8087/uneEnvieByRecette/' +re.id).toPromise();
+      del.then(data => {
+        this.lenvie= data;
+        this.uneEnvieService.envie = this.lenvie;
+        console.log(this.lenvie)
+        
 
+        const del2 = this.http.delete('http://localhost:8087/envie/' + this.lenvie.id).toPromise();
+        del2.then(x => {
+          this.ngOnInit();
+        }, err => {
+          console.log(err);
+        });
+
+      });
+        
+      
+  }
 
 }

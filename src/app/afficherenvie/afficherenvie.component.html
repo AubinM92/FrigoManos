@@ -3,6 +3,7 @@
         <div class="row-input-group-prepend">
             <div class="col-sm-12">
                 <h2 class="text-center"><strong>Mes Envies </strong></h2>
+                
             </div>
         </div>
     </div>
@@ -24,16 +25,16 @@
 
                         <div class="col-sm-1"></div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline-danger cadre"
+                            <button type="button" class="btn btn-outline ajoutListe cadre"
                                 (click)='ajouterRecetteCourse(re)'>
                                 <mat-icon>add_shopping_cart</mat-icon>
                             </button>
                         </div>
                         <div class="col-sm-2"></div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline-warning pull-right cadre"
-                                (click)='ajouterEnvie(re)'>
-                                <mat-icon>star</mat-icon>
+                            <button type="button" class="btn btn-outline favori cadre"
+                                (click)='deleteEnvie(re)'>
+                                <mat-icon>delete_outline</mat-icon>
                             </button>
                         </div>
                     </div>
