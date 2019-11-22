@@ -76,10 +76,6 @@ d
   }
    
   recetteRealisee(re){
-    const del= this.http.post('http/elemFrigo_ByEnvie/{id}' + this.recetteEnvie.recette.id, this.user).toPromise();
-    del.then(data=>{
-      this.recetteCuisinee=data;
-    })
-  }
 
+  }
 }
