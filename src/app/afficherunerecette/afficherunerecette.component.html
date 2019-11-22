@@ -1,30 +1,26 @@
 <div style="width: 750px; height: 850px;">
-    <img class="card-img-top cadre"
-        [src]="laRecette.url"
-        alt="Div image cap" style="height: 400px;">
-    <h2 class="text-center">{{ laRecette.titre }}</h2>
+    <img class="card-img-top cadre" [src]="laRecette.url" alt="Div image cap" style="height: 400px;">
+    <h2 class="text-center texte">{{ laRecette.titre }}</h2>
     <div style="margin: 10px">
-        <div class="row" style="vertical-align: middle;">
+        <div class="row texte" style="vertical-align: middle;">
             <div class="col-sm-1">
 
             </div>
             <div class="col-sm-">
-                <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
-                    style="width: 30px; height: 30px; vertical-align: middle;">
+                <img src="https://image.flaticon.com/icons/svg/66/66163.svg" style="width: 30px; height: 30px; vertical-align: middle;">
                 <span style="vertical-align: middle;"> Préparation : {{ laRecette.tempsPrepa }} min </span>
             </div>
             <div class="col-sm-4">
 
             </div>
             <div class="col-sm">
-                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
-                    style="width: 35px; height: 35px; vertical-align: middle;">
+                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap" style="width: 35px; height: 35px; vertical-align: middle;">
                 <span style="vertical-align: middle;"> Cuisson : {{ laRecette.tempsCuis }} min </span>
             </div>
         </div>
         <br>
         <div class="container">
-            <div class="row">
+            <div class="row texte">
                 <div class="col-sm-5">
                     <span>Ingrédients :</span>
                     <br>
@@ -53,26 +49,30 @@
 
         </div>
         <br>
-        <div>
+        <div class="texte">
             {{laRecette.description}}
         </div>
         <br>
-        <div class="row">
+        <div class="row texte">
             <div class="col-sm-1">
 
             </div>
             <div class="col-sm-5">
-                <button type="button" class="btn btn-outline-warning pull-right cadre" (click)='ajouterEnvie(laRecette)'>
-                    <mat-icon>star</mat-icon>
-                </button>
-                <span> Ajouter la recette aux envies</span>
+
+                <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;" (click)='ajouterEnvie(laRecette)'>
+                                    <mat-icon>note_add</mat-icon>
+                                </button>
+                <br>
+                <span> Ajouter à mes liste de courses</span>
             </div>
 
             <div class="col-sm-5">
-                <button type="button" class="btn btn-outline-danger cadre" (click)='ajouterRecetteCourse(laRecette)'>
-                    <mat-icon>add_shopping_cart</mat-icon>
-                </button>
-                <span> Ajouter à mes listes de courses</span>
+
+                <button type="button" class="btn btn-outline pull-right cadre" style="color: #c2dcb9;" (click)='ajouterRecetteCourse(laRecette)'>
+                                    <mat-icon>star</mat-icon>
+                                </button>
+                <br>
+                <span> Ajouter à mes envies</span>
             </div>
         </div>
     </div>

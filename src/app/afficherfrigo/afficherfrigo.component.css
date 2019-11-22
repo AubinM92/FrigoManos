@@ -1,20 +1,27 @@
 .texte {
     font-family: Georgia, serif !important;
     color: black;
-  }
+}
+
+
 /*
   .container{
       flex-direction: row;
       justify-content: flex-start;
   }*/
 
-  /*.box{
+
+/*.box{
       display:flex;
   }*/
 
-  .contenu-avec-scroll{
-      width: 500px;
-      height: 500px;
-      scrollbar-width: thin;
-      overflow: auto;
-  }
+.contenu-avec-scroll {
+    width: 500px;
+    height: 500px;
+    scrollbar-width: thin;
+    overflow: auto;
+}
+
+.cadre {
+    border-radius: 0.5rem;
+}
