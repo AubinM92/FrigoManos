@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
   <!--Barre de navigation sur le côté-->
-  <mat-sidenav mode="side" #sidenav opened position="start">
+  <mat-sidenav mode="side" #sidenav opened position="start" *ngIf="noSession">
 
     <div style="vertical-align: middle;">
 
@@ -54,7 +54,7 @@
       <button class="btn-block btn-nav" routerLink="/modif-profil">
         <img src="https://image.flaticon.com/icons/svg/768/768051.svg" alt="" width="45px">
         <br>
-        <h6 class="text-navbar">Modifier mon compte</h6>
+        <h6 class="text-navbar">Modifier mon profil</h6>
       </button>
     </div>
 
@@ -63,7 +63,7 @@
 
   <mat-sidenav-content>
     <!--Barre orizontale haute-->
-    <mat-toolbar class="couleur-nav" style="justify-content: space-between;">
+    <mat-toolbar class="couleur-nav" style="justify-content: space-between;"  *ngIf="noSession">
       <button mat-icon-button (click)="sidenav.toggle()"
         style="width: auto; background: none; border: none; text-align: left; vertical-align: middle;">
         <mat-icon>menu</mat-icon>

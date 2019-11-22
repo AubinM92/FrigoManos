@@ -258,40 +258,52 @@ export class RecettesComponent implements OnInit {
   affichageCarte(carte) {
 
     // Vérification du temps de cuisine
-    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { return true }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { return true }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { return true }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { return true }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { return true }
+    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { return true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { return true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { return true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { return true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { return true; }
+    else { return false; }
 
-    this.getIngredients(carte);
-    
-    console.log("Début");
-
-    // Vérification de la saison
-    this.allIngredients.forEach(element => {
-      if (element.saison == "Toutes") { return true }
-      if (element.saison == "Printemps" && this.saisonPrintemps) { return true }
-      if (element.saison == "Été" && this.saisonEte) { return true }
-      if (element.saison == "Automne" && this.saisonAutomne) { return true }
-      if (element.saison == "Hiver" && this.saisonHiver) { return true }
-    });
-    console.log("Fin 1");
-
-    // Vérification du type d'ingrédient
-    this.allIngredients.forEach(element => {
-      if (element.categorie == "Fruit" && this.typeFruit) { return true }
-      if (element.categorie == "Légume" && this.typeLegume) { return true }
-      if (element.categorie == "Poisson" && this.typePoisson) { return true }
-      if (element.categorie == "Produit laitier" && this.typeProduitL) { return true }
-      if (element.categorie == "Viande" && this.typeViande) { return true }
-    });
-    console.log("Fin 2");
-
-    return false;
     /*
-    this.elem = document.getElementById("carteRecette");
-    this.elem.parentNode.removeChild(this.elem);*/
+    // Vérification du temps de cuisine
+    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { this.afficherCarteTemps = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { this.afficherCarteTemps = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { this.afficherCarteTemps = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { this.afficherCarteTemps = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { this.afficherCarteTemps = true; }
+    else { this.afficherCarteTemps = false; }*/
+
+    /*
+    const del = this.http.get('http://localhost:8087/ingredient-via-recette/' + carte.id).toPromise();
+    del.then(
+      data => {
+        this.allIngredients = data;
+
+        // Vérification de la saison
+        this.allIngredients.forEach(element => {
+          if (element.saison == "Toutes") { this.afficherCarteSaison = true; }
+          if (element.saison == "Printemps" && this.saisonPrintemps) { this.afficherCarteSaison = true; }
+          if (element.saison == "Été" && this.saisonEte) { this.afficherCarteSaison = true; }
+          if (element.saison == "Automne" && this.saisonAutomne) { this.afficherCarteSaison = true; }
+          if (element.saison == "Hiver" && this.saisonHiver) { this.afficherCarteSaison = true; }
+          else { this.afficherCarteSaison = false; }
+        });
+
+        // Vérification du type d'ingrédient
+        this.allIngredients.forEach(element => {
+          if (element.categorie == "Fruit" && this.typeFruit) { this.afficherCarteType = true; }
+          if (element.categorie == "Légume" && this.typeLegume) { this.afficherCarteType = true; }
+          if (element.categorie == "Poisson" && this.typePoisson) { this.afficherCarteType = true; }
+          if (element.categorie == "Produit laitier" && this.typeProduitL) { this.afficherCarteType = true; }
+          if (element.categorie == "Viande" && this.typeViande) { this.afficherCarteType = true; }
+          else { this.afficherCarteType = false; }
+        });
+
+      }, err => {
+        console.log(err);
+      }
+    );*/
   }
 }
 

@@ -31,19 +31,19 @@ export class AfficheruneenvieComponent implements OnInit {
 
   listeRecette: Liste = new Liste();
 
-  constructor(private recetteEnvie: UneenvieService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService, private dialog2: MatDialog) { }
+  constructor(private recetteEnvieService: UneenvieService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService, private dialog2: MatDialog) { }
 
   ngOnInit() {
 
     this.user.id = parseInt(localStorage.getItem("id"));
-    this.lEnvie = this.recetteEnvie.envie;
+    this.lEnvie = this.recetteEnvieService.envie;
     this.premiere();
   
 
   }
 
   premiere() {
-    this.laRecetteEnvie = this.recetteEnvie.recette;
+    this.laRecetteEnvie = this.recetteEnvieService.recette;
     this.deuxieme();
   }
 
@@ -75,11 +75,15 @@ export class AfficheruneenvieComponent implements OnInit {
     });
   }
    
-  recetteRealisee(re){
-    const del= this.http.post('http/elemFrigo_ByEnvie/{id}' + this.recetteEnvie.recette.id, this.user).toPromise();
+  recetteRealisee(){
+
+    const del= this.http.post('http/elemFrigo_ByEnvie/{id}' + this.user.id, this.laRecetteEnvie).toPromise();
     del.then(data=>{
       this.recetteCuisinee=data;
+      
     })
     }
+
+    
 
 }
