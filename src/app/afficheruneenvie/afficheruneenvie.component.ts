@@ -37,7 +37,7 @@ export class AfficheruneenvieComponent implements OnInit {
     this.user.id = parseInt(localStorage.getItem("id"));
     this.lEnvie = this.recetteEnvie.envie;
     this.premiere();
-    console.log(this.lEnvie);
+  
 
   }
 
@@ -51,7 +51,7 @@ export class AfficheruneenvieComponent implements OnInit {
     del.then(
       data => {
         this.elemLaRecette = data;
-        console.log(this.elemLaRecette);
+    
       })
   }
 
@@ -65,8 +65,8 @@ export class AfficheruneenvieComponent implements OnInit {
   }
 
   deleteEnvie() {
-    console.log(this.lEnvie);
-    console.log(this.lEnvie.date);
+  
+    
     const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
     }, err => {
