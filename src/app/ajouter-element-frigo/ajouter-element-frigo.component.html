@@ -3,9 +3,7 @@
     <form action="" #forme="ngForm">
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
             <mat-form-field style="width: 100%; font-size: 20px;">
-                <input required type="text" aria-label="Number" matInput [formControl]="myControl"
-                    [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Nom de l'ingrédient"
-                    class="form-control ng-pristine ng-invalid ng-touched text-center">
+                <input required type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Nom de l'ingrédient" class="form-control ng-pristine ng-invalid ng-touched text-center">
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option}}
@@ -14,24 +12,23 @@
             </mat-form-field>
         </div>
         <div>
-            <input style="font-size: 20px;" type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required
-                name="quantite" class="form-control ng-pristine ng-invalid ng-touched text-center">
+            <input style="font-size: 20px;" type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required name="quantite" class="form-control ng-pristine ng-invalid ng-touched text-center">
         </div>
         <div style="display: flex; flex-direction: row; justify-content: center;">
+
             <div style="padding : 5px;">
-                <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
-                    class="btn btn-lg btn-primary btn-block mb-2">
-                    Annuler
-                </button>
-            </div>
-            <div style="padding : 5px;">
-                <button [disabled]="!forme.form.valid" (click)="valider()" onclick=""
-                    style="background: #c2dcb9; width: auto; color: white;"
-                    class="btn btn-lg btn-primary btn-block mb-2">
+                <button [disabled]="!forme.form.valid" (click)="valider()" onclick="" style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">
                     Ajouter
                 </button>
                 <br>
             </div>
+
+            <div style="padding : 5px;">
+                <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">
+                        Annuler
+                </button>
+            </div>
+
         </div>
     </form>
 </div>

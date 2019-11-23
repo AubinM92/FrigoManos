@@ -1,8 +1,6 @@
 <div style="width: 750px; height: 850px;">
-    <img class="card-img-top cadre"
-        src="https://img-3.journaldesfemmes.fr/Rf4QqgUyGiWbG0deYX-OaJQf5Yc=/748x499/smart/image-icu/352936_7606498402.jpg"
-        alt="Div image cap" style="height: 400px;">
-        <h6>Ajoutée aux envie le : <strong>{{lEnvie.date | date}}</strong> </h6>
+    <img class="card-img-top cadre" [src]="laRecetteEnvie.url" alt="Div image cap" style="height: 400px;">
+    <p class="text-secondary">Ajoutée aux envie le {{ lEnvie.date | date:'dd/MM/yy' }} à {{ lEnvie.date | date:'hh:mm' }} </p>
     <h2 class="text-center">{{ laRecetteEnvie.titre }}</h2>
     <div style="margin: 10px">
         <div class="row" style="vertical-align: middle;">
@@ -10,16 +8,14 @@
 
             </div>
             <div class="col-sm-">
-                <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
-                    style="width: 30px; height: 30px; vertical-align: middle;">
+                <img src="https://image.flaticon.com/icons/svg/66/66163.svg" style="width: 30px; height: 30px; vertical-align: middle;">
                 <span style="vertical-align: middle;"> Préparation : {{ laRecetteEnvie.tempsPrepa }} min </span>
             </div>
             <div class="col-sm-4">
 
             </div>
             <div class="col-sm">
-                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
-                    style="width: 35px; height: 35px; vertical-align: middle;">
+                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap" style="width: 35px; height: 35px; vertical-align: middle;">
                 <span style="vertical-align: middle;"> Cuisson : {{ laRecetteEnvie.tempsCuis }} min </span>
             </div>
         </div>
@@ -38,13 +34,13 @@
 
                 </div>
                 <div class="col-sm-4">
-                        <br>
-                        <i style="vertical-align: middle;" class="material-icons okJai">panorama_fish_eye</i>
-                        <span>J'ai ça dans mon frigo !</span><br>
-                        <i style="vertical-align: middle;" class="material-icons pasAssez">panorama_fish_eye</i>
-                        <span>J'en ai pas assez...</span><br>
-                        <i style="vertical-align: middle;" class="material-icons jaiPas">panorama_fish_eye</i>
-                        <span>Je n'en ai pas du tout !</span>
+                    <br>
+                    <i style="vertical-align: middle;" class="material-icons okJai">panorama_fish_eye</i>
+                    <span>J'ai ça dans mon frigo !</span><br>
+                    <i style="vertical-align: middle;" class="material-icons pasAssez">panorama_fish_eye</i>
+                    <span>J'en ai pas assez...</span><br>
+                    <i style="vertical-align: middle;" class="material-icons jaiPas">panorama_fish_eye</i>
+                    <span>Je n'en ai pas du tout !</span>
                 </div>
             </div>
 
@@ -62,13 +58,12 @@
                 </button>
                 <br><br>
                 <span>
-                    <p class="text-center"> Ajouter une à une <br> liste de courses </p>
+                    <p class="text-center"> Ajouter à une <br> liste de courses </p>
                 </span>
             </div>
             <div class="col-sm-1"></div>
             <div class="col-sm-3 text-center">
-                <button type="button" class="btn btn-outline recetteReal cadre center-block"
-                    (click)="recetteRealisee()">
+                <button type="button" class="btn btn-outline recetteReal cadre center-block" (click)="recetteRealisee()">
                     <mat-icon>check_circle</mat-icon>
                 </button>
                 <br><br>

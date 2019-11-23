@@ -3,25 +3,23 @@
     <form action="" #forme="ngForm">
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
             <div>
-                <input type="number" required style="width: 230px; font-size: 20px;" class="form-control ng-pristine ng-invalid ng-touched text-center" [(ngModel)]="element.quantite" name="quantite"
-                    required placeholder="Quantité" required>
+                <input type="number" required style="width: 230px; font-size: 20px;" class="form-control ng-pristine ng-invalid ng-touched text-center" [(ngModel)]="element.quantite" name="quantite" required placeholder="Quantité" required>
             </div>
             <br>
             <div style="display: flex; flex-direction: row;">
-                <div style="padding : 5px;">
-                    <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
-                        class="btn btn-lg btn-primary btn-block mb-2">
-                        Annuler
-                    </button>
-                </div>
-                
+
                 <div style="padding: 5px;">
-                    <button [disabled]="!forme.form.valid" (click)="modifElementFrigo()" onclick=""
-                        style="background: #c2dcb9; width: auto; color: white;"
-                        class="btn btn-lg btn-primary btn-block mb-2">
+                    <button [disabled]="!forme.form.valid" (click)="modifElementFrigo()" onclick="" style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">
                         Modifier
                     </button>
                 </div>
+
+                <div style="padding : 5px;">
+                    <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">
+                            Annuler
+                        </button>
+                </div>
+
             </div>
         </div>
     </form>

@@ -1,5 +1,5 @@
 <div style="width: 750px; height: 850px;">
-    <img class="card-img-top cadre" [src]="laRecette.url" alt="Div image cap" style="height: 400px;">
+    <img class="card-img-top cadre" [src]="laRecette.url" alt="Div image cap" style="height: 50%;">
     <h2 class="text-center texte">{{ laRecette.titre }}</h2>
     <div style="margin: 10px">
         <div class="row texte" style="vertical-align: middle;">
@@ -53,26 +53,21 @@
             {{laRecette.description}}
         </div>
         <br>
-        <div class="row texte">
-            <div class="col-sm-1">
-
-            </div>
-            <div class="col-sm-5">
-
-                <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;" (click)='ajouterEnvie(laRecette)'>
+        <div class="row texte" style="text-align: center;">
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;" (click)='ajouterRecetteCourse(laRecette)'>
                                     <mat-icon>note_add</mat-icon>
                                 </button>
                 <br>
-                <span> Ajouter à mes liste de courses</span>
+                <span class="text-secondary">Ajouter à mes liste de courses</span>
             </div>
 
-            <div class="col-sm-5">
-
-                <button type="button" class="btn btn-outline pull-right cadre" style="color: #c2dcb9;" (click)='ajouterRecetteCourse(laRecette)'>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-outline pull-right cadre" style="color: #c2dcb9;" (click)='ajouterEnvie(laRecette)'>
                                     <mat-icon>star</mat-icon>
                                 </button>
                 <br>
-                <span> Ajouter à mes envies</span>
+                <span class="text-secondary">Ajouter à mes envies</span>
             </div>
         </div>
     </div>
