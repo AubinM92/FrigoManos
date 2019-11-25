@@ -35,7 +35,7 @@ export class ListeachatComponent implements OnInit {
 
   public mesInput: any = {};
 
-  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog, ) { }
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.recupListes();
