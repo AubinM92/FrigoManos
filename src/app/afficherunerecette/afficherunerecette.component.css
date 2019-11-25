@@ -1,27 +1,31 @@
-.pmsg{
+.pmsg {
     font-family: Cambria;
     font-weight: 400;
-    color :  rgb(124, 165, 165);
+    color: rgb(124, 165, 165);
     letter-spacing: 2px;
-    text-align : center;
-    
+    text-align: center;
 }
 
-.okJai{
+.okJai {
     color: forestgreen;
 }
 
-.pasAssez{
+.pasAssez {
     color: orange;
 }
 
-.jaiPas{
+.jaiPas {
     color: tomato;
 }
 
-.cadre{
+.cadre {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
+}
+
+.texte {
+    font-family: Georgia, serif !important;
+    color: black;
+}

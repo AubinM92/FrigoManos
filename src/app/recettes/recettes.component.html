@@ -9,25 +9,19 @@
         <div class="row">
             <!--Saisons-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Choix des saisons'" [data]="dropdownSaisons"
-                    [(ngModel)]="selectedSaisons" [settings]="dropdownSettings" (onSelect)="onSaisonSelect($event)"
-                    (onDeSelect)="onSaisonDeSelect($event)" (onSelectAll)="onSelectAllSaison($event)"
+                <ng-multiselect-dropdown [placeholder]="'Choix des saisons'" [data]="dropdownSaisons" [(ngModel)]="selectedSaisons" [settings]="dropdownSettings" (onSelect)="onSaisonSelect($event)" (onDeSelect)="onSaisonDeSelect($event)" (onSelectAll)="onSelectAllSaison($event)"
                     (onDeSelectAll)="onDeSelectAllSaison($event)">
                 </ng-multiselect-dropdown>
             </div>
             <!--Temps de cuisine (préparation + cuisson)-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Temps passé à cuisiner'" [data]="dropdownTemps"
-                    [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)"
-                    (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps($event)"
+                <ng-multiselect-dropdown [placeholder]="'Temps passé en cuisine'" [data]="dropdownTemps" [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)" (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps($event)"
                     (onDeSelectAll)="onDeSelectAllTemps($event)">
                 </ng-multiselect-dropdown>
             </div>
             <!--Types d'ingrédients-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Choix des types d ingrédients'" [data]="dropdownTypes"
-                    [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)"
-                    (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType($event)"
+                <ng-multiselect-dropdown [placeholder]="'Choix des types dingrédients'" [data]="dropdownTypes" [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)" (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType($event)"
                     (onDeSelectAll)="onDeSelectAllType($event)">
                 </ng-multiselect-dropdown>
             </div>
@@ -37,11 +31,10 @@
 
     <!--Cartes recette-->
     <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap;">
-        <div class="col-sm-3" *ngFor="let re of allRecettes" id="carteRecette">
-            <div *ngIf="affichageCarte(re)">
+        <div *ngFor="let re of allRecettes">
+            <div class="col-sm-12" *ngIf="affichageCarte(re)">
                 <div class="card cadre">
-                    <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
-                        (click)='afficherRecette(re)' />
+                    <input class="cadretop contain" type="image" [src]="re.url" width="295px" height="200px" (click)='afficherRecette(re)' />
                     <div class="card-block">
                         <h4 class="card-title texte">{{re.titre}}</h4>
 
@@ -69,8 +62,8 @@
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
-            <br>
         </div>
     </div>
     <!--Fin des cartes recettes-->

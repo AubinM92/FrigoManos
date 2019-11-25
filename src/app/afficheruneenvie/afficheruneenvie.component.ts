@@ -26,7 +26,8 @@ export class AfficheruneenvieComponent implements OnInit {
   laRecetteEnvie;
   recetteCuisinee;
   envieDel;
-  lEnvie : Envie = new Envie();
+  lEnvie: Envie = new Envie();
+  efr;
 
 
   listeRecette: Liste = new Liste();
@@ -38,7 +39,7 @@ export class AfficheruneenvieComponent implements OnInit {
     this.user.id = parseInt(localStorage.getItem("id"));
     this.lEnvie = this.recetteEnvieService.envie;
     this.premiere();
-  
+
 
   }
 
@@ -52,8 +53,8 @@ export class AfficheruneenvieComponent implements OnInit {
     del.then(
       data => {
         this.elemLaRecette = data;
-       
-       
+
+
       })
   }
 
@@ -66,24 +67,30 @@ export class AfficheruneenvieComponent implements OnInit {
     console.log(this.laRecetteEnvie);
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
-
-  deleteEnvie() { 
+  d
+  deleteEnvie() {
     const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
     }, err => {
       console.log(err);
     });
   }
-   
-  recetteRealisee(){
 
-    const del= this.http.post('http/elemFrigo_ByEnvie/{id}' + this.user.id, this.laRecetteEnvie).toPromise();
-    del.then(data=>{
-      this.recetteCuisinee=data;
-      
-    })
-    }
+  /*recetteRealisee() {
 
-    
+    const del = this.http.get('http/elemFrigo/{id}' + this.laRecetteEnvie.user.id).toPromise();
+    del.then(data => {
+      this.efr=data;
+      console.log(this.efr);
+      const del2 = this.http.post('http/elemFrigoCompare_Avec_Recette/{id}' + this.efr.id, this.laRecetteEnvie.recette).toPromise();
+      del2.then(data => {
+        this.recetteCuisinee = data;
+      }
+       ) } 
+    }*/
+
+
+
+
 
 }

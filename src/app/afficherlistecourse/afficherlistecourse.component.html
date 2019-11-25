@@ -1,81 +1,87 @@
 <!-- Card box des listes-->
-<div class="row">
-    <div class="col-sm-6">
-        <div style="display: flex; justify-content: center;">
-            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                (click)="nouvelleListe()" style="width: 50%; background:#b6c5b1; color: white;">Nouvelle liste</button>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <div *ngFor="let l of mesListes; let i = index" style="padding: 10px">
-                <div style="min-width: 150px;" class="card cadre text-center" (click)="boutonVoir(l, i)" [style.background]="couleur(i)">
-                    <div class="card-block">
-                        <h1 class="card-title" style="font-size: 20px;">{{ l.titre }}</h1>
-                    </div>
-                    <div style="display: flex; justify-content: center; padding: 10px;">
-                        <div style="width: 5%;"></div>
+<div class="container">
+
+    <h2 class="texte">Mes listes de courses</h2>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="texte" style="display: flex; justify-content: center;">
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" (click)="nouvelleListe()" style="width: 50%; background:#b6c5b1; color: white;">Nouvelle liste</button>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <div *ngFor="let l of mesListes; let i = index" style="padding: 10px">
+                    <div style="min-width: 150px;" class="card cadre text-center" (click)="boutonVoir(l, i)" [style.background]="couleur(i)">
+                        <div class="card-block">
+                            <h1 class="card-title texte" style="font-size: 20px;">{{ l.titre }}</h1>
+                        </div>
+                        <div style="display: flex; justify-content: center; padding: 10px;">
+                            <div style="width: 5%;"></div>
+                        </div>
                     </div>
                 </div>
+                <br>
             </div>
-            <br>
         </div>
-    </div>
-    <!-- Tableau qui contient le détail d'une liste-->
-    <div class="col-sm-6">
-        <div class="card cadre" *ngIf="visible">
-            <div class="card-block" [style.background]="couleurDetail()">
-                <div style="display: flex;flex-direction: row ;justify-content: space-between; align-items: center;">
-                    <div style="width: 100%;" class="text-center">
-                        <h1 class="card-title" style="font-size: 50px;">
-                            <strong style="color: white;">
+        <!-- Tableau qui contient le détail d'une liste-->
+        <div class="col-sm-6 texte">
+            <div class="card cadre" *ngIf="visible">
+                <div class="card-block" [style.background]="couleurDetail()">
+                    <div style="display: flex;flex-direction: row ;justify-content: space-between; align-items: center;">
+                        <div style="width: 100%;" class="text-center">
+                            <h1 class="card-title" style="font-size: 50px;">
+                                <strong class="texte" style="color: white;">
                                 {{ liste.titre }}
                             </strong>
-                        </h1>
-                    </div>
-                </div>
-
-                <hr>
-                <div *ngFor="let e of mesElementsListe" class="text-center" style="font-size: 20px;">
-                    <div class="row" style="padding: 5px; display: flex; align-items: center;">
-
-                        
-                        <div class="col-sm-3">
-                                <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="50px"
-                                height="50px"/>
-                        </div>
-
-                        <div class="col-sm-3">
-                            {{e.ingredient.nom }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{e.quantite}} {{e.ingredient.unite }}
-                        </div>
-                        <div class="col-sm-1">
-                            <mat-icon (click)="supprimerElement(e)">delete</mat-icon>
-                        </div>
-                        <div class="col-sm-1">
-                            <mat-icon (click)="modifElementListe(e)">edit</mat-icon>
+                            </h1>
                         </div>
                     </div>
+
                     <hr>
-                </div>
-                <div style="display: flex; justify-content: flex-end;">
+                    <div *ngFor="let e of mesElementsListe" class="text-center" style="font-size: 20px;">
+                        <div class="row" style="padding: 5px; display: flex; align-items: center;">
 
-                    <div style="width: 40%; display: flex; flex-direction: row; align-items: center;"
-                        (click)="supprimerListe(liste)">
-                        <div style="background: white; width: 40px; height: 40px; padding: 5px; border-radius: 50%;">
-                            <mat-icon style="font-size: 30px; height: 50px;">delete
-                            </mat-icon>
+
+                            <div class="col-sm-3">
+                                <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="50px" height="50px" />
+                            </div>
+
+                            <div class="col-sm-3">
+                                {{e.ingredient.nom }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{e.quantite}} {{e.ingredient.unite }}
+                            </div>
+                            <div class="col-sm-1">
+                                <mat-icon (click)="supprimerElement(e)">delete</mat-icon>
+                            </div>
+                            <div class="col-sm-1">
+                                <mat-icon (click)="modifElementListe(e)">edit</mat-icon>
+                            </div>
                         </div>
-                        <h6><i>Supprimer liste</i></h6>
+                        <hr>
                     </div>
+                    <div class="row texte" style="text-align: center;">
 
-                    <div style="width: 40%; display: flex; flex-direction: row; align-items: center;"
-                        (click)="ajoutElementListe(liste.id)">
-                        <h6><i>Nouvel élément</i></h6>
-                        <div style="width: 2%;"></div>
-                        <div style="border-radius: 50%; background: white; width: 40px; height: 40px;">
-                            <mat-icon style="font-size: 40px;">add</mat-icon>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-outline" style="background: white; width: 50px; height: 50px; padding: 5px; border-radius: 50%; vertical-align: middle;" (click)="ajoutElementListe(liste.id)">
+                                                    <mat-icon style="vertical-align: middle;">add</mat-icon>
+                                                </button>
+                            <br>
+                            <span class="text-secondary">Nouvel élément</span>
                         </div>
+
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-outline" style="background: white; width: 50px; height: 50px; padding: 5px; border-radius: 50%;" (click)="supprimerListe(liste)">
+                                                    <mat-icon style="vertical-align: middle;">delete</mat-icon>
+                                                </button>
+                            <br>
+                            <span class="text-secondary">Supprimer liste</span>
+                        </div>
+                        <div class="col-sm-2"></div>
+
                     </div>
                 </div>
             </div>

@@ -1,20 +1,13 @@
 <div class="container">
-    <div class="cadre" style="margin-bottom:10px; padding:10px; background: #f2cbaa;">
-        <div class="row-input-group-prepend">
-            <div class="col-sm-12">
-                <h2 class="text-center"><strong>Mes Envies </strong></h2>
-                
-            </div>
-        </div>
-    </div>
+    <h2 class="texte">Mes envies</h2>
+
+    <hr>
 
 
     <div class="row ">
         <div class="col-sm-3 " *ngFor="let re of lesRecettes">
             <div class="card cadre ">
-                <input class="cadretop contain" type="image"
-                    [src]="re.url"
-                    width="100%" height="200px" (click)='afficherEnvie(re)'>
+                <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px" (click)='afficherEnvie(re)'>
                 <div class="card-block">
                     <h4 class="card-title">{{re.titre}}</h4>
 
@@ -25,15 +18,13 @@
 
                         <div class="col-sm-1"></div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline ajoutListe cadre"
-                                (click)='ajouterRecetteCourse(re)'>
+                            <button type="button" class="btn btn-outline ajoutListe cadre" (click)='ajouterRecetteCourse(re)'>
                                 <mat-icon>note_add</mat-icon>
                             </button>
                         </div>
                         <div class="col-sm-2"></div>
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-outline favori cadre"
-                                (click)='deleteEnvie(re)'>
+                            <button type="button" class="btn btn-outline favori cadre" (click)='deleteEnvie(re)'>
                                 <mat-icon>delete_outline</mat-icon>
                             </button>
                         </div>
@@ -43,5 +34,5 @@
             <br>
         </div>
     </div>
-    <br>    
+    <br>
 </div>
