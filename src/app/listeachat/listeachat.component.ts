@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { Ingredient } from '../model/Ingredient';
 import { Liste } from '../model/Liste';
 import { MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { CoursesValideesComponent } from '../courses-validees/courses-validees.component';
 
 @Component({
   selector: 'app-listeachat',
@@ -33,7 +35,7 @@ export class ListeachatComponent implements OnInit {
 
   public mesInput: any = {};
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog,) { }
 
   ngOnInit() {
     this.recupListes();
@@ -118,12 +120,15 @@ export class ListeachatComponent implements OnInit {
           })
         })
 
-
-
       } else {
         this.erreur = "La quantité d'un des élément est nulle "
       }
     })
+
+    const mydiale = this.dialog.open(CoursesValideesComponent);
+    mydiale.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
   //----------------------------------------------------------------------------

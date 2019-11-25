@@ -1,9 +1,10 @@
-<div>
-    <h4 class="text-center"><strong>Choisir l'item pour votre frigo</strong></h4>
+<div class="card-body">
+    <h4 class="text-center texte"><strong>Ajouter un élément à votre frigo</strong></h4>
+    <br>
     <form action="" #forme="ngForm">
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
-            <mat-form-field style="width: 100%; font-size: 20px;">
-                <input required type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Nom de l'ingrédient" class="form-control ng-pristine ng-invalid ng-touched text-center">
+        <div>
+            <mat-form-field class="text-center" style="width: 100%;">
+                <input required type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Ingrédient" class="form-control ng-pristine ng-invalid ng-touched text-center">
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option}}
@@ -14,16 +15,17 @@
         <div>
             <input style="font-size: 20px;" type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required name="quantite" class="form-control ng-pristine ng-invalid ng-touched text-center">
         </div>
+        <br>
         <div style="display: flex; flex-direction: row; justify-content: center;">
 
-            <div style="padding : 5px;">
+            <div class="texte" style="padding : 5px;">
                 <button [disabled]="!forme.form.valid" (click)="valider()" onclick="" style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">
                     Ajouter
                 </button>
                 <br>
             </div>
 
-            <div style="padding : 5px;">
+            <div class="texte" style="padding : 5px;">
                 <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">
                         Annuler
                 </button>
@@ -32,34 +34,3 @@
         </div>
     </form>
 </div>
-<!--
-<div>
-        <h4 class="text-center"><strong>Entrez la quantité</strong></h4>
-        <form action="" #forme="ngForm">
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
-                <div>
-                    <input type="number" required style="width: 230px; font-size: 20px;" class="form-control ng-pristine ng-invalid ng-touched text-center" [(ngModel)]="element.quantite" name="quantite"
-                        required placeholder="Quantité" required>
-                </div>
-                <br>
-                <div style="display: flex; flex-direction: row;">
-                    <div style="padding : 5px;">
-                        <button (click)="fermer()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
-                            class="btn btn-lg btn-primary btn-block mb-2">
-                            Annuler
-                        </button>
-                    </div>
-                    
-                    <div style="padding: 5px;">
-                        <button [disabled]="!forme.form.valid" (click)="modifElementFrigo()" onclick=""
-                            style="background: #c2dcb9; width: auto; color: white;"
-                            class="btn btn-lg btn-primary btn-block mb-2">
-                            Modifier
-                        </button>
-                    </div>
-                    <div>{{ erreur }}</div>
-                </div>
-            </div>
-        </form>
-    
-    </div>-->
