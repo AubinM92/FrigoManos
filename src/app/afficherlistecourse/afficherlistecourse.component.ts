@@ -29,7 +29,9 @@ export class AfficherlistecourseComponent implements OnInit {
   
 
   ngOnInit() {
+    this.index = parseInt(localStorage.getItem("couleurListe"));
     this.user.id = parseInt(localStorage.getItem("id"));
+
     this.http.get('http://localhost:8087/liste-globale/' + this.user.id).subscribe(
       data => {
         this.mesListes = data;
@@ -59,13 +61,18 @@ export class AfficherlistecourseComponent implements OnInit {
   boutonVoir(l, i) {
     this.liste = l;
     this.index = i;
+
+
     localStorage.setItem("vueListe", this.liste.id+""); 
+    localStorage.setItem("couleurListe", i+""); 
+
+
     this.visible = true;
     this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
       data => {
         this.mesElementsListe = data;
         this.mesElementsListe.forEach(element => {
-          if (element.ingredient.url === null) {
+          if (element.ingredient.url === null || element.ingredient.url === "") {
             element.ingredient.url = "https://image.flaticon.com/icons/svg/2169/2169159.svg";
           }
         });
@@ -121,7 +128,7 @@ export class AfficherlistecourseComponent implements OnInit {
   ajoutElementListe(id) {
     const mydial2 = this.dialog2.open(AjouterElementListeComponent);
     mydial2.afterClosed().subscribe(result => {
-      this.boutonVoir(this.liste, 1);
+      this.boutonVoir(this.liste, this.index);
     });
   }
 
