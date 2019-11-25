@@ -16,8 +16,8 @@
   }*/
 
 .contenu-avec-scroll {
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 800px;
     scrollbar-width: thin;
     overflow: auto;
 }
