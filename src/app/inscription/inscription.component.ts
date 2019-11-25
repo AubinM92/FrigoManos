@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/User';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { InscriptionValideeComponent } from '../inscription-validee/inscription-validee.component';
+
 
 @Component({
   selector: 'app-inscription',
@@ -15,7 +18,7 @@ motDePasse2;
 erreur;
 valider;
 
-  constructor(private http:HttpClient, private router: Router) {  }
+  constructor(private http:HttpClient, private router: Router, private dialog: MatDialog) {  }
 
   ngOnInit() {
   }
@@ -37,6 +40,7 @@ valider;
         return 0;
       }
     );
+    const mydiale = this.dialog.open(InscriptionValideeComponent);
     this.router.navigate(['/connexion']);
   }
 

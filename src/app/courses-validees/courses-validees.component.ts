@@ -12,8 +12,4 @@ export class CoursesValideesComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  fermer() {
-    this.dialogRef.close();
-  }
 }
