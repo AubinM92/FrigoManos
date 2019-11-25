@@ -290,9 +290,8 @@ export class RecettesComponent implements OnInit {
         else if (element.ingredient.categorie === "Produit laitier" && this.typeProduitL) { retour = true; }
         else if (element.ingredient.categorie === "Viande" && this.typeViande) { retour = true; }
 
+
       }
-
-
 
     })
 
