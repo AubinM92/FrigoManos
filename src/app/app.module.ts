@@ -38,6 +38,7 @@ import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/materia
 import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CoursesValideesComponent } from './courses-validees/courses-validees.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ChoixajoutrecettelisteComponent,
     AjouterElementFrigoComponent,
     AfficherenvieComponent,
-    AfficheruneenvieComponent
+    AfficheruneenvieComponent,
+    CoursesValideesComponent
   ],
   entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent,AfficheruneenvieComponent],
 

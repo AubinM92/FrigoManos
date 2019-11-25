@@ -1,13 +1,14 @@
-<div>
-    <h5 class="text-center">Choisir l'ingrédient à ajouter</h5>
+<div class="card-body">
+    <h5 class="text-center texte">Choisir l'ingrédient à ajouter</h5>
+    <br>
     <div style="margin: 10px">
         <form action="" #forme="ngForm">
-            <div>
+            <div class="text-center" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;">
 
-                <mat-form-field class="">
+                <mat-form-field class="text-center" style="width: 100%;">
                     <input required type="text" placeholder="Pick one" aria-label="Number" matInput
                         [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing"
-                        placeholder="Nom de l'ingrédient">
+                        placeholder="Ingrédient">
                     <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                             {{option}}
@@ -16,16 +17,17 @@
                 </mat-form-field>
 
             </div>
-            <div>
-                <input type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required name="quantite">
+            <div class="text-center">
+                <input class="form-control ng-pristine ng-invalid ng-touched text-center" type="number" placeholder="Quantité ?" [(ngModel)]="quantite" required name="quantite">
             </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
-                </div>
+            <br>
+            <div class="row texte">
                 <div class="col-sm-6">
                     <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block"
                         (click)="valider();">Valider</button>
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
                 </div>
             </div>
             <div>
@@ -34,6 +36,3 @@
         </form>
     </div>
 </div>
-
-
-
