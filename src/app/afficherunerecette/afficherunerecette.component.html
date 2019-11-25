@@ -53,22 +53,36 @@
             {{laRecette.description}}
         </div>
         <br>
-        <div class="row texte" style="text-align: center;">
-            <div class="col-sm-6">
-                <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;" (click)='ajouterRecetteCourse(laRecette)'>
-                                    <mat-icon>note_add</mat-icon>
-                                </button>
-                <br>
-                <span class="text-secondary">Ajouter à mes liste de courses</span>
+     
+
+
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3 text-center">
+
+                <button type="button" class="btn btn-outline ajoutListe cadre" (click)='ajouterRecetteCourse(laRecette)'>
+                    <mat-icon>note_add</mat-icon>
+                </button>
+                <br><br>
+                <span>
+                    <p class="text-center"> <i>Ajouter une à une <br> liste de courses </i> </p>
+                </span>
+            </div>
+            
+           
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 text-center">
+                <button type="button" class="btn btn-outline favori cadre " (click)='ajouterEnvie(laRecette)'>
+                    <mat-icon>star</mat-icon>
+                </button>
+                <br><br>
+                <span>
+                    <p class="text-center"> <i>Ajouter à mes envies </i></p>
+                </span>
             </div>
 
-            <div class="col-sm-6">
-                <button type="button" class="btn btn-outline pull-right cadre" style="color: #c2dcb9;" (click)='ajouterEnvie(laRecette)'>
-                                    <mat-icon>star</mat-icon>
-                                </button>
-                <br>
-                <span class="text-secondary">Ajouter à mes envies</span>
-            </div>
+
         </div>
     </div>
 </div>

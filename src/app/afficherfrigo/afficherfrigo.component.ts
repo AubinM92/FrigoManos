@@ -13,6 +13,8 @@ import { Liste } from '../model/Liste';
 import { Recette } from '../model/Recette';
 import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunerecette.component';
 import { UnerecetteService } from '../unerecette.service';
+import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
+import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 
 
 const ELEMENT_DATA: ElementFrigo[] = [];
@@ -33,9 +35,10 @@ export class AfficherfrigoComponent implements OnInit {
   element;
   dataSource = new MatTableDataSource<ElementFrigo>(ELEMENT_DATA);
   allRecettes;
+  listeRecette : Liste = new Liste();
 
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router, private s: ServicefrigoService, private recetteService: UnerecetteService) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
@@ -83,12 +86,19 @@ export class AfficherfrigoComponent implements OnInit {
     mydiale.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
-
   }
 
   afficherRecette(recette) {
     this.recetteService.recette = recette;
     const mydial3 = this.dialog.open(AfficherunerecetteComponent);
+  }
+
+  ajouterRecetteCourse(re){
+    this.listeRecette.titre = re.titre;
+    this.listeRecette.user.id= localStorage.id;
+    this.ajoutService.recette=re;
+    this.ajoutService.liste = this.listeRecette;
+    const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
 }
