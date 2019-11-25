@@ -36,11 +36,14 @@ export class AfficherfrigoComponent implements OnInit {
   dataSource = new MatTableDataSource<ElementFrigo>(ELEMENT_DATA);
   allRecettes;
   listeRecette : Liste = new Liste();
-
+  ingCo = 2;
 
   constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService) { }
 
   ngOnInit() {
+
+
+
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
       data => {
         this.element = data;
@@ -53,11 +56,16 @@ export class AfficherfrigoComponent implements OnInit {
         });
       }
     )
-    this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id")).subscribe(
+    this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
       data => {
         this.allRecettes = data;
         console.log(this.allRecettes);
       })
+  }
+
+  validerNbIng(){    
+    this.ngOnInit();
+
   }
 
   modifQuantite(e) {
