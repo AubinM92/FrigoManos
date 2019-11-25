@@ -11,6 +11,8 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { del } from 'selenium-webdriver/http';
+import { Ingredient } from '../model/Ingredient';
+import { ElementRecette } from '../model/ElementRecette';
 
 
 @Component({
@@ -61,67 +63,78 @@ export class RecettesComponent implements OnInit {
 
   constructor(private http: HttpClient, private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog) { }
 
+  listeIngredients: ElementRecette[];
+  response;
+
   ngOnInit() {
+    const del = this.http.get('http://localhost:8087/elemRecette').toPromise();
 
-    this.dropdownSaisons = [
-      { item_id: 1, item_text: 'Printemps' },
-      { item_id: 2, item_text: 'Été' },
-      { item_id: 3, item_text: 'Automne' },
-      { item_id: 4, item_text: 'Hiver' }
-    ];
-    this.selectedSaisons = [
-      { item_id: 1, item_text: 'Printemps' },
-      { item_id: 2, item_text: 'Été' },
-      { item_id: 3, item_text: 'Automne' },
-      { item_id: 4, item_text: 'Hiver' }
-    ];
-    this.dropdownTemps = [
-      { item_id: 1, item_text: '0 - 15 min' },
-      { item_id: 2, item_text: '15 - 30 min' },
-      { item_id: 3, item_text: '30 - 45 min' },
-      { item_id: 4, item_text: '45 - 60 min' },
-      { item_id: 5, item_text: '> 60 min' }
-    ];
-    this.selectedTemps = [
-      { item_id: 1, item_text: '0 - 15 min' },
-      { item_id: 2, item_text: '15 - 30 min' },
-      { item_id: 3, item_text: '30 - 45 min' },
-      { item_id: 4, item_text: '45 - 60 min' },
-      { item_id: 5, item_text: '> 60 min' }
-    ];
-    this.dropdownTypes = [
-      { item_id: 1, item_text: 'Fruit' },
-      { item_id: 2, item_text: 'Légume' },
-      { item_id: 3, item_text: 'Poisson' },
-      { item_id: 4, item_text: 'Produit laitier' },
-      { item_id: 5, item_text: 'Viande' }
-    ];
-    this.selectedTypes = [
-      { item_id: 1, item_text: 'Fruit' },
-      { item_id: 2, item_text: 'Légume' },
-      { item_id: 3, item_text: 'Poisson' },
-      { item_id: 4, item_text: 'Produit laitier' },
-      { item_id: 5, item_text: 'Viande' }
-    ];
+    del.then(data => {
+      this.response = data;
+      this.listeIngredients = this.response;
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Tout sélectionner',
-      unSelectAllText: 'Tout désélectionner',
-      itemsShowLimit: 10,
-      allowSearchFilter: false
-    }
 
-    this.onSelectAllTemps();
-    this.onSelectAllSaison();
-    this.onSelectAllType();
+      this.dropdownSaisons = [
+        { item_id: 1, item_text: 'Printemps' },
+        { item_id: 2, item_text: 'Été' },
+        { item_id: 3, item_text: 'Automne' },
+        { item_id: 4, item_text: 'Hiver' }
+      ];
+      this.selectedSaisons = [
+        { item_id: 1, item_text: 'Printemps' },
+        { item_id: 2, item_text: 'Été' },
+        { item_id: 3, item_text: 'Automne' },
+        { item_id: 4, item_text: 'Hiver' }
+      ];
+      this.dropdownTemps = [
+        { item_id: 1, item_text: '0 - 15 min' },
+        { item_id: 2, item_text: '15 - 30 min' },
+        { item_id: 3, item_text: '30 - 45 min' },
+        { item_id: 4, item_text: '45 - 60 min' },
+        { item_id: 5, item_text: '> 60 min' }
+      ];
+      this.selectedTemps = [
+        { item_id: 1, item_text: '0 - 15 min' },
+        { item_id: 2, item_text: '15 - 30 min' },
+        { item_id: 3, item_text: '30 - 45 min' },
+        { item_id: 4, item_text: '45 - 60 min' },
+        { item_id: 5, item_text: '> 60 min' }
+      ];
+      this.dropdownTypes = [
+        { item_id: 1, item_text: 'Fruit' },
+        { item_id: 2, item_text: 'Légume' },
+        { item_id: 3, item_text: 'Poisson' },
+        { item_id: 4, item_text: 'Produit laitier' },
+        { item_id: 5, item_text: 'Viande' }
+      ];
+      this.selectedTypes = [
+        { item_id: 1, item_text: 'Fruit' },
+        { item_id: 2, item_text: 'Légume' },
+        { item_id: 3, item_text: 'Poisson' },
+        { item_id: 4, item_text: 'Produit laitier' },
+        { item_id: 5, item_text: 'Viande' }
+      ];
 
-    this.http.get('http://localhost:8087/recette').subscribe(
-      data => {
-        this.allRecettes = data;
-      })
+      this.dropdownSettings = {
+        singleSelection: false,
+        idField: 'item_id',
+        textField: 'item_text',
+        selectAllText: 'Tout sélectionner',
+        unSelectAllText: 'Tout désélectionner',
+        itemsShowLimit: 10,
+        allowSearchFilter: false
+      }
+
+      this.onSelectAllTemps();
+      this.onSelectAllSaison();
+      this.onSelectAllType();
+
+      this.http.get('http://localhost:8087/recette').subscribe(
+        data => {
+          this.allRecettes = data;
+        })
+
+    })
   }
 
   afficherRecette(recette) {
@@ -258,13 +271,17 @@ export class RecettesComponent implements OnInit {
   affichageCarte(carte) {
 
     // Vérification du temps de cuisine
-    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { return true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { return true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { return true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { return true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { return true; }
-    else { return false; }
 
+
+    /*
+        if (carte.saison == "Toutes") { return true; }
+        if (carte.saison == "Printemps") { return true; }
+        if (carte.saison == "Été") { return true; }
+        if (carte.saison == "Automne") { return true; }
+        if (carte.saison == "Hiver") { return true; }
+    
+        return false;
+    */
     /*
     // Vérification du temps de cuisine
     if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { this.afficherCarteTemps = true; }
@@ -273,38 +290,62 @@ export class RecettesComponent implements OnInit {
     if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { this.afficherCarteTemps = true; }
     if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { this.afficherCarteTemps = true; }
     else { this.afficherCarteTemps = false; }*/
+    let retour = false;
+
+    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { retour = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { retour = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { retour = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { retour = true; }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { retour = true; }
+
+    this.listeIngredients.forEach(element => {
+
+      if (carte.id === element.recette.id) {
+        if (element.ingredient.saison === "Printemps" && this.saisonPrintemps) { retour = true; }
+        else if (element.ingredient.saison === "Été" && this.saisonEte) { retour = true; }
+        else if (element.ingredient.saison === "Automne" && this.saisonAutomne) { retour = true; }
+        else if (element.ingredient.saison === "Hiver" && this.saisonHiver) { retour = true; }
+
+
+        if (element.ingredient.categorie === "Fruit" && this.typeFruit) { retour = true; }
+        else if (element.ingredient.categorie === "Légume" && this.typeLegume) { retour = true; }
+        else if (element.ingredient.categorie === "Poisson" && this.typePoisson) { retour = true; }
+        else if (element.ingredient.categorie === "Produit laitier" && this.typeProduitL) { retour = true; }
+        else if (element.ingredient.categorie === "Viande" && this.typeViande) { retour = true; }
+
+      }
+
+    })
+
+    return retour;
+    /*
+            // Vérification de la saison
+            this.allIngredients.forEach(element => {
+              if (element.saison === "Printemps" && this.saisonPrintemps) { retour = true; }
+              else if (element.saison === "Été" && this.saisonEte) { retour = true; }
+              else if (element.saison === "Automne" && this.saisonAutomne) { retour = true; }
+              else if (element.saison === "Hiver" && this.saisonHiver) { retour = true; }
+            });
+    */
+
 
     /*
-    const del = this.http.get('http://localhost:8087/ingredient-via-recette/' + carte.id).toPromise();
-    del.then(
-      data => {
-        this.allIngredients = data;
+            // Vérification du type d'ingrédient
+            this.allIngredients.forEach(element => {
+              if (element.categorie == "Fruit" && this.typeFruit) { this.afficherCarteType = true; }
+              if (element.categorie == "Légume" && this.typeLegume) { this.afficherCarteType = true; }
+              if (element.categorie == "Poisson" && this.typePoisson) { this.afficherCarteType = true; }
+              if (element.categorie == "Produit laitier" && this.typeProduitL) { this.afficherCarteType = true; }
+              if (element.categorie == "Viande" && this.typeViande) { this.afficherCarteType = true; }
+              else { this.afficherCarteType = false; }
+            });
+    
+          }, err => {
+            console.log(err);
+          }
+        );
+      }*/
 
-        // Vérification de la saison
-        this.allIngredients.forEach(element => {
-          if (element.saison == "Toutes") { this.afficherCarteSaison = true; }
-          if (element.saison == "Printemps" && this.saisonPrintemps) { this.afficherCarteSaison = true; }
-          if (element.saison == "Été" && this.saisonEte) { this.afficherCarteSaison = true; }
-          if (element.saison == "Automne" && this.saisonAutomne) { this.afficherCarteSaison = true; }
-          if (element.saison == "Hiver" && this.saisonHiver) { this.afficherCarteSaison = true; }
-          else { this.afficherCarteSaison = false; }
-        });
 
-        // Vérification du type d'ingrédient
-        this.allIngredients.forEach(element => {
-          if (element.categorie == "Fruit" && this.typeFruit) { this.afficherCarteType = true; }
-          if (element.categorie == "Légume" && this.typeLegume) { this.afficherCarteType = true; }
-          if (element.categorie == "Poisson" && this.typePoisson) { this.afficherCarteType = true; }
-          if (element.categorie == "Produit laitier" && this.typeProduitL) { this.afficherCarteType = true; }
-          if (element.categorie == "Viande" && this.typeViande) { this.afficherCarteType = true; }
-          else { this.afficherCarteType = false; }
-        });
-
-      }, err => {
-        console.log(err);
-      }
-    );*/
   }
 }
-
-
