@@ -7,6 +7,7 @@ import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choix
 import { UneenvieService } from '../uneenvie.service';
 import { User } from '../model/User';
 import { Envie } from '../model/Envie';
+import { Commentaire } from '../model/Commentaire';
 
 @Component({
   selector: 'app-afficheruneenvie',
@@ -16,6 +17,8 @@ import { Envie } from '../model/Envie';
 export class AfficheruneenvieComponent implements OnInit {
 
   user: User = new User();
+
+visible = false;
 
   elemLaRecette;
   mesElementsFrigo = [];
@@ -30,6 +33,9 @@ export class AfficheruneenvieComponent implements OnInit {
   efr;
   array;
 
+  nouvCom : Commentaire = new Commentaire();
+  nombreCom
+  lesCommentaires;
 
   listeRecette: Liste = new Liste();
 
@@ -40,6 +46,7 @@ export class AfficheruneenvieComponent implements OnInit {
     this.user.id = parseInt(localStorage.getItem("id"));
     this.lEnvie = this.recetteEnvieService.envie;
     this.premiere();
+    this.getCommentaires();
 
 
   }
@@ -65,7 +72,7 @@ export class AfficheruneenvieComponent implements OnInit {
     this.listeRecette.user.id = localStorage.id;
     this.ajoutService.recette = this.laRecetteEnvie;
     this.ajoutService.liste = this.listeRecette;
-    console.log(this.laRecetteEnvie);
+    
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
   
@@ -87,5 +94,30 @@ export class AfficheruneenvieComponent implements OnInit {
 
     }
 
+    afficherLesCommentaires(){
+      this.visible=true;
+  
+    }
+  
+    ajoutCommentaire(){
+      this.nouvCom.date= new Date();
+      
+      this.nouvCom.user.id = localStorage.id;
+      this.nouvCom.recette = this.laRecetteEnvie;
+      
+      const del = this.http.post('http://localhost:8087/commentaire' ,this.nouvCom).toPromise();
+        del.then(data => { 
+          this.ngOnInit();
+        });
+    }
+  
+    getCommentaires(){
+      
+      const del = this.http.get('http://localhost:8087/comByRecetteId/' +  this.laRecetteEnvie.id).subscribe(
+        data => {
+          this.lesCommentaires=data;
+          this.nombreCom=this.lesCommentaires.length;
+        });
+    }
 
 }

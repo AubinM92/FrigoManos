@@ -21,6 +21,7 @@ export class AfficherunerecetteComponent implements OnInit {
 
 visible = false;
 
+nombreCom;
   laRecette;
   elemLaRecette;
   mesElementsFrigo = [];
@@ -106,7 +107,7 @@ visible = false;
     
     this.nouvCom.user.id = localStorage.id;
     this.nouvCom.recette = this.laRecette;
-    console.log(this.nouvCom);
+    
     const del = this.http.post('http://localhost:8087/commentaire' ,this.nouvCom).toPromise();
       del.then(data => { 
         this.ngOnInit();
@@ -118,8 +119,7 @@ visible = false;
     const del = this.http.get('http://localhost:8087/comByRecetteId/' +  this.laRecette.id).subscribe(
       data => {
         this.lesCommentaires=data;
-        
+        this.nombreCom=this.lesCommentaires.length;
       });
   }
-
 }
