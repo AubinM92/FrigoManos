@@ -2,7 +2,7 @@
   <!--Barre de navigation sur le côté-->
   <mat-sidenav mode="side" #sidenav opened="true" position="start" (close)="sideClose()" id="navVerticale">
 
-    <div style="vertical-align: middle;">
+    <div class="pour-scroll" style="vertical-align: middle;">
 
       <br><br><br>
 
@@ -18,7 +18,7 @@
       <button class="btn-block btn-nav" (click)="toListeAchat()">
         <img src="https://image.flaticon.com/icons/svg/687/687264.svg" alt="" width="45px">
         <br>
-        <h6 class="text-navbar">Ma liste d'achat</h6>
+        <h6 class="text-navbar">Mon panier</h6>
       </button>
 
       <br>
@@ -51,7 +51,7 @@
       <br>
       <hr class="demarcation"><br>
 
-      <button class="btn-block btn-nav" routerLink="/modif-profil">
+      <button class="btn-block btn-nav" (click)="monCompte()">
         <img src="https://image.flaticon.com/icons/svg/768/768051.svg" alt="" width="45px">
         <br>
         <h6 class="text-navbar">Modifier mon profil</h6>
@@ -71,18 +71,9 @@
 
       <h1 class="bienvenue" style="width: auto; text-align: center;">Bonjour {{ cUser }}</h1>
 
-      <div class="row">
-        <div class="col-sm-6">
-          <button class="btn-block btn-nav" (click)="toHome()" style="width: auto;">
-            <img src="https://image.flaticon.com/icons/svg/702/702079.svg" width="30px">
-          </button>
-        </div>
-        <div class="col-sm-6">
-          <button class="btn-block btn-nav" (click)="deconnexion()" style="width: auto;">
-            <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" width="30px">
-          </button>
-        </div>
-      </div>
+      <button class="btn-block btn-nav" (click)="deconnexion()" style="width: auto;">
+        <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" width="30px">
+      </button>
 
     </mat-toolbar>
     <!--Fin barre orizontale haute-->

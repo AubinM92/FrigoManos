@@ -36,7 +36,7 @@ export class ConnexionComponent implements OnInit {
           localStorage.setItem('mail', this.uConnect.mail);
           localStorage.setItem('mdp', this.uConnect.mdp);
           localStorage.setItem('pseudo', this.uConnect.pseudo);
-          this.router.navigate(['/home'])
+          this.router.navigate(['/mon-frigo'])
         } else {
           this.erreur = "Mail ou mot de passe incorrect"
           this.user.mail = "";

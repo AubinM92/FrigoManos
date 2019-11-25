@@ -32,39 +32,53 @@ export class NavbaruserComponent implements OnInit {
     // this.ngOnInit();
     this.router.navigate(['/connexion']);
   }
+  
   monCompte() {
-    localStorage.clear();
-    this.router.navigate(['/modif-profil']);
-  }
-
-  toListeAchat() {
-    this.router.navigate(['/liste-achat']);
-  }
-
-  mesListes() {
-    this.router.navigate(['/mes-listes']);
-  }
-
-  monFrigo() {
-    this.router.navigate(['/mon-frigo']);
-  }
-
-  toRecettes() {
-    this.router.navigate(['/recettes']);
-  }
-
-  toEnvies() {
-    this.router.navigate(['/aff-envie']);
-  }
-
-  sideClose() {
-    if (document.getElementById("navHorizontale").hidden === true) {
-      document.getElementById("navVerticale").hidden
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/modif-profil']);
+    } else {
+      this.router.navigate(['/connexion']);
     }
   }
 
-  toHome() {
-    this.router.navigate(['/home']);
+  toListeAchat() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/liste-achat']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
+  }
+
+  mesListes() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/mes-listes']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
+  }
+
+  monFrigo() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/mon-frigo']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
+  }
+
+  toRecettes() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/recettes']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
+  }
+
+  toEnvies() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/aff-envie']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
 
 }

@@ -16,7 +16,7 @@
   }*/
 
 .contenu-avec-scroll {
-    width: 700px;
+    width: 100%;
     height: 800px;
     scrollbar-width: thin;
     overflow: auto;

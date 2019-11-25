@@ -32,41 +32,43 @@
                 </div>
             </div>-->
 
-            <div
-                style="margin-top: 3%; margin-bottom: 3%; border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
-                <div *ngFor="let e of mesElementsFrigo" style="padding: 10px; height: 150; width: 200px;">
-                    <div class="card cadre" style="align-items:center;">
-                        <div style="margin-top: 5px;">
-                            <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="80px"
-                                height="80px" alt="Nope" (click)="modifQuantite(e)" />
-                        </div>
-                        <br>
-                        <div
-                            style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
-                            <div style="height: 50px; display: flex; align-items: center; flex-direction: column;">
-                                <div class="texte" style="font-size: 16px;"><strong>{{e.ingredient.nom}}</strong>
-                                </div>
-                                <div class="text-center texte" style="font-size: 18px;">{{e.quantite}}
-                                    {{e.ingredient.unite}}
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <button type="button" class="btn btn-outline "
-                            style="border: none; border-radius: 0.5rem; vertical-align: middle;"
-                            (click)="supprimerElementFrigo(e)">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <div style="display: flex; justify-content: center;">
                 <button (click)="ajouterElementFrigo()" onclick=""
                     style="background: #c2dcb9; width: auto; color: white;"
                     class="btn btn-lg btn-primary btn-block mb-2 texte">
                     Nouvel élément
                 </button>
+            </div>
+
+            <div class="contenu-avec-scroll">
+                <div
+                    style="margin-top: 3%; margin-bottom: 3%; border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
+                    <div *ngFor="let e of mesElementsFrigo" style="padding: 10px; height: 150; width: 200px;">
+                        <div class="card cadre" style="align-items:center;">
+                            <div style="margin-top: 5px;">
+                                <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="80px"
+                                    height="80px" alt="Nope" (click)="modifQuantite(e)" />
+                            </div>
+                            <br>
+                            <div
+                                style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
+                                <div style="height: 50px; display: flex; align-items: center; flex-direction: column;">
+                                    <div class="texte" style="font-size: 16px;"><strong>{{e.ingredient.nom}}</strong>
+                                    </div>
+                                    <div class="text-center texte" style="font-size: 18px;">{{e.quantite}}
+                                        {{e.ingredient.unite}}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="button" class="btn btn-outline "
+                                style="border: none; border-radius: 0.5rem; vertical-align: middle;"
+                                (click)="supprimerElementFrigo(e)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -79,7 +81,7 @@
             <hr><br>
             <div>
                 <div class="row contenu-avec-scroll"
-                    style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                    style="display: flex; flex-direction: row; justify-content: center;">
                     <div class="col-sm-6" *ngFor="let re of allRecettes">
                         <div class="card cadre">
                             <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
