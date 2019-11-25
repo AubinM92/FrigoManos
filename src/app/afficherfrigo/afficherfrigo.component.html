@@ -11,7 +11,8 @@
                 <button (click)="ajouterElementFrigo()" onclick=""
                     style="background: #c2dcb9; width: auto; color: white;"
                     class="btn btn-lg btn-primary btn-block mb-2 texte">
-                    Nouvel élément
+                    Nouvel
+                    <br>élément
                 </button>
             </div>
             <div class="contenu-avec-scroll">
@@ -53,20 +54,36 @@
                 <h2 class="text-center texte">Mes suggestions</h2>
             </div>
             <hr>
-            <div style="display: flex; justify-content: center; align-items: center;">
-                <div>
-                    Nombre d'ingrédients correspondants
-                </div>
-                <div style="width: 5%;"></div>
-                <div style>
-                    <input type="text" [(ngModel)]="ingCo">
-                </div>
-                <div style="width: 5%;"></div>
-                <div>
-                    <button onclick="" (click)="validerNbIng()" style="background: #c2dcb9; width: auto; color: white;"
-                        class="btn btn-lg btn-primary btn-block mb-2 texte">
-                        Valider
-                    </button>
+            <div>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <div class="text-center">
+                        Nombre d'ingrédients correspondants
+                    </div>
+                    <div style="width: 5%;"></div>
+                    <div style="width: 20%;">
+                        <input type="number" [(ngModel)]="ingCo" style="width: 100%" class="text-center">
+                    </div>
+                    <div style="width: 5%;"></div>
+                    <div style="width: 20%;">
+                        <button onclick="" (click)="validerNbIng()"
+                            style="background: #c2dcb9; width: auto; color: white;"
+                            class="btn btn-lg btn-primary btn-block mb-2 texte">
+                            Valider
+                        </button>
+                    </div>
+                    <div style="width: 5%;"></div>
+                    <div style="display: flex; justify-content: center; align-items: center; width: 10%;">
+                        <strong>OU</strong>
+                    </div>
+                    <div style="width: 5%;"></div>
+                    <div>
+                        <button (click)="recetteComplete()" style="background: #c2dcb9; width: auto; color: white;"
+                            class="btn btn-lg btn-primary btn-block mb-2 texte">
+                            Recettes 
+                            <br>complètes
+                        </button>
+
+                    </div>
                 </div>
             </div>
             <br>
