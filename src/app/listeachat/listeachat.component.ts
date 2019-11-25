@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { Ingredient } from '../model/Ingredient';
 import { Liste } from '../model/Liste';
 import { MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { CoursesValideesComponent } from '../courses-validees/courses-validees.component';
 
 @Component({
   selector: 'app-listeachat',
@@ -19,7 +21,7 @@ import { MatSort } from '@angular/material';
 })
 
 export class ListeachatComponent implements OnInit {
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   ELEMENT_DATA: ListeAchat[] = [];
   displayedColumns: string[] = ['select', 'nom', 'quantite', 'unite'];
   dataSource = new MatTableDataSource<ListeAchat>(this.ELEMENT_DATA);
@@ -29,23 +31,23 @@ export class ListeachatComponent implements OnInit {
   user: User = new User();
   mesElements;
   erreur;
- 
+
 
   public mesInput: any = {};
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.recupListes();
   }
 
-  
+
 
   recupDonnees() {
     this.dataSource = new MatTableDataSource<ListeAchat>();
     this.ELEMENT_DATA = [];
     let i = 0;
-    let r= 0;
+    let r = 0;
 
     this.user.id = parseInt(localStorage.getItem("id"));
     this.selectionListe.selected.forEach(d => {
@@ -54,7 +56,7 @@ export class ListeachatComponent implements OnInit {
         data => {
           this.mesElements = data;
           this.elementsListe = this.mesElements;
-          
+
           this.elementsListe.forEach(element => {
             element.index = i;
             this.mesInput[i] = element.quantite;
@@ -63,7 +65,7 @@ export class ListeachatComponent implements OnInit {
           });
           this.dataSource.data = this.ELEMENT_DATA;
         })
-        
+
     })
 
   }
@@ -79,7 +81,7 @@ export class ListeachatComponent implements OnInit {
     this.isAllSelected() ?
       this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
-      
+
   }
 
   /** The label for the checkbox on the passed row */
@@ -95,11 +97,11 @@ export class ListeachatComponent implements OnInit {
   u: User = new User();
 
   majFrigo() {
-    let c=0;
+    let c = 0;
     this.selection.selected.forEach(datas => {
       this.e.quantite = this.mesInput[datas.index];
       this.e.quantite = this.mesInput[datas.index];
-      
+
       this.u.id = parseInt(localStorage.getItem("id"));
       this.e.user = this.u;
 
@@ -113,12 +115,12 @@ export class ListeachatComponent implements OnInit {
 
         del.then(response => {
           const del = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
-          del.then( datas =>{
-              this.recupDonnees();
+          del.then(datas => {
+            this.recupDonnees();
           })
         })
 
-
+        const mydiale = this.dialog.open(CoursesValideesComponent);
 
       } else {
         this.erreur = "La quantité d'un des élément est nulle "
@@ -156,14 +158,14 @@ export class ListeachatComponent implements OnInit {
     const numRowsListe = this.dataSourceListe.data.length;
     return numSelectedListe === numRowsListe;
   }
-  majListe(){
+  majListe() {
     this.recupDonnees();
   }
   masterToggleListe() {
     this.isAllSelectedListe() ?
       this.selectionListe.clear() :
       this.dataSourceListe.data.forEach(rowListe => this.selectionListe.select(rowListe));
-      
+
   }
 
   /** The label for the checkbox on the passed row */

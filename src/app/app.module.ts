@@ -30,7 +30,7 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Directive } from '@angular/core';
 import { Input } from '@angular/core';
-import { MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
 import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
@@ -38,6 +38,8 @@ import { MatSidenavModule, MatToolbarModule, MatSidenav } from '@angular/materia
 import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CoursesValideesComponent } from './courses-validees/courses-validees.component';
+import { InscriptionValideeComponent } from './inscription-validee/inscription-validee.component';
 
 @NgModule({
   declarations: [
@@ -63,9 +65,11 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ChoixajoutrecettelisteComponent,
     AjouterElementFrigoComponent,
     AfficherenvieComponent,
-    AfficheruneenvieComponent
+    AfficheruneenvieComponent,
+    CoursesValideesComponent,
+    InscriptionValideeComponent
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent,AfficheruneenvieComponent],
+  entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent, AfficherunerecetteComponent, ModifFrigoComponent, ChoixajoutrecettelisteComponent, AfficheruneenvieComponent, CoursesValideesComponent, InscriptionValideeComponent],
 
   imports: [
     BrowserModule,
@@ -85,7 +89,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule,
     MatSidenavModule, MatToolbarModule
 
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

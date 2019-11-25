@@ -1,28 +1,36 @@
 <div class="container">
 
-    <h2 class="texte">Ma liste d'achats</h2>
+    <h2 class="texte">Mon panier</h2>
 
     <hr>
 
     <div>
-        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte" style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
-        !</button>
+        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
+            style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
+            !</button>
         <br>
     </div>
     <div class="row">
         <div class="col-sm-4">
 
-            <table mat-table [dataSource]="dataSourceListe" class="mat-elevation-z8" class="text-center" style="width: 100% ;">
+            <table mat-table [dataSource]="dataSourceListe" class="mat-elevation-z8" class="text-center"
+                style="width: 100% ;">
 
                 <!-- Checkbox Column -->
                 <ng-container matColumnDef="selectListe">
                     <th mat-header-cell *matHeaderCellDef class="text-center" style="color: red">
-                        <mat-checkbox (change)="$event ? masterToggleListe() : null" [checked]="selectionListe.hasValue() && isAllSelectedListe()" [indeterminate]="selectionListe.hasValue() && !isAllSelectedListe()" [aria-label]="checkboxLabelListe()" (change)="majListe()">
+                        <mat-checkbox (change)="$event ? masterToggleListe() : null"
+                            [checked]="selectionListe.hasValue() && isAllSelectedListe()"
+                            [indeterminate]="selectionListe.hasValue() && !isAllSelectedListe()"
+                            [aria-label]="checkboxLabelListe()" (change)="majListe()">
                         </mat-checkbox>
                     </th>
 
                     <td mat-cell *matCellDef="let rowListe">
-                        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectionListe.toggle(rowListe) : null" [checked]="selectionListe.isSelected(rowListe)" [aria-label]="checkboxLabelListe(rowListe)" (change)="majListe()">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selectionListe.toggle(rowListe) : null"
+                            [checked]="selectionListe.isSelected(rowListe)" [aria-label]="checkboxLabelListe(rowListe)"
+                            (change)="majListe()">
                         </mat-checkbox>
                     </td>
                     <td mat-footer-cell *matFooterCellDef>
@@ -31,8 +39,10 @@
 
                 <!-- Name Column -->
                 <ng-container matColumnDef="listes">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 30px;"> Listes achats </th>
-                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 20px;">{{elementListe.titre}}</td>
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 30px;"> Listes
+                        achats </th>
+                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 20px;">
+                        {{elementListe.titre}}</td>
                     <td mat-footer-cell *matFooterCellDef>
 
                     </td>
@@ -59,7 +69,8 @@
         <div class="col-sm-8">
             <div>
 
-                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" class="text-center" style="width: 100% ;">
+                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" class="text-center"
+                    style="width: 100% ;">
 
                     <!-- Checkbox Column -->
                     <ng-container matColumnDef="select">
@@ -67,7 +78,9 @@
 
                         </th>
                         <td mat-cell *matCellDef="let row">
-                            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                            <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
                             </mat-checkbox>
                         </td>
                         <td mat-footer-cell *matFooterCellDef>
@@ -76,8 +89,10 @@
 
                     <!-- Name Column -->
                     <ng-container matColumnDef="nom">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center texte" style="font-size: 30px;width: 40%;"> Ingrédient </th>
-                        <td class="texte" mat-cell *matCellDef="let element" style="font-size: 20px;"> {{element.nomIngredient}} </td>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center texte"
+                            style="font-size: 30px;width: 40%;"> Ingrédient </th>
+                        <td class="texte" mat-cell *matCellDef="let element" style="font-size: 20px;">
+                            {{element.nomIngredient}} </td>
                         <td mat-footer-cell *matFooterCellDef>
 
                         </td>
@@ -86,21 +101,27 @@
 
 
                     <ng-container matColumnDef="quantite">
-                        <th mat-header-cell *matHeaderCellDef class="text-center texte" mat-sort-header style="font-size: 30px; width: 40%;"> Quantite </th>
+                        <th mat-header-cell *matHeaderCellDef class="text-center texte" mat-sort-header
+                            style="font-size: 30px; width: 40%;"> Quantite </th>
                         <td mat-cell *matCellDef="let element; let i = index">
-                            <input type="number" value="{{element.quantite}}" [(ngModel)]="mesInput[i]" class="text-center form-control ng-pristine ng-valid ng-touched texte" style="font-size: 20px;">
+                            <input type="number" value="{{element.quantite}}" [(ngModel)]="mesInput[i]"
+                                class="text-center form-control ng-pristine ng-valid ng-touched texte"
+                                style="font-size: 20px;">
                         </td>
                         <td mat-footer-cell *matFooterCellDef></td>
                     </ng-container>
 
                     <ng-container matColumnDef="unite">
-                        <th mat-header-cell *matHeaderCellDef class="text-center texte" mat-sort-header style="font-size: 30px; width: 10%;"> Unité </th>
-                        <td class="texte" mat-cell *matCellDef="let element" style="font-size: 20px;"> {{element.unite}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="text-center texte" mat-sort-header
+                            style="font-size: 30px; width: 10%;"> Unité </th>
+                        <td class="texte" mat-cell *matCellDef="let element" style="font-size: 20px;"> {{element.unite}}
+                        </td>
                         <td mat-footer-cell *matFooterCellDef></td>
                     </ng-container>
 
                     <ng-container matColumnDef="idElement">
-                        <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header style="font-size: 30px;"> idElement </th>
+                        <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header
+                            style="font-size: 30px;"> idElement </th>
                         <td class="texte" mat-cell *matCellDef="let element"> {{element.idElement}} </td>
                         <td mat-footer-cell *matFooterCellDef></td>
                     </ng-container>
@@ -118,7 +139,8 @@
     </div>
     <br>
     <div>
-        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte" style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
-        !</button>
+        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
+            style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
+            !</button>
     </div>
 </div>

@@ -28,8 +28,9 @@ export class NavbaruserComponent implements OnInit {
 
   deconnexion() {
     this.s.uco = "";
+    this.noSession = false;
     localStorage.clear();
-    // this.ngOnInit();
+     this.ngOnInit();
     this.router.navigate(['/connexion']);
   }
   

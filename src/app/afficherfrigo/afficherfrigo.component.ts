@@ -38,11 +38,28 @@ export class AfficherfrigoComponent implements OnInit {
   listeRecette : Liste = new Liste();
   ingCo = 2;
 
+  taGueule(){
+    var urlParams = [];
+    window.location.search.replace("?", "").split("&").forEach(function (e, i) {
+        var p = e.split("=");
+        urlParams[p[0]] = p[1];
+    });
+
+    // We have all the params now -> you can access it by name
+    console.log(urlParams["loaded"]);
+
+    if(urlParams["loaded"]) {}else{
+
+        let win = (window as any);
+        win.location.search = '?loaded=1';
+        //win.location.reload('?loaded=1');
+    }
+  }
   constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService) { }
 
   ngOnInit() {
 
-
+    this.taGueule();
 
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
       data => {
@@ -54,16 +71,38 @@ export class AfficherfrigoComponent implements OnInit {
             element.ingredient.url = "https://image.flaticon.com/icons/svg/2169/2169159.svg";
           }
         });
+
       }
     )
+
     this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
       data => {
         this.allRecettes = data;
         console.log(this.allRecettes);
       })
+
+
   }
 
-  validerNbIng(){    
+  recetteComplete(){
+    console.log(1);
+    this.http.get('http://localhost:8087/recette-complete/' + localStorage.getItem("id")).subscribe(
+      data => {
+        this.allRecettes = data;
+    })
+
+
+  }
+
+
+  validerNbIng(n){
+    
+    if(this.ingCo === 0 && n<0){
+
+    }else{
+      this.ingCo += n;
+    }
+
     this.ngOnInit();
 
   }
