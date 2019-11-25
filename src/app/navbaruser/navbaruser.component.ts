@@ -10,12 +10,12 @@ import { ServicefrigoService } from '../servicefrigo.service';
 })
 
 export class NavbaruserComponent implements OnInit {
-  
+
   noSession = false;
   cUser;
   data;
   response;
-  liste : Liste = new Liste();
+  liste: Liste = new Liste();
 
   constructor(private router: Router, private s: ServicefrigoService) { }
 
@@ -26,34 +26,59 @@ export class NavbaruserComponent implements OnInit {
     this.cUser = this.s.uco;
   }
 
-  deconnexion(){
+  deconnexion() {
     this.s.uco = "";
     localStorage.clear();
-   // this.ngOnInit();
+    // this.ngOnInit();
     this.router.navigate(['/connexion']);
   }
-  monCompte(){
-    localStorage.clear();
-    this.router.navigate(['/modif-profil']);
+  
+  monCompte() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/modif-profil']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
 
   toListeAchat() {
-    this.router.navigate(['/liste-achat']);
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/liste-achat']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
 
   mesListes() {
-    this.router.navigate(['/mes-listes']);
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/mes-listes']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
 
-  monFrigo(){
-    this.router.navigate(['/mon-frigo']);
+  monFrigo() {
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/mon-frigo']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
 
   toRecettes() {
-    this.router.navigate(['/recettes']);
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/recettes']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
 
   toEnvies() {
-    this.router.navigate(['/aff-envie']);
+    if (localStorage.length !== 0) {
+      this.router.navigate(['/aff-envie']);
+    } else {
+      this.router.navigate(['/connexion']);
+    }
   }
+
 }
