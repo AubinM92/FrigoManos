@@ -274,11 +274,6 @@ export class RecettesComponent implements OnInit {
     // Vérification du temps de cuisine
     let retour = false;
 
-    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { retour = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { retour = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { retour = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { retour = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { retour = true; }
 
     this.listeIngredients.forEach(element => {
 
@@ -297,8 +292,17 @@ export class RecettesComponent implements OnInit {
 
       }
 
+
+
     })
 
-    return retour;
+    let r1, r2, r3, r4, r5;
+    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { r1 = true; }else{ r1= false}
+    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { r2 = true; }else{ r2 = false}
+    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { r3 = true; }else{ r3 = false}
+    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { r4 = true; }else{ r5 = false}
+    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { r5 = true; }else{ r5 =  false}
+
+    return retour && (r1 || r2 || r3 || r4 || r5);
   }
 }
