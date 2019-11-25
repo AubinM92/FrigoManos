@@ -28,6 +28,7 @@ export class AfficheruneenvieComponent implements OnInit {
   envieDel;
   lEnvie: Envie = new Envie();
   efr;
+  array;
 
 
   listeRecette: Liste = new Liste();
@@ -67,7 +68,7 @@ export class AfficheruneenvieComponent implements OnInit {
     console.log(this.laRecetteEnvie);
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
-  d
+  
   deleteEnvie() {
     const del = this.http.delete('http://localhost:8087/envie/' + this.lEnvie.id).toPromise();
     del.then(x => {
@@ -76,21 +77,15 @@ export class AfficheruneenvieComponent implements OnInit {
     });
   }
 
-  /*recetteRealisee() {
+  recetteRealisee() {
 
-    const del = this.http.get('http/elemFrigo/{id}' + this.laRecetteEnvie.user.id).toPromise();
-    del.then(data => {
-      this.efr=data;
-      console.log(this.efr);
-      const del2 = this.http.post('http/elemFrigoCompare_Avec_Recette/{id}' + this.efr.id, this.laRecetteEnvie.recette).toPromise();
-      del2.then(data => {
-        this.recetteCuisinee = data;
-      }
-       ) } 
-    }*/
+        const del2 = this.http.put('http://localhost:8087/elemFrigoCompare_Avec_Recette/' + this.lEnvie.id, this.lEnvie).toPromise();
+        del2.then(data =>{
+          this.ngOnInit();
+        })
 
 
-
+    }
 
 
 }
