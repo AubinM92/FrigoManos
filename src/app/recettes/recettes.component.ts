@@ -100,6 +100,7 @@ export class RecettesComponent implements OnInit {
         { item_id: 4, item_text: '45 - 60 min' },
         { item_id: 5, item_text: '> 60 min' }
       ];
+      
       this.dropdownTypes = [
         { item_id: 1, item_text: 'Fruit' },
         { item_id: 2, item_text: 'Légume' },
@@ -271,25 +272,6 @@ export class RecettesComponent implements OnInit {
   affichageCarte(carte) {
 
     // Vérification du temps de cuisine
-
-
-    /*
-        if (carte.saison == "Toutes") { return true; }
-        if (carte.saison == "Printemps") { return true; }
-        if (carte.saison == "Été") { return true; }
-        if (carte.saison == "Automne") { return true; }
-        if (carte.saison == "Hiver") { return true; }
-    
-        return false;
-    */
-    /*
-    // Vérification du temps de cuisine
-    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { this.afficherCarteTemps = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { this.afficherCarteTemps = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { this.afficherCarteTemps = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { this.afficherCarteTemps = true; }
-    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { this.afficherCarteTemps = true; }
-    else { this.afficherCarteTemps = false; }*/
     let retour = false;
 
     if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { retour = true; }
@@ -318,34 +300,5 @@ export class RecettesComponent implements OnInit {
     })
 
     return retour;
-    /*
-            // Vérification de la saison
-            this.allIngredients.forEach(element => {
-              if (element.saison === "Printemps" && this.saisonPrintemps) { retour = true; }
-              else if (element.saison === "Été" && this.saisonEte) { retour = true; }
-              else if (element.saison === "Automne" && this.saisonAutomne) { retour = true; }
-              else if (element.saison === "Hiver" && this.saisonHiver) { retour = true; }
-            });
-    */
-
-
-    /*
-            // Vérification du type d'ingrédient
-            this.allIngredients.forEach(element => {
-              if (element.categorie == "Fruit" && this.typeFruit) { this.afficherCarteType = true; }
-              if (element.categorie == "Légume" && this.typeLegume) { this.afficherCarteType = true; }
-              if (element.categorie == "Poisson" && this.typePoisson) { this.afficherCarteType = true; }
-              if (element.categorie == "Produit laitier" && this.typeProduitL) { this.afficherCarteType = true; }
-              if (element.categorie == "Viande" && this.typeViande) { this.afficherCarteType = true; }
-              else { this.afficherCarteType = false; }
-            });
-    
-          }, err => {
-            console.log(err);
-          }
-        );
-      }*/
-
-
   }
 }

@@ -114,13 +114,7 @@ export class ListeachatComponent implements OnInit {
         del.then(response => {
           const del = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
           del.then( datas =>{
-
-            if(c >= this.selection.selected.length){
               this.recupDonnees();
-            }else{
-              c++;
-            }
-
           })
         })
 
