@@ -10,12 +10,12 @@ import { ServicefrigoService } from '../servicefrigo.service';
 })
 
 export class NavbaruserComponent implements OnInit {
-  
+
   noSession = false;
   cUser;
   data;
   response;
-  liste : Liste = new Liste();
+  liste: Liste = new Liste();
 
   constructor(private router: Router, private s: ServicefrigoService) { }
 
@@ -26,13 +26,13 @@ export class NavbaruserComponent implements OnInit {
     this.cUser = this.s.uco;
   }
 
-  deconnexion(){
+  deconnexion() {
     this.s.uco = "";
     localStorage.clear();
-   // this.ngOnInit();
+    // this.ngOnInit();
     this.router.navigate(['/connexion']);
   }
-  monCompte(){
+  monCompte() {
     localStorage.clear();
     this.router.navigate(['/modif-profil']);
   }
@@ -45,7 +45,7 @@ export class NavbaruserComponent implements OnInit {
     this.router.navigate(['/mes-listes']);
   }
 
-  monFrigo(){
+  monFrigo() {
     this.router.navigate(['/mon-frigo']);
   }
 
@@ -56,4 +56,11 @@ export class NavbaruserComponent implements OnInit {
   toEnvies() {
     this.router.navigate(['/aff-envie']);
   }
+
+  sideClose() {
+    if (document.getElementById("navHorizontale").hidden === true) {
+      document.getElementById("navVerticale").hidden
+    }
+  }
+
 }
