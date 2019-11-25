@@ -15,13 +15,13 @@
             </div>
             <!--Temps de cuisine (préparation + cuisson)-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Temps passé à cuisiner'" [data]="dropdownTemps" [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)" (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps($event)"
+                <ng-multiselect-dropdown [placeholder]="'Temps passé en cuisine'" [data]="dropdownTemps" [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)" (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps($event)"
                     (onDeSelectAll)="onDeSelectAllTemps($event)">
                 </ng-multiselect-dropdown>
             </div>
             <!--Types d'ingrédients-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Choix des types d ingrédients'" [data]="dropdownTypes" [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)" (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType($event)"
+                <ng-multiselect-dropdown [placeholder]="'Choix des types dingrédients'" [data]="dropdownTypes" [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)" (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType($event)"
                     (onDeSelectAll)="onDeSelectAllType($event)">
                 </ng-multiselect-dropdown>
             </div>
