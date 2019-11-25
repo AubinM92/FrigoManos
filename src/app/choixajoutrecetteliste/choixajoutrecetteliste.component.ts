@@ -26,7 +26,7 @@ LaListeRecette : Liste = new Liste();
   }
 
   ajoutIngredientManquant(){
-  
+    this.LaListeRecette.titre = this.laRecette.titre + "*";
     this.http.post('http://localhost:8087/listeRecetteManquant/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
     this.dialogRef.close();
