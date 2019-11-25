@@ -268,13 +268,6 @@ export class RecettesComponent implements OnInit {
     );
   }
 
-  ing: Ingredient;
-  recupIngredients() {
-
-
-  }
-
-
   affichageCarte(carte) {
 
     // Vérification du temps de cuisine
@@ -297,7 +290,6 @@ export class RecettesComponent implements OnInit {
     if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { this.afficherCarteTemps = true; }
     if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { this.afficherCarteTemps = true; }
     else { this.afficherCarteTemps = false; }*/
-    console.log(1);
     let retour = false;
 
     if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { retour = true; }
@@ -307,21 +299,22 @@ export class RecettesComponent implements OnInit {
     if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { retour = true; }
 
     this.listeIngredients.forEach(element => {
+
       if (carte.id === element.recette.id) {
         if (element.ingredient.saison === "Printemps" && this.saisonPrintemps) { retour = true; }
         else if (element.ingredient.saison === "Été" && this.saisonEte) { retour = true; }
         else if (element.ingredient.saison === "Automne" && this.saisonAutomne) { retour = true; }
         else if (element.ingredient.saison === "Hiver" && this.saisonHiver) { retour = true; }
-      
 
-      if (element.ingredient.categorie === "Fruit" && this.typeFruit) { retour  = true; }
-      else if (element.ingredient.categorie === "Légume" && this.typeLegume) { retour  = true; }
-      else if (element.ingredient.categorie === "Poisson" && this.typePoisson) { retour  = true; }
-      else if (element.ingredient.categorie === "Produit laitier" && this.typeProduitL) { retour  = true; }
-      else if (element.ingredient.categorie === "Viande" && this.typeViande) {retour  = true;}
 
-    }
-      
+        if (element.ingredient.categorie === "Fruit" && this.typeFruit) { retour = true; }
+        else if (element.ingredient.categorie === "Légume" && this.typeLegume) { retour = true; }
+        else if (element.ingredient.categorie === "Poisson" && this.typePoisson) { retour = true; }
+        else if (element.ingredient.categorie === "Produit laitier" && this.typeProduitL) { retour = true; }
+        else if (element.ingredient.categorie === "Viande" && this.typeViande) { retour = true; }
+
+      }
+
     })
 
     return retour;
