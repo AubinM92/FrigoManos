@@ -5,12 +5,14 @@
             <div>
                 <input type="text" required style="width: 230px" [(ngModel)]="nom" name="nom" required>
             </div>
+            <br>
             <div class="row">
                 <div class="col-sm-6">
-                    <button [disabled]="!forme.form.valid" class="btn btn-primary btn-block" (click)="valider();">Valider</button>
+                    <button [disabled]="!forme.form.valid"
+                    style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2" (click)="valider();">Valider</button>
                 </div>
                 <div class="col-sm-6">
-                    <button class="btn btn-primary btn-block" (click)="fermer();">Annuler</button>
+                    <button style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2" (click)="fermer();">Annuler</button>
                 </div>
                 <div class="col-sm-6">{{ erreur }}</div>
             </div>

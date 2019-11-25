@@ -48,7 +48,7 @@ export class ListeachatComponent implements OnInit {
     this.ELEMENT_DATA = [];
     let i = 0;
     let r = 0;
-
+    
     this.user.id = parseInt(localStorage.getItem("id"));
     this.selectionListe.selected.forEach(d => {
       const del = this.http.get('http://localhost:8087/liste-achat/' + this.user.id + "-" + d.id).toPromise();
@@ -69,6 +69,7 @@ export class ListeachatComponent implements OnInit {
     })
 
   }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -100,7 +101,6 @@ export class ListeachatComponent implements OnInit {
     let c = 0;
     this.selection.selected.forEach(datas => {
       this.e.quantite = this.mesInput[datas.index];
-      this.e.quantite = this.mesInput[datas.index];
 
       this.u.id = parseInt(localStorage.getItem("id"));
       this.e.user = this.u;
@@ -114,13 +114,13 @@ export class ListeachatComponent implements OnInit {
         const del = this.http.post("http://localhost:8087/elemFrigo-achat", this.e).toPromise();
 
         del.then(response => {
-          const del = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
-          del.then(datas => {
+          const del2 = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
+          del2.then(datas => {
             this.recupDonnees();
           })
         })
 
-        const mydiale = this.dialog.open(CoursesValideesComponent);
+        //const mydiale = this.dialog.open(CoursesValideesComponent);
 
       } else {
         this.erreur = "La quantité d'un des élément est nulle "
@@ -158,9 +158,11 @@ export class ListeachatComponent implements OnInit {
     const numRowsListe = this.dataSourceListe.data.length;
     return numSelectedListe === numRowsListe;
   }
+
   majListe() {
     this.recupDonnees();
   }
+
   masterToggleListe() {
     this.isAllSelectedListe() ?
       this.selectionListe.clear() :
