@@ -30,7 +30,7 @@ import { ModifFrigoComponent } from './modif-frigo/modif-frigo.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Directive } from '@angular/core';
 import { Input } from '@angular/core';
-import { MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
 import { ChoixajoutrecettelisteComponent } from './choixajoutrecetteliste/choixajoutrecetteliste.component';
@@ -67,7 +67,7 @@ import { CoursesValideesComponent } from './courses-validees/courses-validees.co
     AfficheruneenvieComponent,
     CoursesValideesComponent
   ],
-  entryComponents : [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent,AfficherunerecetteComponent,ModifFrigoComponent,ChoixajoutrecettelisteComponent,AfficheruneenvieComponent],
+  entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent, AfficherunerecetteComponent, ModifFrigoComponent, ChoixajoutrecettelisteComponent, AfficheruneenvieComponent, CoursesValideesComponent],
 
   imports: [
     BrowserModule,
@@ -87,7 +87,7 @@ import { CoursesValideesComponent } from './courses-validees/courses-validees.co
     NgMultiSelectDropDownModule,
     MatSidenavModule, MatToolbarModule
 
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

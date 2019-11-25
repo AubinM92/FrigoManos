@@ -121,9 +121,6 @@ export class ListeachatComponent implements OnInit {
         })
 
         const mydiale = this.dialog.open(CoursesValideesComponent);
-        mydiale.afterClosed().subscribe(result => {
-          this.ngOnInit();
-        });
 
       } else {
         this.erreur = "La quantité d'un des élément est nulle "
