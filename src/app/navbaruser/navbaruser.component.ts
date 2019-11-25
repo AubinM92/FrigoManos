@@ -63,4 +63,8 @@ export class NavbaruserComponent implements OnInit {
     }
   }
 
+  toHome() {
+    this.router.navigate(['/home']);
+  }
+
 }

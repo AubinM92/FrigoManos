@@ -63,7 +63,7 @@
 
   <mat-sidenav-content>
     <!--Barre orizontale haute-->
-    <mat-toolbar class="couleur-nav" style="justify-content: space-between;"  *ngIf="noSession" id="navHorizontale">
+    <mat-toolbar class="couleur-nav" style="justify-content: space-between;" *ngIf="noSession" id="navHorizontale">
       <button mat-icon-button (click)="sidenav.toggle()"
         style="width: auto; background: none; border: none; text-align: left; vertical-align: middle;">
         <mat-icon>menu</mat-icon>
@@ -71,9 +71,18 @@
 
       <h1 class="bienvenue" style="width: auto; text-align: center;">Bonjour {{ cUser }}</h1>
 
-      <button class="btn-block btn-nav" (click)="deconnexion()" style="width: auto;">
-        <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" width="30px">
-      </button>
+      <div class="row">
+        <div class="col-sm-6">
+          <button class="btn-block btn-nav" (click)="toHome()" style="width: auto;">
+            <img src="https://image.flaticon.com/icons/svg/702/702079.svg" width="30px">
+          </button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn-block btn-nav" (click)="deconnexion()" style="width: auto;">
+            <img src="https://image.flaticon.com/icons/svg/2150/2150335.svg" width="30px">
+          </button>
+        </div>
+      </div>
 
     </mat-toolbar>
     <!--Fin barre orizontale haute-->
