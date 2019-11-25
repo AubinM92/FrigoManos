@@ -95,7 +95,14 @@ export class AfficherfrigoComponent implements OnInit {
   }
 
 
-  validerNbIng(){    
+  validerNbIng(n){
+    
+    if(this.ingCo === 0 && n<0){
+
+    }else{
+      this.ingCo += n;
+    }
+
     this.ngOnInit();
 
   }

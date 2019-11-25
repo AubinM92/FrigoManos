@@ -1,134 +1,129 @@
-<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-5">
-            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-                <h2 class="text-center texte">Mon frigo</h2>
-            </div>
-            <hr>
-
-            <div style="display: flex; justify-content: center;">
-                <button (click)="ajouterElementFrigo()" onclick=""
-                    style="background: #c2dcb9; width: auto; color: white;"
-                    class="btn btn-lg btn-primary btn-block mb-2 texte">
-                    Nouvel
-                    <br>élément
-                </button>
-            </div>
-            <div class="contenu-avec-scroll">
-                <div
-                    style="margin-top: 3%; margin-bottom: 3%; border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
-                    <div *ngFor="let e of mesElementsFrigo" style="padding: 10px; height: 150; width: 200px;">
-                        <div class="card cadre" style="align-items:center;">
-                            <div style="margin-top: 5px;">
-                                <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="80px"
-                                    height="80px" alt="Nope" (click)="modifQuantite(e)" />
-                            </div>
-                            <br>
-                            <div
-                                style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
-                                <div style="height: 50px; display: flex; align-items: center; flex-direction: column;">
-                                    <div class="texte" style="font-size: 16px;"><strong>{{e.ingredient.nom}}</strong>
-                                    </div>
-                                    <div class="text-center texte" style="font-size: 18px;">{{e.quantite}}
-                                        {{e.ingredient.unite}}
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <button type="button" class="btn btn-outline "
-                                style="border: none; border-radius: 0.5rem; vertical-align: middle;"
-                                (click)="supprimerElementFrigo(e)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<div style="display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap; width: 100%;">
+    <div style="width:700px">
+        <div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+            <h2 class="text-center texte">Mon frigo</h2>
         </div>
-
-        <!--Suggestions-->
-        <div class="col-sm-5">
-            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-                <h2 class="text-center texte">Mes suggestions</h2>
-            </div>
-            <hr>
-            <div>
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <div class="text-center">
-                        Nombre d'ingrédients correspondants
-                    </div>
-                    <div style="width: 5%;"></div>
-                    <div style="width: 20%;">
-                        <input type="number" [(ngModel)]="ingCo" style="width: 100%" class="text-center">
-                    </div>
-                    <div style="width: 5%;"></div>
-                    <div style="width: 20%;">
-                        <button onclick="" (click)="validerNbIng()"
-                            style="background: #c2dcb9; width: auto; color: white;"
-                            class="btn btn-lg btn-primary btn-block mb-2 texte">
-                            Valider
-                        </button>
-                    </div>
-                    <div style="width: 5%;"></div>
-                    <div style="display: flex; justify-content: center; align-items: center; width: 10%;">
-                        <strong>OU</strong>
-                    </div>
-                    <div style="width: 5%;"></div>
-                    <div>
-                        <button (click)="recetteComplete()" style="background: #c2dcb9; width: auto; color: white;"
-                            class="btn btn-lg btn-primary btn-block mb-2 texte">
-                            Recettes 
-                            <br>complètes
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div>
-                <div class="row contenu-avec-scroll"
-                    style="display: flex; flex-direction: row; justify-content: center;">
-                    <div class="col-sm-6" *ngFor="let re of allRecettes">
-                        <div class="card cadre">
-                            <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
-                                (click)='afficherRecette(re)'>
-
-                            <div class="card-block">
-                                <h4 class="card-title texte">{{re.titre}}</h4>
-
-                                <p class="card-text"><small class="text-muted texte">Préparation :
-                                        {{re.temps_cuis }}
-                                        min | Cuisson :
-                                        {{re.temps_prepa }} min</small></p>
-                                <div class="row">
-
-
-                                    <div class="col-sm-2"></div>
-                                    <div class="col-sm-3">
-
-                                        <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;"
-                                            (click)='ajouterRecetteCourse(re)'>
-                                            <mat-icon>note_add</mat-icon>
-                                        </button>
-                                    </div>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-outline cadre" style="color: #c2dcb9;"
-                                            (click)=ajoutEnvie(re)>
-                                            <mat-icon>star</mat-icon>
-                                        </button>
-                                    </div>
+        <hr>
+        <div style="display: flex; justify-content: center;">
+            <button (click)="ajouterElementFrigo()" onclick="" style="background: #c2dcb9; width: auto; color: white;"
+                class="btn btn-lg btn-primary btn-block mb-2 texte">
+                Nouvel
+                <br>élément
+            </button>
+        </div>
+        
+        <div class="contenu-avec-scroll">
+            <div
+                style="margin-top: 3%; margin-bottom: 3%; border-radius: 20px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; background: rgba(221, 221, 221, 0.918);">
+                <div *ngFor="let e of mesElementsFrigo" style="padding: 10px; height: 150; width: 200px;">
+                    <div class="card cadre" style="align-items:center;">
+                        <div style="margin-top: 5px;">
+                            <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="80px"
+                                height="80px" alt="Nope" (click)="modifQuantite(e)" />
+                        </div>
+                        <br>
+                        <div
+                            style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
+                            <div style="height: 50px; display: flex; align-items: center; flex-direction: column;">
+                                <div class="texte" style="font-size: 16px;"><strong>{{e.ingredient.nom}}</strong>
+                                </div>
+                                <div class="text-center texte" style="font-size: 18px;">{{e.quantite}}
+                                    {{e.ingredient.unite}}
                                 </div>
                             </div>
                         </div>
                         <br>
+                        <button type="button" class="btn btn-outline "
+                            style="border: none; border-radius: 0.5rem; vertical-align: middle;"
+                            (click)="supprimerElementFrigo(e)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="width: 5%;"></div>
+    <!--Suggestions-->
+    <div style="width: 600px;">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <h2 class="text-center texte">Mes suggestions</h2>
+        </div>
+        <hr>
+        <div>
+            <div style="display: flex; justify-content: space-evenly; align-items: center;">
+                <div class="text-center">
+                    Nombre d'ingrédients correspondants
+                </div>
+                <div>
+                    <button onclick="" (click)="validerNbIng(-1)"
+                        style="background: #c2dcb9; width: auto; color: white;"
+                        class="btn btn-lg btn-primary btn-block mb-2 texte">
+                        -
+                    </button>
+                </div>
+                <div class="text-center">{{ ingCo }}</div>
+                <div>
+                    <button onclick="" (click)="validerNbIng(1)" style="background: #c2dcb9; width: auto; color: white;"
+                        class="btn btn-lg btn-primary btn-block mb-2 texte">
+                        +
+                    </button>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center" class="text-center">
+                    ou
+                </div>
+                <div>
+                    <button (click)="recetteComplete()" style="background: #c2dcb9; width: auto; color: white;"
+                        class="btn btn-lg btn-primary btn-block mb-2 texte">
+                        Recettes
+                        <br>complètes
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="row contenu-avec-scroll" style="display: flex; flex-direction: row; justify-content: center;">
+                <div class="col-sm-6" *ngFor="let re of allRecettes">
+                    <div class="card cadre">
+                        <input class="cadretop contain" type="image" [src]="re.url" width="100%" height="200px"
+                            (click)='afficherRecette(re)'>
+
+                        <div class="card-block">
+                            <h4 class="card-title texte">{{re.titre}}</h4>
+
+                            <p class="card-text"><small class="text-muted texte">Préparation :
+                                    {{re.temps_cuis }}
+                                    min | Cuisson :
+                                    {{re.temps_prepa }} min</small></p>
+                            <div class="row">
+
+
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-3">
+
+                                    <button type="button" class="btn btn-outline cadre" style="color: #a6d6ea;"
+                                        (click)='ajouterRecetteCourse(re)'>
+                                        <mat-icon>note_add</mat-icon>
+                                    </button>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-outline cadre" style="color: #c2dcb9;"
+                                        (click)=ajoutEnvie(re)>
+                                        <mat-icon>star</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br>
                 </div>
                 <br>
             </div>
+            <br>
         </div>
     </div>
 </div>
