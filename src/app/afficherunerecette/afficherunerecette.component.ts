@@ -8,6 +8,7 @@ import { Liste } from '../model/Liste';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { User } from '../model/User';
+import { Commentaire } from '../model/Commentaire';
 
 @Component({
   selector: 'app-afficherunerecette',
@@ -17,6 +18,8 @@ import { User } from '../model/User';
 export class AfficherunerecetteComponent implements OnInit {
   
   user: User = new User();
+
+visible = false;
 
   laRecette;
   elemLaRecette;
@@ -34,19 +37,24 @@ export class AfficherunerecetteComponent implements OnInit {
   message;
   VerifAjoutEnvie;
   listeRecette : Liste = new Liste();
-
-
+  lesCommentaires;
+  nouvCom : Commentaire = new Commentaire();
+  
   constructor(private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
 
   ngOnInit() {
 
     this.user.id = parseInt(localStorage.getItem("id"));
+    
     this.premiere();
+    this.getCommentaires();
+
 
   }
 
   premiere() {
     this.laRecette = this.recetteService.recette;
+
     this.deuxieme();
   }
 
@@ -57,6 +65,8 @@ export class AfficherunerecetteComponent implements OnInit {
         this.elemLaRecette = data;
       })
   }
+
+
 
   ajouterEnvie(re){
     this.dateAuj = this.maDate();
@@ -85,4 +95,31 @@ export class AfficherunerecetteComponent implements OnInit {
   maDate(){
     return new Date();
   }
+
+  afficherLesCommentaires(){
+    this.visible=true;
+
+  }
+
+  ajoutCommentaire(){
+    this.nouvCom.date= new Date();
+    
+    this.nouvCom.user.id = localStorage.id;
+    this.nouvCom.recette = this.laRecette;
+    console.log(this.nouvCom);
+    const del = this.http.post('http://localhost:8087/commentaire' ,this.nouvCom).toPromise();
+      del.then(data => { 
+        this.ngOnInit();
+      });
+  }
+
+  getCommentaires(){
+    
+    const del = this.http.get('http://localhost:8087/comByRecetteId/' +  this.laRecette.id).subscribe(
+      data => {
+        this.lesCommentaires=data;
+        
+      });
+  }
+
 }

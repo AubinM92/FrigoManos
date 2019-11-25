@@ -2,19 +2,40 @@
     <img class="card-img-top cadre" [src]="laRecette.url" alt="Div image cap" style="height: 50%;">
     <h2 class="text-center texte">{{ laRecette.titre }}</h2>
     <div style="margin: 10px">
+
+        <div class="rating">
+            <button class="btn btn-primary" title="Donner 5 étoiles">
+                <mat-icon>star</mat-icon>
+            </button>
+            <button class="btn btn-primary" title="Donner 4 étoiles">
+                <mat-icon>star</mat-icon>
+            </button>
+            <button class="btn btn-primary" title="Donner 3 étoiles">
+                <mat-icon>star</mat-icon>
+            </button>
+            <button class="btn btn-primary" title="Donner 2 étoiles">
+                <mat-icon>star</mat-icon>
+            </button>
+            <button class="btn btn-primary" title="Donner 1 étoile">
+                <mat-icon>star</mat-icon>
+            </button>
+        </div>
+
         <div class="row texte" style="vertical-align: middle;">
             <div class="col-sm-1">
 
             </div>
             <div class="col-sm-">
-                <img src="https://image.flaticon.com/icons/svg/66/66163.svg" style="width: 30px; height: 30px; vertical-align: middle;">
+                <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
+                    style="width: 30px; height: 30px; vertical-align: middle;">
                 <span style="vertical-align: middle;"> Préparation : {{ laRecette.tempsPrepa }} min </span>
             </div>
             <div class="col-sm-4">
 
             </div>
-            <div class="col-sm">
-                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap" style="width: 35px; height: 35px; vertical-align: middle;">
+            <div class="col-sm-">
+                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
+                    style="width: 35px; height: 35px; vertical-align: middle;">
                 <span style="vertical-align: middle;"> Cuisson : {{ laRecette.tempsCuis }} min </span>
             </div>
         </div>
@@ -53,7 +74,6 @@
             {{laRecette.description}}
         </div>
         <br>
-     
 
 
 
@@ -61,7 +81,8 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-3 text-center">
 
-                <button type="button" class="btn btn-outline ajoutListe cadre" (click)='ajouterRecetteCourse(laRecette)'>
+                <button type="button" class="btn btn-outline ajoutListe cadre"
+                    (click)='ajouterRecetteCourse(laRecette)'>
                     <mat-icon>note_add</mat-icon>
                 </button>
                 <br><br>
@@ -69,8 +90,8 @@
                     <p class="text-center"> <i>Ajouter une à une <br> liste de courses </i> </p>
                 </span>
             </div>
-            
-           
+
+
             <div class="col-sm-1"></div>
             <div class="col-sm-3 text-center">
                 <button type="button" class="btn btn-outline favori cadre " (click)='ajouterEnvie(laRecette)'>
@@ -78,11 +99,43 @@
                 </button>
                 <br><br>
                 <span>
-                    <p class="text-center"> <i>Ajouter à mes envies </i></p>
+                    <p class="text-center"> <i>Ajouter à mes envies</i></p>
                 </span>
             </div>
 
 
         </div>
+        <div>
+            <Button type="button"
+                class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                (click)='afficherLesCommentaires()'>Afficher les commentaires</Button>
+            <div *ngIf="visible">
+                <form #forme="ngForm">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" [(ngModel)]="nouvCom.leCommentaire"
+                                placeholder="Balance ton com " name="leCommentaire" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <button [disabled]="!forme.form.valid"
+                                class="btn btn-lg btn-primary btn-block btn-login active text-uppercase font-weight-bold mb-2"
+                                (click)="ajoutCommentaire()">Post</button>
+                        </div>
+                        <br>
+                    </div>
+                </form>
+
+                <hr>
+                <span *ngFor="let com of lesCommentaires;" style="vertical-align: middle;">
+
+                    <h5>{{com.user.pseudo}} </h5>
+                    <br>
+                    <p>{{com.leCommentaire}}</p>
+
+                    <p> <small>{{ com.date| date:'dd/MM/yy'}}</small> </p>
+                    <hr>
+                </span>
+
+            </div>
+        </div>
     </div>
-</div>
