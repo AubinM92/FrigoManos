@@ -25,13 +25,13 @@ body {
 }
 
 .favori {
-    border-color: rgb(245, 223, 30);
-    color: rgb(245, 223, 30);
-}
+    border-color: rgb(255, 238, 80);
+    color: rgb(255, 238, 80);
+  }
 
 .favori:hover {
-    background: rgb(245, 223, 30);
-    border-color: white;
+    background:  rgb(255, 238, 80);
+    border-color:  white;
     color: white;
 }
 
