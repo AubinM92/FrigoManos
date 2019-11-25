@@ -61,7 +61,6 @@ export class AfficherfrigoComponent implements OnInit {
 
     this.taGueule();
 
-
     this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
       data => {
         this.element = data;
@@ -75,12 +74,26 @@ export class AfficherfrigoComponent implements OnInit {
 
       }
     )
+
     this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
       data => {
         this.allRecettes = data;
         console.log(this.allRecettes);
       })
+
+
   }
+
+  recetteComplete(){
+    console.log(1);
+    this.http.get('http://localhost:8087/recette-complete/' + localStorage.getItem("id")).subscribe(
+      data => {
+        this.allRecettes = data;
+    })
+
+
+  }
+
 
   validerNbIng(){    
     this.ngOnInit();
