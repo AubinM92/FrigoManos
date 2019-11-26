@@ -30,7 +30,7 @@ const ELEMENT_DATA: ElementFrigo[] = [];
 
 export class AfficherfrigoComponent implements OnInit {
 
-  message;
+  message : String;
 
   visible = false;
   mesElementsFrigo;
@@ -64,7 +64,7 @@ export class AfficherfrigoComponent implements OnInit {
         //win.location.reload('?loaded=1');
     }
   }
-  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService, private messageService : MessageService) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private dialog4: MatDialog,private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService, private messageService : MessageService) { }
 
   ngOnInit() {
 
@@ -155,7 +155,7 @@ export class AfficherfrigoComponent implements OnInit {
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
-  ajouterEnvie(re) {
+  ajoutEnvie(re) {
     this.dateAuj = this.maDate();
     this.nouvelleEnvie.date = this.dateAuj;
     this.nouvelleEnvie.recette = re;
@@ -163,15 +163,21 @@ export class AfficherfrigoComponent implements OnInit {
     const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
     del.then(data => {
       this.verifAjoutEnvie = data;
-    });
-    if (this.verifAjoutEnvie != null) {
-      this.messageService.message= "Recette ajoutée aux envies"
-      const mydial2 = this.dialog2.open(MessageComponent);
-    } else {
+      console.log(data);
+      console.log(this.verifAjoutEnvie);
       
-      this.messageService.message = "Encore ?!"
-      const mydial2 = this.dialog2.open(MessageComponent);
-    }
+      if (this.verifAjoutEnvie === null) {
+        this.message = "Encore ?!";
+
+      } else {
+        this.message ="Recette ajoutée aux envies";
+
+      
+      }
+      this.messageService.message =this.message;
+      const mydial4 = this.dialog4.open(MessageComponent);
+    });
+    
 
   }
 

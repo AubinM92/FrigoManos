@@ -11,8 +11,10 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 export class MessageComponent implements OnInit {
 
   constructor(private messageService : MessageService, private http: HttpClient, private dialog: MatDialog,public dialogRef: MatDialogRef<MessageComponent>) { }
-message;
+message : String;
   ngOnInit() {
+    this.message = this.messageService.message;
+    console.log(this.message);
   }
 
 }
