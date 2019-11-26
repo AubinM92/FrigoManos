@@ -302,6 +302,6 @@ export class RecettesComponent implements OnInit {
     if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { r4 = true; }else{ r5 = false}
     if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { r5 = true; }else{ r5 =  false}
 
-    return retour && (r1 || r2 || r3 || r4 || r5);
+    return retour || (r1 || r2 || r3 || r4 || r5);
   }
 }
