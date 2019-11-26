@@ -92,8 +92,8 @@ enregistrer(){
     this.element.ingredient.id = this.idIngredient;
     this.element.user.id = parseInt(localStorage.getItem("id"));
   
-    const del = this.http.put('http://localhost:8087/elemFrigo', this.element).toPromise();
-
+    const del = this.http.put('http://localhost:8087/elemFrigoNew/'+localStorage.getItem("id"), this.element).toPromise();
+  
     del.then(
         datas=>{
           this.dialogRef.close();
