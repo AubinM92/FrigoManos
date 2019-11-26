@@ -70,7 +70,7 @@ export class AfficherfrigoComponent implements OnInit {
 
     this.taGueule();
 
-    this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
+    this.http.get(this.s.url+'elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
       data => {
         this.element = data;
         this.mesElementsFrigo = this.element;
@@ -83,7 +83,7 @@ export class AfficherfrigoComponent implements OnInit {
       }
     )
 
-    this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
+    this.http.get(this.s.url+'elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
       data => {
         this.allRecettes = data;
       })
@@ -92,7 +92,7 @@ export class AfficherfrigoComponent implements OnInit {
   }
 
   recetteComplete(){
-    this.http.get('http://localhost:8087/recette-complete/' + localStorage.getItem("id")).subscribe(
+    this.http.get(this.s.url+'recette-complete/' + localStorage.getItem("id")).subscribe(
       data => {
         this.allRecettes = data;
     })
@@ -123,7 +123,7 @@ export class AfficherfrigoComponent implements OnInit {
 
   supprimerElementFrigo(e) {
     this.element = e;
-    const del = this.http.delete('http://localhost:8087/elemFrigo/' + this.element.id).toPromise();
+    const del = this.http.delete(this.s.url+'elemFrigo/' + this.element.id).toPromise();
 
     del.then(
       data => {
@@ -133,8 +133,10 @@ export class AfficherfrigoComponent implements OnInit {
     );
   }
 
-  ajouterElementFrigo(aj) {
-    this.s.elemservice = aj;
+  VerifAjoutEnvie;
+ 
+  ajouterElementFrigo() {
+    //this.s.elemservice = aj;
     const mydiale = this.dialog.open(AjouterElementFrigoComponent);
     mydiale.afterClosed().subscribe(result => {
       this.ngOnInit();

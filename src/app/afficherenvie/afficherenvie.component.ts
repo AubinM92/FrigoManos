@@ -9,6 +9,7 @@ import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choix
 import { Liste } from '../model/Liste';
 import { AfficheruneenvieComponent } from '../afficheruneenvie/afficheruneenvie.component';
 import { Envie } from '../model/Envie';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-afficherenvie',
@@ -21,7 +22,7 @@ export class AfficherenvieComponent implements OnInit {
   lesEnvies;
   user: User = new User();
   listeRecette: Liste = new Liste();
-  constructor(private http: HttpClient, private uneEnvieService: UneenvieService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog) { }
+  constructor(private servicefrigo: ServicefrigoService,private http: HttpClient, private uneEnvieService: UneenvieService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog) { }
 
 
 
@@ -29,12 +30,12 @@ export class AfficherenvieComponent implements OnInit {
 
     this.user.id = localStorage.id;
     console.log(this.user.id);
-    this.http.get('http://localhost:8087/recetteByEnvieByUser/' + this.user.id).subscribe(
+    this.http.get(this.servicefrigo.url + 'recetteByEnvieByUser/' + this.user.id).subscribe(
       data => {
         this.lesRecettes = data;
       })
 
-    this.http.get('http://localhost:8087/recetteByEnvieByUser/' + this.user.id).subscribe(
+    this.http.get(this.servicefrigo.url +'recetteByEnvieByUser/' + this.user.id).subscribe(
       data => {
         this.lesRecettes = data;
       })
@@ -42,7 +43,7 @@ export class AfficherenvieComponent implements OnInit {
 
   afficherEnvie(re) {
     this.uneEnvieService.recette = re;
-    const del = this.http.get('http://localhost:8087/uneEnvieByRecette/' + re.id).toPromise();
+    const del = this.http.get(this.servicefrigo.url +'uneEnvieByRecette/' + re.id).toPromise();
     del.then(data => {
       this.lenvie = data;
       console.log(this.lenvie);
@@ -63,14 +64,14 @@ export class AfficherenvieComponent implements OnInit {
   }
 
   deleteEnvie(re) {
-    const del = this.http.get('http://localhost:8087/uneEnvieByRecette/' + re.id).toPromise();
+    const del = this.http.get(this.servicefrigo.url +'uneEnvieByRecette/' + re.id).toPromise();
     del.then(data => {
       this.lenvie = data;
       this.uneEnvieService.envie = this.lenvie;
       console.log(this.lenvie)
 
 
-      const del2 = this.http.delete('http://localhost:8087/envie/' + this.lenvie.id).toPromise();
+      const del2 = this.http.delete(this.servicefrigo.url +'envie/' + this.lenvie.id).toPromise();
       del2.then(x => {
         this.ngOnInit();
       }, err => {

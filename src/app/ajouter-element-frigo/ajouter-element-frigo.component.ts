@@ -51,7 +51,7 @@ export class AjouterElementFrigoComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    const del = this.http.get('http://localhost:8087/nom-ingredient').toPromise();
+    const del = this.http.get(this.s.url+'nom-ingredient').toPromise();
     del.then(
       data => {
         this.response = data;
@@ -68,7 +68,7 @@ export class AjouterElementFrigoComponent implements OnInit {
 
   valider() {
 
-    const del = this.http.get('http://localhost:8087/nom-ingredient/'+ this.ing).toPromise();
+    const del = this.http.get(this.s.url+'nom-ingredient/'+ this.ing).toPromise();
   del.then(
     data => {
       this.response = data;
@@ -92,7 +92,7 @@ enregistrer(){
     this.element.ingredient.id = this.idIngredient;
     this.element.user.id = parseInt(localStorage.getItem("id"));
   
-    const del = this.http.put('http://localhost:8087/elemFrigoNew/'+localStorage.getItem("id"), this.element).toPromise();
+    const del = this.http.put(this.s.url+'elemFrigoNew/'+localStorage.getItem("id"), this.element).toPromise();
   
     del.then(
         datas=>{

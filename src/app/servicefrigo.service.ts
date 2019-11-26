@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ServicefrigoService {
 
   elemservice;
-
+  url = 'http://localhost:8087/'
   uco = localStorage.getItem("pseudo");
   constructor() { }
 }

@@ -11,6 +11,7 @@ import { AjouterElementListeComponent } from '../ajouter-element-liste/ajouter-e
 import { ModifelementlisteComponent } from '../modifelementliste/modifelementliste.component';
 import { ModiflisteService } from '../modifliste.service';
 import { R3TargetBinder } from '@angular/compiler';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-afficherlistecourse',
@@ -24,7 +25,7 @@ export class AfficherlistecourseComponent implements OnInit {
   mesElementsListe;
   element;
   user: User = new User();
-  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private dialog3: MatDialog, private router: Router, private servmodif: ModiflisteService) { }
+  constructor(private s: ServicefrigoService,private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private dialog3: MatDialog, private router: Router, private servmodif: ModiflisteService) { }
 
   
 
@@ -32,7 +33,7 @@ export class AfficherlistecourseComponent implements OnInit {
     this.index = parseInt(localStorage.getItem("couleurListe"));
     this.user.id = parseInt(localStorage.getItem("id"));
 
-    this.http.get('http://localhost:8087/liste-globale/' + this.user.id).subscribe(
+    this.http.get(this.s.url+'liste-globale/' + this.user.id).subscribe(
       data => {
         this.mesListes = data;
       }
@@ -40,7 +41,7 @@ export class AfficherlistecourseComponent implements OnInit {
 
     if (this.liste.titre != null) {
 
-      this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+      this.http.get(this.s.url+'elemListe/' + this.liste.id).subscribe(
         data => {
           this.mesElementsListe = data;
         }
@@ -68,7 +69,7 @@ export class AfficherlistecourseComponent implements OnInit {
 
 
     this.visible = true;
-    this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+    this.http.get(this.s.url+'elemListe/' + this.liste.id).subscribe(
       data => {
         this.mesElementsListe = data;
         this.mesElementsListe.forEach(element => {
@@ -82,7 +83,7 @@ export class AfficherlistecourseComponent implements OnInit {
 
   getElementListe(l) {
     this.liste = l;
-    this.http.get('http://localhost:8087/elemListe/' + this.liste.id).subscribe(
+    this.http.get(this.s.url+'elemListe/' + this.liste.id).subscribe(
       data => {
         this.mesElementsListe = data;
 
@@ -92,7 +93,7 @@ export class AfficherlistecourseComponent implements OnInit {
 
   supprimerElement(e) {
     this.element = e;
-    const del = this.http.delete('http://localhost:8087/elemListe/' + this.element.id).toPromise();
+    const del = this.http.delete(this.s.url+'elemListe/' + this.element.id).toPromise();
 
     del.then(
       data => {
@@ -105,7 +106,7 @@ export class AfficherlistecourseComponent implements OnInit {
 
   supprimerListe(l) {
     this.liste = l;
-    const del2 = this.http.delete('http://localhost:8087/liste/' + this.liste.id).toPromise();
+    const del2 = this.http.delete(this.s.url+'liste/' + this.liste.id).toPromise();
     del2.then(x => {
       this.ngOnInit();
     }, err => {
