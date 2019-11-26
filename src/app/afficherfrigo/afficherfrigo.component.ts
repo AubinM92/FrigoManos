@@ -15,7 +15,9 @@ import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunere
 import { UnerecetteService } from '../unerecette.service';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
+import { MessageService } from '../message.service';
 import { Envie } from '../model/Envie';
+import { MessageComponent } from '../message/message.component';
 
 
 const ELEMENT_DATA: ElementFrigo[] = [];
@@ -28,6 +30,8 @@ const ELEMENT_DATA: ElementFrigo[] = [];
 
 export class AfficherfrigoComponent implements OnInit {
 
+  message;
+
   visible = false;
   mesElementsFrigo;
   ef: ElementFrigo = new ElementFrigo();
@@ -38,6 +42,10 @@ export class AfficherfrigoComponent implements OnInit {
   allRecettes;
   listeRecette : Liste = new Liste();
   ingCo = 2;
+
+  dateAuj;
+  nouvelleEnvie: Envie = new Envie();
+  verifAjoutEnvie;
 
   taGueule(){
     var urlParams = [];
@@ -56,7 +64,7 @@ export class AfficherfrigoComponent implements OnInit {
         //win.location.reload('?loaded=1');
     }
   }
-  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService) { }
+  constructor(private http: HttpClient, private dialog: MatDialog, private dialog2: MatDialog, private router: Router,private ajoutService : ChoixajoutrecettelisteService,  private s: ServicefrigoService, private recetteService: UnerecetteService, private messageService : MessageService) { }
 
   ngOnInit() {
 
@@ -124,28 +132,9 @@ export class AfficherfrigoComponent implements OnInit {
       }
     );
   }
-  dateAuj;
-  nouvelleEnvie: Envie = new Envie();
-  message;
+
   VerifAjoutEnvie;
-  ajouterEnvie(re) {
-    this.dateAuj = this.maDate();
-    this.nouvelleEnvie.date = this.dateAuj;
-    this.nouvelleEnvie.recette = re;
-    this.nouvelleEnvie.user.id = localStorage.id;
-    const del = this.http.post(this.s.url+'envie', this.nouvelleEnvie).toPromise()
-    del.then(data => {
-      this.VerifAjoutEnvie = data;
-    });
-    if (this.VerifAjoutEnvie != null) {
-      this.message = "Recette ajoutée aux envies"
-    } else {
-      this.message = "Encore une fois ?!"
-    }
-  }
-  maDate() {
-    return new Date();
-  }
+ 
   ajouterElementFrigo() {
     //this.s.elemservice = aj;
     const mydiale = this.dialog.open(AjouterElementFrigoComponent);
@@ -164,7 +153,32 @@ export class AfficherfrigoComponent implements OnInit {
     this.listeRecette.user.id= localStorage.id;
     this.ajoutService.recette=re;
     this.ajoutService.liste = this.listeRecette;
+    
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
+  }
+
+  ajouterEnvie(re) {
+    this.dateAuj = this.maDate();
+    this.nouvelleEnvie.date = this.dateAuj;
+    this.nouvelleEnvie.recette = re;
+    this.nouvelleEnvie.user.id = localStorage.id;
+    const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
+    del.then(data => {
+      this.verifAjoutEnvie = data;
+    });
+    if (this.verifAjoutEnvie != null) {
+      this.messageService.message= "Recette ajoutée aux envies"
+      const mydial2 = this.dialog2.open(MessageComponent);
+    } else {
+      
+      this.messageService.message = "Encore ?!"
+      const mydial2 = this.dialog2.open(MessageComponent);
+    }
+
+  }
+
+  maDate() {
+    return new Date();
   }
 
 }

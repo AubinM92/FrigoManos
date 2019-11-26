@@ -50,7 +50,7 @@ nombreCom;
     
     this.premiere();
     this.getCommentaires();
-
+    this.nouvCom.leCommentaire = "";
 
   }
 
