@@ -44,12 +44,13 @@ export class ListeachatComponent implements OnInit {
 
 
   recupDonnees() {
-    this.dataSource = new MatTableDataSource<ListeAchat>();
     this.ELEMENT_DATA = [];
+    this.dataSource = new MatTableDataSource<ListeAchat>();
+
     let i = 0;
-    let r = 0;
     
     this.user.id = parseInt(localStorage.getItem("id"));
+    
     this.selectionListe.selected.forEach(d => {
       const del = this.http.get('http://localhost:8087/liste-achat/' + this.user.id + "-" + d.id).toPromise();
       del.then(

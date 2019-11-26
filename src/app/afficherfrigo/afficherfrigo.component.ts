@@ -15,6 +15,7 @@ import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunere
 import { UnerecetteService } from '../unerecette.service';
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
+import { Envie } from '../model/Envie';
 
 
 const ELEMENT_DATA: ElementFrigo[] = [];
@@ -61,7 +62,7 @@ export class AfficherfrigoComponent implements OnInit {
 
     this.taGueule();
 
-    this.http.get('http://localhost:8087/elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
+    this.http.get(this.s.url+'elemFrigo_byUser/' + localStorage.getItem("id")).subscribe(
       data => {
         this.element = data;
         this.mesElementsFrigo = this.element;
@@ -74,7 +75,7 @@ export class AfficherfrigoComponent implements OnInit {
       }
     )
 
-    this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
+    this.http.get(this.s.url+'elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
       data => {
         this.allRecettes = data;
       })
@@ -83,7 +84,7 @@ export class AfficherfrigoComponent implements OnInit {
   }
 
   recetteComplete(){
-    this.http.get('http://localhost:8087/recette-complete/' + localStorage.getItem("id")).subscribe(
+    this.http.get(this.s.url+'recette-complete/' + localStorage.getItem("id")).subscribe(
       data => {
         this.allRecettes = data;
     })
@@ -114,7 +115,7 @@ export class AfficherfrigoComponent implements OnInit {
 
   supprimerElementFrigo(e) {
     this.element = e;
-    const del = this.http.delete('http://localhost:8087/elemFrigo/' + this.element.id).toPromise();
+    const del = this.http.delete(this.s.url+'elemFrigo/' + this.element.id).toPromise();
 
     del.then(
       data => {
@@ -123,9 +124,30 @@ export class AfficherfrigoComponent implements OnInit {
       }
     );
   }
-
-  ajouterElementFrigo(aj) {
-    this.s.elemservice = aj;
+  dateAuj;
+  nouvelleEnvie: Envie = new Envie();
+  message;
+  VerifAjoutEnvie;
+  ajouterEnvie(re) {
+    this.dateAuj = this.maDate();
+    this.nouvelleEnvie.date = this.dateAuj;
+    this.nouvelleEnvie.recette = re;
+    this.nouvelleEnvie.user.id = localStorage.id;
+    const del = this.http.post(this.s.url+'envie', this.nouvelleEnvie).toPromise()
+    del.then(data => {
+      this.VerifAjoutEnvie = data;
+    });
+    if (this.VerifAjoutEnvie != null) {
+      this.message = "Recette ajoutée aux envies"
+    } else {
+      this.message = "Encore une fois ?!"
+    }
+  }
+  maDate() {
+    return new Date();
+  }
+  ajouterElementFrigo() {
+    //this.s.elemservice = aj;
     const mydiale = this.dialog.open(AjouterElementFrigoComponent);
     mydiale.afterClosed().subscribe(result => {
       this.ngOnInit();

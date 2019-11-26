@@ -9,6 +9,7 @@ import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service
 import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choixajoutrecetteliste.component';
 import { User } from '../model/User';
 import { Commentaire } from '../model/Commentaire';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-afficherunerecette',
@@ -41,7 +42,7 @@ nombreCom;
   lesCommentaires;
   nouvCom : Commentaire = new Commentaire();
   
-  constructor(private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
+  constructor(private s: ServicefrigoService,private recetteService: UnerecetteService, private http: HttpClient, private ajoutService: ChoixajoutrecettelisteService,private dialog2: MatDialog) { }
 
   ngOnInit() {
 
@@ -60,7 +61,7 @@ nombreCom;
   }
 
   deuxieme() {
-    const del = this.http.post('http://localhost:8087/elem-recette-plus/' + this.laRecette.id, this.user).toPromise();
+    const del = this.http.post(this.s.url+'elem-recette-plus/' + this.laRecette.id, this.user).toPromise();
     del.then(
       data => {
         this.elemLaRecette = data;
@@ -74,7 +75,7 @@ nombreCom;
     this.nouvelleEnvie.date = this.dateAuj;
     this.nouvelleEnvie.recette = re;
     this.nouvelleEnvie.user.id = localStorage.id;
-    const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
+    const del = this.http.post(this.s.url+'envie', this.nouvelleEnvie).toPromise()
     del.then(data =>{
     this.VerifAjoutEnvie = data;
     });
@@ -108,7 +109,7 @@ nombreCom;
     this.nouvCom.user.id = localStorage.id;
     this.nouvCom.recette = this.laRecette;
     
-    const del = this.http.post('http://localhost:8087/commentaire' ,this.nouvCom).toPromise();
+    const del = this.http.post(this.s.url+'commentaire' ,this.nouvCom).toPromise();
       del.then(data => { 
         this.ngOnInit();
       });
@@ -116,7 +117,7 @@ nombreCom;
 
   getCommentaires(){
     
-    const del = this.http.get('http://localhost:8087/comByRecetteId/' +  this.laRecette.id).subscribe(
+    const del = this.http.get(this.s.url+'comByRecetteId/' +  this.laRecette.id).subscribe(
       data => {
         this.lesCommentaires=data;
         this.nombreCom=this.lesCommentaires.length;
