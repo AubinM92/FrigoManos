@@ -157,7 +157,7 @@ export class AfficherfrigoComponent implements OnInit {
     const mydial2 = this.dialog2.open(ChoixajoutrecettelisteComponent);
   }
 
-  ajoutEnvie(re) {
+  ajouterEnvie(re) {
     this.dateAuj = this.maDate();
     this.nouvelleEnvie.date = this.dateAuj;
     this.nouvelleEnvie.recette = re;
