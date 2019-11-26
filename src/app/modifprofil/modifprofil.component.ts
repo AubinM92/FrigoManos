@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/User';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-modifprofil',
@@ -16,7 +17,7 @@ export class ModifprofilComponent implements OnInit {
   data;
   userActuel: User = new User();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private s: ServicefrigoService,private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
 
@@ -24,7 +25,7 @@ export class ModifprofilComponent implements OnInit {
     this.userActuel.mail = localStorage.getItem("mail");
     this.userActuel.pseudo = localStorage.getItem("pseudo");
     this.userActuel.mdp = localStorage.getItem("mdp");
-    this.http.get('http://localhost:8087/user/' + this.userActuel.id).subscribe(
+    this.http.get(this.s.url+'user/' + this.userActuel.id).subscribe(
       reponse => {
         this.data = reponse;
         console.log(reponse)
@@ -37,7 +38,7 @@ export class ModifprofilComponent implements OnInit {
     this.visibleErr = false;
     this.visibleRien = false;
     if (this.userActuel.mail != localStorage.getItem("mail") || this.userActuel.pseudo != localStorage.getItem("pseudo") || this.userActuel.mdp != localStorage.getItem("mdp")) {
-      this.http.put('http://localhost:8087/user/' + this.userActuel.id, this.userActuel).subscribe(data => {
+      this.http.put(this.s.url+'user/' + this.userActuel.id, this.userActuel).subscribe(data => {
         this.visibleVal = true;
         localStorage.setItem('mail', this.userActuel.mail);
         localStorage.setItem('mdp', this.userActuel.mdp);

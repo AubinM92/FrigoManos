@@ -3,6 +3,7 @@ import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Liste } from '../model/Liste';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-choixajoutrecetteliste',
@@ -12,7 +13,7 @@ import { Liste } from '../model/Liste';
 export class ChoixajoutrecettelisteComponent implements OnInit {
 laRecette;
 LaListeRecette : Liste = new Liste();
-  constructor(private ajoutService: ChoixajoutrecettelisteService, private http: HttpClient, public dialogRef: MatDialogRef<ChoixajoutrecettelisteComponent>) { }
+  constructor(private s : ServicefrigoService,private ajoutService: ChoixajoutrecettelisteService, private http: HttpClient, public dialogRef: MatDialogRef<ChoixajoutrecettelisteComponent>) { }
 
   ngOnInit() {
     this.laRecette =this.ajoutService.recette;
@@ -20,14 +21,14 @@ LaListeRecette : Liste = new Liste();
   }
 
   ajoutTousIngredient(){
-    this.http.post('http://localhost:8087/listeRecette/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
+    this.http.post(this.s.url+'listeRecette/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
     this.dialogRef.close();
   }
 
   ajoutIngredientManquant(){
     this.LaListeRecette.titre = this.laRecette.titre + "*";
-    this.http.post('http://localhost:8087/listeRecetteManquant/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
+    this.http.post(this.s.url+'listeRecetteManquant/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
     this.dialogRef.close();
 

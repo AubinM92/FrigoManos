@@ -4,6 +4,7 @@ import { User } from '../model/User';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InscriptionValideeComponent } from '../inscription-validee/inscription-validee.component';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ motDePasse2;
 erreur;
 valider;
 
-  constructor(private http:HttpClient, private router: Router, private dialog: MatDialog) {  }
+  constructor(private s: ServicefrigoService,private http:HttpClient, private router: Router, private dialog: MatDialog) {  }
 
   ngOnInit() {
   }
@@ -32,7 +33,7 @@ valider;
       return 0;
     }
 
-    this.http.post('http://localhost:8087/user', this.user).subscribe(
+    this.http.post(this.s.url+'user', this.user).subscribe(
       data => {
 
       }, err => {

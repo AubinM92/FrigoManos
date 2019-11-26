@@ -5,6 +5,7 @@ import { Liste } from '../model/Liste'
 import { User } from '../model/User';
 import { AfficherlistecourseComponent } from '../afficherlistecourse/afficherlistecourse.component';
 import { Router } from '@angular/router';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-creerlistecourse',
@@ -21,7 +22,7 @@ export class CreerlistecourseComponent implements OnInit {
   retour=null;
   listeRetour: Liste = new Liste();
 
-  constructor(
+  constructor(private s : ServicefrigoService,
     public dialogRef: MatDialogRef<CreerlistecourseComponent>, private http: HttpClient, private router: Router) { }
 
 
@@ -37,7 +38,7 @@ export class CreerlistecourseComponent implements OnInit {
 
 
 
-    const del = this.http.post('http://localhost:8087/liste', this.liste).toPromise();
+    const del = this.http.post(this.s.url+'liste', this.liste).toPromise();
 
     del.then(
       data => {

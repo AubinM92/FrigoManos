@@ -10,6 +10,7 @@ import { FormControl } from '@angular/forms';
 import { Ingredient } from '../model/Ingredient';
 import { logging } from 'protractor';
 import { Router } from '@angular/router';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-ajouter-element-liste',
@@ -29,7 +30,7 @@ export class AjouterElementListeComponent implements OnInit {
   erreur;
   element: ElementListe = new ElementListe();
 
-  constructor(public dialogRef: MatDialogRef<AjouterElementListeComponent>, private http: HttpClient, private router: Router) {}
+  constructor(private s: ServicefrigoService,public dialogRef: MatDialogRef<AjouterElementListeComponent>, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.recupIngredients();
@@ -49,7 +50,7 @@ recupIngredients(){
     startWith(''),
     map(value => this._filter(value))
   );
-  const del = this.http.get('http://localhost:8087/nom-ingredient').toPromise();
+  const del = this.http.get(this.s.url+'nom-ingredient').toPromise();
   del.then(
     data => {
       this.response = data;
@@ -67,7 +68,7 @@ recupIngredients(){
 
   valider() {
 
-    const del = this.http.get('http://localhost:8087/nom-ingredient/'+ this.ing).toPromise();
+    const del = this.http.get(this.s.url+'nom-ingredient/'+ this.ing).toPromise();
   del.then(
     data => {
       this.response = data;
@@ -89,7 +90,7 @@ enregistrer(){
   this.element.ingredient.id = this.idIngredient;
   this.element.liste.id = parseInt(localStorage.getItem("vueListe"));
   
-  const del = this.http.post('http://localhost:8087/elemListe', this.element).toPromise();
+  const del = this.http.post(this.s.url+'elemListe', this.element).toPromise();
   
   del.then(
       datas=>{

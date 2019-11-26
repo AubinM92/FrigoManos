@@ -30,7 +30,7 @@ export class ModifFrigoComponent implements OnInit {
     console.log("entree service modif", this.element);
 
 
-    const del= this.http.put('http://localhost:8087/elemFrigo/'+ this.element.id, this.element).toPromise();
+    const del= this.http.put(this.s.url+'elemFrigo/'+ this.element.id, this.element).toPromise();
 
     del.then(
       data => {

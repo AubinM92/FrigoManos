@@ -13,6 +13,7 @@ import { ChoixajoutrecettelisteComponent } from '../choixajoutrecetteliste/choix
 import { del } from 'selenium-webdriver/http';
 import { Ingredient } from '../model/Ingredient';
 import { ElementRecette } from '../model/ElementRecette';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 
 @Component({
@@ -61,13 +62,13 @@ export class RecettesComponent implements OnInit {
   dropdownTypes = [];
   selectedTypes = [];
 
-  constructor(private http: HttpClient, private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog) { }
+  constructor(private s:ServicefrigoService,private http: HttpClient, private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog) { }
 
   listeIngredients: ElementRecette[];
   response;
 
   ngOnInit() {
-    const del = this.http.get('http://localhost:8087/elemRecette').toPromise();
+    const del = this.http.get(this.s.url+'elemRecette').toPromise();
 
     del.then(data => {
       this.response = data;
@@ -130,7 +131,7 @@ export class RecettesComponent implements OnInit {
       this.onSelectAllSaison();
       this.onSelectAllType();
 
-      this.http.get('http://localhost:8087/recette').subscribe(
+      this.http.get(this.s.url+'recette').subscribe(
         data => {
           this.allRecettes = data;
         })
@@ -156,7 +157,7 @@ export class RecettesComponent implements OnInit {
     this.nouvelleEnvie.date = this.dateAuj;
     this.nouvelleEnvie.recette = re;
     this.nouvelleEnvie.user.id = localStorage.id;
-    const del = this.http.post('http://localhost:8087/envie', this.nouvelleEnvie).toPromise()
+    const del = this.http.post(this.s.url+'envie', this.nouvelleEnvie).toPromise()
     del.then(data => {
       this.VerifAjoutEnvie = data;
     });
@@ -259,7 +260,7 @@ export class RecettesComponent implements OnInit {
 
   // Va chercher tous les ingrédients liés à une recette donnée
   getIngredients(rec: Recette) {
-    const del = this.http.get('http://localhost:8087/ingredient-via-recette/' + rec.id).toPromise();
+    const del = this.http.get(this.s.url+'ingredient-via-recette/' + rec.id).toPromise();
     del.then(
       data => {
         this.allIngredients = data;

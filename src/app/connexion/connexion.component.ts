@@ -2,6 +2,7 @@ import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { User } from '../model/User';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-connexion',
@@ -16,14 +17,14 @@ export class ConnexionComponent implements OnInit {
   erreur;
 
   uConnect;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private s: ServicefrigoService) { }
 
   ngOnInit() {
   }
 
   connexionUser() {
 
-    const del = this.http.post('http://localhost:8087/connexion', this.user).toPromise();
+    const del = this.http.post(this.s.url+'connexion', this.user).toPromise();
     del.then(
       data => {
         console.log(data);

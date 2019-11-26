@@ -13,6 +13,7 @@ import { Liste } from '../model/Liste';
 import { MatSort } from '@angular/material';
 import { MatDialog } from '@angular/material/dialog';
 import { CoursesValideesComponent } from '../courses-validees/courses-validees.component';
+import { ServicefrigoService } from '../servicefrigo.service';
 
 @Component({
   selector: 'app-listeachat',
@@ -35,7 +36,7 @@ export class ListeachatComponent implements OnInit {
 
   public mesInput: any = {};
 
-  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
+  constructor(private s: ServicefrigoService,private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.recupListes();
@@ -52,7 +53,7 @@ export class ListeachatComponent implements OnInit {
     this.user.id = parseInt(localStorage.getItem("id"));
     
     this.selectionListe.selected.forEach(d => {
-      const del = this.http.get('http://localhost:8087/liste-achat/' + this.user.id + "-" + d.id).toPromise();
+      const del = this.http.get(this.s.url+'liste-achat/' + this.user.id + "-" + d.id).toPromise();
       del.then(
         data => {
           this.mesElements = data;
@@ -112,10 +113,10 @@ export class ListeachatComponent implements OnInit {
       this.selection.deselect(datas);
 
       if (this.e.quantite > 0) {
-        const del = this.http.post("http://localhost:8087/elemFrigo-achat", this.e).toPromise();
+        const del = this.http.post(this.s.url+'elemFrigo-achat', this.e).toPromise();
 
         del.then(response => {
-          const del2 = this.http.delete("http://localhost:8087/elemListe/" + datas.idElement).toPromise();
+          const del2 = this.http.delete(this.s.url+'elemListe/' + datas.idElement).toPromise();
           del2.then(datas => {
             this.recupDonnees();
           })
@@ -139,7 +140,7 @@ export class ListeachatComponent implements OnInit {
   meslistes: Liste[] = [];
   recupListes() {
     let id = localStorage.getItem("id");
-    const del = this.http.get('http://localhost:8087/liste-globale/' + id).toPromise();
+    const del = this.http.get(this.s.url+'liste-globale/' + id).toPromise();
 
     this.dataSourceListe = new MatTableDataSource<Liste>();
     del.then(
