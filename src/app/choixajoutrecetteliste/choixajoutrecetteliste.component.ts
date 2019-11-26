@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ChoixajoutrecettelisteService } from '../choixajoutrecetteliste.service';
 import { HttpClient } from '@angular/common/http';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Liste } from '../model/Liste';
 import { ServicefrigoService } from '../servicefrigo.service';
+import { MessageComponent } from '../message/message.component';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-choixajoutrecetteliste',
@@ -13,9 +15,11 @@ import { ServicefrigoService } from '../servicefrigo.service';
 export class ChoixajoutrecettelisteComponent implements OnInit {
 laRecette;
 LaListeRecette : Liste = new Liste();
-  constructor(private s : ServicefrigoService,private ajoutService: ChoixajoutrecettelisteService, private http: HttpClient, public dialogRef: MatDialogRef<ChoixajoutrecettelisteComponent>) { }
+message;
+  constructor(private s : ServicefrigoService, private ajoutService: ChoixajoutrecettelisteService,private dialog4: MatDialog, private http: HttpClient, public dialogRef: MatDialogRef<ChoixajoutrecettelisteComponent>, private messageService : MessageService) { }
 
   ngOnInit() {
+    this.message = this.messageService.message;
     this.laRecette =this.ajoutService.recette;
     this.LaListeRecette = this.ajoutService.liste;
   }
@@ -24,6 +28,8 @@ LaListeRecette : Liste = new Liste();
     this.http.post(this.s.url+'listeRecette/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
     this.dialogRef.close();
+    this.messageService.message ="Liste ajoutée";
+    const mydial4 = this.dialog4.open(MessageComponent);
   }
 
   ajoutIngredientManquant(){
@@ -31,6 +37,8 @@ LaListeRecette : Liste = new Liste();
     this.http.post(this.s.url+'listeRecetteManquant/'+this.laRecette.id, this.LaListeRecette).subscribe(data => { 
     });
     this.dialogRef.close();
+    this.messageService.message ="Liste ajoutée";
+    const mydial4 = this.dialog4.open(MessageComponent);
 
   }
 
