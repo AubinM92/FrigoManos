@@ -65,7 +65,6 @@ export class AfficherfrigoComponent implements OnInit {
       data => {
         this.element = data;
         this.mesElementsFrigo = this.element;
-        console.log(this.mesElementsFrigo);
         this.mesElementsFrigo.forEach(element => {
           if (element.ingredient.url === null) {
             element.ingredient.url = "https://image.flaticon.com/icons/svg/2169/2169159.svg";
@@ -78,14 +77,12 @@ export class AfficherfrigoComponent implements OnInit {
     this.http.get('http://localhost:8087/elemFrigo_suggestions/' + localStorage.getItem("id") + "-" + this.ingCo).subscribe(
       data => {
         this.allRecettes = data;
-        console.log(this.allRecettes);
       })
 
 
   }
 
   recetteComplete(){
-    console.log(1);
     this.http.get('http://localhost:8087/recette-complete/' + localStorage.getItem("id")).subscribe(
       data => {
         this.allRecettes = data;
@@ -97,7 +94,7 @@ export class AfficherfrigoComponent implements OnInit {
 
   validerNbIng(n){
     
-    if(this.ingCo === 0 && n<0){
+    if(this.ingCo === 1 && n<0){
 
     }else{
       this.ingCo += n;
