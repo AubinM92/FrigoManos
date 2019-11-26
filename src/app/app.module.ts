@@ -40,6 +40,7 @@ import { AfficheruneenvieComponent } from './afficheruneenvie/afficheruneenvie.c
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CoursesValideesComponent } from './courses-validees/courses-validees.component';
 import { InscriptionValideeComponent } from './inscription-validee/inscription-validee.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -67,9 +68,10 @@ import { InscriptionValideeComponent } from './inscription-validee/inscription-v
     AfficherenvieComponent,
     AfficheruneenvieComponent,
     CoursesValideesComponent,
-    InscriptionValideeComponent
+    InscriptionValideeComponent,
+    MessageComponent
   ],
-  entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent, AfficherunerecetteComponent, ModifFrigoComponent, ChoixajoutrecettelisteComponent, AfficheruneenvieComponent, CoursesValideesComponent, InscriptionValideeComponent],
+  entryComponents: [AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent, AfficherunerecetteComponent, ModifFrigoComponent, ChoixajoutrecettelisteComponent, AfficheruneenvieComponent, CoursesValideesComponent, InscriptionValideeComponent, MessageComponent],
 
   imports: [
     BrowserModule,
