@@ -26,7 +26,7 @@ export class AjouterElementFrigoComponent implements OnInit {
   ingredient: Ingredient = new Ingredient();
   idIngredient: number = null;
   quantite;
-
+  listeIngredients: Ingredient[]=[];
   element: ElementFrigo = new ElementFrigo();
 
   erreur;
@@ -56,7 +56,10 @@ export class AjouterElementFrigoComponent implements OnInit {
       data => {
         this.response = data;
         this.noms = this.response;
+        this.listeIngredients = this.response;
         this.noms.forEach(element => {this.options.push(element)});
+
+        
       }, err => {
         console.log(err);
       }
@@ -89,8 +92,8 @@ enregistrer(){
     this.element.ingredient.id = this.idIngredient;
     this.element.user.id = parseInt(localStorage.getItem("id"));
   
-    const del = this.http.put('http://localhost:8087/elemFrigo', this.element).toPromise();
-
+    const del = this.http.put('http://localhost:8087/elemFrigoNew/'+localStorage.getItem("id"), this.element).toPromise();
+  
     del.then(
         datas=>{
           this.dialogRef.close();

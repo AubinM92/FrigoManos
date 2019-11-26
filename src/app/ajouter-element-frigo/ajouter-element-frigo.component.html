@@ -4,7 +4,7 @@
     <form action="" #forme="ngForm">
         <div>
             <mat-form-field class="text-center" style="width: 100%;">
-                <input required type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Ingrédient" class="form-control ng-pristine ng-invalid ng-touched text-center">
+                <input required style="font-size: 20px" type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="ing" name="ing" placeholder="Ingrédient" class="form-control ng-pristine ng-invalid ng-touched text-center">
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option}}
