@@ -33,14 +33,17 @@ export class CreerRecetteComponent implements OnInit {
     recette.tempsPrepa = this.tpsPrep;
     recette.description = this.description;
     recette.titre = this.titre;
-    recette.url = this.url;
+    recette.url = this.url ? this.url : 'https://image.flaticon.com/icons/svg/402/402715.svg';
     let u = new User();
     u.id =parseInt(localStorage.getItem("id"));
     recette.user = u;
 
 
     const del = this.http.post('http://localhost:8087/ajouter-recette', recette).toPromise();
-
+    
+    del.then(data =>{
+      this.dialogRef.close();
+    })
   
 
     

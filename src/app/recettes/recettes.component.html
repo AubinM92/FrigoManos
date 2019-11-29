@@ -9,19 +9,25 @@
         <div class="row">
             <!--Saisons-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Choix des saisons'" [data]="dropdownSaisons" [(ngModel)]="selectedSaisons" [settings]="dropdownSettings" (onSelect)="onSaisonSelect($event)" (onDeSelect)="onSaisonDeSelect($event)" (onSelectAll)="onSelectAllSaison()"
+                <ng-multiselect-dropdown [placeholder]="'Choix des saisons'" [data]="dropdownSaisons"
+                    [(ngModel)]="selectedSaisons" [settings]="dropdownSettings" (onSelect)="onSaisonSelect($event)"
+                    (onDeSelect)="onSaisonDeSelect($event)" (onSelectAll)="onSelectAllSaison()"
                     (onDeSelectAll)="onDeSelectAllSaison()">
-                </ng-multiselect-dropdown> 
+                </ng-multiselect-dropdown>
             </div>
             <!--Temps de cuisine (préparation + cuisson)-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Temps passé en cuisine'" [data]="dropdownTemps" [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)" (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps()"
+                <ng-multiselect-dropdown [placeholder]="'Temps passé en cuisine'" [data]="dropdownTemps"
+                    [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)"
+                    (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps()"
                     (onDeSelectAll)="onDeSelectAllTemps()">
                 </ng-multiselect-dropdown>
             </div>
             <!--Types d'ingrédients-->
             <div class="col-sm-4">
-                <ng-multiselect-dropdown [placeholder]="'Choix des types dingrédients'" [data]="dropdownTypes" [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)" (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType()"
+                <ng-multiselect-dropdown [placeholder]="'Choix des types dingrédients'" [data]="dropdownTypes"
+                    [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)"
+                    (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType()"
                     (onDeSelectAll)="onDeSelectAllType()">
                 </ng-multiselect-dropdown>
             </div>
@@ -33,11 +39,12 @@
     <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
         <div *ngFor="let re of allRecettes">
             <div class="col-sm-12" *ngIf="affichageCarte(re)">
-                <div class="card cadre">
+                <div class="card cadre" [style.background]="couleurCarte(re)">
                     <div style="display: flex;justify-content: center; width: 100%;">
-                        <input class="cadretop contain" type="image" [src]="re.url" width="295px" height="200px" (click)='afficherRecette(re)' style="border-radius: 10px;"/>
+                        <input class="cadretop contain" type="image" [src]="re.url" width="295px" height="200px"
+                            (click)='afficherRecette(re)' style="border-radius: 10px;" />
                     </div>
-                    
+
                     <div class="card-block">
                         <h4 class="card-title texte">{{re.titre}}</h4>
 
@@ -45,21 +52,23 @@
                                 |
                                 Cuisson :
                                 {{re.tempsCuis }} min</small></p>
-                        <div class="row">
-                            <div></div>
-
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-3">
+                        <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                            <div>
                                 <button type="button" class="btn btn-outline cadre ajoutListe"
-                                    (click)='ajouterRecetteCourse(re)'>
+                                    style="background: #e5f7ff;" (click)='ajouterRecetteCourse(re)'>
                                     <mat-icon>note_add</mat-icon>
                                 </button>
                             </div>
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-3">
+                            <div>
                                 <button type="button" class="btn btn-outline pull-right cadre favori"
-                                    (click)='ajouterEnvie(re)'>
+                                    (click)='ajouterEnvie(re)' style="background: #fffade">
                                     <mat-icon>star</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngIf="listePerso(re)">
+                                <button type="button" class="btn btn-outline pull-right cadre"
+                                    (click)='modif(re)' style="background: #ff9d9d; border: solid red 1px;">
+                                    <mat-icon style="color: red; ">edit</mat-icon>
                                 </button>
                             </div>
                         </div>
