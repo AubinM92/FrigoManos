@@ -53,6 +53,13 @@ export class AfficherlistecourseComponent implements OnInit {
   couleur(i){
     return this.c[i%this.c.length];
   };
+
+  supprimerListesVides(){
+    const del = this.http.delete('http://localhost:8087/liste-vides/'+localStorage.getItem("id")).toPromise();
+    del.then(data =>{
+      this.ngOnInit();
+    })
+  }
   
   index: number;
   couleurDetail(){

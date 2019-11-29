@@ -7,12 +7,23 @@
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="texte" style="display: flex; justify-content: center;">
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" (click)="nouvelleListe()" style="width: 50%; background:#b6c5b1; color: white;">Nouvelle liste</button>
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="texte" style="display: flex; justify-content: center;" style="width: 35%;">
+                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        (click)="nouvelleListe()" style="background:#b6c5b1; color: white;">Nouvelle
+                        liste</button>
+                </div>
+                <div class="texte" style="display: flex; justify-content: center; width: 55%;">
+                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        (click)="supprimerListesVides()" style="background:#b6c5b1; color: white;">Supprimer listes
+                        vides</button>
+                </div>
             </div>
+
             <div style="display: flex; flex-wrap: wrap; justify-content: center;">
                 <div *ngFor="let l of mesListes; let i = index" style="padding: 10px">
-                    <div style="min-width: 150px;" class="card cadre text-center" (click)="boutonVoir(l, i)" [style.background]="couleur(i)">
+                    <div style="min-width: 150px;" class="card cadre text-center" (click)="boutonVoir(l, i)"
+                        [style.background]="couleur(i)">
                         <div class="card-block">
                             <h1 class="card-title texte" style="font-size: 20px;">{{ l.titre }}</h1>
                         </div>
@@ -28,12 +39,13 @@
         <div class="col-sm-6 texte">
             <div class="card cadre" *ngIf="visible">
                 <div class="card-block" [style.background]="couleurDetail()">
-                    <div style="display: flex;flex-direction: row ;justify-content: space-between; align-items: center;">
+                    <div
+                        style="display: flex;flex-direction: row ;justify-content: space-between; align-items: center;">
                         <div style="width: 100%;" class="text-center">
                             <h1 class="card-title" style="font-size: 50px;">
                                 <strong class="texte" style="color: white;">
-                                {{ liste.titre }}
-                            </strong>
+                                    {{ liste.titre }}
+                                </strong>
                             </h1>
                         </div>
                     </div>
@@ -44,7 +56,8 @@
 
 
                             <div class="col-sm-3">
-                                <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="50px" height="50px" />
+                                <input class="cadretop contain" type="image" [src]="e.ingredient.url" width="50px"
+                                    height="50px" />
                             </div>
 
                             <div class="col-sm-3">
@@ -66,17 +79,21 @@
 
                         <div class="col-sm-2"></div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-outline" style="background: white; width: 50px; height: 50px; padding: 5px; border-radius: 50%; vertical-align: middle;" (click)="ajoutElementListe(liste.id)">
-                                                    <mat-icon style="vertical-align: middle;">add</mat-icon>
-                                                </button>
+                            <button type="button" class="btn btn-outline"
+                                style="background: white; width: 50px; height: 50px; padding: 5px; border-radius: 50%; vertical-align: middle;"
+                                (click)="ajoutElementListe(liste.id)">
+                                <mat-icon style="vertical-align: middle;">add</mat-icon>
+                            </button>
                             <br>
                             <span class="text-secondary">Nouvel élément</span>
                         </div>
 
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-outline" style="background: white; width: 50px; height: 50px; padding: 5px; border-radius: 50%;" (click)="supprimerListe(liste)">
-                                                    <mat-icon style="vertical-align: middle;">delete</mat-icon>
-                                                </button>
+                            <button type="button" class="btn btn-outline"
+                                style="background: white; width: 50px; height: 50px; padding: 5px; border-radius: 50%;"
+                                (click)="supprimerListe(liste)">
+                                <mat-icon style="vertical-align: middle;">delete</mat-icon>
+                            </button>
                             <br>
                             <span class="text-secondary">Supprimer liste</span>
                         </div>
