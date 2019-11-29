@@ -64,7 +64,9 @@ export class RecettesComponent implements OnInit {
   dropdownTypes = [];
   selectedTypes = [];
 
-  constructor(private mr: ModifRecetteService,private s: ServicefrigoService, private http: HttpClient, private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog, private dialog4: MatDialog) { }
+  constructor(private mr: ModifRecetteService, private s: ServicefrigoService, private http: HttpClient,
+    private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService,
+    private dialog: MatDialog, private dialog2: MatDialog, private dial4: MatDialog) { }
 
   listeIngredients: ElementRecette[];
   response;
@@ -170,6 +172,10 @@ export class RecettesComponent implements OnInit {
     }
   }
   ajouterRecette() {
+    this.mr.recette = new Recette();
+    this.mr.recette.id = 0;
+    this.mr.ingredients = null;
+
     const mydial4 = this.dialog.open(CreerRecetteComponent);
     mydial4.afterClosed().subscribe(result => {
       this.ngOnInit();
@@ -177,160 +183,161 @@ export class RecettesComponent implements OnInit {
   }
 
 
-maDate() {
-  return new Date();
-}
-
-// Fonctions pour le filtrage du temps de cuisine
-onTempsSelect(item: any) {
-  if (item.item_id == 1) { this.temps0015 = true; }
-  if (item.item_id == 2) { this.temps1530 = true; }
-  if (item.item_id == 3) { this.temps3045 = true; }
-  if (item.item_id == 4) { this.temps4560 = true; }
-  if (item.item_id == 5) { this.temps60 = true; }
-}
-onTempsDeSelect(item: any) {
-  if (item.item_id == 1) { this.temps0015 = false; }
-  if (item.item_id == 2) { this.temps1530 = false; }
-  if (item.item_id == 3) { this.temps3045 = false; }
-  if (item.item_id == 4) { this.temps4560 = false; }
-  if (item.item_id == 5) { this.temps60 = false; }
-}
-onSelectAllTemps() {
-  this.temps0015 = true;
-  this.temps1530 = true;
-  this.temps3045 = true;
-  this.temps4560 = true;
-  this.temps60 = true;
-}
-onDeSelectAllTemps() {
-  this.temps0015 = false;
-  this.temps1530 = false;
-  this.temps3045 = false;
-  this.temps4560 = false;
-  this.temps60 = false;
-}
-
-// Fonctions pour le filtrage des saisons
-onSaisonSelect(item: any) {
-  if (item.item_id == 1) { this.saisonPrintemps = true; }
-  if (item.item_id == 2) { this.saisonEte = true; }
-  if (item.item_id == 3) { this.saisonAutomne = true; }
-  if (item.item_id == 4) { this.saisonHiver = true; }
-}
-onSaisonDeSelect(item: any) {
-  if (item.item_id == 1) { this.saisonPrintemps = false; }
-  if (item.item_id == 2) { this.saisonEte = false; }
-  if (item.item_id == 3) { this.saisonAutomne = false; }
-  if (item.item_id == 4) { this.saisonHiver = false; }
-}
-onSelectAllSaison() {
-  this.saisonPrintemps = true;
-  this.saisonEte = true;
-  this.saisonAutomne = true;
-  this.saisonHiver = true;
-}
-onDeSelectAllSaison() {
-  this.saisonPrintemps = false;
-  this.saisonEte = false;
-  this.saisonAutomne = false;
-  this.saisonHiver = false;
-}
-
-// Fonctions pour le filtrage des types d'ingrédients
-onTypeSelect(item: any) {
-  if (item.item_id == 1) { this.typeFruit = true; }
-  if (item.item_id == 2) { this.typeLegume = true; }
-  if (item.item_id == 3) { this.typePoisson = true; }
-  if (item.item_id == 4) { this.typeProduitL = true; }
-  if (item.item_id == 5) { this.typeViande = true; }
-}
-onTypeDeSelect(item: any) {
-  if (item.item_id == 1) { this.typeFruit = false; }
-  if (item.item_id == 2) { this.typeLegume = false; }
-  if (item.item_id == 3) { this.typePoisson = false; }
-  if (item.item_id == 4) { this.typeProduitL = false; }
-  if (item.item_id == 5) { this.typeViande = false; }
-}
-onSelectAllType() {
-  this.typeFruit = true;
-  this.typeLegume = true;
-  this.typePoisson = true;
-  this.typeProduitL = true;
-  this.typeViande = true;
-}
-onDeSelectAllType() {
-  this.typeFruit = false;
-  this.typeLegume = false;
-  this.typePoisson = false;
-  this.typeProduitL = false;
-  this.typeViande = false;
-}
-
-// Va chercher tous les ingrédients liés à une recette donnée
-getIngredients(rec: Recette) {
-  const del = this.http.get(this.s.url + 'ingredient-via-recette/' + rec.id).toPromise();
-  del.then(
-    data => {
-      this.allIngredients = data;
-    }, err => {
-      console.log(err);
-    }
-  );
-}
-
-affichageCarte(carte) {
-
-  // Vérification du temps de cuisine
-  let retour = false;
-
-
-  this.listeIngredients.forEach(element => {
-
-    if (carte.id === element.recette.id) {
-      if (element.ingredient.saison === "Printemps" && this.saisonPrintemps) { retour = true; }
-      else if (element.ingredient.saison === "Été" && this.saisonEte) { retour = true; }
-      else if (element.ingredient.saison === "Automne" && this.saisonAutomne) { retour = true; }
-      else if (element.ingredient.saison === "Hiver" && this.saisonHiver) { retour = true; }
-
-
-      if (element.ingredient.categorie === "Fruit" && this.typeFruit) { retour = true; }
-      else if (element.ingredient.categorie === "Légume" && this.typeLegume) { retour = true; }
-      else if (element.ingredient.categorie === "Poisson" && this.typePoisson) { retour = true; }
-      else if (element.ingredient.categorie === "Produit laitier" && this.typeProduitL) { retour = true; }
-      else if (element.ingredient.categorie === "Viande" && this.typeViande) { retour = true; }
-
-
-    }
-
-  })
-
-  let r1, r2, r3, r4, r5;
-  if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { r1 = true; } else { r1 = false }
-  if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { r2 = true; } else { r2 = false }
-  if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { r3 = true; } else { r3 = false }
-  if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { r4 = true; } else { r5 = false }
-  if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { r5 = true; } else { r5 = false }
-
-  return retour || (r1 || r2 || r3 || r4 || r5);
-}
-
-couleurCarte(re){
-  if (re.user === null) {
-    return 'white';
+  maDate() {
+    return new Date();
   }
-  return re.user.id === parseInt(localStorage.getItem("id")) ? 'rgb(230, 230, 230)' : 'white';
-}
 
-listePerso(re){
-  if(re.user === null){
-    return false
+  // Fonctions pour le filtrage du temps de cuisine
+  onTempsSelect(item: any) {
+    if (item.item_id == 1) { this.temps0015 = true; }
+    if (item.item_id == 2) { this.temps1530 = true; }
+    if (item.item_id == 3) { this.temps3045 = true; }
+    if (item.item_id == 4) { this.temps4560 = true; }
+    if (item.item_id == 5) { this.temps60 = true; }
   }
-  return re.user.id === parseInt(localStorage.getItem("id")) ? true : false;
-}
+  onTempsDeSelect(item: any) {
+    if (item.item_id == 1) { this.temps0015 = false; }
+    if (item.item_id == 2) { this.temps1530 = false; }
+    if (item.item_id == 3) { this.temps3045 = false; }
+    if (item.item_id == 4) { this.temps4560 = false; }
+    if (item.item_id == 5) { this.temps60 = false; }
+  }
+  onSelectAllTemps() {
+    this.temps0015 = true;
+    this.temps1530 = true;
+    this.temps3045 = true;
+    this.temps4560 = true;
+    this.temps60 = true;
+  }
+  onDeSelectAllTemps() {
+    this.temps0015 = false;
+    this.temps1530 = false;
+    this.temps3045 = false;
+    this.temps4560 = false;
+    this.temps60 = false;
+  }
 
-modifRecette(re){
-  this.mr.recette = re;
-}
+  // Fonctions pour le filtrage des saisons
+  onSaisonSelect(item: any) {
+    if (item.item_id == 1) { this.saisonPrintemps = true; }
+    if (item.item_id == 2) { this.saisonEte = true; }
+    if (item.item_id == 3) { this.saisonAutomne = true; }
+    if (item.item_id == 4) { this.saisonHiver = true; }
+  }
+  onSaisonDeSelect(item: any) {
+    if (item.item_id == 1) { this.saisonPrintemps = false; }
+    if (item.item_id == 2) { this.saisonEte = false; }
+    if (item.item_id == 3) { this.saisonAutomne = false; }
+    if (item.item_id == 4) { this.saisonHiver = false; }
+  }
+  onSelectAllSaison() {
+    this.saisonPrintemps = true;
+    this.saisonEte = true;
+    this.saisonAutomne = true;
+    this.saisonHiver = true;
+  }
+  onDeSelectAllSaison() {
+    this.saisonPrintemps = false;
+    this.saisonEte = false;
+    this.saisonAutomne = false;
+    this.saisonHiver = false;
+  }
+
+  // Fonctions pour le filtrage des types d'ingrédients
+  onTypeSelect(item: any) {
+    if (item.item_id == 1) { this.typeFruit = true; }
+    if (item.item_id == 2) { this.typeLegume = true; }
+    if (item.item_id == 3) { this.typePoisson = true; }
+    if (item.item_id == 4) { this.typeProduitL = true; }
+    if (item.item_id == 5) { this.typeViande = true; }
+  }
+  onTypeDeSelect(item: any) {
+    if (item.item_id == 1) { this.typeFruit = false; }
+    if (item.item_id == 2) { this.typeLegume = false; }
+    if (item.item_id == 3) { this.typePoisson = false; }
+    if (item.item_id == 4) { this.typeProduitL = false; }
+    if (item.item_id == 5) { this.typeViande = false; }
+  }
+  onSelectAllType() {
+    this.typeFruit = true;
+    this.typeLegume = true;
+    this.typePoisson = true;
+    this.typeProduitL = true;
+    this.typeViande = true;
+  }
+  onDeSelectAllType() {
+    this.typeFruit = false;
+    this.typeLegume = false;
+    this.typePoisson = false;
+    this.typeProduitL = false;
+    this.typeViande = false;
+  }
+
+  // Va chercher tous les ingrédients liés à une recette donnée
+  getIngredients(rec: Recette) {
+    const del = this.http.get(this.s.url + 'ingredient-via-recette/' + rec.id).toPromise();
+    del.then(
+      data => {
+        this.allIngredients = data;
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+
+  affichageCarte(carte) {
+
+    // Vérification du temps de cuisine
+    let retour = false;
+
+
+    this.listeIngredients.forEach(element => {
+
+      if (carte.id === element.recette.id) {
+        if (element.ingredient.saison === "Printemps" && this.saisonPrintemps) { retour = true; }
+        else if (element.ingredient.saison === "Été" && this.saisonEte) { retour = true; }
+        else if (element.ingredient.saison === "Automne" && this.saisonAutomne) { retour = true; }
+        else if (element.ingredient.saison === "Hiver" && this.saisonHiver) { retour = true; }
+
+
+        if (element.ingredient.categorie === "Fruit" && this.typeFruit) { retour = true; }
+        else if (element.ingredient.categorie === "Légume" && this.typeLegume) { retour = true; }
+        else if (element.ingredient.categorie === "Poisson" && this.typePoisson) { retour = true; }
+        else if (element.ingredient.categorie === "Produit laitier" && this.typeProduitL) { retour = true; }
+        else if (element.ingredient.categorie === "Viande" && this.typeViande) { retour = true; }
+
+
+      }
+
+    })
+
+    let r1, r2, r3, r4, r5;
+    if ((carte.tempsPrepa + carte.tempsCuis) <= 15 && this.temps0015) { r1 = true; } else { r1 = false }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 15 && (carte.tempsPrepa + carte.tempsCuis) <= 30 && this.temps1530) { r2 = true; } else { r2 = false }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 30 && (carte.tempsPrepa + carte.tempsCuis) <= 45 && this.temps3045) { r3 = true; } else { r3 = false }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 45 && (carte.tempsPrepa + carte.tempsCuis) <= 60 && this.temps4560) { r4 = true; } else { r5 = false }
+    if ((carte.tempsPrepa + carte.tempsCuis) > 60 && this.temps60) { r5 = true; } else { r5 = false }
+
+    return retour || (r1 || r2 || r3 || r4 || r5);
+  }
+
+  couleurCarte(re) {
+    if (re.user === null) {
+      return 'white';
+    }
+    return re.user.id === parseInt(localStorage.getItem("id")) ? 'rgb(230, 230, 230)' : 'white';
+  }
+
+  listePerso(re) {
+    if (re.user === null) {
+      return false
+    }
+    return re.user.id === parseInt(localStorage.getItem("id")) ? true : false;
+  }
+
+  modif(re) {
+    this.mr.recette = re;
+    const dial = this.dial4.open(CreerRecetteComponent);
+  }
 
 }
