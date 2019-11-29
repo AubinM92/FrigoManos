@@ -1,0 +1,62 @@
+<div style="width: 100%;">
+
+    <form action="">
+        <h2>Ajouter une recette</h2>
+        <hr>
+        <div style="display: flex; flex-direction: column; justify-content: space-evenly;">
+            <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;"
+                class="text-center">
+                <div>
+                    <img src="https://image.flaticon.com/icons/svg/1/1132.svg" alt="Div image cap"
+                        style="width: 35px; height: 35px; vertical-align: middle;">
+                </div>
+                <div>
+                    Titre
+                </div>
+                <div>
+                    <input type="text" placeholder="Titre de la recette" required [(ngModel)]="titre" name="titre">
+                </div>
+            </div>
+            <hr>
+            <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;"
+                class="text-center">
+                <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
+                    style="width: 30px; height: 30px; vertical-align: middle;">
+                Temps de préparation
+                <input type="number" placeholder="Temps de préparation (min)" required [(ngModel)]="tpsPrep"
+                    name="tpsPrep">
+            </div>
+            <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;"
+                class="text-center">
+                <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
+                    style="width: 35px; height: 35px; vertical-align: middle;">
+                Temps cuisson
+
+                <input type="number" placeholder="Temps de cuisson (min)" required [(ngModel)]="tpsCuisson"
+                    name="tpsCuisson"></div>
+        </div>
+        <hr>
+        <div style="padding: 5px; width: 100%;">
+            <div class="text-center">Desription</div>
+            <input type="text" placeholder="Description de la recette" style="width: 100%; height: 100px;" required
+                [(ngModel)]="description" name="description">
+        </div>
+        <hr>
+        <div
+            style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly;align-items: center;">
+            <img src="https://image.flaticon.com/icons/svg/1106/1106021.svg" alt="Div image cap"
+                style="width: 35px; height: 35px; vertical-align: middle;">
+            <div>Url</div>
+            <input type="url" placeholder="url image" style="width: 70%;" required [(ngModel)]="url" name="url">
+        </div>
+        <hr>
+        <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+            <div >
+                <button style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2" (click)="enregistrer()">Valider</button>
+            </div>
+            <div>
+                <button style="background: #c2dcb9; width: auto; color: white;" class="btn btn-lg btn-primary btn-block mb-2">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>

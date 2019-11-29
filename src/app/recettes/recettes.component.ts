@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UnerecetteService } from '../unerecette.service';
 import { AfficherunerecetteComponent } from '../afficherunerecette/afficherunerecette.component';
-import { MatDialogModule, MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialogModule, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Liste } from '../model/Liste';
 import { Recette } from '../model/Recette';
@@ -14,6 +14,7 @@ import { del } from 'selenium-webdriver/http';
 import { Ingredient } from '../model/Ingredient';
 import { ElementRecette } from '../model/ElementRecette';
 import { ServicefrigoService } from '../servicefrigo.service';
+import { CreerRecetteComponent } from '../creer-recette/creer-recette.component';
 
 
 @Component({
@@ -62,7 +63,7 @@ export class RecettesComponent implements OnInit {
   dropdownTypes = [];
   selectedTypes = [];
 
-  constructor(private s:ServicefrigoService,private http: HttpClient, private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog) { }
+  constructor(private s:ServicefrigoService,private http: HttpClient, private recetteService: UnerecetteService, private ajoutService: ChoixajoutrecettelisteService, private dialog: MatDialog, private dialog2: MatDialog, private dialog4 : MatDialog) { }
 
   listeIngredients: ElementRecette[];
   response;
@@ -131,7 +132,7 @@ export class RecettesComponent implements OnInit {
       this.onSelectAllSaison();
       this.onSelectAllType();
 
-      this.http.get(this.s.url+'recette').subscribe(
+      this.http.get(this.s.url+'recettes-user/'+localStorage.getItem("id")).subscribe(
         data => {
           this.allRecettes = data;
         })
@@ -167,7 +168,9 @@ export class RecettesComponent implements OnInit {
       this.message = "Encore une fois ?!"
     }
   }
-
+  ajouterRecette(){
+    const mydial4 = this.dialog.open(CreerRecetteComponent);
+  }
   maDate() {
     return new Date();
   }

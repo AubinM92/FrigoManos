@@ -1,10 +1,15 @@
+import { User } from './User';
+
 export class Recette {
 
     id: number;
     description : string;
-    temps_cuis : number;
-    temps_prepa : number;
+    tempsCuis : number;
+    tempsPrepa : number;
     titre : string;
+    url: string;
+    visible: boolean;
+    user: User;
 
     constructor(
 

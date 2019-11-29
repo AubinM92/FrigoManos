@@ -22,7 +22,7 @@ export class AjouterElementListeComponent implements OnInit {
   options: string[] = [];
   noms: string[] = [];
   filteredOptions: Observable<string[]>;
-  ing;
+  ing; 
   response;
   ingredient: Ingredient = new Ingredient();
   idIngredient: number = null;
