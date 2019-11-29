@@ -151,6 +151,7 @@ export class ListeachatComponent implements OnInit {
     let id = localStorage.getItem("id");
     const del = this.http.get(this.s.url+'liste-globale/' + id).toPromise();
 
+    this.ELEMENT_DATA_LISTE = [];
     this.dataSourceListe = new MatTableDataSource<Liste>();
     del.then(
       data => {
@@ -187,7 +188,12 @@ export class ListeachatComponent implements OnInit {
       return `${this.isAllSelectedListe() ? 'select' : 'deselect'} all`;
     }
   }
-
+  supprimerListesVides(){
+    const del = this.http.delete('http://localhost:8087/liste-vides/'+localStorage.getItem("id")).toPromise();
+    del.then(data =>{
+      this.ngOnInit();
+    })
+  }
 
 
 }

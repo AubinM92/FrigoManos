@@ -3,13 +3,20 @@
     <h2 class="texte">Mon panier</h2>
 
     <hr>
-
-    <div>
-        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
-            style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
-            !</button>
-        <br>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+        <div style="width: 55%;">
+            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
+                style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
+                !</button>
+            <br>
+        </div>
+        <div style="width: 35%;">
+            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
+                style="color: white;background: rgb(147, 199, 196);" (click)="supprimerListesVides()"> Supprimer les listes vides</button>
+            <br>
+        </div>
     </div>
+
     <div class="row">
         <div class="col-sm-4">
 
@@ -138,9 +145,17 @@
         </div>
     </div>
     <br>
-    <div>
-        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
-            style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
-            !</button>
-    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+            <div style="width: 55%;">
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
+                    style="color: white;background: rgb(147, 199, 196);" (click)="majFrigo()"> Valider les courses
+                    !</button>
+                <br>
+            </div>
+            <div style="width: 35%;">
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 texte"
+                    style="color: white;background: rgb(147, 199, 196);" (click)="supprimerListesVides()"> Supprimer les listes vides</button>
+                <br>
+            </div>
+        </div>
 </div>
