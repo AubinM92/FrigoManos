@@ -1,8 +1,8 @@
-<div style="width: 100%;">
+<div style="width: 100%; ">
     <h3>Ajouter une recette</h3>
     <hr>
     <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-        <div style="padding: 10px;">
+        <div style=" border: solid 1px black;">
             <form action="">
                 <h5>Informations recette</h5>
                 <hr>
@@ -67,9 +67,93 @@
             </form>
         </div>
 
-        <div style="padding: 10px;">
-            <h5>Ingrédients</h5>
-            <hr>
+        <div style="border: solid 1px black;">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="text-center"
+                style="width: 100% ;">
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="nom">
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 25px;">Ingredients
+                    </th>
+                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
+                        {{elementListe.ingredient.nom}}</td>
+                    <td mat-footer-cell *matFooterCellDef>
+
+                    </td>
+                </ng-container>
+
+                <!-- QUantite Column -->
+                <ng-container matColumnDef="quantite">
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
+                    </th>
+                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
+                        {{elementListe.quantite}}</td>
+                    <td mat-footer-cell *matFooterCellDef>
+
+                    </td>
+                </ng-container>
+
+                <!-- Unite Column -->
+                <ng-container matColumnDef="unite">
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
+                    </th>
+                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
+                        {{elementListe.ingredient.unite}}</td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
+                    </th>
+                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
+                        <mat-icon>edit</mat-icon>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="del">
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
+                    </th>
+                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
+                        <button (click)="supprimerElementRecette(elementListe)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+            <div class="flex">
+
+                <button>
+                    <div class="flex">
+                        <div>
+                            <mat-icon>add</mat-icon>
+                        </div>
+                        <div>Nouvel ingredient</div>
+                    </div>
+                </button>
+
+                <button>
+                    <div class="flex">
+                        <div>
+                            <mat-icon>add</mat-icon>
+                        </div>
+                        <div>Créer un ingrédient</div>
+                    </div>
+                </button>
+
+            </div>
+
+
+
         </div>
     </div>
 </div>
