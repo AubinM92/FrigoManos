@@ -45,30 +45,39 @@ export class ListeachatComponent implements OnInit {
 
 
   recupDonnees() {
-    this.ELEMENT_DATA = [];
-    this.dataSource = new MatTableDataSource<ListeAchat>();
+
 
     let i = 0;
     
     this.user.id = parseInt(localStorage.getItem("id"));
     
-    this.selectionListe.selected.forEach(d => {
-      const del = this.http.get(this.s.url+'liste-achat/' + this.user.id + "-" + d.id).toPromise();
+   // 
+      const del = this.http.get(this.s.url+'liste-achat/' + this.user.id).toPromise();
       del.then(
         data => {
-          this.mesElements = data;
-          this.elementsListe = this.mesElements;
+          this.ELEMENT_DATA = [];
+          this.dataSource = new MatTableDataSource<ListeAchat>();
+          this.selectionListe.selected.forEach(d => {
 
-          this.elementsListe.forEach(element => {
-            element.index = i;
-            this.mesInput[i] = element.quantite;
-            i++;
-            this.ELEMENT_DATA.push(element);
+            this.mesElements = data;
+            this.elementsListe = this.mesElements;
+  
+            this.elementsListe.forEach(element => {
+              if(element.idListe === d.id){
+                element.index = i;
+                this.mesInput[i] = element.quantite;
+                i++;
+                this.ELEMENT_DATA.push(element);
+              }
+              this.dataSource.data = this.ELEMENT_DATA;
+            });
+
           });
-          this.dataSource.data = this.ELEMENT_DATA;
+
+          
         })
 
-    })
+    
 
   }
 
