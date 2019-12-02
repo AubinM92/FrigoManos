@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import { Ingredient } from '../model/Ingredient';
 import { ElementFrigo } from '../model/ElementFrigo';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MatDialogRef } from '@angular/material';
+import { startWith, map } from 'rxjs/operators';
 import { ServicefrigoService } from '../servicefrigo.service';
+import { ModifRecetteService } from '../modif-recette.service';
+import { ElementRecette } from '../model/ElementRecette';
+import { Recette } from '../model/Recette';
+import { User } from '../model/User';
 
 @Component({
-  selector: 'app-ajouter-element-frigo',
-  templateUrl: './ajouter-element-frigo.component.html',
-  styleUrls: ['./ajouter-element-frigo.component.css']
+  selector: 'app-ajouter-element-recette',
+  templateUrl: './ajouter-element-recette.component.html',
+  styleUrls: ['./ajouter-element-recette.component.css']
 })
-export class AjouterElementFrigoComponent implements OnInit {
+export class AjouterElementRecetteComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AjouterElementFrigoComponent>, private http: HttpClient, private s: ServicefrigoService) { }
 
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
@@ -23,13 +26,14 @@ export class AjouterElementFrigoComponent implements OnInit {
   ing;
   noms: string[]= [];
   options: string[] = [];
-  ingredient: Ingredient = new Ingredient();
-  idIngredient: number = null;
+  verifIngredient: Ingredient = new Ingredient();
   quantite;
   listeIngredients: Ingredient[]=[];
   element: ElementFrigo = new ElementFrigo();
-
   erreur;
+  
+  constructor(private http : HttpClient, public dialogRef: MatDialogRef<AjouterElementRecetteComponent>, private s : ServicefrigoService, private mr : ModifRecetteService) { }
+
   ngOnInit() {
     this.recupIngredients();
   }
@@ -51,12 +55,13 @@ export class AjouterElementFrigoComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    const del = this.http.get(this.s.url+'ingredient').toPromise();
+    const del = this.http.get(this.s.url+'nom-ingredient').toPromise();
     del.then(
       data => {
         this.response = data;
+        this.noms = this.response;
         this.listeIngredients = this.response;
-        this.listeIngredients.forEach(element => {this.options.push(element.nom)});
+        this.noms.forEach(element => {this.options.push(element)});
 
         
       }, err => {
@@ -66,13 +71,14 @@ export class AjouterElementFrigoComponent implements OnInit {
   }
 
   valider() {
+    
 
-    const del = this.http.get(this.s.url+'nom-ingredient/'+ this.ing).toPromise();
+    const del = this.http.get(this.s.url+'ingredient-info-nom/'+ this.ing).toPromise();
   del.then(
     data => {
       this.response = data;
-      this.idIngredient = this.response;
-      if(this.idIngredient!=null){
+      this.verifIngredient = this.response;
+      if(this.verifIngredient.id!=null){
         this.enregistrer();
       }else{
         this.erreur = "Elément non reconnu"
@@ -86,17 +92,13 @@ export class AjouterElementFrigoComponent implements OnInit {
 
 enregistrer(){
 
-    this.element.quantite = this.quantite;
-    this.element.ingredient.nom = this.ing;
-    this.element.ingredient.id = this.idIngredient;
-    this.element.user.id = parseInt(localStorage.getItem("id"));
-  
-    const del = this.http.put(this.s.url+'elemFrigoNew/'+localStorage.getItem("id"), this.element).toPromise();
-  
-    del.then(
-        datas=>{
-          this.dialogRef.close();
-      })
+    this.mr.elem = new ElementRecette();
+    this.mr.elem.ingredient = this.verifIngredient;
+    this.mr.elem.quantite = this.quantite;
+
+    this.dialogRef.close();
+
 
   }
+
 }

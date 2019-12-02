@@ -42,6 +42,7 @@ import { CoursesValideesComponent } from './courses-validees/courses-validees.co
 import { InscriptionValideeComponent } from './inscription-validee/inscription-validee.component';
 import { MessageComponent } from './message/message.component';
 import { CreerRecetteComponent } from './creer-recette/creer-recette.component';
+import { AjouterElementRecetteComponent } from './ajouter-element-recette/ajouter-element-recette.component';
 
 @NgModule({
   declarations: [
@@ -71,9 +72,10 @@ import { CreerRecetteComponent } from './creer-recette/creer-recette.component';
     CoursesValideesComponent,
     InscriptionValideeComponent,
     MessageComponent,
-    CreerRecetteComponent
+    CreerRecetteComponent,
+    AjouterElementRecetteComponent
   ],
-  entryComponents: [CreerRecetteComponent, AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent, AfficherunerecetteComponent, ModifFrigoComponent, ChoixajoutrecettelisteComponent, AfficheruneenvieComponent, CoursesValideesComponent, InscriptionValideeComponent, MessageComponent],
+  entryComponents: [AjouterElementRecetteComponent,CreerRecetteComponent, AjouterElementListeComponent, CreerlistecourseComponent, AjouterElementFrigoComponent, ModifFrigoComponent, AfficherunerecetteComponent, ModifFrigoComponent, ChoixajoutrecettelisteComponent, AfficheruneenvieComponent, CoursesValideesComponent, InscriptionValideeComponent, MessageComponent],
 
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Recette } from './model/Recette';
 import { Ingredient } from './model/Ingredient';
+import { ElementRecette } from './model/ElementRecette';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { Ingredient } from './model/Ingredient';
 export class ModifRecetteService {
 
   recette: Recette = new Recette();
-  ingredients: Ingredient[]
+  ingredients: Ingredient = new Ingredient();
+  elem : ElementRecette = new ElementRecette();
 
   constructor() { }
 }

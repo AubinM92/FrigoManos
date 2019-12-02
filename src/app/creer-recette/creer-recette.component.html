@@ -1,8 +1,8 @@
 <div style="width: 100%; ">
     <h3>Ajouter une recette</h3>
     <hr>
-    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-        <div style=" border: solid 1px black;">
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;">
+        <div>
             <form action="">
                 <h5>Informations recette</h5>
                 <hr>
@@ -54,26 +54,17 @@
                     <input type="url" placeholder="url image" style="width: 70%;" [(ngModel)]="url" name="url">
                 </div>
                 <hr>
-                <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                    <div>
-                        <button style="background: #c2dcb9; width: auto; color: white;"
-                            class="btn btn-lg btn-primary btn-block mb-2" (click)="enregistrer()">Valider</button>
-                    </div>
-                    <div>
-                        <button style="background: #c2dcb9; width: auto; color: white;"
-                            class="btn btn-lg btn-primary btn-block mb-2" (click)="fermer()">Annuler</button>
-                    </div>
-                </div>
+
             </form>
         </div>
 
-        <div style="border: solid 1px black;">
+        <div>
 
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="text-center"
                 style="width: 100% ;">
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="nom">
+                <ng-container matColumnDef="ingredient.nom">
                     <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 25px;">Ingredients
                     </th>
                     <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
@@ -95,7 +86,7 @@
                 </ng-container>
 
                 <!-- Unite Column -->
-                <ng-container matColumnDef="unite">
+                <ng-container matColumnDef="ingredient.unite">
                     <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
                     </th>
                     <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
@@ -107,9 +98,6 @@
                 <ng-container matColumnDef="edit">
                     <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
                     </th>
-                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
-                        <mat-icon>edit</mat-icon>
-                    </td>
                     <td mat-footer-cell *matFooterCellDef>
                     </td>
                 </ng-container>
@@ -132,7 +120,7 @@
             </table>
             <div class="flex">
 
-                <button>
+                <button (click)="ajouterIngredient();">
                     <div class="flex">
                         <div>
                             <mat-icon>add</mat-icon>
@@ -140,20 +128,20 @@
                         <div>Nouvel ingredient</div>
                     </div>
                 </button>
-
-                <button>
-                    <div class="flex">
-                        <div>
-                            <mat-icon>add</mat-icon>
-                        </div>
-                        <div>Créer un ingrédient</div>
-                    </div>
-                </button>
-
             </div>
 
 
 
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+        <div>
+            <button style="background: #c2dcb9; width: auto; color: white;"
+                class="btn btn-lg btn-primary btn-block mb-2" (click)="enregistrer()">Valider</button>
+        </div>
+        <div>
+            <button style="background: #c2dcb9; width: auto; color: white;"
+                class="btn btn-lg btn-primary btn-block mb-2" (click)="fermer()">Annuler</button>
         </div>
     </div>
 </div>

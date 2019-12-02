@@ -71,3 +71,9 @@ body {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
+
+.bouton{
+    background: #c2dcb9; 
+    width: auto; 
+    color: white;
+}
