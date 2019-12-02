@@ -1,71 +1,96 @@
-<div style="width: 100%; ">
+<div style="overflow: auto; max-height: 600px; max-width: 500px;">
     <h3>Ajouter une recette</h3>
     <hr>
     <div style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;">
-        <div>
+        <div style="background: #a6d6ea; padding: 5%; width: 95%; border-radius: 10px;">
             <form action="">
                 <h5>Informations recette</h5>
                 <hr>
                 <div style="display: flex; flex-direction: column; justify-content: space-evenly;">
-                    <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;"
-                        class="text-center">
+                    <div
+                        style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
                         <div>
                             <img src="https://image.flaticon.com/icons/svg/1/1132.svg" alt="Div image cap"
                                 style="width: 35px; height: 35px; vertical-align: middle;">
                         </div>
                         <div>
-                            Titre
-                        </div>
-                        <div>
-                            <input type="text" placeholder="Titre de la recette" required [(ngModel)]="titre"
-                                name="titre">
+                            <span>Titre</span>
                         </div>
                     </div>
+                    <div>
+                        <input type="text" placeholder="Titre de la recette" required [(ngModel)]="titre" name="titre">
+                    </div>
+
                     <hr>
-                    <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;"
+                    <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center;"
                         class="text-center">
                         <img src="https://image.flaticon.com/icons/svg/66/66163.svg"
                             style="width: 30px; height: 30px; vertical-align: middle;">
                         Temps de préparation
+                    </div>
+                    <div>
                         <input type="number" placeholder="Temps de préparation (min)" required [(ngModel)]="tpsPrep"
                             name="tpsPrep">
                     </div>
-                    <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;"
+                    <br>
+                    <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center;"
                         class="text-center">
                         <img src="https://image.flaticon.com/icons/svg/135/135318.svg" alt="Div image cap"
                             style="width: 35px; height: 35px; vertical-align: middle;">
                         Temps cuisson
-
+                    </div>
+                    <div>
                         <input type="number" placeholder="Temps de cuisson (min)" required [(ngModel)]="tpsCuisson"
-                            name="tpsCuisson"></div>
+                            name="tpsCuisson">
+                    </div>
+
                 </div>
                 <hr>
                 <div style="padding: 5px; width: 100%;">
-                    <div class="text-center">Desription</div>
+                    <div>Desription</div>
                     <input type="text" placeholder="Description de la recette" style="width: 100%; height: 100px;"
                         required [(ngModel)]="description" name="description">
                 </div>
-                <hr>
+
                 <div
-                    style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: space-evenly;align-items: center;">
+                    style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: flex-start;align-items: center;">
                     <img src="https://image.flaticon.com/icons/svg/1106/1106021.svg" alt="Div image cap"
                         style="width: 35px; height: 35px; vertical-align: middle;">
                     <div>Url image</div>
-                    <input type="url" placeholder="url image" style="width: 70%;" [(ngModel)]="url" name="url">
                 </div>
+                <input type="url" placeholder="url image" style="width: 70%;" [(ngModel)]="url" name="url">
+
                 <hr>
 
             </form>
         </div>
+        <div style="width: 95%;">
+            <hr>
+        </div>
+        <div style="background: #a6d6ea; padding: 5%; width: 95%; border-radius: 10px;">
+            <h5>Ingrédients</h5>
 
-        <div>
-
+            <hr>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="text-center"
-                style="width: 100% ;">
+                style="width: 100% ; background: none;">
 
                 <!-- Name Column -->
                 <ng-container matColumnDef="ingredient.nom">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 25px;">Ingredients
+                    <th mat-header-cell *matHeaderCellDef class="text-center texte"
+                        style="font-size: 15px; background: none;">
+                        <div>
+                            <button (click)="ajouterIngredient();"
+                                style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
+                                class="btn btn-lg btn-primary btn-block mb-2">
+                                <div class="flex" style="width: 100%; justify-content: flex-start;">
+                                    <div>
+                                        <mat-icon>add</mat-icon>
+                                    </div>
+                                    <div>Nouvel ingredient</div>
+                                </div>
+                            </button>
+                        </div>
+
                     </th>
                     <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
                         {{elementListe.ingredient.nom}}</td>
@@ -118,20 +143,11 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;">
                 </tr>
             </table>
-            <div class="flex">
 
-                <button (click)="ajouterIngredient();">
-                    <div class="flex">
-                        <div>
-                            <mat-icon>add</mat-icon>
-                        </div>
-                        <div>Nouvel ingredient</div>
-                    </div>
-                </button>
-            </div>
+        </div>
 
-
-
+        <div style="width: 95%;">
+            <hr>
         </div>
     </div>
     <div style="display: flex; flex-direction: row; justify-content: space-evenly;">

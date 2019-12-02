@@ -12,6 +12,11 @@ import { ElementRecette } from '../model/ElementRecette';
 import { Recette } from '../model/Recette';
 import { User } from '../model/User';
 
+export class IngredientEtQuantite{
+  ingredient: Ingredient;
+  quantite: number;
+}
+
 @Component({
   selector: 'app-ajouter-element-recette',
   templateUrl: './ajouter-element-recette.component.html',
@@ -23,15 +28,18 @@ export class AjouterElementRecetteComponent implements OnInit {
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
   response;
-  ing;
   noms: string[]= [];
   options: string[] = [];
   verifIngredient: Ingredient = new Ingredient();
   quantite;
+  ing;
   listeIngredients: Ingredient[]=[];
   element: ElementFrigo = new ElementFrigo();
   erreur;
+
   
+  retour: IngredientEtQuantite = new IngredientEtQuantite();
+
   constructor(private http : HttpClient, public dialogRef: MatDialogRef<AjouterElementRecetteComponent>, private s : ServicefrigoService, private mr : ModifRecetteService) { }
 
   ngOnInit() {
@@ -71,9 +79,10 @@ export class AjouterElementRecetteComponent implements OnInit {
   }
 
   valider() {
-    
+    console.log(this.ing)
+    this.retour.ingredient.nom = this.ing;
 
-    const del = this.http.get(this.s.url+'ingredient-info-nom/'+ this.ing).toPromise();
+    const del = this.http.get(this.s.url+'ingredient-info-nom/'+this.retour.ingredient.nom ).toPromise();
   del.then(
     data => {
       this.response = data;
@@ -91,14 +100,8 @@ export class AjouterElementRecetteComponent implements OnInit {
   }
 
 enregistrer(){
-
-    this.mr.elem = new ElementRecette();
-    this.mr.elem.ingredient = this.verifIngredient;
-    this.mr.elem.quantite = this.quantite;
-
-    this.dialogRef.close();
-
-
+    console.log(this.retour)
+    this.dialogRef.close(this.retour);
   }
 
 }
