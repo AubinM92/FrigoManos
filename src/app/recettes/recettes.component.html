@@ -1,7 +1,14 @@
 <div class="container">
+    <div class="flex" style="justify-content: space-between;">
+        <div style="width: 40%;">
+            <h2 class="texte">Recettes</h2>
+        </div>
+        <div style="width: 40%;">
+            <button (click)="ajouterRecette()" style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
+                class="btn btn-lg btn-primary btn-block mb-2">Créer une recette</button>
+        </div>
+    </div>
 
-    <h2 class="texte">Recettes</h2>
-    <button (click)="ajouterRecette()">Ajouter une recette</button>
     <hr>
     <!--Filtres-->
     <div class="encart">
@@ -55,20 +62,26 @@
                         <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
                             <div>
                                 <button type="button" class="btn btn-outline cadre ajoutListe"
-                                    style="background: #e5f7ff;" (click)='ajouterRecetteCourse(re)'>
+                                    style="background: #baeaff; color: blue;" (click)='ajouterRecetteCourse(re)'>
                                     <mat-icon>note_add</mat-icon>
                                 </button>
                             </div>
                             <div>
                                 <button type="button" class="btn btn-outline pull-right cadre favori"
-                                    (click)='ajouterEnvie(re)' style="background: #fffade">
+                                    (click)='ajouterEnvie(re)' style="background: #fff5c0; color:chocolate">
                                     <mat-icon>star</mat-icon>
                                 </button>
                             </div>
                             <div *ngIf="listePerso(re)">
-                                <button type="button" class="btn btn-outline pull-right cadre"
-                                    (click)='modif(re)' style="background: #ff9d9d; border: solid red 1px;">
-                                    <mat-icon style="color: red; ">edit</mat-icon>
+                                <button type="button" class="btn btn-outline pull-right cadre" (click)='modif(re)'
+                                    style="background: #9dffaa; border: solid green 1px;">
+                                    <mat-icon style="color: green; ">edit</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngIf="listePerso(re)">
+                                <button type="button" class="btn btn-outline pull-right cadre" (click)='supprimer(re)'
+                                    style="background: #ff9d9d; border: solid red 1px;">
+                                    <mat-icon style="color: red; ">delete</mat-icon>
                                 </button>
                             </div>
                         </div>

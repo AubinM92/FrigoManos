@@ -46,3 +46,9 @@
   border-radius: 0.5rem;
   background-color: #f5d7bd;
 }
+#flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}

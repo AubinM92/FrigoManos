@@ -335,9 +335,14 @@ export class RecettesComponent implements OnInit {
     return re.user.id === parseInt(localStorage.getItem("id")) ? true : false;
   }
 
+  //---------------------Modification d'une recette, prend en paramètre une recette
   modif(re) {
-    this.mr.recette = re;
-    const dial = this.dial4.open(CreerRecetteComponent);
+    const dial = this.dial4.open(CreerRecetteComponent,{
+      data: {recette : re}
+    });
   }
-
+  //---------------------Suppresion d'une recette, prend en paramètre une recette
+  supprimer(re){
+    
+  }
 }

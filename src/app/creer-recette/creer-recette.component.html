@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div>
-                        <input type="text" placeholder="Titre de la recette" required [(ngModel)]="titre" name="titre">
+                        <input type="text" placeholder="Titre de la recette" required [(ngModel)]="recette.titre" name="titre">
                     </div>
 
                     <hr>
@@ -29,7 +29,7 @@
                         Temps de préparation
                     </div>
                     <div>
-                        <input type="number" placeholder="Temps de préparation (min)" required [(ngModel)]="tpsPrep"
+                        <input type="number" placeholder="Temps de préparation (min)" required [(ngModel)]="recette.tempsPrepa"
                             name="tpsPrep">
                     </div>
                     <br>
@@ -40,7 +40,7 @@
                         Temps cuisson
                     </div>
                     <div>
-                        <input type="number" placeholder="Temps de cuisson (min)" required [(ngModel)]="tpsCuisson"
+                        <input type="number" placeholder="Temps de cuisson (min)" required [(ngModel)]="recette.tempsCuis"
                             name="tpsCuisson">
                     </div>
 
@@ -49,7 +49,7 @@
                 <div style="padding: 5px; width: 100%;">
                     <div>Desription</div>
                     <input type="text" placeholder="Description de la recette" style="width: 100%; height: 100px;"
-                        required [(ngModel)]="description" name="description">
+                        required [(ngModel)]="recette.description" name="description">
                 </div>
 
                 <div
@@ -58,7 +58,7 @@
                         style="width: 35px; height: 35px; vertical-align: middle;">
                     <div>Url image</div>
                 </div>
-                <input type="url" placeholder="url image" style="width: 70%;" [(ngModel)]="url" name="url">
+                <input type="url" placeholder="url image" style="width: 70%;" [(ngModel)]="recette.url" name="url">
 
                 <hr>
 
@@ -68,81 +68,35 @@
             <hr>
         </div>
         <div style="background: #a6d6ea; padding: 5%; width: 95%; border-radius: 10px;">
-            <h5>Ingrédients</h5>
-
-            <hr>
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="text-center"
-                style="width: 100% ; background: none;">
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="ingredient.nom">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte"
-                        style="font-size: 15px; background: none;">
-                        <div>
+            <div class="flex">
+                    <h5>Ingrédients</h5>
+                    <div>
                             <button (click)="ajouterIngredient();"
                                 style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
                                 class="btn btn-lg btn-primary btn-block mb-2">
-                                <div class="flex" style="width: 100%; justify-content: flex-start;">
-                                    <div>
-                                        <mat-icon>add</mat-icon>
-                                    </div>
                                     <div>Nouvel ingredient</div>
-                                </div>
                             </button>
                         </div>
+            </div>
 
-                    </th>
-                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
-                        {{elementListe.ingredient.nom}}</td>
-                    <td mat-footer-cell *matFooterCellDef>
-
-                    </td>
-                </ng-container>
-
-                <!-- QUantite Column -->
-                <ng-container matColumnDef="quantite">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
-                    </th>
-                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
-                        {{elementListe.quantite}}</td>
-                    <td mat-footer-cell *matFooterCellDef>
-
-                    </td>
-                </ng-container>
-
-                <!-- Unite Column -->
-                <ng-container matColumnDef="ingredient.unite">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
-                    </th>
-                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
-                        {{elementListe.ingredient.unite}}</td>
-                    <td mat-footer-cell *matFooterCellDef>
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="edit">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
-                    </th>
-                    <td mat-footer-cell *matFooterCellDef>
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="del">
-                    <th mat-header-cell *matHeaderCellDef class="text-center texte" style="font-size: 0px;">
-                    </th>
-                    <td class="texte" mat-cell *matCellDef="let elementListe" style="font-size: 15px;">
-                        <button (click)="supprimerElementRecette(elementListe)">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                    </td>
-                    <td mat-footer-cell *matFooterCellDef>
-                    </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-                </tr>
+            <hr>
+            <table>
+                <tbody>
+                    <tr *ngFor="let element of listeElementsRecette">
+                        <td style="width: 50%;">{{ element.ingredient.nom }}</td>
+                        <td style="width: 20%;">{{ element.quantite }}</td>
+                        <td style="width: 20%;">{{ element.ingredient.unite }}</td>
+                        <td style="width: 10%;">
+                            <button style="background: none; border: none" (click)="supprimerElementRecette(element)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
+
+
+
 
         </div>
 
