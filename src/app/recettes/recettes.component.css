@@ -46,9 +46,14 @@
   border-radius: 0.5rem;
   background-color: #f5d7bd;
 }
-#flex{
+
+.flex{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+}
+.filtre{
+  padding: 2px;
+  width: 100%;
 }

@@ -18,7 +18,8 @@
                         </div>
                     </div>
                     <div>
-                        <input type="text" placeholder="Titre de la recette" required [(ngModel)]="recette.titre" name="titre">
+                        <input type="text" placeholder="Titre de la recette" required [(ngModel)]="recette.titre"
+                            name="titre">
                     </div>
 
                     <hr>
@@ -29,8 +30,8 @@
                         Temps de préparation
                     </div>
                     <div>
-                        <input type="number" placeholder="Temps de préparation (min)" required [(ngModel)]="recette.tempsPrepa"
-                            name="tpsPrep">
+                        <input type="number" placeholder="Temps de préparation (min)" required
+                            [(ngModel)]="recette.tempsPrepa" name="tpsPrep">
                     </div>
                     <br>
                     <div style="padding: 5px; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center;"
@@ -40,8 +41,8 @@
                         Temps cuisson
                     </div>
                     <div>
-                        <input type="number" placeholder="Temps de cuisson (min)" required [(ngModel)]="recette.tempsCuis"
-                            name="tpsCuisson">
+                        <input type="number" placeholder="Temps de cuisson (min)" required
+                            [(ngModel)]="recette.tempsCuis" name="tpsCuisson">
                     </div>
 
                 </div>
@@ -69,14 +70,14 @@
         </div>
         <div style="background: #a6d6ea; padding: 5%; width: 95%; border-radius: 10px;">
             <div class="flex">
-                    <h5>Ingrédients</h5>
-                    <div>
-                            <button (click)="ajouterIngredient();"
-                                style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
-                                class="btn btn-lg btn-primary btn-block mb-2">
-                                    <div>Nouvel ingredient</div>
-                            </button>
-                        </div>
+                <h5>Ingrédients</h5>
+                <div>
+                    <button (click)="ajouterIngredient();"
+                        style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
+                        class="btn btn-lg btn-primary btn-block mb-2">
+                        <div>Nouvel ingredient</div>
+                    </button>
+                </div>
             </div>
 
             <hr>
@@ -100,6 +101,14 @@
 
         </div>
 
+        <div style="width: 95%;">
+            <hr>
+        </div>
+        <div class="flex">
+            <div>La recette doit-elle être visible de tous ? 
+                <input type="checkbox" value="true" name="visible" id="" [(ngModel)]="recette.visible" style="font-size: 50px;">
+            </div>
+        </div>
         <div style="width: 95%;">
             <hr>
         </div>

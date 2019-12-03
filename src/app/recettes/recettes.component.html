@@ -1,21 +1,16 @@
 <div class="container">
-    <div class="flex" style="justify-content: space-between;">
-        <div style="width: 40%;">
-            <h2 class="texte">Recettes</h2>
-        </div>
-        <div style="width: 40%;">
-            <button (click)="ajouterRecette()" style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
-                class="btn btn-lg btn-primary btn-block mb-2">Créer une recette</button>
+    <div class="flex" style="justify-content: space-between; width: 100%;">
+        <div>
+            <h4 class="texte">Filtres</h4>
         </div>
     </div>
-
     <hr>
     <!--Filtres-->
     <div class="encart">
         <!--Filtres-->
-        <div class="row">
+        <div class="flex" style="justify-content: space-evenly;">
             <!--Saisons-->
-            <div class="col-sm-4">
+            <div class="filtre" style="background: crimson;">
                 <ng-multiselect-dropdown [placeholder]="'Choix des saisons'" [data]="dropdownSaisons"
                     [(ngModel)]="selectedSaisons" [settings]="dropdownSettings" (onSelect)="onSaisonSelect($event)"
                     (onDeSelect)="onSaisonDeSelect($event)" (onSelectAll)="onSelectAllSaison()"
@@ -23,7 +18,7 @@
                 </ng-multiselect-dropdown>
             </div>
             <!--Temps de cuisine (préparation + cuisson)-->
-            <div class="col-sm-4">
+            <div class="filtre">
                 <ng-multiselect-dropdown [placeholder]="'Temps passé en cuisine'" [data]="dropdownTemps"
                     [(ngModel)]="selectedTemps" [settings]="dropdownSettings" (onSelect)="onTempsSelect($event)"
                     (onDeSelect)="onTempsDeSelect($event)" (onSelectAll)="onSelectAllTemps()"
@@ -31,16 +26,36 @@
                 </ng-multiselect-dropdown>
             </div>
             <!--Types d'ingrédients-->
-            <div class="col-sm-4">
+            <div class="filtre" style="background: crimson;">
                 <ng-multiselect-dropdown [placeholder]="'Choix des types dingrédients'" [data]="dropdownTypes"
                     [(ngModel)]="selectedTypes" [settings]="dropdownSettings" (onSelect)="onTypeSelect($event)"
                     (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onSelectAllType()"
                     (onDeSelectAll)="onDeSelectAllType()">
                 </ng-multiselect-dropdown>
             </div>
+
+            <div class="filtre">
+                    <ng-multiselect-dropdown [placeholder]="'Choix des types de recettes'" [data]="dropdownTypeRecette"
+                        [(ngModel)]="selectedTypeRecette" [settings]="dropdownSettings" (onSelect)="onTypeRecetteSelect($event)"
+                        (onDeSelect)="onTypeRecetteDeSelect($event)" (onSelectAll)="onSelectAllTypeRecette()"
+                        (onDeSelectAll)="onDeSelectAllTypeRecette()">
+                    </ng-multiselect-dropdown>
+                </div>
         </div>
     </div>
-    <!--Fin des filtres-->
+
+
+    <div class="flex" style="justify-content: space-between; width: 100%;">
+        <div>
+            <h2 class="texte">Recettes</h2>
+        </div>
+
+        <div>
+            <button (click)="ajouterRecette()" style="background: #c2dcb9; width: auto; color: white; font-size: 15px"
+                class="btn btn-lg btn-primary btn-block mb-2">Créer une recette</button>
+        </div>
+    </div>
+    <hr>
 
     <!--Cartes recette-->
     <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
