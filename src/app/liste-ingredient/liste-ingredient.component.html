@@ -1,0 +1,12 @@
+<div class="container" style="display: flex;flex-direction: row; flex-wrap: wrap; justify-content: flex-start;">
+    <div *ngFor="let element of listeIngredient" style="padding: 5px; width: 100%;">
+        <div style="width: 40%; height: 100px; background: rgb(223, 215, 215); border-radius: 5px; padding: 5px; display: flex; flex-direction: row ; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="height: 100%;">
+                <img [src]="element.url" alt="" height="100%">
+            </div>
+            <div style="font-size: 30px;"><strong>{{element.nom}}</strong></div>
+            <div style="font-size: 30px;">{{element.unite}}</div>
+        </div>
+
+    </div>
+</div>

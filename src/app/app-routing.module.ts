@@ -17,6 +17,7 @@ import { ModifelementlisteComponent } from './modifelementliste/modifelementlist
 import { AjouterElementFrigoComponent } from './ajouter-element-frigo/ajouter-element-frigo.component';
 import { AfficherenvieComponent } from './afficherenvie/afficherenvie.component';
 import { MessageComponent } from './message/message.component';
+import { ListeIngredientComponent } from './liste-ingredient/liste-ingredient.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'choixajoutliste', component : ChoixajoutrecettelisteComponent},
   { path: 'aff-envie', component: AfficherenvieComponent },
   {path: 'message', component: MessageComponent},
+  {path: 'ingredients', component: ListeIngredientComponent},
 
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },
   { path: "", redirectTo: '/connexion', pathMatch: 'full' },

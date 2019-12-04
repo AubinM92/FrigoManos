@@ -429,5 +429,13 @@ export class RecettesComponent implements OnInit {
   //---------------------Suppresion d'une recette, prend en paramètre une recette
   supprimer(re) {
 
+    const del = this.http.delete(this.s.url + 'supprimer-elem-recette/' + re.id).toPromise();
+    del.then(data => {
+      const del2 = this.http.delete(this.s.url + 'recettes/' + re.id).toPromise();
+      del2.then(data2 => {
+        this.ngOnInit();
+      })
+      });
+
   }
 }
